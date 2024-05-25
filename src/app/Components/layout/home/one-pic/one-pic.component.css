@@ -1,0 +1,34 @@
+:host{
+  padding-block:50px;
+}
+.row{
+  height: 500px;
+}
+
+img{
+  border-radius: 8px;
+}
+.btn{
+  background: linear-gradient(277.78deg, #395D5D -16.19%, #7EA39E 153.8%, #7EA39E 153.8%);
+  color: #fff;
+  font-size: 18px;
+  padding: 10px 30px;
+  border-radius: 4px;
+}
+.right{
+  order: 2;
+  display: flex;
+  justify-content: end;
+}
+.bg-gray{
+  background: #ECECECB2;
+}
+
+@media (max-width: 768px) {
+  .row{
+    height: 650px;
+  }
+.txt{
+  order: 3 ;
+}
+}

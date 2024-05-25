@@ -1,0 +1,52 @@
+.navbar{
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+}
+
+
+/* BG White */
+.colorOfNav {
+  background-color: white !important;
+}
+
+/* To Mange the DayraMarket (Brand) Font */
+#brandHeader {
+  font-weight: bolder;
+}
+
+/* TO Hide the arrow in the droplist of user */
+.no-arrow::after {
+  display: none;
+}
+
+/* To Change the color of placeholder Of Search input  */
+::placeholder {
+  /* Most modern browsers */
+  color: rgb(226, 226, 226);
+  opacity: 1;
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: rgb(226, 226, 226);
+}
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: rgb(226, 226, 226);
+}
+
+
+
+/* Change the focus of Search */
+.removeFocus:focus {
+  box-shadow: none;
+  border-color: rgb(226, 226, 226);
+}
+
+
+/* Account DropList */
+.btn-check:checked + .btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check) + .btn:active  {
+  border-radius: 50% !important;
+}

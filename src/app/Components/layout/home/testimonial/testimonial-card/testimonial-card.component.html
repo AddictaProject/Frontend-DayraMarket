@@ -1,0 +1,19 @@
+<div class="card"  draggable="false">
+  <div class="image">
+    <img  draggable="false"  [src]="testimonial.imageUrl" alt="">
+    <h6 class="mt-3 fw-semibold">{{testimonial.name}}</h6>
+  </div>
+  <div class="rate">
+    @for (item of numbers; track $index  ) {
+      @if (item<=testimonial.rate) {
+        <i class="fa-solid fa-star"></i>
+      }
+      @else {
+        <i class="fa-regular fa-star"></i>
+      }
+    }
+  </div>
+  <div>
+    <q>{{testimonial.description}}</q>
+  </div>
+</div>

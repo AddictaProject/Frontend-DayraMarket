@@ -1,0 +1,16 @@
+<div class="div" [ngClass]="{'bg-gray':!isWhiteBg}">
+  <div class="container" >
+    <div class="d-flex justify-content-between align-items-center row"  >
+      <div class="image col-12 col-md-6" [ngClass]="{'right': !isLeft}">
+        <img class="img-fluid" [src]="imgPath" alt="">
+      </div>
+      <div class=" txt col-12 col-md-6 text-center my-4 d-flex justify-content-center align-items-center">
+        <div class="text col-11">
+          <h5>{{title}}</h5>
+          <p class="my-4 p-2">{{paragraph}}</p>
+          <button class="btn">{{buttonText}}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

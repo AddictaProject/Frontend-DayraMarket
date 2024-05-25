@@ -1,0 +1,14 @@
+<div class="testimonial">
+  <div class="title d-flex justify-content-between mb-4">
+    <h4>Testimonial</h4>
+    <div class="icons d-md-flex gap-4 me-5 text-white d-none">
+      <div (click)="goLeft()" class="left"><i class="fa-solid fa-arrow-left"></i></div>
+      <div  (click)="goRight()" class="right"><i class="fa-solid fa-arrow-right"></i></div>
+    </div>
+  </div>
+  <drag-scroll [scrollbar-hidden]="true" #scrollerRef >
+    @for (item of testimonials; track $index) {
+      <app-testimonial-card class="me-3" drag-scroll-item [testimonial]="item"></app-testimonial-card>
+    }
+  </drag-scroll>
+</div>

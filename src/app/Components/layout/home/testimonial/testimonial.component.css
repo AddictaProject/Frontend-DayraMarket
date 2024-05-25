@@ -1,0 +1,27 @@
+.testimonial {
+  padding-block: 40px;
+  background: #1A1A1AE5;
+  padding-left: 100px;
+  height:500px;
+  margin-block:130px ;
+}
+@media (max-width: 768px) {
+.testimonial {
+  padding-left: 50px;
+}
+}
+.title h4 {
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-image: linear-gradient(90.07deg, #21CE8B 3.3%, #719783 57.06%, #FFFFFF 106.51%);
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.icons div{
+  background-color: #FFFFFF08;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 6px;
+  font-size: 20px;
+}

@@ -1,0 +1,15 @@
+.product-header a{
+  background: linear-gradient(93.76deg, #2ECA8D 6.67%, #2EA365 98.32%);
+  font-size: 20px;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  cursor: pointer;
+}
+.product-header i{
+  background: linear-gradient(256.5deg, #00CB7C 5.38%, #00863F 134.68%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+drag-scroll {
+  height: 400px;
+}

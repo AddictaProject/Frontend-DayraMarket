@@ -1,0 +1,40 @@
+.prd-card{
+  width: 250px;
+  border-radius: 6px;
+  box-shadow: 0px 4px 11px 0px #00000014;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.prd-image img{
+  width: 100%;
+}
+.prd-rate i{
+  margin-left: 5px;
+  color: #EFD80D;
+}
+.prd-info{
+  color: #858585;
+  margin-bottom: 8px;
+}
+
+.card-body{
+  padding-inline:16px ;
+}
+
+.colors span{
+  border-radius:50% ;
+  background-color: #858585;
+  width: 12px;
+  height: 12px;
+}
+.colors span:nth-of-type(1){
+  background: #E7DFEE;
+}
+
+.colors span:nth-of-type(3){
+  background: #21325B9C;
+}
+.prd-price{
+  color:#09764CCC;
+  padding-block:10px ;
+}
