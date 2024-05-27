@@ -1,0 +1,235 @@
+<div class="container ">
+
+  <!-- breadcrumb -->
+  <div>
+    <nav class="breadcrumb mt-4">
+      <ol class="list-unstyled d-flex">
+        <li>
+          <a [routerLink]="['']">Home</a>
+          <i class="fa-solid fa-angle-right mx-3"></i>
+        </li>
+        <li>
+          <a [routerLink]="['']">MacBook Pro M1</a>
+          <i class="fa-solid fa-angle-right mx-3"></i>
+        </li>
+        <li>MacBook Pro (2020) 13.3-inch </li>
+      </ol>
+    </nav>
+  </div>
+
+
+  <!-- product -->
+  <div class="product-content product-wrap clearfix product-deatil ">
+    <div class="row">
+
+      <div class="col-lg-6 col-md-12 col-sm-12 col-12">
+
+        <div class="product-image">
+          <div id="myCarousel-2" class="carousel slide">
+            <div class="carousel-inner">
+              <p-galleria [value]="images" [responsiveOptions]="responsiveOptions" [showThumbnailNavigators]="false"
+                [showItemNavigators]="true" [numVisible]="5" thumbnailsPosition="left" [circular]="false"
+                [containerStyle]="{ 'max-width': '640px' }">
+
+                <ng-template pTemplate="item" let-item>
+                  <img [src]="item.source" class="img-fluid rounded" [alt]="item.alt"
+                    style="width: 100%; height: 500px;" />
+                </ng-template>
+
+                <ng-template pTemplate="thumbnail" let-item>
+                  <div class="grid grid-nogutter justify-content-center"
+                    [ngClass]="{ 'active-thumbnail': item === activeItem }">
+                    <img [src]="item.thumbnail" class="img-fluid rounded thumbnail-image" (click)="setActiveItem(item)"
+                      style="width: 50px !important; height: 50px !important; " />
+                  </div>
+                </ng-template>
+              </p-galleria>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+
+
+      <div class="col-lg-6  col-lg-offset-1 col-md-12  col-sm-12 col-xs-12">
+
+        <drag-scroll [scrollbar-hidden]="true" style="height: 744px;">
+
+
+          <div class="d-flex">
+            <h2 class="name text-success">
+              USD
+
+            </h2>
+            <small style="text-decoration: line-through" class="text-secondary mt-2 ms-1">
+              EGP
+            </small>
+          </div>
+
+          <div>
+            <small class="text-secondary" style="font-size: small">
+
+              <span>
+                productNameAR
+              </span>
+
+
+            </small>
+          </div>
+
+          <div class="my-3">
+            <p style="font-size: small">
+
+              <span>
+                ProductDetails
+              </span>
+
+
+
+            </p>
+
+          </div>
+
+          <br>
+          <!-- Name Of Shop !!!!!Not  Dynamic  -->
+          <div class="mt-3 ">
+            <a>
+              <h5 class="decoration-none ShopName">
+
+                productPublisher
+              </h5>
+            </a>
+          </div>
+
+          <div>
+            <small>
+              <i class="fa-solid fa-check " style="color: #416cda;"></i>
+              Returns & exchanges accepted </small>
+          </div>
+
+          <div class=" mt-3">
+            <div>
+              <small class="d-flex align-items-center">
+                quantity
+                <i class="fa-solid fa-star fa-2xs " style="color: #a61a2e;"></i>
+
+              </small>
+            </div>
+
+
+          </div>
+
+          <div class="d-flex mt-3 ">
+            <a class="btn btnCheckOut " role="button">
+              Add to Cart </a>
+          </div>
+
+
+          <div class="m-t-sm mt-3">
+            <div class="form-group form-check">
+              <label for="exampleCheck1" class="">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1" />
+
+                Add gift package </label>
+            </div>
+          </div>
+
+
+          <div class="d-flex mt-3">
+            <i class="fa-solid fa-calendar-week me-2" style="color: #000000"></i>
+            order
+          </div>
+
+
+
+          <hr class="mt-5" />
+
+          <div class="container mt-5 mb-5">
+            <div class=" ">
+              <div class="CardStleSucces p-3">
+                offeset </div>
+            </div>
+          </div>
+
+          <div class="container mt-5 mb-5">
+            <div class="d-flex row">
+              <div class="col-2 mt-3 mt-md-1 mt-sm-0">
+                <i class="fa-solid fa-handshake" style="color: #164198; font-size: 35px"></i>
+              </div>
+              <div class="col-10">
+                <p style="font-size: small;">
+                  puche
+                </p>
+              </div>
+
+
+              <div class="custom-dropdown mt-3 dropdown">
+                <button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  item </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <li><a class="dropdown-item">1</a></li>
+                </ul>
+              </div>
+
+
+              <div class="custom-dropdown mt-3 dropdown">
+                <button class="dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  shipping </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <li><a class="dropdown-item">2</a></li>
+                </ul>
+              </div>
+
+
+
+              <div class="custom-dropdown mt-3 dropdown">
+                <button class="dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  shipping </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <li><a class="dropdown-item">2</a></li>
+                </ul>
+              </div>
+
+              <div class="custom-dropdown mt-3 dropdown">
+                <button class="dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  shipping </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <li><a class="dropdown-item">2</a></li>
+                </ul>
+              </div>
+
+              <div class="custom-dropdown mt-3 dropdown">
+                <button class="dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  shipping </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <li><a class="dropdown-item">2</a></li>
+                </ul>
+              </div>
+
+            </div>
+          </div>
+          
+        </drag-scroll>
+
+
+
+
+
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+
+
+  <!-- end product -->
+</div>

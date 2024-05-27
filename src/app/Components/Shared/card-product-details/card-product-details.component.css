@@ -1,0 +1,84 @@
+.prd-card{
+  width: 243px;
+  border-radius: 6px;
+  box-shadow: 0px 4px 11px 0px #00000014;
+  -webkit-user-select: none;
+  user-select: none;
+  /* padding-inline: 16px; */
+  gap: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+}
+.prd-image{
+  width: 134px;
+}
+.prd-image img{
+  width: 100%;
+  height: 180px;
+  padding-top: 10px;
+}
+
+
+
+
+.prd-rate i{
+  margin-left: 5px;
+  color: #EFD80D;
+  font-size: 11px;
+
+}
+
+.prd-rate span {
+
+  color: rgba(0, 0, 0, 0.5);
+  line-height: 13.41px;
+  font-size: 11px;
+  font-weight: 300;
+  font-family: "Montserrat", sans-serif;
+
+}
+
+
+.prd-info{
+  color: #858585;
+  /* margin-bottom: 8px; */
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 19.5px;
+  font-family: "Montserrat", sans-serif;
+
+}
+
+.card-body{
+  width: 100%;
+  padding-inline:16px ;
+}
+
+
+/* === */
+/* Three dots */
+.colors span{
+  border-radius:50% ;
+  background-color: #858585;
+  width: 12px;
+  height: 12px;
+}
+.colors span:nth-of-type(1){
+  background: #E7DFEE;
+}
+
+.colors span:nth-of-type(3){
+  background: #21325B9C;
+}
+
+/* === */
+/* Price */
+.prd-price{
+  font-family: "Montserrat", sans-serif;
+font-size: 16px;
+font-weight: 500;
+line-height: 19.5px;
+color:#09764CCC;
+}
