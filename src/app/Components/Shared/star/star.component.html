@@ -11,9 +11,9 @@
 <div class="star-rating">
   <span *ngFor="let star of stars; let i = index" class="star">
     <ng-container [ngSwitch]="star">
-      <i *ngSwitchCase="1" class="fas fa-star" [ngClass]="fullStarClass"></i>  
-      <i *ngSwitchCase="0.5" class="fas fa-star-half-alt" [ngClass]="halfStarClass"></i> 
-      <i *ngSwitchDefault class="far fa-star" [ngClass]="emptyStarClass"></i>   
+      <i *ngSwitchCase="1" class="fas fa-star" [ngClass]="{'custom-full-star-1' : fullStarClass ,'custom-full-star-2': !fullStarClass }"></i>  
+      <i *ngSwitchCase="0.5" class="fas fa-star-half-alt" [ngClass]="{'custom-full-star-1' : fullStarClass ,'custom-full-star-2': !fullStarClass }"></i> 
+      <i *ngSwitchDefault class="far fa-star" [ngClass]="{'custom-full-star-1' : fullStarClass ,'custom-full-star-2': !fullStarClass }"></i>   
     </ng-container>
   </span>
 </div>
