@@ -18,6 +18,6 @@ export class CommentsComponent implements OnInit {
 
   ngOnInit() {
   }
-  value!: number;
-  value2=5
+  value: number = 4;
+  value2 = 5 ;
 }

@@ -154,13 +154,15 @@
     font-size: 15.13px;
 }
 
-.ProdNameInComm{
+.ProdNameInComm a{
     color:rgba(18, 18, 18, 1);
     font-weight: 500;
     font-family: "Montserrat", sans-serif;
     line-height:16px;
     font-size: 13.45px;
+    text-decoration: none;
 }
+
 
 .dateOfPublish{
     color:rgba(85, 85, 85, 1);
@@ -178,3 +180,68 @@
     line-height:20px;
     font-size: 14px; 
 }
+
+/* === */
+/* stars */
+
+/* 
+   .star-rating {
+    display: inline-block;
+    font-size: 1rem;
+  } */
+  
+  /* THe Rate of  */
+  .custom-full-star-1 {
+    color:rgb(156,156,156) !important; 
+  }
+  
+  .custom-half-star-1 {
+    color: rgb(156,156,156) !important;
+  }
+  
+  .custom-empty-star-1 {
+    color:rgb(77,87,101) !important;
+  }
+  
+    
+  /* User Comment Star */
+  .custom-full-star-2 {
+    color: #000000; 
+  }
+  
+  .custom-half-star-2 {
+    color: #000000;
+  }
+  
+  .custom-empty-star-2 {
+    color:rgb(77,87,101);
+  }
+
+  /* === */
+  /* filter by star */
+
+  .checkInputStyle{
+    border-color: rgba(95, 95, 95, 1);
+    width: 21px;
+    height: 21px;
+    text-align: center;
+  }
+
+  .form-check-input:checked{
+    background-color: black;
+    box-shadow: none;
+  }
+  .starOfFilter{
+    color:rgba(239, 216, 13, 1);
+    width: 15px;
+    height: 15px;
+  }
+
+  .numOfStar{
+    color: rgba(103, 103, 103, 1);
+    font-weight: 500;
+    font-family: "Montserrat", sans-serif;
+    line-height:16px;
+    font-size: 18px; 
+  }
+

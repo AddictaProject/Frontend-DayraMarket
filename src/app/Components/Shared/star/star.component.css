@@ -1,6 +1,6 @@
 
 
-.rating {
+/* .rating {
     display: flex;
   }
   
@@ -9,6 +9,24 @@
     cursor: pointer;
     color: rgb(0, 0, 0);
   }
-  
+   */
 
+
+/* 
+   .star-rating {
+    display: inline-block;
+    font-size: 1rem;
+  }
   
+  .full-star {
+    color: #000000; 
+  }
+  
+  .half-star {
+    color: #000000;
+  }
+  
+  .empty-star {
+    color:rgb(77,87,101);
+  }
+   */

@@ -1,4 +1,4 @@
-<div class="container mb-5" >
+<div class="container mb-5">
 
 
   <!-- Product Name -->
@@ -13,8 +13,11 @@
   <div class="mb-3">
 
     <div class="d-flex starsReview ">
-      <!-- <app-star [(value)]="value"  style="font-size: xx-small; " ></app-star> -->
-      <p-rating [(ngModel)]="value" [cancel]="false" />
+      <app-star [(value)]="value" fullStarClass="custom-full-star-1" halfStarClass="custom-half-star-1"
+        emptyStarClass="custom-empty-star-1"></app-star>
+
+
+      <!-- <p-rating [(ngModel)]="value" [cancel]="false" /> -->
 
       <p class="ms-2"> {{ value }}/5</p>
 
@@ -52,65 +55,113 @@
       </div>
 
       <!-- filteration process -->
-      <div class="rating-bar0 justify-content-center mt-4">
-        <table class="text-left mx-auto">
-          <tr>
-            <td class="rating-label">
-              <i class="fa-solid fa-star" style="color:rgba(239, 216, 13, 1);"> </i>
-              <span> 5 </span>
-            </td>
-            <td class="rating-bar">
-              <div class="bar-container">
-                <div class="bar-5"></div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td class="rating-label">
-              <i class="fa-solid fa-star" style="color:rgba(239, 216, 13, 1);"> </i>
-              <span> 4 </span>
-            </td>
-            <td class="rating-bar">
-              <div class="bar-container">
-                <div class="bar-4"></div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td class="rating-label">
-              <i class="fa-solid fa-star" style="color:rgba(239, 216, 13, 1);"> </i>
-              <span> 3 </span>
-            </td>
-            <td class="rating-bar">
-              <div class="bar-container">
-                <div class="bar-3"></div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td class="rating-label">
-              <i class="fa-solid fa-star" style="color:rgba(239, 216, 13, 1);"> </i>
-              <span> 2 </span>
-            </td>
-            <td class="rating-bar">
-              <div class="bar-container">
-                <div class="bar-2"></div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td class="rating-label">
-              <i class="fa-solid fa-star" style="color:rgba(239, 216, 13, 1);"> </i>
-              <span> 1 </span>
-            </td>
-            <td class="rating-bar">
-              <div class="bar-container">
-                <div class="bar-1"></div>
-              </div>
-            </td>
-          </tr>
-        </table>
-      </div>
+
+      <article class="card-group-item mt-4">
+
+        <div class="filter-content">
+          <div class="card-body">
+
+            <!-- 5 stars  -->
+            <label class="form-check mb-3">
+
+              <input class="form-check-input checkInputStyle me-3 mb-0 mt-0" type="radio" name="exampleRadio" value="">
+
+              <span class="form-check-label d-flex">
+                <i class="fa-solid fa-star starOfFilter me-2"> </i>
+
+                <span class="numOfStar"> 5 </span>
+
+                <div class="progress w-100 ms-2 mt-1" style="height: 7px; ">
+                  <div class="progress-bar " role="progressbar" style="width: 50%; 
+                  background-color :rgba(88, 51, 193, 1) !important;" aria-valuenow="25" aria-valuemin="0"
+                    aria-valuemax="100"></div>
+                </div>
+
+              </span>
+            </label>
+
+
+            <!-- 4 stars  -->
+            <label class="form-check mb-3">
+
+              <input class="form-check-input checkInputStyle me-3 mb-0 mt-0" type="radio" name="exampleRadio" value="">
+
+              <span class="form-check-label d-flex">
+                <i class="fa-solid fa-star starOfFilter me-2"> </i>
+
+                <span class="numOfStar"> 4 </span>
+
+                <div class="progress w-100 ms-2 mt-1" style="height: 7px; ">
+                  <div class="progress-bar " role="progressbar"
+                    style="width: 70%;  background-color :rgba(88, 51, 193, 1) !important;" aria-valuenow="25"
+                    aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+
+              </span>
+            </label>
+
+            <!-- 3 stars  -->
+            <label class="form-check mb-3">
+
+              <input class="form-check-input checkInputStyle me-3 mb-0 mt-0" type="radio" name="exampleRadio" value="">
+
+              <span class="form-check-label d-flex">
+                <i class="fa-solid fa-star starOfFilter me-2"> </i>
+
+                <span class="numOfStar"> 3 </span>
+
+                <div class="progress w-100 ms-2 mt-1" style="height: 7px; ">
+                  <div class="progress-bar " role="progressbar"
+                    style="width: 20%;  background-color :rgba(88, 51, 193, 1) !important;" aria-valuenow="25"
+                    aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+
+              </span>
+            </label>
+
+            <!-- 2 stars  -->
+            <label class="form-check mb-3">
+
+              <input class="form-check-input checkInputStyle me-3 mb-0 mt-0" type="radio" name="exampleRadio" value="">
+
+              <span class="form-check-label d-flex">
+                <i class="fa-solid fa-star starOfFilter me-2"> </i>
+
+                <span class="numOfStar"> 2 </span>
+
+                <div class="progress w-100 ms-2 mt-1" style="height: 7px; ">
+                  <div class="progress-bar " role="progressbar"
+                    style="width: 10%;  background-color :rgba(88, 51, 193, 1) !important;" aria-valuenow="25"
+                    aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+
+              </span>
+            </label>
+
+            <!-- 1 stars  -->
+            <label class="form-check mb-3">
+
+              <input class="form-check-input checkInputStyle me-3 mb-0 mt-0" type="radio" name="exampleRadio" value="">
+
+              <span class="form-check-label d-flex">
+                <i class="fa-solid fa-star starOfFilter me-2"> </i>
+
+                <span class="numOfStar"> 1 </span>
+
+                <div class="progress w-100 ms-2 mt-1" style="height: 7px; ">
+                  <div class="progress-bar " role="progressbar"
+                    style="width: 0%;  background-color :rgba(88, 51, 193, 1) !important;" aria-valuenow="25"
+                    aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+
+              </span>
+            </label>
+
+
+          </div> <!-- card-body.// -->
+        </div>
+      </article> <!-- card-group-item.// -->
+
 
 
     </div>
@@ -138,8 +189,10 @@
 
               <p class="nameOfUser">George</p>
 
-              <div class="d-flex" style="font-size: small; color: black;">
-                <app-star [(value)]="value2" ></app-star>
+
+              <div class="d-flex text-dark" style="font-size: small; ">
+                <app-star [(value)]="value2" fullStarClass="custom-full-star-2" halfStarClass="custom-half-star-2"
+                  emptyStarClass="custom-empty-star-2"></app-star>
                 <p class="ms-2"> {{ value2 }}/5</p>
               </div>
 
@@ -155,14 +208,15 @@
 
         <!-- User Comment -->
         <div>
-          <p class="userComment">I’m very happy with my purchase. The MacBook arrived in 2 days. I bought in excellent condition and that’s
+          <p class="userComment">I’m very happy with my purchase. The MacBook arrived in 2 days. I bought in excellent
+            condition and that’s
             how it arrived. No cosmetic issues at all. I will be back when the time comes for another refurbished item.
             5/5 rating.</p>
         </div>
 
         <!-- Product Name -->
         <div class="ProdNameInComm my-4 ms-1">
-          <p> MacBook Pro (2020) 13.3-inch - Apple M1 8-core and 8-core GPU - 8GB RAM - SSD 256GB</p>
+          <a href=""> MacBook Pro (2020) 13.3-inch - Apple M1 8-core and 8-core GPU - 8GB RAM - SSD 256GB</a>
         </div>
 
         <!-- Date Of Publish the comment -->
@@ -173,64 +227,15 @@
       </div>
 
 
-       <!--2 comment -->
-       <div class=" mb-5">
+      <!--2 comment -->
 
-
-        <div class="d-flex mb-4">
-
-          <!-- image -->
-          <div>
-            <img src="../../../../../assets/images/G.png" width="40px" height="40px" alt="">
-          </div>
-
-          <!-- Header Sec -->
-          <div class="w-100 ms-3">
-
-            <div class="d-flex justify-content-between" style="height: 23px;">
-
-              <p class="nameOfUser">George</p>
-
-              <div class="d-flex" style="font-size: small; color: black;">
-                <app-star [(value)]="value2" ></app-star>
-                <p class="ms-2"> {{ value2 }}/5</p>
-              </div>
-
-            </div>
-
-
-            <p class="dateOfRev">Reviewed in the Cairo on May 14, 2023</p>
-          </div>
-
-
-        </div>
-
-
-        <!-- User Comment -->
-        <div>
-          <p class="userComment">I’m very happy with my purchase. The MacBook arrived in 2 days. I bought in excellent condition and that’s
-            how it arrived. No cosmetic issues at all. I will be back when the time comes for another refurbished item.
-            5/5 rating.</p>
-        </div>
-
-        <!-- Product Name -->
-        <div class="ProdNameInComm my-4 ms-1">
-          <p> MacBook Pro (2020) 13.3-inch - Apple M1 8-core and 8-core GPU - 8GB RAM - SSD 256GB</p>
-        </div>
-
-        <!-- Date Of Publish the comment -->
-        <div class="dateOfPublish">
-          <p>Purchased on May 1, 2023</p>
-        </div>
-
-      </div>
 
 
 
       <!-- button See all -->
       <div>
         <a class="btn btnOfSeeAll ms-1 mt-3">
-          See all 67 reviews 
+          See all 67 reviews
         </a>
       </div>
 

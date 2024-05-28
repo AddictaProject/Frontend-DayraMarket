@@ -14,30 +14,35 @@ export class StarComponent implements OnInit {
 
   @Input() value !: number ;
   @Output() valueChange = new EventEmitter<number>();
+  @Input() fullStarClass: string = 'full-star';
+  @Input() halfStarClass: string = 'half-star';
+  @Input() emptyStarClass: string = 'empty-star';
+  
+  stars: number[] = [];
 
-  i =0;
-  stars: boolean[] = Array(5).fill(false);
+  // stars: boolean[] = Array(5).fill(false);
 
   constructor() {}
-  ngOnInit(): void { }
-
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes['value'] && changes['value'].currentValue !== null) {
-      this.updateStars(changes['value'].currentValue);
-    }   
+  ngOnInit(): void {
+    this.updateStars();
   }
 
-  // Update stars based on the rating value
-  updateStars(rating: number) {
-    for (let i = 0; i < this.stars.length; i++) {
-      this.stars[i] = i < rating;
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['value']) {
+      this.updateStars();
     }
   }
 
-  rate(rating: number) {
-    this.value = rating;
-    this.valueChange.emit(this.value);
-    this.updateStars(rating);
+  private updateStars(): void {
+    this.stars = Array(5).fill(0).map((_, i) => {
+      const starValue = i + 1;
+      if (this.value >= starValue) {
+        return 1;
+      } else if (this.value >= starValue - 0.5) {
+        return 0.5;
+      } else {
+        return 0;
+      }
+    });
   }
-
 }
