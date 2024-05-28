@@ -12,3 +12,7 @@ body {
   overflow-x: hidden;
 }
 
+
+.p-galleria .p-galleria-thumbnail-container{
+  background-color:  transparent !important;
+}

@@ -14,9 +14,10 @@ export class StarComponent implements OnInit {
 
   @Input() value !: number ;
   @Output() valueChange = new EventEmitter<number>();
-  @Input() fullStarClass: string = 'full-star';
-  @Input() halfStarClass: string = 'half-star';
-  @Input() emptyStarClass: string = 'empty-star';
+
+  @Input() fullStarClass: boolean = true;
+  @Input() halfStarClass: boolean = true;
+  @Input() emptyStarClass: boolean = true;
   
   stars: number[] = [];
 

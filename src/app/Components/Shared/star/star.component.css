@@ -30,3 +30,31 @@
     color:rgb(77,87,101);
   }
    */
+
+
+    /* THe Rate of  */
+  .custom-full-star-1 {
+    color:rgb(156,156,156) !important; 
+  }
+  
+  .custom-half-star-1 {
+    color: rgb(156,156,156) !important;
+  }
+  
+  .custom-empty-star-1 {
+    color:rgb(77,87,101) !important;
+  }
+  
+    
+  /* User Comment Star */
+  .custom-full-star-2 {
+    color: #000000; 
+  }
+  
+  .custom-half-star-2 {
+    color: #000000;
+  }
+  
+  .custom-empty-star-2 {
+    color:rgb(77,87,101);
+  }
