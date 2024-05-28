@@ -1,4 +1,4 @@
-<div class="container mb-5">
+<div class="container mb-5" >
 
 
   <!-- Product Name -->
@@ -38,8 +38,9 @@
 
   <!-- comments & filter -->
 
-  <div class="d-flex justify-content-between mt-5 mb-5">
+  <div class="d-flex justify-content-between mt-5 " style="margin-bottom: 200px;">
 
+    <!-- filteration by stars -->
     <div class="col-3">
 
       <!-- naming -->
@@ -114,6 +115,8 @@
 
     </div>
 
+
+
     <!-- Comments -->
     <div class="col-9 ms-5">
 
@@ -121,7 +124,7 @@
       <div class=" mb-5">
 
 
-        <div class="d-flex ">
+        <div class="d-flex mb-4">
 
           <!-- image -->
           <div>
@@ -131,34 +134,39 @@
           <!-- Header Sec -->
           <div class="w-100 ms-3">
 
-            <div class="d-flex justify-content-between">
+            <div class="d-flex justify-content-between" style="height: 23px;">
 
-              <p>George</p>
+              <p class="nameOfUser">George</p>
 
-              <div class="d-flex">
-                <app-star [(value)]="value2" style="font-size: xx-small;"></app-star>
+              <div class="d-flex" style="font-size: small; color: black;">
+                <app-star [(value)]="value2" ></app-star>
                 <p class="ms-2"> {{ value2 }}/5</p>
               </div>
 
             </div>
-            <p>Reviewed in the Cairo on May 14, 2023</p>
+
+
+            <p class="dateOfRev">Reviewed in the Cairo on May 14, 2023</p>
           </div>
 
 
         </div>
 
 
+        <!-- User Comment -->
         <div>
-          <p>I’m very happy with my purchase. The MacBook arrived in 2 days. I bought in excellent condition and that’s
+          <p class="userComment">I’m very happy with my purchase. The MacBook arrived in 2 days. I bought in excellent condition and that’s
             how it arrived. No cosmetic issues at all. I will be back when the time comes for another refurbished item.
             5/5 rating.</p>
         </div>
 
-        <div>
-          <h5>MacBook Pro (2020) 13.3-inch - Apple M1 8-core and 8-core GPU - 8GB RAM - SSD 256GB</h5>
+        <!-- Product Name -->
+        <div class="ProdNameInComm my-4 ms-1">
+          <p> MacBook Pro (2020) 13.3-inch - Apple M1 8-core and 8-core GPU - 8GB RAM - SSD 256GB</p>
         </div>
 
-        <div>
+        <!-- Date Of Publish the comment -->
+        <div class="dateOfPublish">
           <p>Purchased on May 1, 2023</p>
         </div>
 
@@ -169,7 +177,7 @@
        <div class=" mb-5">
 
 
-        <div class="d-flex ">
+        <div class="d-flex mb-4">
 
           <!-- image -->
           <div>
@@ -179,46 +187,54 @@
           <!-- Header Sec -->
           <div class="w-100 ms-3">
 
-            <div class="d-flex justify-content-between">
+            <div class="d-flex justify-content-between" style="height: 23px;">
 
-              <p>George</p>
+              <p class="nameOfUser">George</p>
 
-              <div class="d-flex">
-                <app-star [(value)]="value2" style="font-size: xx-small;"></app-star>
+              <div class="d-flex" style="font-size: small; color: black;">
+                <app-star [(value)]="value2" ></app-star>
                 <p class="ms-2"> {{ value2 }}/5</p>
               </div>
 
             </div>
-            <p>Reviewed in the Cairo on May 14, 2023</p>
+
+
+            <p class="dateOfRev">Reviewed in the Cairo on May 14, 2023</p>
           </div>
 
 
         </div>
 
 
+        <!-- User Comment -->
         <div>
-          <p>I’m very happy with my purchase. The MacBook arrived in 2 days. I bought in excellent condition and that’s
+          <p class="userComment">I’m very happy with my purchase. The MacBook arrived in 2 days. I bought in excellent condition and that’s
             how it arrived. No cosmetic issues at all. I will be back when the time comes for another refurbished item.
             5/5 rating.</p>
         </div>
 
-        <div>
-          <h5>MacBook Pro (2020) 13.3-inch - Apple M1 8-core and 8-core GPU - 8GB RAM - SSD 256GB</h5>
+        <!-- Product Name -->
+        <div class="ProdNameInComm my-4 ms-1">
+          <p> MacBook Pro (2020) 13.3-inch - Apple M1 8-core and 8-core GPU - 8GB RAM - SSD 256GB</p>
         </div>
 
-        <div>
+        <!-- Date Of Publish the comment -->
+        <div class="dateOfPublish">
           <p>Purchased on May 1, 2023</p>
         </div>
 
       </div>
 
 
+
       <!-- button See all -->
       <div>
-        <a class="btn btn-outline-success">
+        <a class="btn btnOfSeeAll ms-1 mt-3">
           See all 67 reviews 
         </a>
       </div>
+
+
 
     </div>
 

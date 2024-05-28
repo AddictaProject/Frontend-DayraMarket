@@ -5,9 +5,9 @@
   }
   
   .rating .fa {
-    font-size: 2em;
+    font-size: 1em;
     cursor: pointer;
-    color: rgb(156,156,156);
+    color: rgb(0, 0, 0);
   }
   
 
