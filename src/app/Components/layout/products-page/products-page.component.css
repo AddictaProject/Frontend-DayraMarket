@@ -86,7 +86,7 @@ input[type="checkbox"] {
 input:checked + label{
   color: #45a37f ;
 }
-input[type="search"]{
+input[type="text"]{
   background-color: #EAEAEA;
   border-radius: 6px;
   width: 100%;
