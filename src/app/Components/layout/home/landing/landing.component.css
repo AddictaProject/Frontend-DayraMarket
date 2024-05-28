@@ -25,12 +25,12 @@
 }
 .carousel-item:nth-of-type(1) .txt{
   position: absolute;
-  top: 300px;
+  top: 50%;
+  transform: translateY(-50%);
   left: 100px;
 }
 @media (max-width:1200px) {
   .carousel-item:nth-of-type(1) .txt{
-    top: 300px;
     left: 0;
   }
 }
@@ -57,15 +57,15 @@
 }
 .carousel-item:nth-of-type(1) img:first-of-type{
   position: absolute;
-  right: 240px;
-  top:150px;
+  right: 140px;
+  top:40px;
   z-index:3;
   animation:  down-to-up 1.3s ease-in-out ;
 }
 .carousel-item:nth-of-type(1) img:last-of-type{
   position: absolute;
-  right: 400px;
-  top:200px;
+  right: 300px;
+  top:100px;
   animation: up-to-down 1.3s ease-in-out ;
 }
 
@@ -134,14 +134,15 @@
   animation: left-right 1.3s ease-in-out ;
   color: white;
   position: absolute;
-  top: 300px;
+  top: 50%;
+  transform: translateY(-50%);
   left: 10%;
   z-index: 34;
 }
 .carousel-item:nth-of-type(3) img:first-of-type{
   position: absolute;
   right: 260px;
-  top: 80px;
+  top: 20px;
   width: 440px;
   animation:  down-to-up 1.3s ease-in-out ;
 
@@ -149,8 +150,8 @@
 .carousel-item:nth-of-type(3) img:nth-of-type(2){
   width: 360px;
   position: absolute;
-  right: 200px;
-  top: 280px;
+  right: 225px;
+  top: 215px;
   z-index: 31;
   animation:  up-to-down 1.3s ease-in-out ;
 
@@ -159,7 +160,7 @@
   width: 400px;
   position: absolute;
   right: 120px;
-  top: 160px;
+  top: 100px;
   animation:  down-to-up 1.3s ease-in-out ;
 
 }
@@ -185,7 +186,13 @@
   }
 
 }
-
+.carousel-control-next-icon,
+.carousel-control-prev-icon{
+  position: absolute;
+  bottom: 5%;
+  width: 3rem;
+  height: 3rem;
+}
 @keyframes up-to-down {
   0%{
     transform: translateY(1000px);
@@ -215,10 +222,10 @@
 }
 @keyframes left-right {
   0%{
-    transform: translateX(-1000px);
+    transform: translate(-1000px,-50%);
   }
   100%{
-    transform: translateX(0);
+    transform: translate(0,-50%);
   }
 }
 @keyframes fadeIn {

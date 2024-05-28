@@ -1,0 +1,11 @@
+input[type="checkbox"] {
+  accent-color: #45a37f ;
+}
+input:checked + label{
+  color: #45a37f ;
+}
+.checkbox{
+  padding-bottom: 14px;
+  display: flex;
+  gap: 5px;
+}

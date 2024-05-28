@@ -28,63 +28,7 @@
 
         <div class="menu d-none">
           <div>
-            <div class="checkbox">
-              <input type="checkbox" id="menu1">
-              <label for="menu1">MacBook</label>
-            </div>
-            <div class="checkbox">
-              <input type="checkbox" id="menu2">
-              <label for="menu2">MacBook</label>
-            </div>
-            <div class="checkbox">
-              <input type="checkbox" id="menu3">
-              <label for="menu3">MacBook</label>
-            </div>
-            <div class="checkbox">
-              <input type="checkbox" id="menu4">
-              <label for="menu4">MacBook</label>
-            </div>
-            <div class="checkbox">
-              <input type="checkbox" id="menu4">
-              <label for="menu4">MacBook</label>
-            </div>
-            <div class="checkbox">
-              <input type="checkbox" id="menu4">
-              <label for="menu4">MacBook</label>
-            </div>
-            <div class="checkbox">
-              <input type="checkbox" id="menu4">
-              <label for="menu4">MacBook</label>
-            </div>
-            <div class="checkbox">
-              <input type="checkbox" id="menu4">
-              <label for="menu4">MacBook</label>
-            </div>
-            <div class="checkbox">
-              <input type="checkbox" id="menu4">
-              <label for="menu4">MacBook</label>
-            </div>
-            <div class="checkbox">
-              <input type="checkbox" id="menu4">
-              <label for="menu4">MacBook</label>
-            </div>
-            <div class="checkbox">
-              <input type="checkbox" id="menu4">
-              <label for="menu4">MacBook</label>
-            </div>
-            <div class="checkbox">
-              <input type="checkbox" id="menu4">
-              <label for="menu4">MacBook</label>
-            </div>
-            <div class="checkbox">
-              <input type="checkbox" id="menu4">
-              <label for="menu4">MacBook</label>
-            </div>
-            <div class="checkbox">
-              <input type="checkbox" id="menu4">
-              <label for="menu4">MacBook</label>
-            </div>
-
+            <app-filter [filters]="categoriesFiltered" (filterChange)="getChecked($event)"></app-filter>
           </div>
         </div>
       </div>
@@ -94,64 +38,9 @@
           <i class="fa-solid fa-plus" (click)="openFilterMenu($event)"></i>
         </div>
         <div class="menu d-none">
-          <input type="search" placeholder="Search for brand">
+          <input type="text" placeholder="Search for brand" (keyup)="brandSearchHandler($event)">
           <div>
-            <div class="checkbox">
-              <input type="checkbox" id="menu1">
-              <label for="menu1">MacBook</label>
-            </div>
-            <div class="checkbox">
-              <input type="checkbox" id="menu2">
-              <label for="menu2">MacBook</label>
-            </div>
-            <div class="checkbox">
-              <input type="checkbox" id="menu3">
-              <label for="menu3">MacBook</label>
-            </div>
-            <div class="checkbox">
-              <input type="checkbox" id="menu4">
-              <label for="menu4">MacBook</label>
-            </div>
-            <div class="checkbox">
-              <input type="checkbox" id="menu4">
-              <label for="menu4">MacBook</label>
-            </div>
-            <div class="checkbox">
-              <input type="checkbox" id="menu4">
-              <label for="menu4">MacBook</label>
-            </div>
-            <div class="checkbox">
-              <input type="checkbox" id="menu4">
-              <label for="menu4">MacBook</label>
-            </div>
-            <div class="checkbox">
-              <input type="checkbox" id="menu4">
-              <label for="menu4">MacBook</label>
-            </div>
-            <div class="checkbox">
-              <input type="checkbox" id="menu4">
-              <label for="menu4">MacBook</label>
-            </div>
-            <div class="checkbox">
-              <input type="checkbox" id="menu4">
-              <label for="menu4">MacBook</label>
-            </div>
-            <div class="checkbox">
-              <input type="checkbox" id="menu4">
-              <label for="menu4">MacBook</label>
-            </div>
-            <div class="checkbox">
-              <input type="checkbox" id="menu4">
-              <label for="menu4">MacBook</label>
-            </div>
-            <div class="checkbox">
-              <input type="checkbox" id="menu4">
-              <label for="menu4">MacBook</label>
-            </div>
-            <div class="checkbox">
-              <input type="checkbox" id="menu4">
-              <label for="menu4">MacBook</label>
-            </div>
+            <app-filter [filters]="brandsFiltered" (filterChange)="getChecked($event)"></app-filter>
           </div>
         </div>
       </div>
@@ -161,7 +50,7 @@
           <i class="fa-solid fa-plus" (click)="openFilterMenu($event)"></i>
         </div>
         <div class="menu d-none">
-          <input type="search" placeholder="Search for brand">
+          <input type="text" placeholder="Search for brand" >
           <div>
             <div class="checkbox">
               <input type="checkbox" id="menu1">
