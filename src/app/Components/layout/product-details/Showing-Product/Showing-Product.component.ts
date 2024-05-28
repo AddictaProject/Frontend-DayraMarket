@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { DragScrollComponent, DragScrollItemDirective } from 'ngx-drag-scroll';
 import { GalleriaModule } from 'primeng/galleria';
 
@@ -20,8 +20,10 @@ export class ShowingProductComponent implements OnInit {
   images: any[];
   responsiveOptions: any[];
   activeItem: any;
+  
+  @ViewChild('LearnMore') LearnMore!: ElementRef;
 
-  constructor() { 
+  constructor(private router: Router) { 
 
     this.images = [
    
@@ -66,4 +68,15 @@ export class ShowingProductComponent implements OnInit {
     this.activeItem = item;
   }
   
+  animateAndNavigate() {
+    const element = this.LearnMore.nativeElement;
+    
+    element.classList.add('dissolve');
+
+    setTimeout(() => {
+      // this.router.navigate(['best-picks']); 
+    }, 100);
+  }
+
+
 }

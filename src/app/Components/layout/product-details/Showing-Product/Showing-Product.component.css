@@ -1,27 +1,19 @@
-
-
-
 /*===*/
 /*breadcrumb*/
 .breadcrumb i {
   color: #00000066;
   font-size: 15px;
-
 }
-.breadcrumb li a{
+.breadcrumb li a {
   text-decoration: none !important;
-  color:  #00000066 !important;
+  color: #00000066 !important;
 }
-.breadcrumb li:last-of-type{
+.breadcrumb li:last-of-type {
   color: #808080 !important;
 }
 
-
-
-
 /* ========= */
 /* FOr carousal */
-
 
 .active-thumbnail {
   border: 1px solid rgb(0, 0, 0);
@@ -31,9 +23,7 @@
 .p-galleria-item-prev,
 .p-galleria-item-next {
   display: none;
-
 }
-
 
 /* .p-galleria-item-container{
   width: 90%;
@@ -71,12 +61,9 @@
   height: 50px !important;
 }
 
-.p-galleria .p-galleria-thumbnail-container{
-  background: rgb(255, 255, 255)e !important;
-
+.p-galleria .p-galleria-thumbnail-container {
+  background: rgb(255, 255, 255) e !important;
 }
-
-
 
 /* === */
 /* button  */
@@ -94,6 +81,147 @@
   opacity: 0.8;
 }
 
+/* === */
+/* Side section of galleria */
+.txtOfProdName {
+  font-size: 22px;
+  font-weight: 600;
+  font-family: "Montserrat", sans-serif;
+  line-height: 40px;
+}
+
+.txtOfProdDesc {
+  max-width: 332px;
+  color: rgba(0, 0, 0, 0.6);
+  font-weight: 400;
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  line-height: 25px;
+  overflow-wrap: break-word;
+  word-break: break-word;
+
+  margin-bottom: 20px;
+}
+
+/* Filters of product */
+
+.prodFilters {
+  border-top: 1px rgba(0, 0, 0, 0.15) solid;
+}
+
+.product-header p {
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 17.07px;
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.product-header a {
+  text-align: Center;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16px;
+  font-family: "Montserrat", sans-serif;
+  background: linear-gradient(
+    90deg,
+    rgba(9, 118, 76, 0.64) 3.05%,
+    rgba(89, 105, 99, 0.8) 103.66%
+  );
+
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  cursor: pointer;
+}
+
+/* Animation when i clicked on learn more */
+
+@keyframes dissolve {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.dissolve {
+  animation-name: dissolve;
+  animation-timing-function: ease-in-out;
+  animation-duration: 100ms;
+}
+
+/* items of filteration */
+.cardOfFilter {
+  border-radius: 6px;
+  padding: 18px;
+  background-color: rgba(240, 240, 240, 1);
+}
+
+.txtOfFilterItem {
+  color: rgba(125, 125, 125, 0.8);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 16px;
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+}
+
+.txtOfPriceItem {
+  color: rgba(0, 0, 0, 0.6);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+}
+
+.txtOfFilterItem2 {
+  color: rgba(0, 0, 0, 0.8);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 16px;
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+}
+
+.txtOfFilterItem3 {
+  color: rgba(0, 0, 0, 0.8);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 16px;
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+}
+
+.cardOfFilter span {
+  border-radius: 50%;
+  width: 14px;
+  height: 14px;
+}
+
+.dotOfGrey {
+  background-color: rgba(82, 81, 79, 1);
+}
+.dotOfSilver {
+  background-color: rgba(197, 197, 197, 1);
+}
+
+
+/* === */
+/* Add To Cart */
+.btnAddToCart{
+  width: 100%;
+  background: radial-gradient(96.03% 11208.71% at 3.97% 14.29%, rgba(11, 120, 78, 0.8) 0%, rgba(12, 87, 58, 0.8) 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
+  color: white;
+  font-weight: 500;
+  font-size: 18px;
+  font-family: "Montserrat", sans-serif;
+  align-items: center;
+  border-bottom:rgba(0, 0, 0, 0.15) 1px solid ;
+}
+
+
 
 
 /* ======== */
@@ -101,20 +229,16 @@
 
 @media screen and (max-width: 790px) {
   .p-galleria-item-prev,
-.p-galleria-item-next{
-
-  display: none;
-}
-.p-galleria-item-container{
-  width: 100%;
-}
+  .p-galleria-item-next {
+    display: none;
+  }
+  .p-galleria-item-container {
+    width: 100%;
+  }
 }
 
 @media screen and (max-width: 620px) {
- 
-  .p-galleria-thumbnail-container{
+  .p-galleria-thumbnail-container {
     display: none;
   }
-
-
 }

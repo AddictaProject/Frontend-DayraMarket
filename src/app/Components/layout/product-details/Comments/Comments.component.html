@@ -1,0 +1,228 @@
+<div class="container mb-5">
+
+
+  <!-- Product Name -->
+  <div class="reviewSec">
+
+    <p>MacBook Pro 13" (2020) - customer reviews</p>
+
+  </div>
+
+
+  <!-- Stars of rating -->
+  <div class="mb-3">
+
+    <div class="d-flex starsReview ">
+      <!-- <app-star [(value)]="value"  style="font-size: xx-small; " ></app-star> -->
+      <p-rating [(ngModel)]="value" [cancel]="false" />
+
+      <p class="ms-2"> {{ value }}/5</p>
+
+      <svg class="ms-3" width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M7.8924 9.71928C7.84853 9.71953 7.80504 9.71112 7.76443 9.69453C7.72382 9.67795 7.68688 9.6535 7.65573 9.62261L5.2024 7.16594C5.14032 7.10349 5.10547 7.01901 5.10547 6.93094C5.10547 6.84288 5.14032 6.7584 5.2024 6.69594C5.23339 6.6647 5.27025 6.6399 5.31087 6.62298C5.35149 6.60606 5.39506 6.59734 5.43907 6.59734C5.48307 6.59734 5.52664 6.60606 5.56726 6.62298C5.60788 6.6399 5.64475 6.6647 5.67573 6.69594L7.8924 8.91594L11.4424 5.37594C11.4734 5.3447 11.5103 5.3199 11.5509 5.30298C11.5915 5.28606 11.6351 5.27734 11.6791 5.27734C11.7231 5.27734 11.7666 5.28606 11.8073 5.30298C11.8479 5.3199 11.8847 5.3447 11.9157 5.37594C11.9778 5.4384 12.0127 5.52288 12.0127 5.61094C12.0127 5.69901 11.9778 5.78349 11.9157 5.84594L8.13907 9.62261C8.10674 9.65473 8.06818 9.67988 8.02575 9.6965C7.98332 9.71313 7.93794 9.72088 7.8924 9.71928Z"
+          fill="#064121" />
+        <path
+          d="M8.55859 15.1673C8.51851 15.1677 8.47879 15.1597 8.44193 15.144C6.24526 14.334 2.55859 12.3507 2.55859 8.16732V2.16732C2.55859 2.07892 2.59371 1.99413 2.65622 1.93162C2.71874 1.86911 2.80352 1.83399 2.89193 1.83399H14.2253C14.2691 1.83374 14.3126 1.84214 14.3532 1.85873C14.3938 1.87532 14.4308 1.89976 14.4619 1.93066C14.4928 1.9618 14.5173 1.99874 14.5339 2.03935C14.5504 2.07997 14.5588 2.12345 14.5586 2.16732V8.16732C14.5586 11.244 12.4119 13.7873 8.67193 15.1473C8.63559 15.1605 8.59725 15.1673 8.55859 15.1673ZM3.22526 2.50066V8.16732C3.22526 11.8773 6.51526 13.7007 8.55859 14.4773C13.1953 12.7507 13.8919 9.78732 13.8919 8.16732V2.50066H3.22526Z"
+          fill="#064121" />
+      </svg>
+
+      <p class="ms-1 txtBesideStar">67 verified reviews in the last 6 months.</p>
+    </div>
+
+    <div class=" flex justify-content-center">
+    </div>
+
+
+  </div>
+
+  <!-- comments & filter -->
+
+  <div class="d-flex justify-content-between mt-5 mb-5">
+
+    <div class="col-3">
+
+      <!-- naming -->
+      <div class="d-flex justify-content-between HeaderOfNaming">
+
+        <p class="txtOfNaming">Filter by Stars</p>
+        <p class="txtOfReset">reset</p>
+
+      </div>
+
+      <!-- filteration process -->
+      <div class="rating-bar0 justify-content-center mt-4">
+        <table class="text-left mx-auto">
+          <tr>
+            <td class="rating-label">
+              <i class="fa-solid fa-star" style="color:rgba(239, 216, 13, 1);"> </i>
+              <span> 5 </span>
+            </td>
+            <td class="rating-bar">
+              <div class="bar-container">
+                <div class="bar-5"></div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="rating-label">
+              <i class="fa-solid fa-star" style="color:rgba(239, 216, 13, 1);"> </i>
+              <span> 4 </span>
+            </td>
+            <td class="rating-bar">
+              <div class="bar-container">
+                <div class="bar-4"></div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="rating-label">
+              <i class="fa-solid fa-star" style="color:rgba(239, 216, 13, 1);"> </i>
+              <span> 3 </span>
+            </td>
+            <td class="rating-bar">
+              <div class="bar-container">
+                <div class="bar-3"></div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="rating-label">
+              <i class="fa-solid fa-star" style="color:rgba(239, 216, 13, 1);"> </i>
+              <span> 2 </span>
+            </td>
+            <td class="rating-bar">
+              <div class="bar-container">
+                <div class="bar-2"></div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="rating-label">
+              <i class="fa-solid fa-star" style="color:rgba(239, 216, 13, 1);"> </i>
+              <span> 1 </span>
+            </td>
+            <td class="rating-bar">
+              <div class="bar-container">
+                <div class="bar-1"></div>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+
+    </div>
+
+    <!-- Comments -->
+    <div class="col-9 ms-5">
+
+      <!--1 comment -->
+      <div class=" mb-5">
+
+
+        <div class="d-flex ">
+
+          <!-- image -->
+          <div>
+            <img src="../../../../../assets/images/G.png" width="40px" height="40px" alt="">
+          </div>
+
+          <!-- Header Sec -->
+          <div class="w-100 ms-3">
+
+            <div class="d-flex justify-content-between">
+
+              <p>George</p>
+
+              <div class="d-flex">
+                <app-star [(value)]="value2" style="font-size: xx-small;"></app-star>
+                <p class="ms-2"> {{ value2 }}/5</p>
+              </div>
+
+            </div>
+            <p>Reviewed in the Cairo on May 14, 2023</p>
+          </div>
+
+
+        </div>
+
+
+        <div>
+          <p>I’m very happy with my purchase. The MacBook arrived in 2 days. I bought in excellent condition and that’s
+            how it arrived. No cosmetic issues at all. I will be back when the time comes for another refurbished item.
+            5/5 rating.</p>
+        </div>
+
+        <div>
+          <h5>MacBook Pro (2020) 13.3-inch - Apple M1 8-core and 8-core GPU - 8GB RAM - SSD 256GB</h5>
+        </div>
+
+        <div>
+          <p>Purchased on May 1, 2023</p>
+        </div>
+
+      </div>
+
+
+       <!--2 comment -->
+       <div class=" mb-5">
+
+
+        <div class="d-flex ">
+
+          <!-- image -->
+          <div>
+            <img src="../../../../../assets/images/G.png" width="40px" height="40px" alt="">
+          </div>
+
+          <!-- Header Sec -->
+          <div class="w-100 ms-3">
+
+            <div class="d-flex justify-content-between">
+
+              <p>George</p>
+
+              <div class="d-flex">
+                <app-star [(value)]="value2" style="font-size: xx-small;"></app-star>
+                <p class="ms-2"> {{ value2 }}/5</p>
+              </div>
+
+            </div>
+            <p>Reviewed in the Cairo on May 14, 2023</p>
+          </div>
+
+
+        </div>
+
+
+        <div>
+          <p>I’m very happy with my purchase. The MacBook arrived in 2 days. I bought in excellent condition and that’s
+            how it arrived. No cosmetic issues at all. I will be back when the time comes for another refurbished item.
+            5/5 rating.</p>
+        </div>
+
+        <div>
+          <h5>MacBook Pro (2020) 13.3-inch - Apple M1 8-core and 8-core GPU - 8GB RAM - SSD 256GB</h5>
+        </div>
+
+        <div>
+          <p>Purchased on May 1, 2023</p>
+        </div>
+
+      </div>
+
+
+      <!-- button See all -->
+      <div>
+        <a class="btn btn-outline-success">
+          See all 67 reviews 
+        </a>
+      </div>
+
+    </div>
+
+  </div>
+
+
+</div>

@@ -1,0 +1,14 @@
+
+
+.rating {
+    display: flex;
+  }
+  
+  .rating .fa {
+    font-size: 2em;
+    cursor: pointer;
+    color: rgb(156,156,156);
+  }
+  
+
+  

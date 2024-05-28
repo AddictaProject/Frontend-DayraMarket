@@ -56,165 +56,193 @@
 
         <drag-scroll [scrollbar-hidden]="true" style="height: 744px;">
 
-
-          <div class="d-flex">
-            <h2 class="name text-success">
-              USD
-
-            </h2>
-            <small style="text-decoration: line-through" class="text-secondary mt-2 ms-1">
-              EGP
-            </small>
-          </div>
-
-          <div>
-            <small class="text-secondary" style="font-size: small">
-
-              <span>
-                productNameAR
-              </span>
-
-
-            </small>
-          </div>
-
-          <div class="my-3">
-            <p style="font-size: small">
-
-              <span>
-                ProductDetails
-              </span>
-
-
-
+          <!-- Product Name -->
+          <div class="d-flex justify-content-between txtOfProdName">
+            <p class=" ">
+              MacBook Pro (2020) 13.3-inch
             </p>
 
+            <p class="">
+              12,500 L.E
+            </p>
           </div>
 
-          <br>
-          <!-- Name Of Shop !!!!!Not  Dynamic  -->
-          <div class="mt-3 ">
-            <a>
-              <h5 class="decoration-none ShopName">
-
-                productPublisher
-              </h5>
-            </a>
+          <!-- Product Description -->
+          <div class="txtOfProdDesc ">
+            <span>
+              Apple M1 8-core , 8-core GPU - 8 GB RAM - SSD - 256GB
+            </span>
           </div>
 
-          <div>
-            <small>
-              <i class="fa-solid fa-check " style="color: #416cda;"></i>
-              Returns & exchanges accepted </small>
-          </div>
+          <!-- Product filters -->
 
-          <div class=" mt-3">
+          <div class="prodFilters mb-2">
+
+            <!-- Best pics -->
             <div>
-              <small class="d-flex align-items-center">
-                quantity
-                <i class="fa-solid fa-star fa-2xs " style="color: #a61a2e;"></i>
 
-              </small>
+              <div class="product-header d-flex justify-content-between align-items-center mb-2 mt-4">
+                <p>Best Picks</p>
+                <a routerLink="/" (click)="animateAndNavigate()" #LearnMore>Learn more </a>
+              </div>
+
+              <div class="d-flex justify-content-between col">
+
+
+                <div class="d-flex justify-content-between cardOfFilter col me-4">
+                  <div class="txtOfFilterItem">Lowest Price</div>
+                  <div class="txtOfPriceItem">8,500 L.E</div>
+                </div>
+
+                <div class="d-flex justify-content-between cardOfFilter col">
+                  <div class="txtOfFilterItem">Most Popular</div>
+                  <div class="txtOfPriceItem">12,500 L.E</div>
+                </div>
+
+
+
+              </div>
+
+            </div>
+
+            <!-- condition -->
+            <div>
+
+              <div class="product-header d-flex justify-content-between align-items-center mb-2 mt-4">
+                <p>Condition</p>
+                <a routerLink="/" (click)="animateAndNavigate()" #LearnMore>Learn more </a>
+              </div>
+
+              <div class="d-flex justify-content-between col">
+
+
+                <div class="d-flex justify-content-between cardOfFilter col me-4">
+                  <div class="txtOfFilterItem2">Fair</div>
+                  <div class="txtOfPriceItem">8,500 L.E</div>
+                </div>
+
+                <div class="d-flex justify-content-between cardOfFilter col me-4">
+                  <div class="txtOfFilterItem2">Good</div>
+                  <div class="txtOfPriceItem">12,500 L.E</div>
+                </div>
+
+                <div class="d-flex justify-content-between cardOfFilter col">
+                  <div class="txtOfFilterItem2">Excellent</div>
+                  <div class="txtOfPriceItem">12,500 L.E</div>
+                </div>
+
+              </div>
+
+            </div>
+
+            <!-- Storage -->
+            <div>
+
+              <div class="product-header d-flex justify-content-between align-items-center mb-2 mt-4">
+                <p>Storage</p>
+              </div>
+
+              <div class="d-flex justify-content-between col">
+
+
+                <div class=" cardOfFilter col me-4">
+                  <div class="txtOfFilterItem3">128 GB</div>
+                </div>
+
+                <div class=" cardOfFilter col me-4">
+                  <div class="txtOfFilterItem3">256 GB</div>
+                </div>
+
+                <div class="cardOfFilter col">
+                  <div class="txtOfFilterItem3">512 GB</div>
+                </div>
+
+              </div>
+
+            </div>
+
+            <!-- Color -->
+            <div>
+
+              <div class="product-header d-flex justify-content-between align-items-center mb-2 mt-4">
+                <p>Color</p>
+              </div>
+
+              <div class="d-flex justify-content-between col">
+
+
+                <div class="d-flex cardOfFilter justify-content-center col me-4">
+
+                  <span class="dotOfGrey me-2"></span>
+                  <div class="txtOfFilterItem3">Space Grey</div>
+
+                </div>
+
+
+                <div class="d-flex justify-content-center cardOfFilter col me-4">
+
+                  <span class="dotOfSilver me-2"></span>
+                  <div class="txtOfFilterItem3"> Silver </div>
+
+                </div>
+
+                <div class="  col me-4">
+
+                </div>
+
+              </div>
+
+            </div>
+
+            <!-- Comes with -->
+            <div>
+
+              <div class="product-header d-flex justify-content-between align-items-center mb-2 mt-4">
+                <p>Comes with</p>
+              </div>
+
+              <div class="d-flex justify-content-between col">
+
+
+                <div class="d-flex cardOfFilter justify-content-center col me-4">
+
+                  <i class="fa-regular fa-heart me-2" style="color: #000000;"></i>
+                  <div class="txtOfFilterItem3">Good karma</div>
+
+                </div>
+
+
+                <div class="d-flex justify-content-center cardOfFilter col me-4">
+
+                  <svg class=" me-2" width="21" height="18" viewBox="0 0 21 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M6.568 9.499H8.282L7.78 12.713C7.701 13.214 8.333 13.5 8.658 13.11L11.818 9.319C11.8789 9.24593 11.9176 9.15703 11.9297 9.06271C11.9419 8.96839 11.9268 8.87258 11.8864 8.7865C11.846 8.70042 11.7819 8.62766 11.7016 8.57673C11.6213 8.52581 11.5281 8.49885 11.433 8.499H9.72L10.222 5.285C10.3 4.784 9.668 4.498 9.344 4.888L6.184 8.678C6.12289 8.75098 6.08388 8.83989 6.07156 8.93428C6.05924 9.02867 6.07411 9.12461 6.11444 9.21084C6.15477 9.29706 6.21888 9.36998 6.29922 9.42103C6.37956 9.47207 6.47281 9.49912 6.568 9.499ZM0 2.5C0 1.83696 0.263392 1.20107 0.732233 0.732233C1.20107 0.263392 1.83696 0 2.5 0H15.5C16.163 0 16.7989 0.263392 17.2678 0.732233C17.7366 1.20107 18 1.83696 18 2.5V3H20C20.2652 3 20.5196 3.10536 20.7071 3.29289C20.8946 3.48043 21 3.73478 21 4V5C21 5.26522 20.8946 5.51957 20.7071 5.70711C20.5196 5.89464 20.2652 6 20 6H18V15.5C18 16.163 17.7366 16.7989 17.2678 17.2678C16.7989 17.7366 16.163 18 15.5 18H2.5C1.83696 18 1.20107 17.7366 0.732233 17.2678C0.263392 16.7989 0 16.163 0 15.5V2.5ZM18 5V4H20V5H18ZM17 2.5V15.5C17 15.8978 16.842 16.2794 16.5607 16.5607C16.2794 16.842 15.8978 17 15.5 17H2.5C2.10218 17 1.72064 16.842 1.43934 16.5607C1.15804 16.2794 1 15.8978 1 15.5V2.5C1 2.10218 1.15804 1.72064 1.43934 1.43934C1.72064 1.15804 2.10218 1 2.5 1H15.5C15.8978 1 16.2794 1.15804 16.5607 1.43934C16.842 1.72064 17 2.10218 17 2.5Z" fill="black"/>
+                    </svg>
+                    
+                  <div class="txtOfFilterItem3"> span.body-2-light </div>
+
+                </div>
+
+                <div class="  col me-4">
+
+                </div>
+
+              </div>
+
             </div>
 
 
           </div>
 
-          <div class="d-flex mt-3 ">
-            <a class="btn btnCheckOut " role="button">
+
+          <!-- Adding To Cart -->
+
+          <div class="d-flex justify-content-center mt-5 mb-5">
+            <a class="btn btnAddToCart py-3" role="button">
               Add to Cart </a>
           </div>
 
 
-          <div class="m-t-sm mt-3">
-            <div class="form-group form-check">
-              <label for="exampleCheck1" class="">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1" />
 
-                Add gift package </label>
-            </div>
-          </div>
-
-
-          <div class="d-flex mt-3">
-            <i class="fa-solid fa-calendar-week me-2" style="color: #000000"></i>
-            order
-          </div>
-
-
-
-          <hr class="mt-5" />
-
-          <div class="container mt-5 mb-5">
-            <div class=" ">
-              <div class="CardStleSucces p-3">
-                offeset </div>
-            </div>
-          </div>
-
-          <div class="container mt-5 mb-5">
-            <div class="d-flex row">
-              <div class="col-2 mt-3 mt-md-1 mt-sm-0">
-                <i class="fa-solid fa-handshake" style="color: #164198; font-size: 35px"></i>
-              </div>
-              <div class="col-10">
-                <p style="font-size: small;">
-                  puche
-                </p>
-              </div>
-
-
-              <div class="custom-dropdown mt-3 dropdown">
-                <button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
-                  aria-expanded="false">
-                  item </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <li><a class="dropdown-item">1</a></li>
-                </ul>
-              </div>
-
-
-              <div class="custom-dropdown mt-3 dropdown">
-                <button class="dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown"
-                  aria-expanded="false">
-                  shipping </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <li><a class="dropdown-item">2</a></li>
-                </ul>
-              </div>
-
-
-
-              <div class="custom-dropdown mt-3 dropdown">
-                <button class="dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown"
-                  aria-expanded="false">
-                  shipping </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <li><a class="dropdown-item">2</a></li>
-                </ul>
-              </div>
-
-              <div class="custom-dropdown mt-3 dropdown">
-                <button class="dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown"
-                  aria-expanded="false">
-                  shipping </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <li><a class="dropdown-item">2</a></li>
-                </ul>
-              </div>
-
-              <div class="custom-dropdown mt-3 dropdown">
-                <button class="dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown"
-                  aria-expanded="false">
-                  shipping </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <li><a class="dropdown-item">2</a></li>
-                </ul>
-              </div>
-
-            </div>
-          </div>
-          
         </drag-scroll>
 
 

@@ -1,0 +1,123 @@
+
+
+/* === */
+
+/* Part 1 review sec */
+
+.reviewSec{
+    color: rgba(51, 51, 51, 1);
+    font-weight: 500;
+    font-family: "Montserrat", sans-serif;
+    line-height:24px;
+    font-size: 19.22px;
+}
+
+
+/* prime ng rating */
+
+
+
+
+.starsReview{
+    font-weight: 500;
+    font-family: "Montserrat", sans-serif;
+    line-height:24px;
+    /* font-size: 24px; */
+}
+
+.txtBesideStar{
+    color:rgba(6, 65, 33, 1);
+    font-weight: 400;
+    font-family: "Montserrat", sans-serif;
+    line-height:20px;
+    font-size: 15.13px;
+}
+
+
+/* === */
+/* Header Of Filteration */
+
+.HeaderOfNaming{
+    border-bottom:rgba(0, 0, 0, 0.3) 1px solid;
+    
+}
+
+.txtOfNaming{
+    color:rgba(0, 0, 0, 1);
+    font-weight: 500;
+    font-family: "Montserrat", sans-serif;
+    line-height:20px;
+    font-size: 18px;
+}
+
+.txtOfReset{
+    color:rgba(125, 125, 125, 1);
+    font-weight: 400;
+    font-family: "Montserrat", sans-serif;
+    line-height:20px;
+    font-size: 16px;
+}
+
+/* === */
+/* filtering by stars */
+
+
+.rating-label {
+	font-weight: bold;
+}
+
+/* Rating bar width */
+.rating-bar {
+	width: 300px;
+	padding: 8px;
+	border-radius: 5px;
+}
+
+/* The bar container */
+.bar-container {
+  width: 100%;
+  background-color: #f1f1f1;
+  text-align: center;
+  color: white;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+/* Individual bars */
+.bar-5 {
+	width: 70%;
+	height: 10px;
+	background-color: #FBC02D; 
+	border-radius: 20px;
+
+}
+.bar-4 {
+	width: 30%;
+	height: 10px;
+	background-color: #FBC02D; 
+	border-radius: 20px;
+
+}
+.bar-3 {
+	width: 20%;
+	height: 10px;
+	background-color: #FBC02D; 
+	border-radius: 20px;
+
+}
+.bar-2 {
+	width: 10%;
+	height: 10px;
+	background-color: #FBC02D; 
+	border-radius: 20px; 
+
+}
+.bar-1 {
+	width: 0%;
+	height: 10px;
+	background-color: #FBC02D; 
+	border-radius: 20px;
+
+}
+
+
