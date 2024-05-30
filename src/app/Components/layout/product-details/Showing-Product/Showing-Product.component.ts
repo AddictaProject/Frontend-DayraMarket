@@ -90,4 +90,91 @@ export class ShowingProductComponent implements OnInit {
   }
 
 
+  // Styling the beside gallery section
+
+  // Best Picks
+  // For LowestPrice
+  isActiveLowestPrice: boolean = false;
+
+  // For Most Popular
+  isActiveMostPopular: boolean = false;
+
+  toggleActive(card: string): void {
+    if (card === 'LowestPrice') {
+      this.isActiveLowestPrice = true;
+      this.isActiveMostPopular = false; 
+    } else if (card === 'MostPopular') {
+      this.isActiveMostPopular = true;
+      this.isActiveLowestPrice = false; 
+    }
+  }
+
+  //Condition
+  // Fair
+  isActiveFair: boolean = false;
+  // Good
+  isActiveGood: boolean = false;
+  // Excellent
+  isActiveExcellent: boolean = false;
+
+  toggleActiveCondition(card: string): void {
+
+    if (card === 'Fair') {
+      this.isActiveFair = true;
+      this.isActiveGood = false; 
+      this.isActiveExcellent = false; 
+    } else if (card === 'Good') {
+      this.isActiveGood = true;
+      this.isActiveFair = false; 
+      this.isActiveExcellent = false; 
+
+    }else if(card === 'Excellent'){
+      this.isActiveGood = false;
+      this.isActiveFair = false; 
+      this.isActiveExcellent = true; 
+    }
+  }
+
+  //Storage
+  // 128
+  is128: boolean = false;
+  // 256
+  is256: boolean = false;
+  // 512
+  is512: boolean = false;
+
+  toggleActiveStorage(card: string): void {
+
+    if (card === '128') {
+      this.is128 = true;
+      this.is256 = false; 
+      this.is512 = false; 
+    } else if (card === '256') {
+      this.is128 = false;
+      this.is256 = true; 
+      this.is512 = false; 
+    }else if(card === '512'){
+      this.is128 = false;
+      this.is256 = false; 
+      this.is512 = true;  
+    }
+  }
+
+  // color
+  // For Grey
+  isActiveGrey: boolean = false;
+
+  // For Silver
+  isActiveSilver: boolean = false;
+
+  toggleActiveColor(card: string): void {
+    if (card === 'Grey') {
+      this.isActiveGrey = true;
+      this.isActiveSilver = false; 
+    } else if (card === 'Silver') {
+      this.isActiveSilver = true;
+      this.isActiveGrey = false; 
+    }
+  }
+
 }

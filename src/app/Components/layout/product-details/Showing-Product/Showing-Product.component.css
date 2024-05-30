@@ -147,7 +147,117 @@
   border-radius: 6px;
   padding: 18px;
   background-color: rgba(240, 240, 240, 1);
+  position: relative;
+  width: 100%;
 }
+
+.cardOfFilter:hover{
+  cursor: pointer;
+}
+
+/* ===*/
+/* Best Picks */
+
+/* Lowest Price active*/
+.cardOfFilter.active {
+  background-color: rgba(22, 157, 105, 1);
+  cursor:default;
+}
+.cardOfFilter.active .txtOfFilterItem ,.cardOfFilter.active .txtOfPriceItem{
+  color: white;
+ }
+
+ /* Most popular active*/
+.cardOfFilter.activeMostPopular {
+  background-color: rgba(103, 41, 125, 1);
+  cursor:default;
+}
+
+.cardOfFilter.activeMostPopular .txtOfFilterItem ,.cardOfFilter.activeMostPopular .txtOfPriceItem{
+  color: white;
+ }
+
+/* === */
+/* Condition */
+
+/* Fair Active */
+.cardOfFilter.ActiveFair {
+  background-color: rgba(92, 103, 98, 1);
+  cursor:default;
+}
+
+.cardOfFilter.ActiveFair .txtOfFilterItem2 ,.cardOfFilter.ActiveFair .txtOfPriceItem{
+  color: white;
+ }
+
+ /* Good  Active*/
+.cardOfFilter.ActiveGood {
+  background-color: rgba(139, 151, 145, 1);
+  cursor:default;
+}
+
+.cardOfFilter.ActiveGood .txtOfFilterItem2 ,.cardOfFilter.ActiveGood .txtOfPriceItem{
+  color: white;
+ }
+
+ /* Excellen  Active*/
+ .cardOfFilter.ActiveExcellen {
+  background-color: rgba(42, 52, 48, 1);
+  cursor:default;
+}
+
+.cardOfFilter.ActiveExcellen .txtOfFilterItem2 ,.cardOfFilter.ActiveExcellen .txtOfPriceItem{
+  color: white;
+ }
+
+
+/* === */
+/* Storage */
+.cardOfFilter.Active128 {
+  background-color: rgba(120, 120, 120, 1);
+  cursor:default;
+}
+
+.cardOfFilter.Active128 .txtOfFilterItem3 {
+  color: white;
+ }
+
+
+ /* === */
+ /* color */
+ /* Grey */
+ .cardOfFilter.ActiveGrey {
+  background-color: rgba(82, 81, 79, 1);
+  cursor:default;
+  
+}
+
+.cardOfFilter.ActiveGrey .txtOfFilterItem3 {
+  color: white;
+ }
+
+ /* ActiveSilver */
+ .cardOfFilter.ActiveSilver {
+  background-color: rgba(197, 197, 197, 1);
+  cursor:default;
+}
+
+.cardOfFilter.ActiveSilver .txtOfFilterItem3 {
+  color: rgba(0, 0, 0, 1);
+  font-weight: 500;
+ }
+
+
+
+/* svg position */
+.checkmark {
+  position: absolute; 
+  top: -20px; 
+  right: -13px;
+  z-index: 1;
+}
+
+
 
 .txtOfFilterItem {
   color: rgba(125, 125, 125, 0.8);
