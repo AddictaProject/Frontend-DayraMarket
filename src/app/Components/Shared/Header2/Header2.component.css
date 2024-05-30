@@ -57,7 +57,6 @@
 
 .offcanvas {
   overflow-y: auto;
-  /* max-height: calc(100vh - 0px); */
   width: 265px;
   min-width: 18%;
   border: 1px, 0px, 0px, 0px;

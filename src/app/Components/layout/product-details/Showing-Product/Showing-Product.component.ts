@@ -77,5 +77,17 @@ export class ShowingProductComponent implements OnInit {
     }, 100);
   }
 
+  // offcanvas 
+
+  isOffCanvasVisible = false;
+
+  showOffCanvas() {
+    this.isOffCanvasVisible = true;
+  }
+
+  hideOffCanvas() {
+    this.isOffCanvasVisible = false;
+  }
+
 
 }
