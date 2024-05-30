@@ -13,12 +13,9 @@
   <div class="mb-3">
 
     <div class="d-flex starsReview ">
-      <app-star [(value)]="value" ></app-star>
+      <app-star [(value)]="valueOfFirstStars" [isFirstStyle]="true" ></app-star>
 
-
-      <!-- <p-rating [(ngModel)]="value" [cancel]="false" /> -->
-
-      <p class="ms-2"> {{ value }}/5</p>
+      <p class="ms-2"> {{ valueOfFirstStars }}/5</p>
 
       <svg class="ms-3" width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
@@ -166,7 +163,6 @@
     </div>
 
 
-
     <!-- Comments -->
     <div class="col-9 ms-5">
 
@@ -190,9 +186,8 @@
 
 
               <div class="d-flex text-dark" style="font-size: small; ">
-                <!-- <app-star [(value)]="value2" fullStarClass="custom-full-star-2" halfStarClass="custom-half-star-2"
-                  emptyStarClass="custom-empty-star-2"></app-star> -->
-                <p class="ms-2"> {{ value2 }}/5</p>
+                <app-star [(value)]="valueOfSecondStars" [isFirstStyle]="false" ></app-star>
+                <p class="ms-2"> {{ valueOfSecondStars }}/5</p>
               </div>
 
             </div>

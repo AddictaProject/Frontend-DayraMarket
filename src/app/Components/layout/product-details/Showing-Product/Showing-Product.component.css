@@ -15,55 +15,46 @@
 /* ========= */
 /* FOr carousal */
 
+@keyframes smartAnimate {
+  0% {
+    opacity: 0;
+  }
+  20% {
+    opacity: .3;
+  }
+  75% {
+    opacity: .7;
+    /* transform: scale(.8); */
+  }
+  100% {
+    opacity: 1;
+    /* transform: scale(1); */
+  }
+}
+
+.non-active-thumbnail{
+  box-shadow: 0px 3px 3px 3px rgba(0, 0, 0, 0.06);
+  border-radius: 6px;
+}
+
 .active-thumbnail {
-  border: 1px solid rgb(0, 0, 0);
-  border-radius: 8px;
+  border-radius: 6px;
+  box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.05);
+  /* animation: smartAnimate 1s ease-in; */
+
 }
 
-.p-galleria-item-prev,
-.p-galleria-item-next {
-  display: none;
+
+.imgOfGalleria {
+  width: 100%;
+  height: 500px;
+  margin-left: 50px !important;
+  box-shadow: -2px 4px 11px 5px rgba(0, 0, 0, 0.05);
+  margin-top: 20px;
+  animation: smartAnimate 500ms ease-in;
+
 }
 
-/* .p-galleria-item-container{
-  width: 90%;
-  height: 60%;
-  display: block;
-  border-radius: 8px;
-  margin-left: 10px;
-} */
-
-/* .p-galleria-thumbnail-container .thumbnail-image {
-  width: 20px !important;
-  height: 20px !important;
-  display: block;
-  border-radius: 8px;
-  margin-top: 0;
-} */
-
-/* src/styles.css */
-
-/* Set background color of the thumbnail container */
-.p-galleria-thumbnail-container {
-  background-color: white !important;
-}
-
-/* Set background color of each thumbnail item */
-.p-galleria-thumbnail-item-content {
-  background-color: white !important;
-}
-
-/* Optional: Add border to thumbnails to enhance visibility on a white background */
-.p-galleria-thumbnail-item-content img {
-  border: 1px solid #ddd; /* Adjust the border color as needed */
-  background-color: white !important;
-  width: 50px !important;
-  height: 50px !important;
-}
-
-.p-galleria .p-galleria-thumbnail-container {
-  background: rgb(255, 255, 255) e !important;
-}
 
 /* === */
 /* button  */
@@ -99,9 +90,9 @@
   line-height: 25px;
   overflow-wrap: break-word;
   word-break: break-word;
-
   margin-bottom: 20px;
 }
+
 
 /* Filters of product */
 
@@ -207,12 +198,16 @@
   background-color: rgba(197, 197, 197, 1);
 }
 
-
 /* === */
 /* Add To Cart */
-.btnAddToCart{
+.btnAddToCart {
   width: 100%;
-  background: radial-gradient(96.03% 11208.71% at 3.97% 14.29%, rgba(11, 120, 78, 0.8) 0%, rgba(12, 87, 58, 0.8) 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
+  background: radial-gradient(
+      96.03% 11208.71% at 3.97% 14.29%,
+      rgba(11, 120, 78, 0.8) 0%,
+      rgba(12, 87, 58, 0.8) 100%
+    )
+    /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
   color: white;
   font-weight: 500;
   font-size: 18px;
@@ -221,18 +216,15 @@
   align-items: center;
 }
 
-
-
 /* === */
 /* total reviews */
-.totalReviews{
-  border-top:rgba(0, 0, 0, 0.15) 1px solid ;
-  border-bottom:rgba(0, 0, 0, 0.15) 1px solid ;
-
+.totalReviews {
+  border-top: rgba(0, 0, 0, 0.15) 1px solid;
+  border-bottom: rgba(0, 0, 0, 0.15) 1px solid;
 }
 
-
-.totalReviews span , p{
+.totalReviews span,
+p {
   color: rgba(10, 103, 52, 1);
   font-weight: 500;
   font-size: 16px;
@@ -242,8 +234,7 @@
   letter-spacing: 2px;
 }
 
-
-.moreLink{
+.moreLink {
   text-decoration: none;
   color: rgba(70, 201, 129, 1);
   font-weight: 500;
@@ -251,6 +242,28 @@
   font-family: "Montserrat", sans-serif;
   align-items: center;
 }
+
+
+/* === */
+/* Info of ordering  */
+
+.txtOfVerified{
+  color: rgba(0, 0, 0, 0.64);
+  font-weight: 500;
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.txtInfoOfOrder{
+  padding-bottom: 20px;
+  border-bottom: 1px rgba(0, 0, 0, 0.15) solid;
+
+}
+
+
+
+
 
 /* ======== */
 /* Responsive */

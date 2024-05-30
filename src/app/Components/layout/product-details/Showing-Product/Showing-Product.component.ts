@@ -27,28 +27,26 @@ export class ShowingProductComponent implements OnInit {
 
     this.images = [
    
+      { source: '../../../../../assets/images/galleri/Frame 430.png',
+      thumbnail: '../../../../../assets/images/galleri/Frame 430.png', alt: 'Image 1', title: 'Title 1' },
+
       { source: '../../../../../assets/images/galleri/Frame 402.png',
       thumbnail: '../../../../../assets/images/galleri/Frame 402.png', alt: 'Image 1', title: 'Title 1' },
 
-
-       { source: '../../../../../assets/images/galleri/Frame 403.png',
-       thumbnail: '../../../../../assets/images/galleri/Frame 403.png', alt: 'Image 1', title: 'Title 1' },
-
-       { source: '../../../../../assets/images/galleri/Frame 405.png',
-       thumbnail: '../../../../../assets/images/galleri/Frame 405.png', alt: 'Image 1', title: 'Title 1' },
+   
+       { source: '../../../../../assets/images/galleri/Frame 429.png',
+       thumbnail: '../../../../../assets/images/galleri/Frame 429.png', alt: 'Image 1', title: 'Title 1' },
     
 
-       { source: '../../../../../assets/images/galleri/Frame 404.png',
-       thumbnail: '../../../../../assets/images/galleri/Frame 404.png', alt: 'Image 1', title: 'Title 1' },
+       { source: '../../../../../assets/images/galleri/Frame 428.png',
+       thumbnail: '../../../../../assets/images/galleri/Frame 428.png', alt: 'Image 1', title: 'Title 1' },
  
-       { source: '../../../../../assets/images/galleri/Frame 405.png',
-       thumbnail: '../../../../../assets/images/galleri/Frame 405.png', alt: 'Image 1', title: 'Title 1' },
-    
+  
       ];
 
     this.responsiveOptions = [
       {
-        breakpoint: '1024px',
+        breakpoint: '912px',
         numVisible: 5
       },
       {
@@ -60,6 +58,7 @@ export class ShowingProductComponent implements OnInit {
         numVisible: 1
       }
     ];
+    
   }
 
   ngOnInit() {
