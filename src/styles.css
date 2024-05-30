@@ -14,5 +14,21 @@ body {
 
 
 .p-galleria .p-galleria-thumbnail-container{
-  background-color:  transparent !important;
+  background-color:  transparent ;
+  width: 100%;
+  padding-top: 60px;
+}
+
+.p-galleria-item-prev,
+.p-galleria-item-next {
+  display:none !important;
+
+}
+
+#pn_id_1 .p-galleria-thumbnail-item {
+  flex: 1 0 auto !important;
+}
+
+.p-galleria-thumbnail-items-container{
+  height: 400px !important;
 }

@@ -7,6 +7,6 @@ import { ProductDetailsComponent } from './Components/layout/product-details/pro
 export const routes: Routes = [
   {path:"", component: HomeComponent},
   { path: 'Home', component: HomeComponent, title: 'Home' },
-  { path: 'Products', component: ProductsPageComponent, title: 'Home' },
-  { path: 'Product-Details', component: ProductDetailsComponent, title: 'Home' },
+  { path: 'Products', component: ProductsPageComponent, title: 'Products' },
+  { path: 'Product-Details', component: ProductDetailsComponent, title: 'Product Details' },
 ];
