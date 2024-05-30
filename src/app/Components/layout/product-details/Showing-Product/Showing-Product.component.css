@@ -224,7 +224,7 @@
 }
 
 .totalReviews span,
-p {
+.totalReviews p {
   color: rgba(10, 103, 52, 1);
   font-weight: 500;
   font-size: 16px;
@@ -262,8 +262,79 @@ p {
 }
 
 
+/* === */
+/* OffCanvases */
+
+.HeadOfOffcanvas{
+  /* padding-bottom: 20px; */
+  border-bottom: 1px rgba(0, 0, 0, 0.15) solid;
+
+}
+
+.HeadOfOffcanvas:hover{
+  
+  cursor: pointer;
+  background-color: rgb(233, 229, 229);
+
+}
+.txtOfHeadOfOffcanvas{
+  color: rgba(77, 77, 77, 1);
+  font-weight: 500;
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  line-height: 20px;
+
+}
+
+.offcanvas {
+  overflow-y: auto;
+  /* width: 265px;
+  min-width: 18%; */
+  border: 1px, 0px, 0px, 0px;
+  border-color: rgba(212, 212, 212, 1);
+  top: 120px;
+}
+
+.offcanvas .btn-close {
+    visibility: hidden;
+  }
 
 
+  /* === */
+  /* Refurbished section */
+
+  .RefurbishedSection{
+    background-color: #F9F9F9;
+    border-radius:12px ;
+    gap: 6px;
+  }
+  
+
+  .txtOfFirstRefurbished{
+    color: rgba(17, 17, 17, 1);
+    font-weight: 500;
+    font-family: "Montserrat", sans-serif;
+    font-size: 16px;
+    line-height: 20px;
+    
+  }
+
+  .txtOfLive{
+    color: rgba(85, 85, 85, 1);
+    font-weight: 300;
+    font-family: "Montserrat", sans-serif;
+    font-size: 13.34px;
+    line-height: 16px;
+  }
+
+  .txtOfAccept{
+    color: rgba(17, 17, 17, 1);
+    font-weight: 300;
+    font-family: "Montserrat", sans-serif;
+    font-size: 13.34px;
+    line-height: 16px;
+
+  }
 
 /* ======== */
 /* Responsive */
