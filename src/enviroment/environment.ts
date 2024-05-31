@@ -1,6 +1,7 @@
 export const Environment = {
 
-    //Example For speeding the process in The Future :
-    // CategoryApiUrl: 'http://localhost:28835/api/Category',
+   apiKey:'0epgv9k6g5qsd36w0as6rub1qta9kvlm',
+   serverURL:"https://dayra-market.addictaco.com"
+
 
 };

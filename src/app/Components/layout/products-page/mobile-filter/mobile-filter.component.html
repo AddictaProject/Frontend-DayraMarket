@@ -1,0 +1,88 @@
+<div class="mobile-filter" [ngClass]="{'d-none': !isShowFilter}">
+  <form #formRef>
+    <div class="mobile-filter-header mb-4 py-2 d-flex justify-content-between align-items-center">
+      <div class="close" (click)="isShowFilter=false">
+        <i class="fa-solid fa-x fw-lighter fa-xl"></i>
+      </div>
+      <span class="main-title">Filters</span>
+      <span class="reset" (click)="filterService.reset(formRef)">reset</span>
+    </div>
+    <div class="filter-menu" (click)="filterService.openMobileFilterMenu($event)">
+      <div class="d-flex justify-content-between align-items-center py-3 ">
+        <h5>Categories</h5>
+        <i class="fa-solid fa-angle-right" (click)="filterService.closeMobileFilterMenu($event)"></i>
+      </div>
+
+      <div class="menu d-none" (click)="filterService.openMobileFilterMenu($event)">
+        <div>
+          <i class="fa-solid fa-arrow-left" (click)="filterService.closeMobileFilterMenu($event)"></i>
+          <h5 class="mb-4">Categories</h5>
+          <app-filter [isMobile]="true" [filters]="filterService.categoriesFiltered"
+            (filterChange)="filterService.getChecked($event)"></app-filter>
+        </div>
+      </div>
+    </div>
+    <div class="filter-menu" (click)="filterService.openMobileFilterMenu($event)">
+      <div class="d-flex justify-content-between align-items-center py-3 ">
+        <h5>Brands</h5>
+        <i class="fa-solid fa-angle-right"></i>
+      </div>
+      <div class="menu d-none">
+        <input type="text" placeholder="Search for brand" (keyup)="filterService.brandSearchHandler($event)">
+        <div>
+          <i class="fa-solid fa-arrow-left" (click)="filterService.closeMobileFilterMenu($event)"></i>
+          <h5 class="mb-4">Brands</h5>
+          <app-filter [isMobile]="true" [isMobile]="true" [filters]="filterService.brandsFiltered"
+            (filterChange)="filterService.getChecked($event)"></app-filter>
+          <app-filter [isMobile]="true" [isMobile]="true" [filters]="filterService.brandsFiltered"
+            (filterChange)="filterService.getChecked($event)"></app-filter>
+        </div>
+      </div>
+    </div>
+    <div class="filter-menu" (click)="filterService.openMobileFilterMenu($event)">
+      <div class="d-flex justify-content-between align-items-center py-3 ">
+        <h5>Model</h5>
+        <i class="fa-solid fa-angle-right"></i>
+      </div>
+      <div class="menu d-none">
+        <input type="text" placeholder="Search for brand">
+        <div>
+          <i class="fa-solid fa-arrow-left" (click)="filterService.closeMobileFilterMenu($event)"></i>
+          <h5 class="mb-4">Model</h5>
+          <app-filter [isMobile]="true" [filters]="filterService.brandsFiltered"
+            (filterChange)="filterService.getChecked($event)"></app-filter>
+        </div>
+      </div>
+    </div>
+    <div class="filter-menu" (click)="filterService.openMobileFilterMenu($event)">
+      <div class="d-flex justify-content-between align-items-center py-3 ">
+        <h5>Price</h5>
+        <i class="fa-solid fa-angle-right"></i>
+      </div>
+      <div class="menu d-none">
+        <div>
+          <i class="fa-solid fa-arrow-left" (click)="filterService.closeMobileFilterMenu($event)"></i>
+          <h5 class="mb-4">Price</h5>
+          <input class="w-100 mt-5" type="range">
+          <div class="d-flex justify-content-between">
+            <span>500 L.E</span>
+            <span>10K L.E</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="prd-btn">See 384 products</button>
+  </form>
+</div>
+<button class="filter-btn" [hidden]="isShowFilter" (click)="isShowFilter=true">Filter <svg aria-hidden="true"
+    fill="currentColor" height="24" viewBox="0 0 48 48" width="24" xmlns="http://www.w3.org/2000/svg" class="_2ewLZSPm">
+    <path d="M13 25H5a1 1 0 010-2h8a1 1 0 010 2Zm30 0h-8a1 1 0 010-2h8a1 1 0 010 2Z"></path>
+    <path
+      d="M16 23h19.96v2H16zm-3 5a1 1 0 01-1-1v-6a1 1 0 012 0v6a1 1 0 01-1 1Zm30 11h-8a1 1 0 010-2h8a1 1 0 010 2Zm-30 0H5a1 1 0 010-2h8a1 1 0 010 2Z">
+    </path>
+    <path
+      d="M12.04 37H32v2H12.04zM35 43a1 1 0 01-1-1v-7a1 1 0 012 0v7a1 1 0 01-1 1Zm8-32h-8a1 1 0 010-2h8a1 1 0 010 2Zm-30 0H5a1 1 0 010-2h8a1 1 0 010 2Z">
+    </path>
+    <path d="M12.04 9H32v2H12.04zM35 14a1 1 0 01-1-1V7a1 1 0 012 0v6a1 1 0 01-1 1Z"></path>
+  </svg></button>
+

@@ -7,15 +7,17 @@ import { ProductsPageComponent } from "./Components/layout/products-page/product
 import { ShowingProductComponent } from './Components/layout/product-details/Showing-Product/Showing-Product.component';
 import { MightLikeComponent } from './Components/layout/product-details/might-like/might-like.component';
 import { ProductDetailsComponent } from './Components/layout/product-details/product-details.component';
+import { MobileFilterComponent } from "./Components/layout/products-page/mobile-filter/mobile-filter.component";
+import { FilterComponent } from "./Components/layout/products-page/filter/filter.component";
+import { FilterSecComponent } from "./Components/layout/products-page/filter-sec/filter-sec.component";
 
 @Component({
     selector: 'app-root',
     standalone: true,
     templateUrl: './app.component.html',
     styleUrl: './app.component.css',
-    imports: [RouterOutlet, HeaderComponent, FooterComponent, Header2Component, ProductsPageComponent , 
-      ShowingProductComponent ,MightLikeComponent , ProductDetailsComponent
-    ]
+    imports: [RouterOutlet, HeaderComponent, FooterComponent, Header2Component, ProductsPageComponent,
+        ShowingProductComponent, MightLikeComponent, ProductDetailsComponent, MobileFilterComponent, FilterComponent, FilterSecComponent]
 })
 export class AppComponent {
   title = 'Addicta';

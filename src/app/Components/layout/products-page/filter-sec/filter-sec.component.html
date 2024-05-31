@@ -1,0 +1,57 @@
+<div class="filter">
+  <div class="filter-header py-3 d-flex justify-content-between align-items-center">
+    <h5 class="m-0">Filters</h5>
+    <h6 class="m-0">reset</h6>
+  </div>
+  <div class="filter-menu">
+    <div class="d-flex justify-content-between align-items-center py-3 ">
+      <h5>Categories</h5>
+      <i class="fa-solid fa-plus" (click)="filterService.openFilterMenu($event)"></i>
+    </div>
+
+    <div class="menu d-none">
+      <div>
+        <app-filter [filters]="filterService.categoriesFiltered" (filterChange)="filterService.getChecked($event)"></app-filter>
+      </div>
+    </div>
+  </div>
+  <div class="filter-menu">
+    <div class="d-flex justify-content-between align-items-center py-3 ">
+      <h5>Brands</h5>
+      <i class="fa-solid fa-plus" (click)="filterService.openFilterMenu($event)"></i>
+    </div>
+    <div class="menu d-none">
+      <input type="text" placeholder="Search for brand" (keyup)="filterService.brandSearchHandler($event)">
+      <div>
+        <app-filter [filters]="filterService.brandsFiltered" (filterChange)="filterService.getChecked($event)"></app-filter>
+      </div>
+    </div>
+  </div>
+  <div class="filter-menu">
+    <div class="d-flex justify-content-between align-items-center py-3 ">
+      <h5>Model</h5>
+      <i class="fa-solid fa-plus" (click)="filterService.openFilterMenu($event)"></i>
+    </div>
+    <div class="menu d-none">
+      <input type="text" placeholder="Search for brand" >
+      <div>
+        <app-filter [filters]="filterService.brandsFiltered" (filterChange)="filterService.getChecked($event)"></app-filter>
+      </div>
+    </div>
+  </div>
+  <div class="filter-menu">
+    <div class="d-flex justify-content-between align-items-center py-3 ">
+      <h5>Price</h5>
+      <i class="fa-solid fa-plus" (click)="filterService.openFilterMenu($event)"></i>
+    </div>
+    <div class="menu d-none">
+      <input class="w-100" type="range" >
+      <div class="d-flex justify-content-between">
+        <span>500 L.E</span>
+        <span>10K L.E</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+
