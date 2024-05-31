@@ -12,6 +12,9 @@ body {
   overflow-x: hidden;
 }
 
+body:has(.mobile-filter:not(.d-none)){
+  overflow: hidden;
+}
 
 .p-galleria .p-galleria-thumbnail-container{
   background-color:  transparent ;

@@ -1,0 +1,146 @@
+/*mobile-filter*/
+
+.mobile-filter{
+  z-index: 99999;
+  background-color: #fff;
+  padding: 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom:0;
+  right: 0;
+  overflow: hidden;
+}
+.mobile-filter .reset{
+  background-color: #09764CCC;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-bottom: 0px;
+}
+
+.mobile-filter .close {
+  width: 65px;
+  color: #555;
+}
+.mobile-filter .close  i{
+  cursor: pointer;
+}
+
+.mobile-filter .main-title{
+  margin-bottom: 0;
+  color: #555;
+}
+.mobile-filter .filter-menu{
+  padding: 20px;
+  cursor: pointer;
+  color: #000;
+  transition: .3s;
+}
+.mobile-filter .filter-menu:hover{
+  background-color:  rgb(18,18,18,.03)
+}
+.mobile-filter > .filter-menu:not(:last-of-type){
+  border-bottom: 1px solid rgb(18,18,18,.17);
+}
+.filter-menu i{
+  color:#9D9D9D;
+}
+.menu > div{
+  text-align: center;
+  padding: 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow: auto;
+  background-color: #fff;
+  cursor: default;
+
+}
+.menu i{
+  font-size: 24px;
+  color: #000;
+  cursor: pointer;
+  position: absolute;
+  left: 3%;
+  top: 3%;
+}
+.mobile-filter:has(.menu:not(.d-none)){
+  overflow: hidden;
+}
+
+input[type="checkbox"] {
+  accent-color: #45a37f ;
+}
+input:checked + label{
+  color: #45a37f ;
+}
+input[type="text"]{
+  background-color: #EAEAEA;
+  border-radius: 6px;
+  width: 100%;
+  outline: none;
+  border: none;
+  padding: 10px 16px;
+  margin-bottom: 14px;
+}
+input[type="search"]::-webkit-search-cancel-button {
+  color: #000;
+}
+
+input[type="range"]{
+  accent-color:#239b6c ;
+  height: 3px;
+  outline: none;
+  border: none;
+}
+input[type="range"]:focus{
+  accent-color:#239b6c ;
+}
+
+
+/* width */
+::-webkit-scrollbar {
+  width: 4px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+  background: #BABABA;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #777;
+}
+
+
+.prd-btn{
+  z-index: 5;
+  position: fixed;
+  border: none;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  padding: 15px;
+  border-radius: 6px;
+  background-color: #09764C;
+  color: #fff;
+}
+.prd-btn:hover{
+  background-color: #09764CCC;
+}
+
+.filter-btn{
+  position: fixed;
+  border: none;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  padding: 25px;
+  border-radius: 6px;
+  background-color: #FFF;
+  color: #000;
+
+}
