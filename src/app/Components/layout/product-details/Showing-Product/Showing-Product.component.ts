@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { DragScrollComponent, DragScrollItemDirective } from 'ngx-drag-scroll';
@@ -47,10 +47,10 @@ export class ShowingProductComponent implements OnInit {
     this.responsiveOptions = [
       {
         breakpoint: '912px',
-        numVisible: 5
+        numVisible: 4
       },
       {
-        breakpoint: '768px',
+        breakpoint: '500px',
         numVisible: 3
       },
       {
@@ -62,7 +62,11 @@ export class ShowingProductComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.checkScreenWidth(window.innerWidth);
+    this.updateDragScrollStatus();
+
   }
+ 
   setActiveItem(item: any): void {
     this.activeItem = item;
   }
@@ -175,6 +179,32 @@ export class ShowingProductComponent implements OnInit {
       this.isActiveSilver = true;
       this.isActiveGrey = false; 
     }
+  }
+
+  // responsive!!
+  thumbnailsPosition: 'bottom' | 'top' | 'left' | 'right' | undefined = 'left';
+
+  // for galleria
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.checkScreenWidth(event.target.innerWidth);
+    this.updateDragScrollStatus();
+
+  }
+  checkScreenWidth(width: number) {
+    if (width <= 1399) {
+      this.thumbnailsPosition = 'bottom';
+    } else {
+      this.thumbnailsPosition = 'left';
+    }
+  }
+
+  // for scroll 
+  isDragScrollDisabled: boolean = false;
+
+
+  updateDragScrollStatus() {
+    this.isDragScrollDisabled = window.innerWidth <= 991;
   }
 
 }

@@ -11,4 +11,15 @@
 }
 
 
+drag-scroll {
+  height: 300px;
+  display: flex;
+  white-space: nowrap;
+}
+
+app-card-product-details {
+  display: inline-block;
+  white-space: normal;
+}
+
 

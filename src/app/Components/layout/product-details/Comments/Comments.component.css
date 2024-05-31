@@ -1,76 +1,67 @@
-
-
 /* === */
 
 /* Part 1 review sec */
 
-.reviewSec{
-    color: rgba(51, 51, 51, 1);
-    font-weight: 500;
-    font-family: "Montserrat", sans-serif;
-    line-height:24px;
-    font-size: 19.22px;
+.reviewSec {
+  color: rgba(51, 51, 51, 1);
+  font-weight: 500;
+  font-family: "Montserrat", sans-serif;
+  line-height: 24px;
+  font-size: 19.22px;
 }
-
 
 /* prime ng rating */
 
-
-
-
-.starsReview{
-    font-weight: 500;
-    font-family: "Montserrat", sans-serif;
-    line-height:24px;
-    /* font-size: 24px; */
+.starsReview {
+  font-weight: 500;
+  font-family: "Montserrat", sans-serif;
+  line-height: 24px;
+  /* font-size: 24px; */
 }
 
-.txtBesideStar{
-    color:rgba(6, 65, 33, 1);
-    font-weight: 400;
-    font-family: "Montserrat", sans-serif;
-    line-height:20px;
-    font-size: 15.13px;
+.txtBesideStar {
+  color: rgba(6, 65, 33, 1);
+  font-weight: 400;
+  font-family: "Montserrat", sans-serif;
+  line-height: 20px;
+  font-size: 15.13px;
 }
-
 
 /* === */
 /* Header Of Filteration */
 
-.HeaderOfNaming{
-    border-bottom:rgba(0, 0, 0, 0.3) 1px solid;
-    
+.HeaderOfNaming {
+  border-bottom: rgba(0, 0, 0, 0.3) 1px solid;
 }
 
-.txtOfNaming{
-    color:rgba(0, 0, 0, 1);
-    font-weight: 500;
-    font-family: "Montserrat", sans-serif;
-    line-height:20px;
-    font-size: 18px;
+.txtOfNaming {
+  color: rgba(0, 0, 0, 1);
+  font-weight: 500;
+  font-family: "Montserrat", sans-serif;
+  line-height: 20px;
+  font-size: 18px;
 }
 
-.txtOfReset{
-    color:rgba(125, 125, 125, 1);
-    font-weight: 400;
-    font-family: "Montserrat", sans-serif;
-    line-height:20px;
-    font-size: 16px;
+.txtOfReset {
+  color: rgba(125, 125, 125, 1);
+  font-weight: 400;
+  font-family: "Montserrat", sans-serif;
+  line-height: 20px;
+  font-size: 16px;
 }
 
 /* === */
 /* filtering by stars */
 
-
 .rating-label {
-	font-weight: bold;
+  font-weight: bold;
 }
 
 /* Rating bar width */
 .rating-bar {
-	width: 300px;
-	padding: 8px;
-	border-radius: 5px;
+  width: 300px;
+  padding: 8px;
+  border-radius: 5px;
 }
 
 /* The bar container */
@@ -85,127 +76,137 @@
 
 /* Individual bars */
 .bar-5 {
-	width: 70%;
-	height: 10px;
-	background-color: #FBC02D; 
-	border-radius: 20px;
-
+  width: 70%;
+  height: 10px;
+  background-color: #fbc02d;
+  border-radius: 20px;
 }
 .bar-4 {
-	width: 30%;
-	height: 10px;
-	background-color: #FBC02D; 
-	border-radius: 20px;
-
+  width: 30%;
+  height: 10px;
+  background-color: #fbc02d;
+  border-radius: 20px;
 }
 .bar-3 {
-	width: 20%;
-	height: 10px;
-	background-color: #FBC02D; 
-	border-radius: 20px;
-
+  width: 20%;
+  height: 10px;
+  background-color: #fbc02d;
+  border-radius: 20px;
 }
 .bar-2 {
-	width: 10%;
-	height: 10px;
-	background-color: #FBC02D; 
-	border-radius: 20px; 
-
+  width: 10%;
+  height: 10px;
+  background-color: #fbc02d;
+  border-radius: 20px;
 }
 .bar-1 {
-	width: 0%;
-	height: 10px;
-	background-color: #FBC02D; 
-	border-radius: 20px;
-
+  width: 0%;
+  height: 10px;
+  background-color: #fbc02d;
+  border-radius: 20px;
 }
-
-
 
 /* === */
 /* Comments */
 
-.nameOfUser{
-    color:rgba(18, 18, 18, 1);
-    font-weight: 500;
-    font-family: "Montserrat", sans-serif;
-    line-height:20px;
-    font-size: 16px;
-    margin-bottom: 0;
-    padding-bottom: 0;
+.nameOfUser {
+  color: rgba(18, 18, 18, 1);
+  font-weight: 500;
+  font-family: "Montserrat", sans-serif;
+  line-height: 20px;
+  font-size: 16px;
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
 
-.dateOfRev{
-    color:rgba(85, 85, 85, 1);
-    font-weight:400;
-    font-family: "Montserrat", sans-serif;
-    line-height:20px;
-    font-size: 14px;
-    margin-top: 0;
-    padding-top: 0;
+.dateOfRev {
+  color: rgba(85, 85, 85, 1);
+  font-weight: 400;
+  font-family: "Montserrat", sans-serif;
+  line-height: 20px;
+  font-size: 14px;
+  margin-top: 0;
+  padding-top: 0;
 }
 
-.userComment{
-
-    color:rgba(85, 85, 85, 1);
-    font-weight: 400;
-    font-family: "Montserrat", sans-serif;
-    line-height:20px;
-    font-size: 15.13px;
+.userComment {
+  color: rgba(85, 85, 85, 1);
+  font-weight: 400;
+  font-family: "Montserrat", sans-serif;
+  line-height: 20px;
+  font-size: 15.13px;
 }
 
-.ProdNameInComm a{
-    color:rgba(18, 18, 18, 1);
-    font-weight: 500;
-    font-family: "Montserrat", sans-serif;
-    line-height:16px;
-    font-size: 13.45px;
-    text-decoration: none;
+.ProdNameInComm a {
+  color: rgba(18, 18, 18, 1);
+  font-weight: 500;
+  font-family: "Montserrat", sans-serif;
+  line-height: 16px;
+  font-size: 13.45px;
+  text-decoration: none;
 }
 
-
-.dateOfPublish{
-    color:rgba(85, 85, 85, 1);
-    font-weight: 300;
-    font-family: "Montserrat", sans-serif;
-    line-height:16px;
-    font-size: 13.23px;
+.dateOfPublish {
+  color: rgba(85, 85, 85, 1);
+  font-weight: 300;
+  font-family: "Montserrat", sans-serif;
+  line-height: 16px;
+  font-size: 13.23px;
 }
 
-.btnOfSeeAll{
-    color:rgba(9, 118, 76, 0.8);
-    border: rgba(9, 118, 76, 0.8) 1px solid;
-    font-weight: 500;
-    font-family: "Montserrat", sans-serif;
-    line-height:20px;
-    font-size: 14px; 
+.btnOfSeeAll {
+  color: rgba(9, 118, 76, 0.8);
+  border: rgba(9, 118, 76, 0.8) 1px solid;
+  font-weight: 500;
+  font-family: "Montserrat", sans-serif;
+  line-height: 20px;
+  font-size: 14px;
 }
 
-  /* === */
-  /* filter by star */
+/* === */
+/* filter by star */
 
-  .checkInputStyle{
-    border-color: rgba(95, 95, 95, 1);
-    width: 21px;
-    height: 21px;
-    text-align: center;
+.checkInputStyle {
+  border-color: rgba(95, 95, 95, 1);
+  width: 21px;
+  height: 21px;
+  text-align: center;
+}
+
+.form-check-input:checked {
+  background-color: black;
+  box-shadow: none;
+}
+.starOfFilter {
+  color: rgba(239, 216, 13, 1);
+  width: 15px;
+  height: 15px;
+}
+
+.numOfStar {
+  color: rgba(103, 103, 103, 1);
+  font-weight: 500;
+  font-family: "Montserrat", sans-serif;
+  line-height: 16px;
+  font-size: 18px;
+}
+
+/*===*/
+/* Responsive */
+
+@media screen and (max-width: 577px) {
+  .filtrationStars {
+    display: none;
   }
 
-  .form-check-input:checked{
-    background-color: black;
-    box-shadow: none;
-  }
-  .starOfFilter{
-    color:rgba(239, 216, 13, 1);
-    width: 15px;
-    height: 15px;
+  .commentsSection {
+    padding: 0 20px 0 20px;
   }
 
-  .numOfStar{
-    color: rgba(103, 103, 103, 1);
-    font-weight: 500;
-    font-family: "Montserrat", sans-serif;
-    line-height:16px;
-    font-size: 18px; 
+  .verifiedpart{
+    display: inline !important;
   }
-
+  .verficatedSvg{
+    margin-left: 0 !important;
+  }
+}

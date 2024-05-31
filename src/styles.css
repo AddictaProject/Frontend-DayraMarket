@@ -32,3 +32,27 @@ body {
 .p-galleria-thumbnail-items-container{
   height: 400px !important;
 }
+
+
+@media screen and (max-width: 1399px) {
+  .p-galleria-thumbnail-items-container{
+    height: auto !important;
+  }
+  .p-galleria .p-galleria-thumbnail-container{
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .p-galleria .p-galleria-thumbnail-container{
+    margin-left: 50px;
+    width: 80%;
+  }
+}
+
+.drag-scroll-content{
+  overflow: auto !important;
+}  
+
