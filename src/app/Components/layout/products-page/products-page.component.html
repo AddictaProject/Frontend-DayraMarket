@@ -19,7 +19,7 @@
     <div class="prds-container col-xl-9 col-lg-8 col-12 d-flex ps-4 gap-xl-4 gap-md-3 flex-wrap  justify-content-center">
       <app-offer-card class="flex-md-grow-0 flex-grow-1"></app-offer-card>
       @for (item of products; track $index) {
-      <app-card class="flex-md-grow-0 flex-grow-1"></app-card>
+      <app-card [isProductPage]="true" class="flex-md-grow-0 flex-grow-1"></app-card>
       }
     </div>
   </section>
