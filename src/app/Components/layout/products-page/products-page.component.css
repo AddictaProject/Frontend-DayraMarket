@@ -13,6 +13,11 @@ header{
   border-radius: 8px;
   overflow: hidden;
 }
+@media (max-width: 992px) {
+  header{
+    height: 180px;
+  }
+}
 .overlay{
   position: absolute;
   top: 0;

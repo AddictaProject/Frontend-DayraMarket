@@ -1,7 +1,8 @@
 <div class="filter">
+  <form #formRef>
   <div class="filter-header py-3 d-flex justify-content-between align-items-center">
     <h5 class="m-0">Filters</h5>
-    <h6 class="m-0">reset</h6>
+    <h6 class="m-0" (click)="filterService.reset(formRef)">reset</h6>
   </div>
   <div class="filter-menu">
     <div class="d-flex justify-content-between align-items-center py-3 ">
@@ -52,6 +53,7 @@
       </div>
     </div>
   </div>
+</form>
 </div>
 
 
