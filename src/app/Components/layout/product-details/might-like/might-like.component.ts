@@ -8,7 +8,8 @@ import { CardComponent } from '../../../Shared/card/card.component';
   selector: 'app-might-like',
   standalone: true,
   templateUrl: './might-like.component.html',
-  imports: [RouterModule , CardProductDetailsComponent ],
+  imports: [RouterModule , CardProductDetailsComponent,DragScrollComponent,
+    DragScrollItemDirective ],
   styleUrls: ['./might-like.component.css']
 })
 export class MightLikeComponent implements OnInit {
