@@ -10,7 +10,11 @@
   flex-direction: column;
   align-items: center;
 }
-
+.slider{
+  max-width: 235px;
+  min-width: 235px;
+  padding-bottom:20px ;
+}
 .prd-image {
   width: 150px;
 }
@@ -54,23 +58,23 @@
 }
 
 @media (max-width:767.5px) {
-  .prd-card {
+  .products-page.prd-card {
     flex-direction: row;
     padding-block: 30px;
   }
 
-  .prd-image {
+  .products-page .prd-image {
     width: 100px;
   }
 
-  .prd-info {
+  .products-page .prd-info {
     font-size: 14px !important;
   }
-  .title h5{
+  .products-page .title h5{
     font-weight: 600;
     font-size: 18px;
   }
-  .prd-price h5 {
+  .products-page .prd-price h5 {
     font-size: 16px;
   }
 
