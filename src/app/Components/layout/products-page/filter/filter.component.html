@@ -1,5 +1,5 @@
 @for (filter of filters; track $index) {
-<div class="checkbox">
+<div class="checkbox" [ngClass]="isMobile ? 'mobile-checkbox' : 'checkbox'" >
   <input type="checkbox" [value]="filter.isChecked" (change)="filterChange.emit(filter)" id="{{filter.id}}">
   <label for="{{filter.id}}">{{filter.name}}</label>
 </div>

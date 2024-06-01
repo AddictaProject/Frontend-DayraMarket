@@ -15,120 +15,11 @@
     </nav>
   </div>
   <section class="row">
-    <div class="filter col-3">
-      <div class="filter-header py-3 d-flex justify-content-between align-items-center">
-        <h5 class="m-0">Filters</h5>
-        <h6 class="m-0">reset</h6>
-      </div>
-      <div class="filter-menu">
-        <div class="d-flex justify-content-between align-items-center py-3 ">
-          <h5>Categories</h5>
-          <i class="fa-solid fa-plus" (click)="openFilterMenu($event)"></i>
-        </div>
-
-        <div class="menu d-none">
-          <div>
-            <app-filter [filters]="categoriesFiltered" (filterChange)="getChecked($event)"></app-filter>
-          </div>
-        </div>
-      </div>
-      <div class="filter-menu">
-        <div class="d-flex justify-content-between align-items-center py-3 ">
-          <h5>Brands</h5>
-          <i class="fa-solid fa-plus" (click)="openFilterMenu($event)"></i>
-        </div>
-        <div class="menu d-none">
-          <input type="text" placeholder="Search for brand" (keyup)="brandSearchHandler($event)">
-          <div>
-            <app-filter [filters]="brandsFiltered" (filterChange)="getChecked($event)"></app-filter>
-          </div>
-        </div>
-      </div>
-      <div class="filter-menu">
-        <div class="d-flex justify-content-between align-items-center py-3 ">
-          <h5>Model</h5>
-          <i class="fa-solid fa-plus" (click)="openFilterMenu($event)"></i>
-        </div>
-        <div class="menu d-none">
-          <input type="text" placeholder="Search for brand" >
-          <div>
-            <div class="checkbox">
-              <input type="checkbox" id="menu1">
-              <label for="menu1">MacBook</label>
-            </div>
-            <div class="checkbox">
-              <input type="checkbox" id="menu2">
-              <label for="menu2">MacBook</label>
-            </div>
-            <div class="checkbox">
-              <input type="checkbox" id="menu3">
-              <label for="menu3">MacBook</label>
-            </div>
-            <div class="checkbox">
-              <input type="checkbox" id="menu4">
-              <label for="menu4">MacBook</label>
-            </div>
-            <div class="checkbox">
-              <input type="checkbox" id="menu4">
-              <label for="menu4">MacBook</label>
-            </div>
-            <div class="checkbox">
-              <input type="checkbox" id="menu4">
-              <label for="menu4">MacBook</label>
-            </div>
-            <div class="checkbox">
-              <input type="checkbox" id="menu4">
-              <label for="menu4">MacBook</label>
-            </div>
-            <div class="checkbox">
-              <input type="checkbox" id="menu4">
-              <label for="menu4">MacBook</label>
-            </div>
-            <div class="checkbox">
-              <input type="checkbox" id="menu4">
-              <label for="menu4">MacBook</label>
-            </div>
-            <div class="checkbox">
-              <input type="checkbox" id="menu4">
-              <label for="menu4">MacBook</label>
-            </div>
-            <div class="checkbox">
-              <input type="checkbox" id="menu4">
-              <label for="menu4">MacBook</label>
-            </div>
-            <div class="checkbox">
-              <input type="checkbox" id="menu4">
-              <label for="menu4">MacBook</label>
-            </div>
-            <div class="checkbox">
-              <input type="checkbox" id="menu4">
-              <label for="menu4">MacBook</label>
-            </div>
-            <div class="checkbox">
-              <input type="checkbox" id="menu4">
-              <label for="menu4">MacBook</label>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="filter-menu">
-        <div class="d-flex justify-content-between align-items-center py-3 ">
-          <h5>Model</h5>
-          <i class="fa-solid fa-plus" (click)="openFilterMenu($event)"></i>
-        </div>
-        <div class="menu d-none">
-          <input class="w-100" type="range" >
-          <div class="d-flex justify-content-between">
-            <span>500 L.E</span>
-            <span>10K L.E</span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="prds-container col-9 d-flex ps-4 gap-4 flex-wrap justify-content-md-end justify-content-center">
-      <app-offer-card></app-offer-card>
+    <app-filter-sec class="col-xl-3 col-lg-4 d-none d-lg-block"></app-filter-sec>
+    <div class="prds-container col-xl-9 col-lg-8 col-12 d-flex ps-4 gap-xl-4 gap-md-3 flex-wrap  justify-content-center">
+      <app-offer-card class="flex-md-grow-0 flex-grow-1"></app-offer-card>
       @for (item of products; track $index) {
-      <app-card></app-card>
+      <app-card [isProductPage]="true" class="flex-md-grow-0 flex-grow-1"></app-card>
       }
     </div>
   </section>
@@ -142,3 +33,4 @@
     </div>
   </div>
 </section>
+<app-mobile-filter class="d-lg-none d-block"></app-mobile-filter>

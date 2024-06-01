@@ -1,13 +1,13 @@
-<div class="prd-card"  draggable="false">
+<div class="prd-card"  draggable="false" [ngClass]="{'products-page': isProductPage,'slider':isSlider}">
   <div class="prd-image">
     <img  draggable="false" class="w-100" src="assets/images/prd.png" alt="">
   </div>
   <div class="card-body">
-    <div class="d-flex justify-content-between mb-3">
+    <div class="d-flex justify-content-between mb-2 mb-md-2 title">
       <h5 class="m-0">I Phone 14</h5>
       <div class="prd-rate"><span>4.8</span><i class="fa-solid fa-star"></i></div>
     </div>
-    <div class="prd-info d-flex justify-content-between align-items-center mb-3">
+    <div class="prd-info d-flex justify-content-between align-items-center mb-2 mb-md-2">
       <div >
         <span class="prd-storage">128 GB</span>
         -
@@ -17,7 +17,7 @@
         <span></span><span></span><span></span>
       </div>
     </div>
-    <div class="prd-price mb-3">
+    <div class="prd-price mb-2 mb-md-2">
       <h5 >Starts 11,000 L.E</h5>
     </div>
   </div>
