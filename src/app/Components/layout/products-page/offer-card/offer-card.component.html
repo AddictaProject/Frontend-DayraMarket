@@ -2,7 +2,7 @@
   <span class="offer">offer</span>
   <div class="d-flex  flex-column align-items-center ">
     <div class="image">
-      <img  draggable="false" class="w-100" src="assets/images/prd.png" alt="">
+      <img  draggable="false" class="w-100" [src]="product.photos[0]" alt="">
     </div>
     <div class="colors d-flex gap-1 mt-2">
       <span></span><span></span><span></span>
@@ -10,8 +10,8 @@
   </div>
   <div class="info  d-flex flex-column  align-items-center gap-3">
     <h5 class="m-0" >OUR LATEST OFFER BEST PICKS</h5>
-    <h6 class="m-0" >I Phone 14 - 128 GB - PURPLE</h6>
-    <p class="prd-price">Starts 11,000 L.E</p>
+    <h6 class="m-0" >{{product.displayName}} - {{descriptions[1]}} - {{descriptions[0]}}</h6>
+    <p class="prd-price">Starts {{product.lowestPrice | number:'3.0-0'}} L.E</p>
     <div class="stars d-flex ">
       <i class="fa-solid fa-star"></i>
       <i class="fa-solid fa-star"></i>

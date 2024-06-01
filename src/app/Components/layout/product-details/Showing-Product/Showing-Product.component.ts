@@ -10,10 +10,10 @@ import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { DragScrollComponent, DragScrollItemDirective } from 'ngx-drag-scroll';
 import { GalleriaModule } from 'primeng/galleria';
-import { ProductService } from '../../../../Services/ProductService/product.service';
 import { IProductDetails } from '../../../../Models/IProductDetails';
 import { IProductDetailsParams } from '../../../../Models/IProductDetailsParams';
 import { Subscription } from 'rxjs';
+import { ProductApiService } from '../../../../Services/ProductService/product-api.service';
 
 @Component({
   selector: 'app-Showing-Product',
@@ -54,13 +54,13 @@ export class ShowingProductComponent implements OnInit, OnDestroy {
   ];
 
   @ViewChild('LearnMore') LearnMore!: ElementRef;
-   
+
 
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private _ProductService: ProductService
+    private _ProductService: ProductApiService
   )
    {
 
@@ -94,33 +94,33 @@ export class ShowingProductComponent implements OnInit, OnDestroy {
     //   },
     // ];
 
-   
+
     this.images = [];
-  
+
   }
 
   ngOnInit() {
     // For getting the size of the screen
     this.checkScreenWidth(window.innerWidth);
     this.updateDragScrollStatus();
-  
+
     // Subscribe to getProductDetails:
     this.route.params.subscribe((params) => {
 
-      this.ProductDetailsParams = params['ProductDetailsParams']; 
-  
+      this.ProductDetailsParams = params['ProductDetailsParams'];
+
       if (this.ProductId) {
         this.ProductDetailsParams = { productUuid: this.ProductId,lowestPrice:false }
         if (this.sub) {
           this.sub.unsubscribe();
         }
-  
+
         this.sub = this._ProductService.getProductDetails(this.ProductDetailsParams).subscribe({
           next: (Product) => {
             this.ProductDetails = Product;
-            
+
             console.log(this.ProductDetails);
-            
+
             // Initialize images array
             if (this.ProductDetails && this.ProductDetails.photos) {
               this.images = this.ProductDetails.photos.map(photo => ({
@@ -138,7 +138,7 @@ export class ShowingProductComponent implements OnInit, OnDestroy {
       }
     });
   }
-  
+
 
   setActiveItem(item: any): void {
     this.activeItem = item;

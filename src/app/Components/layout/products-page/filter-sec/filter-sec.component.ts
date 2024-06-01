@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CheckboxFilter, FilterComponent } from '../filter/filter.component';
+import { FilterComponent } from '../filter/filter.component';
 import { FilterService } from '../../../../Services/FilterServices/filter.service';
 
 

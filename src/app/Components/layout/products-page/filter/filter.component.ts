@@ -1,11 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-
-export type CheckboxFilter = {
-  id: string;
-  name: string;
-  isChecked: boolean;
-};
+import { CheckboxFilter } from '../../../../Models/CheckboxFilter';
 
 @Component({
   selector: 'app-filter',

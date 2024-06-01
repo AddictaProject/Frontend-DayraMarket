@@ -15,11 +15,12 @@ export class CardComponent {
   @Input() isSlider: boolean = false;
   @Input() product:IProduct={
     uuid:'',
-    displayName:'',
-    lowestPrice :0,
-    description:'',
+    displayName:'I Phone 14',
+    lowestPrice :11000,
+    description:'128 GB - PURPLE',
     photos:['assets/images/prd.png'],
-    groupedVariants:[]
+    groupedVariants:[],
+    averageRate:5
   };
   descriptions:string[]=[];
   ngOnInit(): void {
