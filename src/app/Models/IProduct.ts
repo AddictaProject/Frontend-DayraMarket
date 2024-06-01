@@ -5,5 +5,5 @@ export interface IProduct {
   description:string;
   photos:string[];
   groupedVariants:any[];
-  // rate:number;
+  averageRate:number;
 }
