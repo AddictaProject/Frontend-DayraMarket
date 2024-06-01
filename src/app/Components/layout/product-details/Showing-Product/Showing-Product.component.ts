@@ -122,25 +122,23 @@ export class ShowingProductComponent implements OnInit, OnDestroy {
               console.log(
               );
 
-              for (
-                let i = 0;
-                i <
-                this.ProductDetails.product.groupedVariants[1].values.length;
-                i++
-              ) {
-                if (
-                  this.ProductDetails.availableAttributes[i] ==
-                  this.ProductDetails.product.groupedVariants[1].values[i].uuid
-                ) {
-                  console.log('hii');
+              this.ProductDetails.product.groupedVariants.forEach(variant => {
+                if (this.ProductDetails.availableAttributes.includes(variant.attributeUuid)) {
 
-                  this.EnableValues.push(
-                    this.ProductDetails.product.groupedVariants[1].values[i]
-                      .value
-                  );
+                  console.log("hii");
+                  
+                  const attributeName = variant.attributeDisplayName;
+                  const values = variant.values.map(value => value.value);
+              
+                  // Push the details to the array
+                  this.EnableValues.push({ name: attributeName, values: values });
                 }
-                console.log(this.EnableValues);
-              }
+              });
+              
+              console.log(this.EnableValues);
+
+
+
             },
             error: (error) => {
               console.error('Error fetching product details', error);
