@@ -29,14 +29,16 @@ import { ProductApiService } from '../../../../Services/ProductService/product-a
   ],
 })
 export class ShowingProductComponent implements OnInit, OnDestroy {
-
-  images!: any[];
-  Productimages!: string[];
+  images: any[] = [];
   activeItem: any;
-  ProductId:string = "0e2798cb-7bf5-4eea-a8b8-84405f8a4046";
+  ProductId: string = '0e2798cb-7bf5-4eea-a8b8-84405f8a4046';
   ProductDetails!: IProductDetails;
-  ProductDetailsParams!: IProductDetailsParams ;;
+  ProductDetailsParams!: IProductDetailsParams;
   sub!: Subscription;
+  productPrice!: number;
+  mostPopularPrice!: number;
+
+  EnableValues!: any[];
 
   responsiveOptions: any[] = [
     {
@@ -56,48 +58,15 @@ export class ShowingProductComponent implements OnInit, OnDestroy {
   @ViewChild('LearnMore') LearnMore!: ElementRef;
 
 
-
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private _ProductService: ProductApiService
-  )
-   {
 
-    // this.images = [
-    //   {
-    //     source: '../../../../../assets/images/galleri/Frame 430.png',
-    //     thumbnail: '../../../../../assets/images/galleri/Frame 430.png',
-    //     alt: 'Image 1',
-    //     title: 'Title 1',
-    //   },
+    private _ProductService: ProductِِِِService
+  ) { }
 
-    //   {
-    //     source: '../../../../../assets/images/galleri/Frame 402.png',
-    //     thumbnail: '../../../../../assets/images/galleri/Frame 402.png',
-    //     alt: 'Image 1',
-    //     title: 'Title 1',
-    //   },
+  url!: string;
 
-    //   {
-    //     source: '../../../../../assets/images/galleri/Frame 429.png',
-    //     thumbnail: '../../../../../assets/images/galleri/Frame 429.png',
-    //     alt: 'Image 1',
-    //     title: 'Title 1',
-    //   },
-
-    //   {
-    //     source: '../../../../../assets/images/galleri/Frame 428.png',
-    //     thumbnail: '../../../../../assets/images/galleri/Frame 428.png',
-    //     alt: 'Image 1',
-    //     title: 'Title 1',
-    //   },
-    // ];
-
-
-    this.images = [];
-
-  }
 
   ngOnInit() {
     // For getting the size of the screen
@@ -106,33 +75,83 @@ export class ShowingProductComponent implements OnInit, OnDestroy {
 
     // Subscribe to getProductDetails:
     this.route.params.subscribe((params) => {
-
       this.ProductDetailsParams = params['ProductDetailsParams'];
 
+
       if (this.ProductId) {
-        this.ProductDetailsParams = { productUuid: this.ProductId,lowestPrice:false }
+        this.ProductDetailsParams = {
+          productUuid: this.ProductId,
+          lowestPrice: false,
+        };
         if (this.sub) {
           this.sub.unsubscribe();
         }
 
-        this.sub = this._ProductService.getProductDetails(this.ProductDetailsParams).subscribe({
-          next: (Product) => {
-            this.ProductDetails = Product;
 
-            console.log(this.ProductDetails);
+        this.sub = this._ProductService
+          .getProductDetails(this.ProductDetailsParams)
+          .subscribe({
+            next: (Product) => {
+              this.ProductDetails = Product;
 
-            // Initialize images array
-            if (this.ProductDetails && this.ProductDetails.photos) {
-              this.images = this.ProductDetails.photos.map(photo => ({
-                itemImageSrc: photo,
-                thumbnailImageSrc: photo,
-              }));
-            }
-          },
-          error: (error) => {
-            console.error('Error fetching product details', error);
-          },
-        });
+              // For gallery:
+              if (this.ProductDetails && this.ProductDetails.photoPaths) {
+                this.images = this.ProductDetails.photoPaths.map((photo) => ({
+                  source: `https://dayra-market.addictaco.com${photo}`,
+                  thumbnail: `https://dayra-market.addictaco.com${photo}`,
+                }));
+              } else {
+                console.log('Error in ProductDetails or photoPaths');
+              }
+
+              //For the price :
+
+              // update the price on the top
+              if (
+                !this.ProductDetailsParams.lowestPrice ||
+                (this.ProductDetailsParams.previousStockUuid == null &&
+                  this.ProductDetailsParams.attributeValueUuid == null)
+              ) {
+                this.productPrice = this.ProductDetails.product.lowestPrice;
+              } else {
+                this.productPrice = this.ProductDetails.selectedStock.price;
+              }
+
+              //Most PopularPrice
+              if (this.ProductDetailsParams.lowestPrice == false) {
+                this.mostPopularPrice = this.ProductDetails.selectedStock.price;
+              }
+
+              // For variants :
+
+              console.log(
+              );
+
+              for (
+                let i = 0;
+                i <
+                this.ProductDetails.product.groupedVariants[1].values.length;
+                i++
+              ) {
+                if (
+                  this.ProductDetails.availableAttributes[i] ==
+                  this.ProductDetails.product.groupedVariants[1].values[i].uuid
+                ) {
+                  console.log('hii');
+
+                  this.EnableValues.push(
+                    this.ProductDetails.product.groupedVariants[1].values[i]
+                      .value
+                  );
+                }
+                console.log(this.EnableValues);
+              }
+            },
+            error: (error) => {
+              console.error('Error fetching product details', error);
+            },
+          });
+
       } else {
         console.error('ProductId is undefined');
       }
