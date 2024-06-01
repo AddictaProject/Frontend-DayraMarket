@@ -59,7 +59,7 @@ export class ProductService {
       this.maxPageNum=Math.ceil(products.totalCount / this.numOfProducts );
 
       this.pageArr=Array(Math.abs(this.maxPageNum-1)).fill(0).map((_,i)=>i+1);
-      // this.isLoaded = true;
+      this.isLoaded = true;
     });
   }
 

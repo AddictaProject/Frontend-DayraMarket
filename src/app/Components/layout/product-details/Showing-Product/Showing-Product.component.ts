@@ -62,7 +62,7 @@ export class ShowingProductComponent implements OnInit, OnDestroy {
     private router: Router,
     private route: ActivatedRoute,
 
-    private _ProductService: ProductِِِِService
+    private _ProductService: ProductApiService
   ) { }
 
   url!: string;
