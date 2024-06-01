@@ -1,6 +1,6 @@
 export interface IProductDetailsParams {
   productUuid : string;
-  lowestPrice?: number ;
+  lowestPrice?: boolean ;
   attributeValueUuid?: string ;
   previousStockUuid?:string ;
 

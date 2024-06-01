@@ -210,3 +210,10 @@
     margin-left: 0 !important;
   }
 }
+
+
+@media screen and (max-width: 992px) {
+ .commentClass{
+  margin-top: 30px;
+ }
+}

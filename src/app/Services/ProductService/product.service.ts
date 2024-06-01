@@ -18,14 +18,22 @@ export class ProductService {
   getProducts(): Observable<IProductPagination> {
     return this.httpClient.get<IProductPagination>(`${this.URL}/products`, {
       params: {
-        'pageNo':1,
-        'rowCount':10
+        'pageNo': 1,
+        'rowCount': 10
       },
     });
   }
-  getProduct(productParams:IProductDetailsParams): Observable<IProductDetails> {
-    return this.httpClient.get<IProductDetails>(`${this.URL}/products`,{
-      params:{...productParams}
+  getProduct(productParams: IProductDetailsParams): Observable<IProductDetails> {
+    return this.httpClient.get<IProductDetails>(`${this.URL}/products`, {
+      params: { ...productParams }
     });
   }
+
+  // product Details
+  getProductDetails(productParams: IProductDetailsParams): Observable<IProductDetails> {
+    return this.httpClient.get<IProductDetails>(`${this.URL}/products/${productParams.productUuid}`, {
+      params: { ...productParams }
+    });
+  }
+
 }
