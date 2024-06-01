@@ -10,10 +10,10 @@ import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { DragScrollComponent, DragScrollItemDirective } from 'ngx-drag-scroll';
 import { GalleriaModule } from 'primeng/galleria';
-import { ProductService } from '../../../../Services/ProductService/product.service';
 import { IProductDetails } from '../../../../Models/IProductDetails';
 import { IProductDetailsParams } from '../../../../Models/IProductDetailsParams';
 import { Subscription } from 'rxjs';
+import { ProductApiService } from '../../../../Services/ProductService/product-api.service';
 
 @Component({
   selector: 'app-Showing-Product',
@@ -57,13 +57,16 @@ export class ShowingProductComponent implements OnInit, OnDestroy {
 
   @ViewChild('LearnMore') LearnMore!: ElementRef;
 
+
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private _ProductService: ProductService
+
+    private _ProductService: ProductApiService
   ) { }
 
   url!: string;
+
 
   ngOnInit() {
     // For getting the size of the screen
@@ -74,6 +77,7 @@ export class ShowingProductComponent implements OnInit, OnDestroy {
     this.route.params.subscribe((params) => {
       this.ProductDetailsParams = params['ProductDetailsParams'];
 
+
       if (this.ProductId) {
         this.ProductDetailsParams = {
           productUuid: this.ProductId,
@@ -82,6 +86,7 @@ export class ShowingProductComponent implements OnInit, OnDestroy {
         if (this.sub) {
           this.sub.unsubscribe();
         }
+
 
         this.sub = this._ProductService
           .getProductDetails(this.ProductDetailsParams)
@@ -144,11 +149,13 @@ export class ShowingProductComponent implements OnInit, OnDestroy {
               console.error('Error fetching product details', error);
             },
           });
+
       } else {
         console.error('ProductId is undefined');
       }
     });
   }
+
 
   setActiveItem(item: any): void {
     this.activeItem = item;

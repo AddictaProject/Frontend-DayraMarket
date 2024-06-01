@@ -58,6 +58,6 @@ body:has(.mobile-filter:not(.d-none)){
 
 .drag-scroll-content{
   overflow: auto !important;
-}  
+}
 
 

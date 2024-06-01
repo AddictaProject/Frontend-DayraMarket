@@ -1,6 +1,7 @@
 export interface IProductParams {
-  brandUuid?: string;
-  categoryUuid?: string;
+  brandUuids?: string[];
+  categoryUuids?: string[];
   pageNo: number;
   rowCount: number;
+  maxPrice?:number ;
 }
