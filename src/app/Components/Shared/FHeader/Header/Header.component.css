@@ -50,3 +50,8 @@
 .btn-check:checked + .btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check) + .btn:active  {
   border-radius: 50% !important;
 }
+
+/* Txt Of Header */
+.txtOfHeader{
+  text-wrap: nowrap;
+}
