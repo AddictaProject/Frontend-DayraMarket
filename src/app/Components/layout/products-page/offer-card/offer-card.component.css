@@ -11,6 +11,7 @@
   user-select: none;
   position: relative;
  overflow: hidden;
+ min-height: 308px;
 }
 h5{
   font-size: 18px;

@@ -1,34 +1,35 @@
-import { ElementRef, Injectable } from '@angular/core';
-import { CheckboxFilter } from '../../Components/layout/products-page/filter/filter.component';
+import { ElementRef, Injectable, OnInit } from '@angular/core';
+
+import { FilterApiService } from './filter-api.service';
+import { IBrand } from '../../Models/ibrand';
+import { ICategory } from '../../Models/icategory';
+import { ProductService } from '../ProductService/product.service';
+import { IProductParams } from '../../Models/IProductParams';
+import { CheckboxFilter } from '../../Models/CheckboxFilter';
+import { FilterType } from '../../Models/FilterType';
+import { ProductApiService } from '../ProductService/product-api.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class FilterService {
+  brands: IBrand[] = [];
+  categories: ICategory[] = [];
 
-  constructor() { }
+  categoriesCheckbox: CheckboxFilter[] = [];
+  brandsCheckbox: CheckboxFilter[] = [];
+  checkedBrands: CheckboxFilter[] = [];
+  checkedCategories: CheckboxFilter[] = [];
+  brandsFiltered: CheckboxFilter[] = [];
+  categoriesFiltered: CheckboxFilter[] = [];
 
-  categories: CheckboxFilter[] = [
-    { id: 'cat-1', name: 'mobile', isChecked: false },
-    { id: 'cat-2', name: 'laptop', isChecked: false },
-    { id: 'cat-3', name: 'headphones', isChecked: false },
-    { id: 'cat-4', name: 'tvs', isChecked: false },
-    { id: 'cat-5', name: 'bag', isChecked: false },
-    { id: 'cat-6', name: 'games', isChecked: false },
-    { id: 'cat-7', name: 'access', isChecked: false },
-  ];
-  brands: CheckboxFilter[] = [
-    { id: 'br-1', name: 'apple', isChecked: false },
-    { id: 'br-2', name: 'samsung', isChecked: false },
-    { id: 'br-3', name: 'xiaomi', isChecked: false },
-    { id: 'br-4', name: 'lenovo', isChecked: false },
-    { id: 'br-5', name: 'honor', isChecked: false },
-    { id: 'br-6', name: 'oppo', isChecked: false },
-    { id: 'br-7', name: 'huawei', isChecked: false },
-  ];
-  checked: CheckboxFilter[] = [];
-  brandsFiltered: CheckboxFilter[] = [...this.brands];
-  categoriesFiltered: CheckboxFilter[] = [...this.categories];
+  constructor(
+    private filterApiService: FilterApiService,
+    private productService: ProductService
+  ) {
+    this.loadCategories();
+    this.loadBrands();
+  }
 
   openFilterMenu(event: Event) {
     (event.target as HTMLElement).classList.toggle('fa-plus');
@@ -40,42 +41,130 @@ export class FilterService {
 
   getChecked(filter: CheckboxFilter) {
     filter.isChecked = !filter.isChecked;
-    if (filter.isChecked) this.checked.push(filter);
-    else {
-      const idx = this.checked.findIndex((f) => f.id == filter.id);
-      this.checked.splice(idx, 1);
+    if (filter.type === FilterType.Brand) {
+      if (filter.isChecked) this.checkedBrands.push(filter);
+      else {
+        const idx = this.checkedBrands.findIndex((f) => f.id == filter.id);
+        this.checkedBrands.splice(idx, 1);
+      }
     }
-
-    console.log(this.checked);
+    else if(filter.type === FilterType.Category){
+      if (filter.isChecked) this.checkedCategories.push(filter);
+      else {
+        const idx = this.checkedCategories.findIndex((f) => f.id == filter.id);
+        this.checkedCategories.splice(idx, 1);
+      }
+    }
+    this.filterProduct();
   }
 
+  onPriceChange(val:string){
+    this.productService.maxPrice=parseInt(val);
+    this.productService.loadProducts(1)
+  }
   brandSearchHandler(event: Event) {
     const result = (event.target as HTMLInputElement).value.trim();
     console.log(result);
-    this.brandsFiltered = this.brands.filter((b) => b.name.includes(result));
+    this.brandsFiltered = this.brandsCheckbox.filter((b) =>
+      b.name.includes(result)
+    );
     console.log(this.brandsFiltered);
   }
   categorySearchHandler(event: Event) {
     const result = (event.target as HTMLInputElement).value;
     console.log(result);
-    this.categoriesFiltered = this.categories.filter((b) =>
+    this.categoriesFiltered = this.categoriesCheckbox.filter((b) =>
       b.name.includes(result)
     );
     console.log(this.categoriesFiltered);
   }
   openMobileFilterMenu(event: Event) {
-    const menu=(event.currentTarget as HTMLElement).querySelector('.menu');
+    const menu = (event.currentTarget as HTMLElement).querySelector('.menu');
     menu?.classList.remove('d-none');
   }
   closeMobileFilterMenu(event: Event) {
     event.stopPropagation();
-    const menu=(event.currentTarget as HTMLElement).closest('.filter-menu')?.querySelector('.menu');
+    const menu = (event.currentTarget as HTMLElement)
+      .closest('.filter-menu')
+      ?.querySelector('.menu');
     menu?.classList.add('d-none');
   }
 
-  reset( formRef: HTMLFormElement){
-    this.checked.forEach(c=>c.isChecked=false);
-    this.checked=[];
+  reset(formRef: HTMLFormElement) {
+    this.checkedBrands.forEach((c) => (c.isChecked = false));
+    this.checkedBrands = [];
+    this.checkedCategories.forEach((c) => (c.isChecked = false));
+    this.checkedCategories = [];
+    this.productService.brandsParams=[];
+    this.productService.categoriesPrams=[];
+    this.productService.maxPrice=null;
+    this.productService.loadProducts(1)
     formRef.reset();
   }
+
+  flat(array: any) {
+    let result: any = [];
+    array.forEach((a: any) => {
+      result.push(a);
+      if (Array.isArray(a.children) && a?.children.length > 0) {
+        result = result.concat(this.flat(a.children));
+      }
+    });
+    return result;
+  }
+
+  loadCategories() {
+    this.filterApiService.getAllCategories().subscribe((res) => {
+      console.log(res);
+      this.categories = this.flat(res);
+      this.categories.forEach((category) => {
+        const Checkbox: CheckboxFilter = {
+          id: category.uuid,
+          name: category.displayName,
+          isChecked: false,
+          type: FilterType.Category,
+        };
+        this.categoriesCheckbox.push(Checkbox);
+      });
+      this.categoriesFiltered = [...this.categoriesCheckbox];
+      console.log(this.categoriesFiltered);
+    });
+  }
+
+  loadBrands() {
+    this.filterApiService.getAllBrand().subscribe((b) => {
+      this.brands = b;
+      this.brands.forEach((brand) => {
+        const Checkbox: CheckboxFilter = {
+          id: brand.uuid,
+          name: brand.displayName,
+          isChecked: false,
+          type: FilterType.Brand,
+        };
+        this.brandsCheckbox.push(Checkbox);
+      });
+      this.brandsFiltered = [...this.brandsCheckbox];
+    });
+  }
+
+  filterProduct() {
+    //brands
+    let brandsPrams: string[] = [];
+    this.checkedBrands.forEach(f=>{
+      brandsPrams.push(f.id);
+    })
+    this.productService.brandsParams=brandsPrams;
+
+    //categories
+
+    let categoriesPrams: string[] = [];
+    this.checkedCategories.forEach(f=>{
+      categoriesPrams.push(f.id);
+    })
+
+    this.productService.categoriesPrams=categoriesPrams;
+    this.productService.loadProducts(1)
+  }
+
+
 }

@@ -3,10 +3,10 @@ import { DragScrollComponent, DragScrollItemDirective } from 'ngx-drag-scroll';
 import { CardComponent } from '../../../Shared/card/card.component';
 
 import { HttpClient } from '@angular/common/http';
-import { ProductService } from '../../../../Services/ProductService/product.service';
 import { IProduct } from '../../../../Models/IProduct';
 import { IProductParams } from '../../../../Models/IProductParams';
 import { CardPlaceholderComponent } from '../../../Shared/card-placeholder/card-placeholder.component';
+import { ProductApiService } from '../../../../Services/ProductService/product-api.service';
 
 @Component({
   selector: 'app-product-slider',
@@ -19,7 +19,7 @@ export class ProductSliderComponent {
   isLoaded =false;
   products: IProduct[] = [];
   constructor(
-    private productService: ProductService,
+    private productService: ProductApiService,
     private httpClient: HttpClient
   ) {
     const productParams: IProductParams = {
