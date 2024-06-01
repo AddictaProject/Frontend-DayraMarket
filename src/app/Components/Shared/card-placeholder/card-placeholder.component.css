@@ -1,5 +1,5 @@
 .prd-card {
-  min-width: 292px;
+  min-width: 235px;
   border-radius: 6px;
   box-shadow: 0px 4px 11px 0px #00000014;
   -webkit-user-select: none;
@@ -7,23 +7,17 @@
   padding-inline: 16px;
   gap: 16px;
   display: flex;
-  flex-grow: 1;
   flex-direction: column;
   align-items: center;
 }
-.slider{
-  max-width: 235px;
-  min-width: 235px;
-  padding-bottom:20px ;
+.products-page{
+  min-width: 292px;
+
 }
 .prd-image {
-  height: 180px;
+  width:  235px;
 }
 
-.prd-image img {
-  width: 100%;
-  height: 100%;
-}
 
 .prd-rate i {
   margin-left: 5px;
@@ -40,12 +34,7 @@
   padding-inline: 16px;
 }
 
-.colors span {
-  border-radius: 50%;
-  background-color: #858585;
-  width: 12px;
-  height: 12px;
-}
+
 .prd-price {
   color: #09764CCC;
 }

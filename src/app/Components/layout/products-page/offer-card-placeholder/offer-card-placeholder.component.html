@@ -1,0 +1,29 @@
+<div class="offer-card" draggable="false">
+  <span class="offer">offer</span>
+  <div class="d-flex col-4 flex-column align-items-center ">
+    <div class="image">
+      <p-skeleton width="100%" height="240px"/>
+    </div>
+    <div class="colors d-flex gap-1 mt-2">
+      @for (color of [1,2,3]; track $index) {
+        <p-skeleton shape="circle" size="12px" styleClass="mr-2" />
+      }
+    </div>
+  </div>
+  <div class="info col-6 d-flex flex-column  align-items-center gap-3">
+    <div class="w-100">
+      <p-skeleton  height="12px" />
+    </div>
+    <div class="w-75">
+      <p-skeleton height="8px" />
+    </div>
+    <div class="w-50">
+      <p-skeleton height="6px" />
+    </div>
+    <div class="colors d-flex gap-1 mt-2">
+      @for (color of [1,2,3,4,5]; track $index) {
+        <p-skeleton shape="circle" size="14px" />
+      }
+    </div>
+  </div>
+</div>
