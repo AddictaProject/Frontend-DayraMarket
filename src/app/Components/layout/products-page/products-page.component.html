@@ -16,20 +16,35 @@
   </div>
   <section class="row">
     <app-filter-sec class="col-xl-3 col-lg-4 d-none d-lg-block"></app-filter-sec>
-    <div class="prds-container col-xl-9 col-lg-8 col-12 d-flex ps-4 gap-xl-4 gap-md-3 flex-wrap  justify-content-center">
-      <app-offer-card class="flex-md-grow-0 flex-grow-1"></app-offer-card>
-      @for (item of products; track $index) {
-      <app-card [isProductPage]="true" class="flex-md-grow-0 flex-grow-1"></app-card>
+    <div class="prds-container col-xl-9 col-lg-8 col-12 d-flex ps-4 gap-xl-4 gap-md-3 gap-sm-4 flex-wrap  justify-content-center">
+      @if(isLoaded){
+        @if(pageNumber==1){
+          <app-offer-card class="flex-md-grow-0 flex-grow-1"></app-offer-card>
+        }
+        @for (prd of products; track $index) {
+          <app-card [product]="prd" [isProductPage]="true" class="flex-md-grow-0 flex-grow-1 d-flex"></app-card>
+        }
+      }
+      @else {
+        @if(pageNumber==1){
+          <app-offer-card-placeholder class="d-flex flex-md-grow-0 flex-grow-1"></app-offer-card-placeholder>
+        }
+        @for (prd of tempArr; track $index) {
+          <app-card-placeholder  [isProductPage]="true" class="flex-md-grow-0 flex-grow-1 d-flex"></app-card-placeholder>
+        }
       }
     </div>
   </section>
-  <div class="pagination d-flex justify-content-end mt-5">
-    <div class="d-flex gap-2 align-items-center">
-      <span class="active">1</span>
-      <span>2</span>
-      <span>3</span>
-      <span>4</span>
-      <i class="fa-solid fa-angle-right"></i>
+  <div  class="pagination d-flex justify-content-end mt-5">
+    <div #paginationRef class="d-flex gap-2 align-items-center">
+      <span class="active" (click)="goToPage($event)">1</span>
+      @for (count of pageArr; track $index) {
+        <span (click)="goToPage($event)">{{count+1}}</span>
+      }
+      @if(maxPageNum>1)
+      {
+        <i class="fa-solid fa-angle-right" (click)="nextPage()" ></i>
+      }
     </div>
   </div>
 </section>

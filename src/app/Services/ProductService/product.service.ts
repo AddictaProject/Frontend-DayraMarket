@@ -6,6 +6,7 @@ import { IProduct } from '../../Models/IProduct';
 import { IProductPagination } from '../../Models/IProductPagination';
 import { IProductDetailsParams } from '../../Models/IProductDetailsParams';
 import { IProductDetails } from '../../Models/IProductDetails';
+import { IProductParams } from '../../Models/IProductParams';
 
 @Injectable({
   providedIn: 'root'
@@ -15,16 +16,9 @@ export class ProductService {
   constructor(private httpClient: HttpClient) {
     this.URL = Environment.serverURL + '/api/v1/public';
   }
-  getProducts(): Observable<IProductPagination> {
+
+  getProducts(productParams: IProductParams): Observable<IProductPagination> {
     return this.httpClient.get<IProductPagination>(`${this.URL}/products`, {
-      params: {
-        'pageNo': 1,
-        'rowCount': 10
-      },
-    });
-  }
-  getProduct(productParams: IProductDetailsParams): Observable<IProductDetails> {
-    return this.httpClient.get<IProductDetails>(`${this.URL}/products`, {
       params: { ...productParams }
     });
   }
