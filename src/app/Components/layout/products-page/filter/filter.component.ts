@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { CheckboxFilter } from '../../../../Models/CheckboxFilter';
+import { CheckboxFilter } from '../../../../Models/Product/All-Products/CheckboxFilter';
 
 @Component({
   selector: 'app-filter',

@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { TestimonialCard } from '../../../../../Models/testimonial-card';
+import { TestimonialCard } from '../../../../../Models/Product/All-Products/testimonial-card';
 
 @Component({
   selector: 'app-testimonial-card',

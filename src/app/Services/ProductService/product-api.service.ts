@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { IProductParams } from '../../Models/IProductParams';
-import { IProductPagination } from '../../Models/IProductPagination';
+import { IProductParams } from '../../Models/Product/All-Products/IProductParams';
+import { IProductPagination } from '../../Models/Product/All-Products/IProductPagination';
 import { Observable } from 'rxjs';
-import { IProductDetailsParams } from '../../Models/IProductDetailsParams';
-import { IProductDetails } from '../../Models/IProductDetails';
+import { IProductDetailsParams } from '../../Models/Product/Prod-Details/IProductDetailsParams';
+import { IProductDetails } from '../../Models/Product/Prod-Details/IProductDetails';
 import { Environment } from '../../../enviroment/environment';
 
 @Injectable({

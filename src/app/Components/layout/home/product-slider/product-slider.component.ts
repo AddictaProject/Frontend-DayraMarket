@@ -3,8 +3,8 @@ import { DragScrollComponent, DragScrollItemDirective } from 'ngx-drag-scroll';
 import { CardComponent } from '../../../Shared/card/card.component';
 
 import { HttpClient } from '@angular/common/http';
-import { IProduct } from '../../../../Models/IProduct';
-import { IProductParams } from '../../../../Models/IProductParams';
+import { IProduct } from '../../../../Models/Product/All-Products/IProduct';
+import { IProductParams } from '../../../../Models/Product/All-Products/IProductParams';
 import { CardPlaceholderComponent } from '../../../Shared/card-placeholder/card-placeholder.component';
 import { ProductApiService } from '../../../../Services/ProductService/product-api.service';
 

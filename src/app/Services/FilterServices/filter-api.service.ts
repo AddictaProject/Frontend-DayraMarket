@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { IBrand } from '../../Models/ibrand';
+import { IBrand } from '../../Models/Brand/IBrand';
 import { HttpClient } from '@angular/common/http';
 import { Environment } from '../../../enviroment/environment';
-import { ICategory } from '../../Models/icategory';
+import { ICategory } from '../../Models/Category/ICategory';
 
 @Injectable({
   providedIn: 'root'

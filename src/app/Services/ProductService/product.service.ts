@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ProductApiService } from './product-api.service';
-import { IProduct } from '../../Models/IProduct';
-import { IProductParams } from '../../Models/IProductParams';
+import { IProduct } from '../../Models/Product/All-Products/IProduct';
+import { IProductParams } from '../../Models/Product/All-Products/IProductParams';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({

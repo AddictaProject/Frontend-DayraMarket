@@ -1,4 +1,5 @@
 import {
+  ChangeDetectorRef,
   Component,
   ElementRef,
   HostListener,
@@ -10,8 +11,12 @@ import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { DragScrollComponent, DragScrollItemDirective } from 'ngx-drag-scroll';
 import { GalleriaModule } from 'primeng/galleria';
-import { IProductDetails } from '../../../../Models/IProductDetails';
-import { IProductDetailsParams } from '../../../../Models/IProductDetailsParams';
+import {
+  IProductDetails,
+  IgroupedVariants,
+  Ivalues,
+} from '../../../../Models/Product/Prod-Details/IProductDetails';
+import { IProductDetailsParams } from '../../../../Models/Product/Prod-Details/IProductDetailsParams';
 import { Subscription } from 'rxjs';
 import { ProductApiService } from '../../../../Services/ProductService/product-api.service';
 
@@ -38,7 +43,8 @@ export class ShowingProductComponent implements OnInit, OnDestroy {
   productPrice!: number;
   mostPopularPrice!: number;
 
-  EnableValues!: any[];
+  VariantsGroup!: IgroupedVariants[];
+  attributesValues!: Ivalues[];
 
   responsiveOptions: any[] = [
     {
@@ -57,16 +63,14 @@ export class ShowingProductComponent implements OnInit, OnDestroy {
 
   @ViewChild('LearnMore') LearnMore!: ElementRef;
 
-
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-
-    private _ProductService: ProductApiService
-  ) { }
+    private _ProductService: ProductApiService,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   url!: string;
-
 
   ngOnInit() {
     // For getting the size of the screen
@@ -77,22 +81,23 @@ export class ShowingProductComponent implements OnInit, OnDestroy {
     this.route.params.subscribe((params) => {
       this.ProductDetailsParams = params['ProductDetailsParams'];
 
-
       if (this.ProductId) {
         this.ProductDetailsParams = {
           productUuid: this.ProductId,
           lowestPrice: false,
         };
+
         if (this.sub) {
           this.sub.unsubscribe();
         }
-
 
         this.sub = this._ProductService
           .getProductDetails(this.ProductDetailsParams)
           .subscribe({
             next: (Product) => {
               this.ProductDetails = Product;
+
+              this.VariantsGroup = this.ProductDetails.product.groupedVariants;
 
               // For gallery:
               if (this.ProductDetails && this.ProductDetails.photoPaths) {
@@ -101,7 +106,9 @@ export class ShowingProductComponent implements OnInit, OnDestroy {
                   thumbnail: `https://dayra-market.addictaco.com${photo}`,
                 }));
               } else {
-                console.log('Error in ProductDetails or photoPaths');
+                console.log(
+                  'Error in ProductDetails or photoPaths are missing'
+                );
               }
 
               //For the price :
@@ -121,41 +128,31 @@ export class ShowingProductComponent implements OnInit, OnDestroy {
               if (this.ProductDetailsParams.lowestPrice == false) {
                 this.mostPopularPrice = this.ProductDetails.selectedStock.price;
               }
-
-              // For variants :
-
-              console.log(
-              );
-
-              this.ProductDetails.product.groupedVariants.forEach(variant => {
-                if (this.ProductDetails.availableAttributes.includes(variant.attributeUuid)) {
-
-                  console.log("hii");
-                  
-                  const attributeName = variant.attributeDisplayName;
-                  const values = variant.values.map(value => value.value);
-              
-                  // Push the details to the array
-                  this.EnableValues.push({ name: attributeName, values: values });
-                }
-              });
-              
-              console.log(this.EnableValues);
-
-
-
             },
             error: (error) => {
               console.error('Error fetching product details', error);
             },
           });
-
       } else {
         console.error('ProductId is undefined');
       }
     });
   }
 
+  // toggleActiveForAll(attributeName: string, value: string) {
+
+  //   this.VariantsGroup.forEach(item => {
+  //     if (item.attributeDisplayName === attributeName) {
+  //       item.values.forEach(variant => {
+  //         if (variant.value === value) {
+  //           variant.isActive = !variant.isActive;
+  //         } else {
+  //           variant.isActive = false;
+  //         }
+  //       });
+  //     }
+  //   });
+  // }
 
   setActiveItem(item: any): void {
     this.activeItem = item;
@@ -210,22 +207,6 @@ export class ShowingProductComponent implements OnInit, OnDestroy {
   // Excellent
   isActiveExcellent: boolean = false;
 
-  toggleActiveCondition(card: string): void {
-    if (card === 'Fair') {
-      this.isActiveFair = true;
-      this.isActiveGood = false;
-      this.isActiveExcellent = false;
-    } else if (card === 'Good') {
-      this.isActiveGood = true;
-      this.isActiveFair = false;
-      this.isActiveExcellent = false;
-    } else if (card === 'Excellent') {
-      this.isActiveGood = false;
-      this.isActiveFair = false;
-      this.isActiveExcellent = true;
-    }
-  }
-
   //Storage
   // 128
   is128: boolean = false;
@@ -233,39 +214,55 @@ export class ShowingProductComponent implements OnInit, OnDestroy {
   is256: boolean = false;
   // 512
   is512: boolean = false;
-
-  toggleActiveStorage(card: string): void {
-    if (card === '128') {
-      this.is128 = true;
-      this.is256 = false;
-      this.is512 = false;
-    } else if (card === '256') {
-      this.is128 = false;
-      this.is256 = true;
-      this.is512 = false;
-    } else if (card === '512') {
-      this.is128 = false;
-      this.is256 = false;
-      this.is512 = true;
-    }
-  }
-
+  
   // color
   // For Grey
   isActiveGrey: boolean = false;
-
   // For Silver
   isActiveSilver: boolean = false;
 
-  toggleActiveColor(card: string): void {
-    if (card === 'Grey') {
-      this.isActiveGrey = true;
-      this.isActiveSilver = false;
-    } else if (card === 'Silver') {
-      this.isActiveSilver = true;
-      this.isActiveGrey = false;
+  toggleActiveAll(value: string): void {
+    switch (value) {
+      case 'Fair':
+        this.isActiveFair = !this.isActiveFair;
+        this.isActiveGood = false;
+        this.isActiveExcellent = false;
+        break;
+      case 'Good':
+        this.isActiveGood = !this.isActiveGood;
+      this.isActiveFair = false;
+      this.isActiveExcellent = false;
+        break;
+      case 'Excellent':
+        this.isActiveExcellent = !this.isActiveExcellent;
+        this.isActiveGood = false;
+        this.isActiveFair = false;
+        break;
+      case '128 GB':
+          this.is128 = !this.is128;
+          this.is256 = false;
+          this.is512 = false;
+          break;
+      case '256 GB':
+          this.is256 = !this.is256;
+          this.is128 = false;
+          this.is512 = false;
+          break;
+      case '512 GB':
+          this.is512 = !this.is512;
+          this.is128 = false;
+          this.is256 = false;
+          break;
+      // case 'Silver':
+      //     this.isActiveSilver = !this.isActiveSilver;
+      //     break;
+      // case 'Grey':
+      //     this.isActiveGrey = !this.isActiveGrey;
+      //     break;
+      // Add other cases as needed
     }
   }
+  
 
   // responsive!!
   thumbnailsPosition: 'bottom' | 'top' | 'left' | 'right' | undefined = 'left';

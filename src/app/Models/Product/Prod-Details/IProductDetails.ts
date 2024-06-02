@@ -42,5 +42,5 @@ export interface Ivalues {
 
     uuid:string;
     value:string;
-
+    isActive:boolean;
 }

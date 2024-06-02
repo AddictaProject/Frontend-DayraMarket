@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { TestimonialCardComponent } from "./testimonial-card/testimonial-card.component";
 import { DragScrollComponent, DragScrollItemDirective } from 'ngx-drag-scroll';
-import { TestimonialCard } from '../../../../Models/testimonial-card';
+import { TestimonialCard } from '../../../../Models/Product/All-Products/testimonial-card';
 
 @Component({
     selector: 'app-testimonial',

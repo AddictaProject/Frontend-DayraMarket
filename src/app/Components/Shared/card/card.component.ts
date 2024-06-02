@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { SkeletonModule } from 'primeng/skeleton';
-import { IProduct } from '../../../Models/IProduct';
+import { IProduct } from '../../../Models/Product/All-Products/IProduct';
 
 @Component({
   selector: 'app-card',

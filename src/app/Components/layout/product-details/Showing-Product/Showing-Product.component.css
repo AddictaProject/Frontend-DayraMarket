@@ -298,7 +298,7 @@ p , span ,a ,div{
   font-size: 16px;
   line-height: 16px;
   font-family: "Montserrat", sans-serif;
-  text-align: center;
+  text-align: center ;
 }
 
 .cardOfFilter span {
@@ -307,12 +307,11 @@ p , span ,a ,div{
   height: 14px;
 }
 
-.dotOfGrey {
-  background-color: rgba(82, 81, 79, 1);
+.dotOfColor {
+border: .3px rgb(227, 223, 223) solid;
+padding: 7px;
 }
-.dotOfSilver {
-  background-color: rgba(197, 197, 197, 1);
-}
+
 
 /* === */
 /* Add To Cart */
@@ -598,4 +597,11 @@ p , span ,a ,div{
   font-size: 12px;
 
  }
+}
+
+
+.disables{
+  pointer-events: none;
+  opacity: 0.4;
+
 }

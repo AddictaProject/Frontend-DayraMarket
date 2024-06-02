@@ -1,13 +1,13 @@
 import { ElementRef, Injectable, OnInit } from '@angular/core';
 
 import { FilterApiService } from './filter-api.service';
-import { IBrand } from '../../Models/ibrand';
-import { ICategory } from '../../Models/icategory';
+import { IBrand } from '../../Models/Brand/IBrand';
+import { ICategory } from '../../Models/Category/ICategory';
 import { ProductService } from '../ProductService/product.service';
-import { IProductParams } from '../../Models/IProductParams';
-import { CheckboxFilter } from '../../Models/CheckboxFilter';
-import { FilterType } from '../../Models/FilterType';
+import { IProductParams } from '../../Models/Product/All-Products/IProductParams';
+import { CheckboxFilter } from '../../Models/Product/All-Products/CheckboxFilter';
 import { ProductApiService } from '../ProductService/product-api.service';
+import { FilterType } from '../../Models/Product/All-Products/FilterType';
 
 @Injectable({
   providedIn: 'root',
