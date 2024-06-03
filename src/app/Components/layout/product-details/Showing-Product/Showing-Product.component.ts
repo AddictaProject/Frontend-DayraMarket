@@ -19,19 +19,22 @@ import {
 import { IProductDetailsParams } from '../../../../Models/Product/Prod-Details/IProductDetailsParams';
 import { Subscription } from 'rxjs';
 import { ProductApiService } from '../../../../Services/ProductService/product-api.service';
+import { ProductDetailsService } from '../../../../Services/ProductService/product-details.service';
+import { ProductVariantsComponent } from "./product-variants/product-variants.component";
 
 @Component({
-  selector: 'app-Showing-Product',
-  standalone: true,
-  templateUrl: './Showing-Product.component.html',
-  styleUrls: ['./Showing-Product.component.css'],
-  imports: [
-    RouterModule,
-    FormsModule,
-    GalleriaModule,
-    DragScrollComponent,
-    DragScrollItemDirective,
-  ],
+    selector: 'app-Showing-Product',
+    standalone: true,
+    templateUrl: './Showing-Product.component.html',
+    styleUrls: ['./Showing-Product.component.css'],
+    imports: [
+        RouterModule,
+        FormsModule,
+        GalleriaModule,
+        DragScrollComponent,
+        DragScrollItemDirective,
+        ProductVariantsComponent
+    ]
 })
 export class ShowingProductComponent implements OnInit, OnDestroy {
   images: any[] = [];
@@ -67,12 +70,14 @@ export class ShowingProductComponent implements OnInit, OnDestroy {
     private router: Router,
     private route: ActivatedRoute,
     private _ProductService: ProductApiService,
-    private cdr: ChangeDetectorRef
+    public _ProductDetailsService: ProductDetailsService
   ) {}
 
   url!: string;
 
   ngOnInit() {
+
+    this._ProductDetailsService.loadProductVariant();
     // For getting the size of the screen
     this.checkScreenWidth(window.innerWidth);
     this.updateDragScrollStatus();
@@ -214,7 +219,7 @@ export class ShowingProductComponent implements OnInit, OnDestroy {
   is256: boolean = false;
   // 512
   is512: boolean = false;
-  
+
   // color
   // For Grey
   isActiveGrey: boolean = false;
@@ -262,7 +267,7 @@ export class ShowingProductComponent implements OnInit, OnDestroy {
       // Add other cases as needed
     }
   }
-  
+
 
   // responsive!!
   thumbnailsPosition: 'bottom' | 'top' | 'left' | 'right' | undefined = 'left';

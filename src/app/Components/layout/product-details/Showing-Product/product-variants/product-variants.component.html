@@ -1,0 +1,13 @@
+<div class="product-header d-flex justify-content-between align-items-center  mt-4 me-4">
+  <!-- Condition -->
+  <p>{{productVariants.attributeDisplayName}}</p>
+  <a routerLink="/"  #LearnMore>Learn more </a>
+</div>
+
+<div class="row ">
+  @for (val of values; track $index) {
+    @if (productVariants.type==3) {
+  <app-condition [value]="val"></app-condition>
+    }
+  }
+</div>
