@@ -14,13 +14,15 @@ import { ConditionComponent } from "./condition/condition.component";
     styleUrl: './product-variants.component.css',
     imports: [ConditionComponent]
 })
-export class ProductVariantsComponent implements OnChanges {
+export class ProductVariantsComponent implements OnInit {
+
   @Input() productVariants!: IgroupedVariants;
 
-  constructor(private productDetailsService:ProductDetailsService) { }
   values:IVariantValues[]=[];
 
-  ngOnChanges(changes: SimpleChanges): void {
+  constructor(private productDetailsService:ProductDetailsService) { }
+
+  ngOnInit(): void {
     this.productVariants.values.forEach(v=>{
       this.values.push({
         uuid:v.uuid,
@@ -29,11 +31,17 @@ export class ProductVariantsComponent implements OnChanges {
         isAvailable:this.productDetailsService.availableAttributes.includes(v.uuid)
       })
     })
-
-    console.log(this.values);
   }
 
+  test(val:IVariantValues){
 
+    if (!val.isAvailable)
+      return;
 
+    this.values.forEach(val=>val.isClicked =false);
+    val.isClicked=true;
+
+    this.productDetailsService.getSelectedStock(val.uuid);
+  }
 
 }

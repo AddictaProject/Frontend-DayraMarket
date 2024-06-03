@@ -7,7 +7,7 @@
 <div class="row ">
   @for (val of values; track $index) {
     @if (productVariants.type==3) {
-  <app-condition [value]="val"></app-condition>
+  <app-condition [value]="val" (variantClick)="test($event)"></app-condition>
     }
   }
 </div>

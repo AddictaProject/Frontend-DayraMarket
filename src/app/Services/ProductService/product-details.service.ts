@@ -9,6 +9,7 @@ import {
 import { VariantType } from '../../Models/Product/Prod-Details/enum/variant-type';
 import { IProductDetailsParams } from '../../Models/Product/Prod-Details/IProductDetailsParams';
 import { IVariantValues } from '../../Models/Product/Prod-Details/IVariantValues';
+import { map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -20,6 +21,7 @@ export class ProductDetailsService {
   previousStockUuid: string = '';
   productUuid: string = '';
   mostPopular: string = '';
+  price!:number;
   constructor(private productApi: ProductApiService) {}
 
   loadProductVariant(id = '0e2798cb-7bf5-4eea-a8b8-84405f8a4046') {
@@ -33,18 +35,20 @@ export class ProductDetailsService {
       .subscribe((data) => {
         this.variantsGroup = data.product.groupedVariants;
         this.variantsGroup.forEach((variant) => {
-          variant.type = this.variantType(
+          variant.type = this.getVariantType(
             variant.attributeDisplayName.toLowerCase()
           );
+
         });
         this.availableAttributes = data.availableAttributes;
         this.previousStockUuid = data.selectedStock.uuid;
         this.productUuid = data.product.uuid;
         this.mostPopular = data.selectedStock.price.toString();
+        this.price=data.product.lowestPrice;
       });
   }
 
-  variantType(name: string) {
+  getVariantType(name: string) {
     switch (name) {
       case 'color':
         return VariantType.Color;
@@ -57,21 +61,23 @@ export class ProductDetailsService {
     }
   }
   loadSelectedStock(attributeValueId: string) {
-   return this.productApi
+  return this.productApi
       .getProductDetails({
         productUuid: this.productUuid,
         lowestPrice: false,
         attributeValueUuid: attributeValueId,
         previousStockUuid: this.previousStockUuid,
-      })
-      ;
+      }).pipe(
+        map(data=>data.selectedStock)
+      );
   }
 
-  getSelectedStock(product :IVariantValues) {
-    product.isClicked=true;
-
-    this.loadSelectedStock(product.uuid).subscribe(d=>{
-      console.log(d);
+  getSelectedStock(stockId: string) {
+    console.log("hi");
+    this.loadSelectedStock(stockId).subscribe(stock=>{
+      this.price=stock.price;
+      this.previousStockUuid=stock.uuid;
+      console.log("hi too");
     });
   }
 }
