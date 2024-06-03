@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IVariantValues } from '../../../../../../Models/Product/Prod-Details/IVariantValues';
 import { ProductDetailsService } from '../../../../../../Services/ProductService/product-details.service';
 
@@ -9,13 +9,16 @@ import { ProductDetailsService } from '../../../../../../Services/ProductService
   templateUrl: './condition.component.html',
   styleUrl: './condition.component.css'
 })
-export class ConditionComponent implements OnChanges {
+export class ConditionComponent implements OnInit {
   price:number = 0;
-  ngOnChanges(): void {
+
+  @Output() variantClick = new EventEmitter<IVariantValues>();
+  ngOnInit(): void {
+    console.log(this.value);
     if (this.value.isAvailable) {
     // this.price= this.productDetailsService.selectedStockPrice(this.value.uuid);
-    this.productDetailsService.getSelectedStock(this.value.uuid).subscribe(stock=>{
-      this.price= stock.selectedStock.price;
+    this.productDetailsService.loadSelectedStock(this.value.uuid).subscribe(stock=>{
+      this.price= stock.price;
     })
     }
   }

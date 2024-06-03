@@ -26,6 +26,7 @@ export interface IProductInDetails {
     displayName:string;
     groupedVariants:IgroupedVariants[];
     lowestPrice :number;
+    photos:string[];
     // averageRate:number;
 
 }

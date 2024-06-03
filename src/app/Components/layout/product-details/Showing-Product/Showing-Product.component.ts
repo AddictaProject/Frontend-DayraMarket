@@ -101,12 +101,10 @@ export class ShowingProductComponent implements OnInit, OnDestroy {
           .subscribe({
             next: (Product) => {
               this.ProductDetails = Product;
-
               this.VariantsGroup = this.ProductDetails.product.groupedVariants;
-
               // For gallery:
               if (this.ProductDetails && this.ProductDetails.photoPaths) {
-                this.images = this.ProductDetails.photoPaths.map((photo) => ({
+                this.images = this.ProductDetails.product.photos.map((photo) => ({
                   source: `https://dayra-market.addictaco.com${photo}`,
                   thumbnail: `https://dayra-market.addictaco.com${photo}`,
                 }));
