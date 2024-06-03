@@ -1,3 +1,4 @@
+import { VariantType } from "./enum/variant-type";
 
 
 export interface IProductDetails {
@@ -18,7 +19,7 @@ export interface IselectedStock {
 }
 
 export interface IProductInDetails {
-
+    uuid:string;
     brandDisplayName:string;
     categoryDisplayName: string;
     description:string;
@@ -30,17 +31,12 @@ export interface IProductInDetails {
 }
 
 export interface IgroupedVariants {
-
-    productUuid:string;
-    attributeUuid: string;
     values:Ivalues[];
     attributeDisplayName:string;
-
+    type:VariantType
 }
 
 export interface Ivalues {
-
     uuid:string;
     value:string;
-    isActive:boolean;
 }

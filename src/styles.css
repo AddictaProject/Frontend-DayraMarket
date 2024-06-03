@@ -59,5 +59,11 @@ body:has(.mobile-filter:not(.d-none)){
 .drag-scroll-content{
   overflow: auto !important;
 }
-
+.drag-scroll-content {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+.drag-scroll-content::-webkit-scrollbar {
+  display: none;
+}
 
