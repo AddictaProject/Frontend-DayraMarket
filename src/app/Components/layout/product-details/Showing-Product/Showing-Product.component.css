@@ -161,7 +161,17 @@ p , span ,a ,div{
 /* Best Picks */
 
 #scrollHeight {
+  overflow: scroll;
   height: 744px;
+}
+#scrollHeight::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+#scrollHeight{
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
 /* Name product */
 #hiddenDiv {
@@ -478,7 +488,7 @@ p , span ,a ,div{
     font-size: 10px;
     margin-bottom: 0;
   }
-  
+
   .totalReviews span,
   .totalReviews p{
     font-size: 11px;

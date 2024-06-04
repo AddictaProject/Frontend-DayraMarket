@@ -32,7 +32,7 @@ import { ProductVariantsComponent } from './product-variants/product-variants.co
 export class ShowingProductComponent implements OnInit {
 
   isActiveLowestPrice: boolean = false;
-  isActiveMostPopular: boolean = false;
+  isActiveMostPopular: boolean = true;
   isDragScrollDisabled: boolean = false;
 
   responsiveOptions: any[] = [
@@ -57,7 +57,9 @@ export class ShowingProductComponent implements OnInit {
     private route: ActivatedRoute,
     private _ProductService: ProductApiService,
     public _ProductDetailsService: ProductDetailsService
-  ) {}
+  ) {
+
+  }
 
   url!: string;
 
@@ -77,7 +79,7 @@ export class ShowingProductComponent implements OnInit {
     element.classList.add('dissolve');
   }
 
-  
+
   // offcanvas
   isOffCanvasVisible = false;
   showOffCanvas() {
@@ -93,9 +95,12 @@ export class ShowingProductComponent implements OnInit {
     if (card === 'LowestPrice') {
       this.isActiveLowestPrice = true;
       this.isActiveMostPopular = false;
+      this._ProductDetailsService.price=+this._ProductDetailsService.lowestPrice;
     } else if (card === 'MostPopular') {
       this.isActiveMostPopular = true;
       this.isActiveLowestPrice = false;
+      this._ProductDetailsService.price=+this._ProductDetailsService.mostPopularPrice;
+
     }
   }
 

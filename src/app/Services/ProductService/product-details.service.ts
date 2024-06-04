@@ -21,19 +21,19 @@ export class ProductDetailsService {
   attributesValues!: Ivalues[];
   previousStockUuid: string = '';
   productUuid: string = '';
-  mostPopularPrice: string = '';
-  lowestPrice: string = '';
+  mostPopularPrice: number = 0;
+  lowestPrice: number = 0;
   price!: number;
   images: any[] = [];
   product!: IProductInDetails;
   activeItem: any;
-
-  // allAttributes:IVariantValues [][]=[];
-  allAttributes: { attributesUuid: string[]; values: IVariantValues[] }[] = [];
+  mostPopularAttributes: string[] = [];
+  allAttributes:IVariantValues [][]=[];
+  // allAttributes: { attributesUuid: string[]; values: IVariantValues[] }[] = [];
 
   constructor(private productApi: ProductApiService) {}
 
-  loadProductVariant(id = 'bb015b57-50ac-4c48-965f-04e1f5d70d0f') {
+  loadProductVariant(id = '0e2798cb-7bf5-4eea-a8b8-84405f8a4046') {
     this.productApi
       .getProductDetails({
         productUuid: id,
@@ -49,23 +49,9 @@ export class ProductDetailsService {
           );
         });
 
-        data.product.groupedVariants.forEach((v) => {
-          let valueSelections = v.values.map((value) => {
-            return {
-              uuid: value.uuid,
-              displayName: value.value,
-              isClicked: false,
-              isAvailable: false,
-            };
-          });
-          this.allAttributes.push({
-            attributesUuid: data.selectedStock.attributes.map((value) => value.attributeValueUuid),
-            values: valueSelections,
-          });
+        data.selectedStock.attributes.forEach((attribute) => {
+          this.mostPopularAttributes.push(attribute.attributeValueUuid);
         });
-
-
-        console.log(this.allAttributes);
 
         // For gallery:
         if (data && data.photoPaths) {
@@ -81,11 +67,9 @@ export class ProductDetailsService {
         this.previousStockUuid = data.selectedStock.uuid;
         this.productUuid = data.product.uuid;
         this.product = data.product;
-        this.mostPopularPrice = data.selectedStock.price.toString();
-        this.lowestPrice = data.product.lowestPrice.toString();
-        this.price = data.product.lowestPrice;
-
-    
+        this.mostPopularPrice = data.selectedStock.price;
+        this.lowestPrice = data.product.lowestPrice;
+        this.price = this.mostPopularPrice;
       });
   }
 
@@ -117,7 +101,16 @@ export class ProductDetailsService {
     this.loadSelectedStock(stockId).subscribe((stock) => {
       this.price = stock.price;
       this.previousStockUuid = stock.uuid;
-      console.log(this.price + ' ' + stockId);
+      let stockAttributes:string [] = [];
+      stock.attributes.forEach((attribute) => stockAttributes.push(attribute.attributeValueUuid));
+      this.allAttributes.forEach(variables=>{
+        variables.forEach(variable=>{
+          if(stockAttributes.includes(variable.uuid))
+            variable.isClicked=true;
+          else
+            variable.isClicked=false;
+        })
+      })
     });
   }
 

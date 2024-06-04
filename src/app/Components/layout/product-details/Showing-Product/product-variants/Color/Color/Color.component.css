@@ -39,7 +39,7 @@
 
 /*  Activation */
 .ActiveColor {
-color: white !important;
+color: white ;
 font-weight: 500;
 }
 
@@ -56,7 +56,7 @@ font-weight: 500;
 
 @media screen and (max-width: 1399px) {
 
- 
+
   .txtOfFilterItem3 {
     font-size: 13px;
   }
@@ -80,7 +80,7 @@ font-weight: 500;
   .cardOfFilterBlock {
     display: block !important;
   }
-   
+
   .cardOfFilter {
     padding: 8px;
   }

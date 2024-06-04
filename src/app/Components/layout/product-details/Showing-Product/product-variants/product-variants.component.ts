@@ -1,4 +1,5 @@
 import {
+  Attribute,
   Component,
   ElementRef,
   Input,
@@ -29,69 +30,22 @@ export class ProductVariantsComponent implements OnInit {
 
   values: IVariantValues[] = [];
 
-  constructor(private productDetailsService: ProductDetailsService) {}
+  constructor(public productDetailsService: ProductDetailsService) {}
 
   ngOnInit(): void {
-    // this.productVariants.values.forEach((v) => {
-    //   this.values.push({
-    //     uuid: v.uuid,
-    //     displayName: v.value,
-    //     isClicked: false,
-    //     isAvailable: this.productDetailsService.availableAttributes.includes(
-    //       v.uuid
-    //     ),
-    //   });
-    // });
-
-    // this.productDetailsService.allAttributes.forEach((attributeValues) => {
-    //   attributeValues.values.forEach((value) => {
-        
-    //     this.productVariants.values.forEach((v2) => {
-    //       this.values.push({
-    //         uuid: v2.uuid,
-    //         displayName: v2.value,
-    //         isClicked: attributeValues.attributesUuid.includes(value.uuid),
-    //         isAvailable:
-    //           this.productDetailsService.availableAttributes.includes(v2.uuid),
-    //       });
-    //     });
-    //   });
-    // });
-
-    this.productDetailsService.allAttributes.forEach((attributeValues) => {
-      attributeValues.values.forEach((value) => {
-        if (!this.values.some((v) => v.uuid === value.uuid)) {
-          this.productVariants.values.forEach((v2) => {
-            this.values.push({
-              uuid: v2.uuid,
-              displayName: v2.value,
-              isClicked: attributeValues.attributesUuid.includes(value.uuid),
-              isAvailable: this.productDetailsService.availableAttributes.includes(v2.uuid),
-            });
-          });
-        }
+    this.productVariants.values.forEach((v) => {
+      this.values.push({
+        uuid: v.uuid,
+        displayName: v.value,
+        isClicked: this.productDetailsService.mostPopularAttributes.includes(v.uuid),
+        isAvailable: this.productDetailsService.availableAttributes.includes(v.uuid),
       });
     });
-    
-    this.productVariants.type
-
-
-    
-
-
-
-    // console.log(this.productDetailsService.allAttributes);
-    
-
-
+    this.productDetailsService.allAttributes[this.productVariants.type]=this.values
   }
 
   test(val: IVariantValues) {
     if (!val.isAvailable) return;
-
-    this.values.forEach((val) => (val.isClicked = false));
-    val.isClicked = true;
-
     this.productDetailsService.getSelectedStock(val.uuid);
   }
 

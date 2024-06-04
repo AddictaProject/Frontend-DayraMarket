@@ -19,7 +19,7 @@
 
 
   <!-- product -->
-  <div class="  ">
+  <div >
     <div class="row product">
 
       <div class="col-lg-6 col-md-12 col-sm-12 col-12">
@@ -30,7 +30,7 @@
             {{_ProductDetailsService.product.displayName}}
           </p>
           <p>
-            {{_ProductDetailsService.price}}
+            {{_ProductDetailsService.price}} L.E
           </p>
 
         </div>
@@ -63,7 +63,7 @@
 
       <div class="col-lg-6 col-md-12  col-sm-12 col-xs-12 besideSection">
 
-        <drag-scroll [scrollbar-hidden]="true" [drag-scroll-disabled]="isDragScrollDisabled" id="scrollHeight">
+        <div  id="scrollHeight">
 
           <!-- Product Name -->
           <div class="d-flex justify-content-between txtOfProdName" id="proHeaderid">
@@ -197,9 +197,7 @@
                           fill="#FF7E92" />
                       </svg>
 
-
                       }
-
                       <div class="txtOfFilterItem">Most Popular</div>
                       <div class="txtOfPriceItem">{{_ProductDetailsService.mostPopularPrice}} L.E</div>
                     </div>
@@ -217,7 +215,7 @@
               }
             </div>
 
-            
+
             <!-- Comes with -->
             <!-- <div>
 
@@ -697,7 +695,7 @@
 
 
 
-        </drag-scroll>
+        </div>
 
 
 

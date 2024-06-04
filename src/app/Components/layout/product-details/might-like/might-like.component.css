@@ -3,7 +3,7 @@
 /* Background color */
 .bgClass{
     background-color: rgba(246, 246, 246, 1);
-    
+
   }
 
 .might-header h4{
@@ -16,7 +16,7 @@
 
 
 drag-scroll {
-  height: 300px;
+  height: 320px;
   display: flex;
   white-space: nowrap;
 }
