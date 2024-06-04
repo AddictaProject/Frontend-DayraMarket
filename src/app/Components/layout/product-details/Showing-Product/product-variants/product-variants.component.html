@@ -1,13 +1,27 @@
+
+
 <div class="product-header d-flex justify-content-between align-items-center  mt-4 me-4">
-  <!-- Condition -->
+
   <p>{{productVariants.attributeDisplayName}}</p>
-  <a routerLink="/"  #LearnMore>Learn more </a>
+  <a routerLink="/" (click)="animateAndNavigate()" #LearnMore>Learn more </a>
 </div>
 
 <div class="row ">
-  @for (val of values; track $index) {
-    @if (productVariants.type==3) {
-  <app-condition [value]="val" (variantClick)="test($event)"></app-condition>
-    }
-  }
+
+    <div class="d-flex  flex-wrap" >
+      @for (val of values; track $index) {
+
+        @if (productVariants.type==3) {
+        <app-condition class="col-4" [value]="val" (variantClick)="test($event)"></app-condition>
+        } @else if(productVariants.type==2){
+          <app-StorageVariant class="col-4" [value]="val" (variantClick)="test($event)"></app-StorageVariant>
+        } @else if(productVariants.type==1){
+          <app-Color class="col-4" [value]="val" (variantClick)="test($event)"></app-Color>
+        }
+  
+      }
+
+    </div>
+  
 </div>
+

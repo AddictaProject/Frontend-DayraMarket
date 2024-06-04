@@ -1,0 +1,57 @@
+
+.product-header p {
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17.07px;
+    color: rgba(0, 0, 0, 0.4);
+    margin-bottom: 0;
+}
+  
+  .product-header a {
+    text-align: Center;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+    font-family: "Montserrat", sans-serif;
+    background: linear-gradient(
+      90deg,
+      rgba(9, 118, 76, 0.64) 3.05%,
+      rgba(89, 105, 99, 0.8) 103.66%
+    );
+  
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    cursor: pointer;
+  }
+  
+
+  @keyframes dissolve {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  
+  .dissolveclass {
+    animation-name: dissolve;
+    animation-timing-function: ease-in-out;
+    animation-duration: 100ms;
+  }
+  
+
+  /* ======== */
+/* Responsive */
+
+
+@media screen and (max-width: 342px) {
+
+  .product-header a,
+  .product-header p {
+    font-size: 10px;
+    margin-bottom: 0;
+  }
+
+}

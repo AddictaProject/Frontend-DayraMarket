@@ -9,10 +9,10 @@
           <i class="fa-solid fa-angle-right mx-3"></i>
         </li>
         <li>
-          <a [routerLink]="['']">{{ProductDetails.product.categoryDisplayName}}</a>
+          <a [routerLink]="['']">{{_ProductDetailsService.product.categoryDisplayName}}</a>
           <i class="fa-solid fa-angle-right mx-3"></i>
         </li>
-        <li>{{ProductDetails.product.displayName}} </li>
+        <li>{{_ProductDetailsService.product.displayName}} </li>
       </ol>
     </nav>
   </div>
@@ -27,10 +27,10 @@
         <!-- Product Name -->
         <div class="d-flex justify-content-between txtOfProdName" id="hiddenDiv">
           <p>
-            {{ProductDetails.product.displayName}}
+            {{_ProductDetailsService.product.displayName}}
           </p>
           <p>
-            {{productPrice}}
+            {{_ProductDetailsService.price}}
           </p>
 
         </div>
@@ -38,7 +38,7 @@
         <div class="product-image " id="galleriaSection">
           <div id="myCarousel-2" class="carousel slide">
             <div class="carousel-inner">
-              <p-galleria [value]="images" [responsiveOptions]="responsiveOptions" [showThumbnailNavigators]="false"
+              <p-galleria [value]="_ProductDetailsService.images" [responsiveOptions]="responsiveOptions" [showThumbnailNavigators]="false"
                 [showItemNavigators]="true" [numVisible]="4" [thumbnailsPosition]="thumbnailsPosition"
                 [circular]="false" [containerStyle]="{ 'max-width': '640px ' }">
 
@@ -48,8 +48,8 @@
 
                 <ng-template pTemplate="thumbnail" let-item>
                   <div class="grid grid-nogutter justify-content-center "
-                    [ngClass]="{ 'active-thumbnail': item === activeItem, 'non-active-thumbnail': item !== activeItem }">
-                    <img [src]="item.thumbnail" class="img-fluid rounded thumbnail-image" (click)="setActiveItem(item)"
+                    [ngClass]="{ 'active-thumbnail': item === _ProductDetailsService.activeItem, 'non-active-thumbnail': item !== _ProductDetailsService.activeItem }">
+                    <img [src]="item.thumbnail" class="img-fluid rounded thumbnail-image" (click)="_ProductDetailsService.setActiveItem(item)"
                       style="width: 84.8px !important; height: 80px !important; " />
                   </div>
                 </ng-template>
@@ -61,14 +61,14 @@
       </div>
 
 
-      <div class="col-lg-6 container col-lg-offset-1 col-md-12  col-sm-12 col-xs-12 besideSection">
+      <div class="col-lg-6 col-md-12  col-sm-12 col-xs-12 besideSection">
 
-        <drag-scroll [scrollbar-hidden]="true" [drag-scroll-x-disabled]="false" [drag-scroll-disabled]="isDragScrollDisabled" id="scrollHeight">
+        <drag-scroll [scrollbar-hidden]="true" [drag-scroll-disabled]="isDragScrollDisabled" id="scrollHeight">
 
           <!-- Product Name -->
           <div class="d-flex justify-content-between txtOfProdName" id="proHeaderid">
             <p>
-              {{ProductDetails.product.displayName}}
+              {{_ProductDetailsService.product.displayName}}
             </p>
             <p>
               {{_ProductDetailsService.price}} L.E
@@ -79,7 +79,7 @@
           <div class="txtOfProdDesc ">
             <span>
               <!-- There is not description yet ! -->
-              {{ProductDetails.product.description}}
+              {{_ProductDetailsService.product.description}}
             </span>
           </div>
 
@@ -92,16 +92,15 @@
 
               <div class="product-header d-flex justify-content-between align-items-center mb-2 mt-4 me-4">
                 <p>Best Picks</p>
-                <a routerLink="" (click)="animateAndNavigate()" #LearnMore>Learn more </a>
+                <a routerLink="" (click)="animateLearnMore()" #LearnMore>Learn more </a>
               </div>
 
-              <!-- [class.active]="isActive" === [ngclass] -->
               <div class="row">
                 <div class="col-12 col-md-12">
 
                   <div class="d-flex justify-content-between col">
 
-                    <div class="d-flex justify-content-between cardOfFilter cardOfFilterBlock col me-4"
+                    <div class="d-flex justify-content-between cardOfFilter cardOfFilterBlock col mt-3 me-4"
                       [class.active]="isActiveLowestPrice" (click)="toggleActive('LowestPrice')">
 
                       @if (isActiveLowestPrice) {
@@ -160,11 +159,11 @@
                       }
 
                       <div class="txtOfFilterItem">Lowest Price</div>
-                      <div class="txtOfPriceItem">{{ProductDetails.product.lowestPrice}} L.E</div>
+                      <div class="txtOfPriceItem">{{_ProductDetailsService.lowestPrice}} L.E</div>
                     </div>
 
 
-                    <div class="d-flex justify-content-between cardOfFilter cardOfFilterBlock col me-4"
+                    <div class="d-flex justify-content-between cardOfFilter cardOfFilterBlock col mt-3 me-4"
                       [class.activeMostPopular]="isActiveMostPopular" (click)="toggleActive('MostPopular')">
                       @if (isActiveMostPopular) {
                       <svg class="checkmark" width="35" height="36" viewBox="0 0 35 36" fill="none"
@@ -202,7 +201,7 @@
                       }
 
                       <div class="txtOfFilterItem">Most Popular</div>
-                      <div class="txtOfPriceItem">{{mostPopularPrice}} L.E</div>
+                      <div class="txtOfPriceItem">{{_ProductDetailsService.mostPopular}} L.E</div>
                     </div>
 
                   </div>
@@ -211,83 +210,14 @@
 
             </div>
 
-            <!-- condition -->
+            <!-- Filtration -->
             <div>
               @for (item of _ProductDetailsService.variantsGroup.reverse(); track $index) {
-                {{$index}}
-
-
               <app-product-variants [productVariants]="item"></app-product-variants>
-
               }
             </div>
 
-            <!-- Storage -->
-            <!-- <div>
-
-              <div class="product-header d-flex justify-content-between align-items-center mb-2 mt-4 me-4">
-                <p>Storage</p>
-              </div>
-
-              <div class="d-flex justify-content-between col">
-
-
-                <div class=" cardOfFilter col me-4" [class.Active128]="is128" (click)="toggleActiveStorage('128')">
-                  <div class="txtOfFilterItem3">128 GB</div>
-                </div>
-
-                <div class=" cardOfFilter col me-4" [class.Active128]="is256" (click)="toggleActiveStorage('256')">
-                  <div class="txtOfFilterItem3">256 GB</div>
-                </div>
-
-                <div class="cardOfFilter col me-4" [class.Active128]="is512" (click)="toggleActiveStorage('512')">
-                  <div class="txtOfFilterItem3">512 GB</div>
-                </div>
-
-              </div>
-
-            </div> -->
-
-            <!-- Color -->
-            <!-- <div>
-
-              <div class="product-header d-flex justify-content-between align-items-center mb-2 mt-4 me-4">
-                <p>Color</p>
-              </div>
-
-              <div class="d-flex justify-content-between col">
-
-
-                <div class="d-flex cardOfFilter justify-content-center col me-4" [class.ActiveGrey]="isActiveGrey"
-                  (click)="toggleActiveColor('Grey')">
-
-                  @if(!isActiveGrey){
-                  <span class="dotOfGrey me-2"></span>
-                  }
-                  <div class="txtOfFilterItem3">Space Grey</div>
-
-                </div>
-
-
-                <div class="d-flex justify-content-center cardOfFilter col me-4" [class.ActiveSilver]="isActiveSilver"
-                  (click)="toggleActiveColor('Silver')">
-
-                  @if(!isActiveSilver){
-
-                  <span class="dotOfSilver me-2"></span>
-                  }
-                  <div class="txtOfFilterItem3"> Silver </div>
-
-                </div>
-
-                <div class="  col me-4">
-
-                </div>
-
-              </div>
-
-            </div> -->
-
+            
             <!-- Comes with -->
             <!-- <div>
 

@@ -12,9 +12,14 @@ import { ProductDetailsService } from '../../../../../../Services/ProductService
 export class ConditionComponent implements OnInit {
   price:number = 0;
 
+  
+  @Input() value!:IVariantValues;
   @Output() variantClick = new EventEmitter<IVariantValues>();
+
+  constructor(private productDetailsService:ProductDetailsService) {}
+
   ngOnInit(): void {
-    console.log(this.value);
+    // console.log(this.value);
     if (this.value.isAvailable) {
     // this.price= this.productDetailsService.selectedStockPrice(this.value.uuid);
     this.productDetailsService.loadSelectedStock(this.value.uuid).subscribe(stock=>{
@@ -22,7 +27,5 @@ export class ConditionComponent implements OnInit {
     })
     }
   }
-  @Input() value!:IVariantValues;
-  constructor(private productDetailsService:ProductDetailsService) {}
 
 }

@@ -5,6 +5,7 @@ import {
   IselectedStock as SelectedStock,
   Ivalues,
   IselectedStock,
+  IProductInDetails,
 } from '../../Models/Product/Prod-Details/IProductDetails';
 import { VariantType } from '../../Models/Product/Prod-Details/enum/variant-type';
 import { IProductDetailsParams } from '../../Models/Product/Prod-Details/IProductDetailsParams';
@@ -21,10 +22,16 @@ export class ProductDetailsService {
   previousStockUuid: string = '';
   productUuid: string = '';
   mostPopular: string = '';
+  lowestPrice:string='';
   price!:number;
+  images: any[] = [];
+  product!: IProductInDetails;
+  activeItem: any;
+
+
   constructor(private productApi: ProductApiService) {}
 
-  loadProductVariant(id = '0e2798cb-7bf5-4eea-a8b8-84405f8a4046') {
+  loadProductVariant(id = 'bb015b57-50ac-4c48-965f-04e1f5d70d0f') {
     this.productApi
       .getProductDetails({
         productUuid: id,
@@ -40,10 +47,25 @@ export class ProductDetailsService {
           );
 
         });
+
+         // For gallery:
+         if (data && data.photoPaths) {  
+          this.images = data.product.photos.map((photo) => ({
+            source: `https://dayra-market.addictaco.com${photo}`,
+            thumbnail: `https://dayra-market.addictaco.com${photo}`,
+          }));
+        } else {
+          console.log(
+            'Error in ProductDetails or photoPaths are missing'
+          );
+        }
+
         this.availableAttributes = data.availableAttributes;
         this.previousStockUuid = data.selectedStock.uuid;
         this.productUuid = data.product.uuid;
+        this.product = data.product;
         this.mostPopular = data.selectedStock.price.toString();
+        this.lowestPrice = data.product.lowestPrice.toString();
         this.price=data.product.lowestPrice;
       });
   }
@@ -60,6 +82,8 @@ export class ProductDetailsService {
         return VariantType.None;
     }
   }
+
+
   loadSelectedStock(attributeValueId: string) {
   return this.productApi
       .getProductDetails({
@@ -73,11 +97,18 @@ export class ProductDetailsService {
   }
 
   getSelectedStock(stockId: string) {
-    console.log("hi");
     this.loadSelectedStock(stockId).subscribe(stock=>{
       this.price=stock.price;
       this.previousStockUuid=stock.uuid;
-      console.log("hi too");
+      console.log(this.price + " " + stockId);
+      
     });
   }
+
+  // For Gallery
+  setActiveItem(item: any): void {
+    this.activeItem = item;
+  }
+  
+
 }

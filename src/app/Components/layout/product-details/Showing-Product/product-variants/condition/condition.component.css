@@ -1,0 +1,171 @@
+
+/* items of filtration */
+.cardOfFilter {
+    border-radius: 6px;
+    padding: 16px;
+    background-color: rgba(240, 240, 240, 1);
+    position: relative;
+  }
+  
+  .cardOfFilter:hover {
+    cursor: pointer;
+  }
+
+
+  /* === */
+  /* Texts */
+  .txtOfFilterItem2 {
+    color: rgba(0, 0, 0, 0.8);
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 16px;
+    font-family: "Montserrat", sans-serif;
+    text-align: center;
+  }
+
+  .txtOfPriceItem {
+    color: rgba(0, 0, 0, 0.6);
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    font-family: "Montserrat", sans-serif;
+    text-align: center;
+  }
+
+/* === */
+/* Fair Active */
+.cardOfFilter.ActiveFair {
+    background-color: rgba(92, 103, 98, 1);
+    cursor: default;
+  }
+  
+  .cardOfFilter.ActiveFair .txtOfFilterItem2,
+  .cardOfFilter.ActiveFair .txtOfPriceItem {
+    color: white;
+  }
+  
+  /* Good  Active*/
+  .cardOfFilter.ActiveGood {
+    background-color: rgba(139, 151, 145, 1);
+    cursor: default;
+  }
+  
+  .cardOfFilter.ActiveGood .txtOfFilterItem2,
+  .cardOfFilter.ActiveGood .txtOfPriceItem {
+    color: white;
+  }
+  
+  /* Excellent Active*/
+  .cardOfFilter.ActiveExcellent {
+    background-color: rgba(42, 52, 48, 1);
+    cursor: default;
+  }
+  
+  .cardOfFilter.ActiveExcellent .txtOfFilterItem2,
+  .cardOfFilter.ActiveExcellent .txtOfPriceItem {
+    color: white;
+  }
+  
+
+  /* === */
+  /* Disabled to click */
+  .disables{
+    pointer-events: none;
+    opacity: 0.4;
+  }
+
+
+/* svg position */
+.checkmark {
+    position: absolute;
+    top: -20px;
+    right: -13px;
+    z-index: 1;
+  }
+
+
+  /* === */
+  /* Responsive */
+
+  @media screen and (max-width: 1399px) {
+   
+    .txtOfFilterItem2
+     {
+      font-size: 13px;
+    }
+    .txtOfPriceItem {
+      font-size: 10px;
+    }
+  }
+
+
+  @media screen and (max-width: 475px) {
+    .cardOfFilterBlock {
+      display: block !important;
+    }
+    .cardOfFilter {
+        padding: 8px;
+      }
+ 
+  }
+
+  @media screen and (max-width: 600px) {
+  
+    .txtOfFilterItem2
+     {
+      font-size: 11px;
+    }
+    .txtOfPriceItem {
+        font-size: 9px;
+      }
+}
+
+@media screen and (max-width: 375px) {
+  .checkmark {
+    width: 30px;
+  }
+
+}
+
+/* ======== */
+/* Responsive */
+
+@media screen and (max-width: 1399px) {
+
+  .txtOfFilterItem2{
+    font-size: 13px;
+  }
+  .txtOfPriceItem {
+    font-size: 10px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  
+  .txtOfFilterItem2 {
+    font-size: 11px;
+  }
+  .txtOfPriceItem {
+    font-size: 9px;
+  }
+  
+}
+
+@media screen and (max-width: 475px) {
+  .cardOfFilterBlock {
+    display: block !important;
+  }
+ 
+  .cardOfFilter {
+    padding: 8px;
+  }
+
+}
+
+@media screen and (max-width: 375px) {
+
+  .checkmark {
+    width: 30px;
+  }
+
+}

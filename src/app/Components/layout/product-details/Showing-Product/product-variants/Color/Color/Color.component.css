@@ -1,0 +1,95 @@
+/* items of filtration */
+.cardOfFilter {
+  border-radius: 6px;
+  padding: 16px;
+  background-color: rgba(240, 240, 240, 1);
+  position: relative;
+}
+
+.cardOfFilter:hover {
+  cursor: pointer;
+}
+
+/* === */
+/* Disabled to click */
+.disables {
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+/* === */
+/* color text */
+
+.txtOfFilterItem3 {
+  color: rgba(0, 0, 0, 0.8);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 16px;
+  text-align: center;
+}
+
+/* Span of color */
+.dotOfColor {
+  border: 0.3px rgb(227, 223, 223) solid;
+  padding: 7px;
+  border-radius: 50%;
+  width: 14px;
+  height: 14px;
+}
+
+/*  Activation */
+.ActiveColor {
+color: white !important;
+font-weight: 500;
+}
+
+
+.ActiveDot{
+  display: none;
+}
+
+
+
+
+/* ======== */
+/* Responsive */
+
+@media screen and (max-width: 1399px) {
+
+ 
+  .txtOfFilterItem3 {
+    font-size: 13px;
+  }
+  .txtOfPriceItem {
+    font-size: 10px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+
+  .txtOfFilterItem3 {
+    font-size: 11px;
+  }
+  .txtOfPriceItem {
+    font-size: 9px;
+  }
+
+}
+
+@media screen and (max-width: 475px) {
+  .cardOfFilterBlock {
+    display: block !important;
+  }
+   
+  .cardOfFilter {
+    padding: 8px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+
+  .txtOfFilterItem3 {
+    font-size: 9px;
+  }
+}
+

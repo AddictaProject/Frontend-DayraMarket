@@ -1,0 +1,11 @@
+<div class="d-flex justify-content-center cardOfFilter cardOfFilterBlock  col-11 mt-3"
+  (click)="variantClick.emit(value)" [class.Active128]=" this.value.isClicked==true"
+  [class.disables]="!value.isAvailable" >
+
+  <div class="txtOfFilterItem3 ">
+    {{value.displayName}}
+  </div>
+
+
+
+</div>

@@ -106,6 +106,8 @@ p , span ,a ,div{
   font-weight: 500;
   line-height: 17.07px;
   color: rgba(0, 0, 0, 0.4);
+  margin-bottom: 0;
+
 }
 
 .product-header a {
@@ -187,76 +189,6 @@ p , span ,a ,div{
   color: white;
 }
 
-/* === */
-/* Condition */
-
-/* Fair Active */
-.cardOfFilter.ActiveFair {
-  background-color: rgba(92, 103, 98, 1);
-  cursor: default;
-}
-
-.cardOfFilter.ActiveFair .txtOfFilterItem2,
-.cardOfFilter.ActiveFair .txtOfPriceItem {
-  color: white;
-}
-
-/* Good  Active*/
-.cardOfFilter.ActiveGood {
-  background-color: rgba(139, 151, 145, 1);
-  cursor: default;
-}
-
-.cardOfFilter.ActiveGood .txtOfFilterItem2,
-.cardOfFilter.ActiveGood .txtOfPriceItem {
-  color: white;
-}
-
-/* Excellen  Active*/
-.cardOfFilter.ActiveExcellen {
-  background-color: rgba(42, 52, 48, 1);
-  cursor: default;
-}
-
-.cardOfFilter.ActiveExcellen .txtOfFilterItem2,
-.cardOfFilter.ActiveExcellen .txtOfPriceItem {
-  color: white;
-}
-
-/* === */
-/* Storage */
-.cardOfFilter.Active128 {
-  background-color: rgba(120, 120, 120, 1);
-  cursor: default;
-}
-
-.cardOfFilter.Active128 .txtOfFilterItem3 {
-  color: white;
-}
-
-/* === */
-/* color */
-/* Grey */
-.cardOfFilter.ActiveGrey {
-  background-color: rgba(82, 81, 79, 1);
-  cursor: default;
-}
-
-.cardOfFilter.ActiveGrey .txtOfFilterItem3 {
-  color: white;
-}
-
-/* ActiveSilver */
-.cardOfFilter.ActiveSilver {
-  background-color: rgba(197, 197, 197, 1);
-  cursor: default;
-}
-
-.cardOfFilter.ActiveSilver .txtOfFilterItem3 {
-  color: rgba(0, 0, 0, 1);
-  font-weight: 500;
-}
-
 /* svg position */
 .checkmark {
   position: absolute;
@@ -283,34 +215,6 @@ p , span ,a ,div{
   text-align: center;
 }
 
-.txtOfFilterItem2 {
-  color: rgba(0, 0, 0, 0.8);
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 16px;
-  font-family: "Montserrat", sans-serif;
-  text-align: center;
-}
-
-.txtOfFilterItem3 {
-  color: rgba(0, 0, 0, 0.8);
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 16px;
-  font-family: "Montserrat", sans-serif;
-  text-align: center ;
-}
-
-.cardOfFilter span {
-  border-radius: 50%;
-  width: 14px;
-  height: 14px;
-}
-
-.dotOfColor {
-border: .3px rgb(227, 223, 223) solid;
-padding: 7px;
-}
 
 
 /* === */
@@ -458,10 +362,6 @@ padding: 7px;
   }
 }
 
-/* @media (min-width: 991px) {
-
-} */
-
 @media (max-width: 991px) {
   #hiddenDiv {
     display: block !important;
@@ -599,9 +499,3 @@ padding: 7px;
  }
 }
 
-
-.disables{
-  pointer-events: none;
-  opacity: 0.4;
-
-}
