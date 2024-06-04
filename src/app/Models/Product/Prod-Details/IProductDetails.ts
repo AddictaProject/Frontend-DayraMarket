@@ -14,8 +14,13 @@ export interface IselectedStock {
     // stockid
     uuid:string;
     price :number;
-    attributes:any[];
+    attributes:IattributesInSelectedStock[];
 
+}
+
+export interface IattributesInSelectedStock {
+    attributeValueUuid:string;
+    attributeValue :string;
 }
 
 export interface IProductInDetails {

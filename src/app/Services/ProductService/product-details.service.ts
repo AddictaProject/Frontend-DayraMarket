@@ -21,13 +21,15 @@ export class ProductDetailsService {
   attributesValues!: Ivalues[];
   previousStockUuid: string = '';
   productUuid: string = '';
-  mostPopular: string = '';
-  lowestPrice:string='';
-  price!:number;
+  mostPopularPrice: string = '';
+  lowestPrice: string = '';
+  price!: number;
   images: any[] = [];
   product!: IProductInDetails;
   activeItem: any;
 
+  // allAttributes:IVariantValues [][]=[];
+  allAttributes: { attributesUuid: string[]; values: IVariantValues[] }[] = [];
 
   constructor(private productApi: ProductApiService) {}
 
@@ -45,28 +47,45 @@ export class ProductDetailsService {
           variant.type = this.getVariantType(
             variant.attributeDisplayName.toLowerCase()
           );
-
         });
 
-         // For gallery:
-         if (data && data.photoPaths) {  
+        data.product.groupedVariants.forEach((v) => {
+          let valueSelections = v.values.map((value) => {
+            return {
+              uuid: value.uuid,
+              displayName: value.value,
+              isClicked: false,
+              isAvailable: false,
+            };
+          });
+          this.allAttributes.push({
+            attributesUuid: data.selectedStock.attributes.map((value) => value.attributeValueUuid),
+            values: valueSelections,
+          });
+        });
+
+
+        console.log(this.allAttributes);
+
+        // For gallery:
+        if (data && data.photoPaths) {
           this.images = data.product.photos.map((photo) => ({
             source: `https://dayra-market.addictaco.com${photo}`,
             thumbnail: `https://dayra-market.addictaco.com${photo}`,
           }));
         } else {
-          console.log(
-            'Error in ProductDetails or photoPaths are missing'
-          );
+          console.log('Error in ProductDetails or photoPaths are missing');
         }
 
         this.availableAttributes = data.availableAttributes;
         this.previousStockUuid = data.selectedStock.uuid;
         this.productUuid = data.product.uuid;
         this.product = data.product;
-        this.mostPopular = data.selectedStock.price.toString();
+        this.mostPopularPrice = data.selectedStock.price.toString();
         this.lowestPrice = data.product.lowestPrice.toString();
-        this.price=data.product.lowestPrice;
+        this.price = data.product.lowestPrice;
+
+    
       });
   }
 
@@ -83,25 +102,22 @@ export class ProductDetailsService {
     }
   }
 
-
   loadSelectedStock(attributeValueId: string) {
-  return this.productApi
+    return this.productApi
       .getProductDetails({
         productUuid: this.productUuid,
         lowestPrice: false,
         attributeValueUuid: attributeValueId,
         previousStockUuid: this.previousStockUuid,
-      }).pipe(
-        map(data=>data.selectedStock)
-      );
+      })
+      .pipe(map((data) => data.selectedStock));
   }
 
   getSelectedStock(stockId: string) {
-    this.loadSelectedStock(stockId).subscribe(stock=>{
-      this.price=stock.price;
-      this.previousStockUuid=stock.uuid;
-      console.log(this.price + " " + stockId);
-      
+    this.loadSelectedStock(stockId).subscribe((stock) => {
+      this.price = stock.price;
+      this.previousStockUuid = stock.uuid;
+      console.log(this.price + ' ' + stockId);
     });
   }
 
@@ -109,6 +125,4 @@ export class ProductDetailsService {
   setActiveItem(item: any): void {
     this.activeItem = item;
   }
-  
-
 }
