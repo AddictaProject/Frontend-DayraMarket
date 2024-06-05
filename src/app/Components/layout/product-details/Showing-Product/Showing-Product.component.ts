@@ -14,6 +14,7 @@ import { GalleriaModule } from 'primeng/galleria';
 import { ProductApiService } from '../../../../Services/ProductService/product-api.service';
 import { ProductDetailsService } from '../../../../Services/ProductService/product-details.service';
 import { ProductVariantsComponent } from './product-variants/product-variants.component';
+import { OffCanvasService } from '../../../../Services/ProductService/offCanvas.service';
 
 @Component({
   selector: 'app-Showing-Product',
@@ -30,7 +31,6 @@ import { ProductVariantsComponent } from './product-variants/product-variants.co
   ],
 })
 export class ShowingProductComponent implements OnInit {
-
   isActiveLowestPrice: boolean = false;
   isActiveMostPopular: boolean = true;
   isDragScrollDisabled: boolean = false;
@@ -53,13 +53,9 @@ export class ShowingProductComponent implements OnInit {
   @ViewChild('LearnMore') LearnMore!: ElementRef;
 
   constructor(
-    private router: Router,
-    private route: ActivatedRoute,
-    private _ProductService: ProductApiService,
-    public _ProductDetailsService: ProductDetailsService
-  ) {
-
-  }
+    public _ProductDetailsService: ProductDetailsService,
+    private offCanvasOb: OffCanvasService
+  ) {}
 
   url!: string;
 
@@ -72,22 +68,19 @@ export class ShowingProductComponent implements OnInit {
     this.updateDragScrollStatus();
   }
 
-
   // Animation For Learn more
   animateLearnMore() {
     const element = this.LearnMore.nativeElement;
     element.classList.add('dissolve');
   }
 
-
   // offcanvas
   isOffCanvasVisible = false;
-  showOffCanvas() {
-    this.isOffCanvasVisible = true;
+ 
+  toggleOffCanvas() {
+    this.offCanvasOb.toggleOffcanvas(!this.isOffCanvasVisible);
   }
-  hideOffCanvas() {
-    this.isOffCanvasVisible = false;
-  }
+
 
 
   // Best Picks
@@ -95,12 +88,13 @@ export class ShowingProductComponent implements OnInit {
     if (card === 'LowestPrice') {
       this.isActiveLowestPrice = true;
       this.isActiveMostPopular = false;
-      this._ProductDetailsService.price=+this._ProductDetailsService.lowestPrice;
+      this._ProductDetailsService.price =
+        +this._ProductDetailsService.lowestPrice;
     } else if (card === 'MostPopular') {
       this.isActiveMostPopular = true;
       this.isActiveLowestPrice = false;
-      this._ProductDetailsService.price=+this._ProductDetailsService.mostPopularPrice;
-
+      this._ProductDetailsService.price =
+        +this._ProductDetailsService.mostPopularPrice;
     }
   }
 

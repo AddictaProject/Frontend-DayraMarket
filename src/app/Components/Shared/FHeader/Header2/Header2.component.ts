@@ -7,18 +7,26 @@ import {
   ViewChild,
 } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { OffCanvasService } from '../../../../Services/ProductService/offCanvas.service';
 
 @Component({
   selector: 'app-Header2',
   standalone: true,
-  imports: [RouterModule,CommonModule ],
+  imports: [RouterModule, CommonModule],
   templateUrl: './Header2.component.html',
   styleUrls: ['./Header2.component.css'],
 })
 export class Header2Component implements OnInit {
-  constructor() {}
+  isOffcanvasOpen!: boolean ;
 
-  ngOnInit() {}
+  constructor(private offCanvasOb: OffCanvasService) {}
+
+  ngOnInit() {
+    this.offCanvasOb.isOffcanvasOpen$.subscribe((isOpen) => {
+      this.isOffcanvasOpen = isOpen;
+      console.log(this.isOffcanvasOpen);
+    });
+  }
 
 
   smartTechList: string[] = [
@@ -40,7 +48,6 @@ export class Header2Component implements OnInit {
     'HomePod',
   ];
 
-
   isOffCanvasVisible = false;
 
   showOffCanvas() {
@@ -50,6 +57,4 @@ export class Header2Component implements OnInit {
   hideOffCanvas() {
     this.isOffCanvasVisible = false;
   }
-
-
 }

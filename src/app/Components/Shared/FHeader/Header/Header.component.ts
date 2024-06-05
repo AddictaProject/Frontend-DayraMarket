@@ -1,18 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { OffCanvasService } from '../../../../Services/ProductService/offCanvas.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-Header',
   standalone: true,
-  imports: [ RouterModule],
+  imports: [ RouterModule,CommonModule],
   templateUrl: './Header.component.html',
   styleUrls: ['./Header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  isOffcanvasOpen!: boolean;
 
-  constructor() { }
+  constructor(private offCanvasOb : OffCanvasService) { }
   
   ngOnInit() {
+    this.offCanvasOb.isOffcanvasOpen$.subscribe((isOpen) => {
+      this.isOffcanvasOpen = isOpen;
+      console.log(this.isOffcanvasOpen);
+      
+    });
   }
 
   // For Dropdown List Of User :

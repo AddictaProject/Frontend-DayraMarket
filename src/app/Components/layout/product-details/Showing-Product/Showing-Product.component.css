@@ -1,7 +1,8 @@
-
-p , span ,a ,div{
+p,
+span,
+a,
+div {
   text-wrap: wrap;
-
 }
 
 /*===*/
@@ -107,7 +108,6 @@ p , span ,a ,div{
   line-height: 17.07px;
   color: rgba(0, 0, 0, 0.4);
   margin-bottom: 0;
-
 }
 
 .product-header a {
@@ -169,9 +169,9 @@ p , span ,a ,div{
 }
 
 /* Hide scrollbar for IE, Edge and Firefox */
-#scrollHeight{
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+#scrollHeight {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 /* Name product */
 #hiddenDiv {
@@ -225,8 +225,6 @@ p , span ,a ,div{
   text-align: center;
 }
 
-
-
 /* === */
 /* Add To Cart */
 .btnAddToCart {
@@ -235,8 +233,7 @@ p , span ,a ,div{
       96.03% 11208.71% at 3.97% 14.29%,
       rgba(11, 120, 78, 0.8) 0%,
       rgba(12, 87, 58, 0.8) 100%
-    )
-    /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
+    );
   color: white;
   font-weight: 500;
   font-size: 18px;
@@ -293,7 +290,6 @@ p , span ,a ,div{
 /* OffCanvases */
 
 .HeadOfOffcanvas {
-  /* padding-bottom: 20px; */
   border-bottom: 1px rgba(0, 0, 0, 0.15) solid;
 }
 
@@ -310,17 +306,136 @@ p , span ,a ,div{
 }
 
 .offcanvas {
-  overflow-y: auto;
-  /* width: 265px;
-  min-width: 18%; */
+  width: 431px;
+  min-width: 18%;
   border: 1px, 0px, 0px, 0px;
   border-color: rgba(212, 212, 212, 1);
-  top: 120px;
-}
+  top: 0;
+  overflow-y: scroll;
 
+}
+.off-canvas.open {
+  transform: translateX(0);
+}
 .offcanvas .btn-close {
   visibility: hidden;
 }
+
+/* === */
+/* Side Section Technical */
+.HeaderSideOffCanvas {
+  padding-bottom: 30px;
+  color: rgba(9, 118, 76, 0.8);
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: 8%;
+  line-height: 21.94px;
+  border-bottom: rgba(193, 193, 193, 1) 1px solid;
+  padding-top: 0;
+  
+}
+
+.HeaderSideOffCanvas span {
+  text-align: center;
+}
+
+.offcanvas-body {
+  margin: 40px 0;
+}
+
+/*  Hide Scroll  */
+.ffcanvas::-webkit-scrollbar ,.offcanvas-end::-webkit-scrollbar,
+.offcanvas-body::-webkit-scrollbar{
+ display: none !important;
+}
+
+/* Body */
+.textOfDescriptionTech{
+font-weight: 400;
+color: rgba(98, 98, 98, 1);
+font-size: 16px;
+letter-spacing: 2px;
+line-height: 21.74px;
+margin-top: 25px;
+
+}
+
+.VerifiedTxtTechOff{
+  font-weight: 500;
+color: rgba(0, 0, 0, 1);
+font-size: 16px;
+letter-spacing: 1px;
+line-height: 21.74px;
+margin-top: 40px;
+}
+
+.RebornTxtOff{
+  font-weight: 400;
+  color: rgba(98, 98, 98, 1);
+  font-size: 15px;
+  letter-spacing: 1.5px;
+  line-height: 20.38px;
+  margin-top: 20px;
+}
+
+.searchOffTech{
+  margin-top: 40px;
+
+}
+input[type="text"]{
+  background-color: rgba(244, 244, 244, 1);
+  border-radius: 6px;
+  width: 100%;
+  outline: none;
+  border: none;
+  padding: 10px 16px;
+}
+input[type="search"]::-webkit-search-cancel-button {
+  color: #000;
+}
+
+
+input::placeholder ,input::-moz-placeholder
+,input:-ms-input-placeholder ,input::-ms-input-placeholder  
+,input:-moz-placeholder {
+color: rgba(133, 133, 133, 1);
+font-weight: 400;
+font-size: 14px;
+letter-spacing: 1.5px;
+line-height: 19.03px;
+}
+
+.txtOfManufacturingOff ,.txtOfMGN63LLOff{
+  color:rgba(71, 71, 71, 1);
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: 1px;
+  line-height: 21.48px;
+}
+
+.ManufacturingOff{
+  border-bottom: rgba(193, 193, 193, 1) 1px solid;
+
+}
+
+/* === */
+/* Perks & benefits */
+
+.txtMainPerks{
+  color:rgba(0, 0, 0, 1);
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 1px;
+  line-height: 21.74px;
+}
+.txtDecriptionPerks{
+  color:rgba(98, 98, 98, 1);
+  font-weight: 400;
+  font-size: 15px;
+  letter-spacing: 1px;
+  line-height:20.38px;
+}
+
 
 /* === */
 /* Refurbished section */
@@ -490,22 +605,20 @@ p , span ,a ,div{
   }
 
   .totalReviews span,
-  .totalReviews p{
+  .totalReviews p {
     font-size: 11px;
   }
 
   .moreLink {
     font-size: 9px;
   }
- .svgWidth{
-  width: 30px;
- }
- .txtOfLive{
-  font-size: 9px;
- }
- .txtOfFirstRefurbished{
-  font-size: 12px;
-
- }
+  .svgWidth {
+    width: 30px;
+  }
+  .txtOfLive {
+    font-size: 9px;
+  }
+  .txtOfFirstRefurbished {
+    font-size: 12px;
+  }
 }
-

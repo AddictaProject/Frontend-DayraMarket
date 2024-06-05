@@ -19,7 +19,7 @@
 
 
   <!-- product -->
-  <div >
+  <div>
     <div class="row product">
 
       <div class="col-lg-6 col-md-12 col-sm-12 col-12">
@@ -38,9 +38,10 @@
         <div class="product-image " id="galleriaSection">
           <div id="myCarousel-2" class="carousel slide">
             <div class="carousel-inner">
-              <p-galleria [value]="_ProductDetailsService.images" [responsiveOptions]="responsiveOptions" [showThumbnailNavigators]="false"
-                [showItemNavigators]="true" [numVisible]="4" [thumbnailsPosition]="thumbnailsPosition"
-                [circular]="false" [containerStyle]="{ 'max-width': '640px ' }">
+              <p-galleria [value]="_ProductDetailsService.images" [responsiveOptions]="responsiveOptions"
+                [showThumbnailNavigators]="false" [showItemNavigators]="true" [numVisible]="4"
+                [thumbnailsPosition]="thumbnailsPosition" [circular]="false"
+                [containerStyle]="{ 'max-width': '640px ' }">
 
                 <ng-template pTemplate="item" let-item>
                   <img [src]="item.source" class="img-fluid rounded imgOfGalleria" [alt]="item.alt" />
@@ -49,7 +50,8 @@
                 <ng-template pTemplate="thumbnail" let-item>
                   <div class="grid grid-nogutter justify-content-center "
                     [ngClass]="{ 'active-thumbnail': item === _ProductDetailsService.activeItem, 'non-active-thumbnail': item !== _ProductDetailsService.activeItem }">
-                    <img [src]="item.thumbnail" class="img-fluid rounded thumbnail-image" (click)="_ProductDetailsService.setActiveItem(item)"
+                    <img [src]="item.thumbnail" class="img-fluid rounded thumbnail-image"
+                      (click)="_ProductDetailsService.setActiveItem(item)"
                       style="width: 84.8px !important; height: 80px !important; " />
                   </div>
                 </ng-template>
@@ -63,7 +65,7 @@
 
       <div class="col-lg-6 col-md-12  col-sm-12 col-xs-12 besideSection">
 
-        <div  id="scrollHeight">
+        <div id="scrollHeight">
 
           <!-- Product Name -->
           <div class="d-flex justify-content-between txtOfProdName" id="proHeaderid">
@@ -370,7 +372,7 @@
           <!-- Technical offcanvas -->
           <div>
             <!-- Button of Technical offcanvas -->
-            <div class=" HeadOfOffcanvas py-2">
+            <div class=" HeadOfOffcanvas py-2" (click)="toggleOffCanvas()">
 
               <a class="btn border-0 d-flex justify-content-between " data-bs-toggle="offcanvas"
                 href="#offcanvasTechnical" role="button" data-bs-target="#offcanvasTechnical"
@@ -392,32 +394,53 @@
             </div>
 
             <!-- The exact Offcanvas -->
-            <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasTechnical"
-              aria-labelledby="offcanvasTechnicalLabel">
+            <div class="offcanvas offcanvas-end container" [class.open]="isOffCanvasVisible" data-bs-scroll="false"
+              tabindex="-1" id="offcanvasTechnical" aria-labelledby="offcanvasTechnicalLabel">
 
-              <div class="container mt-5">
+              <div class="offcanvas-body ">
 
-                <div class="offcanvas-head d-flex">
+                <!-- Header -->
+                <div class="HeaderSideOffCanvas">
 
-                  <svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <svg class="me-5" width="8" height="13" viewBox="0 0 8 13" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" clip-rule="evenodd"
                       d="M2.29464 0.74855C1.87428 0.333585 1.19845 0.333583 0.778093 0.748549C0.349998 1.17116 0.349998 1.86218 0.778094 2.28478L3.60626 5.07669C4.39951 5.85978 4.39951 7.14022 3.60626 7.92331L0.778093 10.7152C0.349997 11.1378 0.349998 11.8288 0.778094 12.2515C1.19845 12.6664 1.87428 12.6664 2.29463 12.2515L6.67899 7.92331C7.47224 7.14023 7.47224 5.85978 6.67899 5.07669L2.29464 0.74855Z"
                       fill="#09764C" fill-opacity="0.8" />
                   </svg>
 
-                  <span style="text-align: center;">Technical specifications</span>
+                  <span>Technical specifications</span>
                 </div>
 
-                <div class="offcanvas-body">
+                <!-- Description -->
+                <div class="textOfDescriptionTech">
+                  MacBook Air (2020) 13.3-inch - Apple M1 8-core and 7-core GPU - 8GB RAM - SSD 256GB
+                </div>
 
-                  <div class=" mt-3">
+                <!-- Verified -->
+                <div class="VerifiedTxtTechOff">
+                  Verified refurbished
+                </div>
 
-
-
-                  </div>
+                <!-- Reborn -->
+                <div class="RebornTxtOff">
+                  Reborn electronics are like new — just better for the planet and your pocket. Our sellers are
+                  electronics experts who test and verify that every device is clean and 100% functional before it goes
+                  out for delivery. You get what it says on the box or your money back.
                 </div>
 
 
+                <!-- Search Tech -->
+                <div class="searchOffTech ">
+                  <input type="text" placeholder="Search by Specification">
+                </div>
+
+
+                <!-- Manufacturing -->
+                <div class="justify-content-between d-flex mt-4 pb-4 ManufacturingOff">
+                  <div class="col-6 txtOfManufacturingOff">Manufacturing part numbers (MPN)</div>
+                  <div class="col-3 txtOfMGN63LLOff">MGN63LL/A</div>
+                </div>
 
 
 
@@ -425,16 +448,16 @@
 
 
 
-
-
             </div>
+
           </div>
+
 
 
           <!-- Perks offcanvas -->
           <div>
             <!-- Button of Perks offcanvas -->
-            <div class="HeadOfOffcanvas  py-2">
+            <div class="HeadOfOffcanvas  py-2" (click)="toggleOffCanvas()">
 
               <a class="btn border-0 d-flex justify-content-between " data-bs-toggle="offcanvas" href="#offcanvasPerks"
                 role="button" data-bs-target="#offcanvasPerks" aria-controls="offcanvasPerks">
@@ -455,38 +478,46 @@
             </div>
 
             <!-- The exact Offcanvas -->
-            <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasPerks"
+            <div class="offcanvas offcanvas-end container" data-bs-scroll="false" tabindex="-1" id="offcanvasPerks"
               aria-labelledby="offcanvasPerksLabel">
 
-              <div class="container mt-5">
+              <div class="offcanvas-body ">
 
-                <div class="offcanvas-head d-flex">
+                <!-- Header -->
+                <div class="HeaderSideOffCanvas">
 
-                  <svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <svg class="me-5" width="8" height="13" viewBox="0 0 8 13" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" clip-rule="evenodd"
                       d="M2.29464 0.74855C1.87428 0.333585 1.19845 0.333583 0.778093 0.748549C0.349998 1.17116 0.349998 1.86218 0.778094 2.28478L3.60626 5.07669C4.39951 5.85978 4.39951 7.14022 3.60626 7.92331L0.778093 10.7152C0.349997 11.1378 0.349998 11.8288 0.778094 12.2515C1.19845 12.6664 1.87428 12.6664 2.29463 12.2515L6.67899 7.92331C7.47224 7.14023 7.47224 5.85978 6.67899 5.07669L2.29464 0.74855Z"
                       fill="#09764C" fill-opacity="0.8" />
                   </svg>
 
-                  <span style="text-align: center;">Perks & benefits</span>
+                  <span>Perks & benefits</span>
                 </div>
 
-                <div class="offcanvas-body">
-
-                  <div class=" mt-3">
-
-
-
-                  </div>
+                <!-- Main -->
+                <div class="txtMainPerks mt-4">
+                  1-year warranty
                 </div>
 
+                <!-- Description -->
+                <div class="txtDecriptionPerks mt-3">
+                  If your item has a technical defect within the first year, we'll repair or replace it.
+                </div>
 
+                <!-- Main -->
+                <div class="txtMainPerks  mt-4">
+                  30 days to change your mind
+                </div>
 
+                <!-- Description -->
+                <div class="txtDecriptionPerks mt-3">
+                  Return your item for any reason within the first 30 days of receiving it. Simple as that!
+                </div>
 
 
               </div>
-
-
 
 
 
