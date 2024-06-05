@@ -340,7 +340,7 @@ div {
 }
 
 .offcanvas-body {
-  margin: 40px 0;
+  margin: 30px 0;
 }
 
 /*  Hide Scroll  */
@@ -436,6 +436,37 @@ line-height: 19.03px;
   line-height:20.38px;
 }
 
+/* === */
+/* Frequently asked questions */
+
+.filter-menu{
+  color:rgba(98, 98, 98, 1);
+  cursor: pointer;
+  font-weight: 400;
+  font-size: 16px;
+  letter-spacing: 1.5px;
+  line-height:21.74px;
+  border-bottom: rgba(193, 193, 193, 1) 1px solid;
+
+}
+.filter-menu i{
+  color:rgba(138, 138, 138, 0.8);
+}
+.filter-menu p{
+  margin-bottom: 0;
+}
+
+
+
+.menu div{
+  max-height: 160px ;
+  overflow-y: auto;
+  color:rgba(98, 98, 98, 1);
+  font-weight: 400;
+  font-size: 15px;
+  letter-spacing: 1px;
+  line-height:21.59px;
+}
 
 /* === */
 /* Refurbished section */

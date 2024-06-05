@@ -515,11 +515,7 @@
                 <div class="txtDecriptionPerks mt-3">
                   Return your item for any reason within the first 30 days of receiving it. Simple as that!
                 </div>
-
-
               </div>
-
-
 
             </div>
           </div>
@@ -528,7 +524,7 @@
           <!-- Frequently offcanvas -->
           <div>
             <!-- Button of Frequently offcanvas -->
-            <div class="mb-3 HeadOfOffcanvas  py-2" style="border: none !important;">
+            <div class="mb-3 HeadOfOffcanvas  py-2" (click)="toggleOffCanvas()" style="border: none !important;">
 
               <a class="btn border-0 d-flex justify-content-between " data-bs-toggle="offcanvas"
                 href="#offcanvasFrequently" role="button" data-bs-target="#offcanvasFrequently"
@@ -550,43 +546,55 @@
             </div>
 
             <!-- The exact Offcanvas -->
-            <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasFrequently"
+            <div class="offcanvas offcanvas-end container" data-bs-scroll="false" tabindex="-1" id="offcanvasFrequently"
               aria-labelledby="offcanvasFrequentlyLabel">
 
-              <div class="container mt-5">
 
-                <div class="offcanvas-head d-flex">
+              <div class="offcanvas-body ">
 
-                  <svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Header -->
+                <div class="HeaderSideOffCanvas">
+
+                  <svg class="me-5" width="8" height="13" viewBox="0 0 8 13" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" clip-rule="evenodd"
                       d="M2.29464 0.74855C1.87428 0.333585 1.19845 0.333583 0.778093 0.748549C0.349998 1.17116 0.349998 1.86218 0.778094 2.28478L3.60626 5.07669C4.39951 5.85978 4.39951 7.14022 3.60626 7.92331L0.778093 10.7152C0.349997 11.1378 0.349998 11.8288 0.778094 12.2515C1.19845 12.6664 1.87428 12.6664 2.29463 12.2515L6.67899 7.92331C7.47224 7.14023 7.47224 5.85978 6.67899 5.07669L2.29464 0.74855Z"
                       fill="#09764C" fill-opacity="0.8" />
                   </svg>
 
-                  <span style="text-align: center;">Frequently asked questions</span>
+                  <span>Frequently asked questions</span>
                 </div>
 
-                <div class="offcanvas-body">
 
-                  <div class=" mt-3">
+                <div class="filter-menu py-3" (click)="openMenu($event)">
 
+                  <div class="d-flex justify-content-between align-items-center py-3 " >
 
+                    <p>What are refurbished devices?</p>
+
+                    <i class="fa-solid fa-angle-down" style="color: #8a8a8a;"></i>
 
                   </div>
+
+                  <div class="menu d-none">
+                    Reborn electronics are like new — just better for the planet and your pocket. Our sellers are
+                    electronics experts who test and verify that every device is clean and 100% functional before it
+                    goes out for delivery. You get what it says on the box or your money back.
+
+                  </div>
+
+
                 </div>
 
-
-
-
-
+     
               </div>
 
-
-
-
-
             </div>
+
+
           </div>
+
+
 
 
           <!-- Refurbished section -->

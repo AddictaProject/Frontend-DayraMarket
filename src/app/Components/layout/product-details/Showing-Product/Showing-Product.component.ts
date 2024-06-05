@@ -76,12 +76,25 @@ export class ShowingProductComponent implements OnInit {
 
   // offcanvas
   isOffCanvasVisible = false;
- 
+
   toggleOffCanvas() {
     this.offCanvasOb.toggleOffcanvas(!this.isOffCanvasVisible);
   }
 
+  // Frequently asked questions
 
+  openMenu(event: Event) {
+    const filterMenu = (event.currentTarget as HTMLElement).closest(
+      '.filter-menu'
+    );
+    const icon = filterMenu?.querySelector('i.fa-solid');
+
+    if (icon) {
+      icon.classList.toggle('fa-angle-down');
+      icon.classList.toggle('fa-angle-up');
+    }
+    filterMenu?.querySelector('.menu')?.classList.toggle('d-none');
+  }
 
   // Best Picks
   toggleActive(card: string): void {

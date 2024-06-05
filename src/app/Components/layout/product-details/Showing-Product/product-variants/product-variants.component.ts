@@ -15,6 +15,7 @@ import { ProductDetailsService } from '../../../../../Services/ProductService/pr
 import { ConditionComponent } from './condition/condition.component';
 import { StorageVariantComponent } from './Storage/StorageVariant/StorageVariant.component';
 import { ColorComponent } from './Color/Color/Color.component';
+import { OffCanvasService } from '../../../../../Services/ProductService/offCanvas.service';
 
 @Component({
   selector: 'app-product-variants',
@@ -29,33 +30,41 @@ export class ProductVariantsComponent implements OnInit {
   @Input() productVariants!: IgroupedVariants;
 
   values: IVariantValues[] = [];
+  isOffCanvasVisible = false;
 
-  constructor(public productDetailsService: ProductDetailsService) {}
+  constructor(
+    public productDetailsService: ProductDetailsService,
+    private offCanvasOb: OffCanvasService
+  ) {}
 
   ngOnInit(): void {
     this.productVariants.values.forEach((v) => {
       this.values.push({
         uuid: v.uuid,
         displayName: v.value,
-        isClicked: this.productDetailsService.mostPopularAttributes.includes(v.uuid),
-        isAvailable: this.productDetailsService.availableAttributes.includes(v.uuid),
+        isClicked: this.productDetailsService.mostPopularAttributes.includes(
+          v.uuid
+        ),
+        isAvailable: this.productDetailsService.availableAttributes.includes(
+          v.uuid
+        ),
       });
     });
-    this.productDetailsService.allAttributes[this.productVariants.type]=this.values
+    this.productDetailsService.allAttributes[this.productVariants.type] =
+      this.values;
   }
 
-  test(val: IVariantValues) {
+  ClickingAction(val: IVariantValues) {
     if (!val.isAvailable) return;
     this.productDetailsService.getSelectedStock(val.uuid);
   }
 
-  animateAndNavigate() {
+  animateLearnMore() {
     const element = this.LearnMore.nativeElement;
-
     element.classList.add('dissolveclass');
+  }
 
-    setTimeout(() => {
-      // this.router.navigate(['']);
-    }, 100);
+  toggleOffCanvas() {
+    this.offCanvasOb.toggleOffcanvas(!this.isOffCanvasVisible);
   }
 }

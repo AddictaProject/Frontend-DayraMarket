@@ -42,6 +42,75 @@
   }
   
 
+  /* === */
+  /* Learn more */
+  
+.offcanvas {
+  width: 431px;
+  min-width: 18%;
+  border: 1px, 0px, 0px, 0px;
+  border-color: rgba(212, 212, 212, 1);
+  top: 0;
+  overflow-y: scroll;
+
+}
+.off-canvas.open {
+  transform: translateX(0);
+}
+.offcanvas .btn-close {
+  visibility: hidden;
+}
+
+/* === */
+/* Side Section Technical */
+.HeaderSideOffCanvas {
+  padding-bottom: 30px;
+  color: rgba(9, 118, 76, 0.8);
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: 8%;
+  line-height: 21.94px;
+  border-bottom: rgba(193, 193, 193, 1) 1px solid;
+  padding-top: 0;
+  
+}
+
+.HeaderSideOffCanvas span {
+  text-align: center;
+}
+
+.offcanvas-body {
+  margin: 30px 0;
+}
+
+/*  Hide Scroll  */
+.ffcanvas::-webkit-scrollbar ,.offcanvas-end::-webkit-scrollbar,
+.offcanvas-body::-webkit-scrollbar{
+ display: none !important;
+}
+
+
+.txtOfMainOff{
+  color:rgba(0, 0, 0, 1) !important;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 2px;
+  line-height:21.74px;
+}
+
+.txtOfSubOff{
+  color:rgba(98, 98, 98, 1);
+  font-weight: 400;
+  font-size: 15px;
+  letter-spacing: 2px;
+  line-height:20.38px;
+}
+
+.bestPickOff{
+
+  border-bottom: rgba(193, 193, 193, 1) 1px solid;
+}
+
   /* ======== */
 /* Responsive */
 
