@@ -126,6 +126,9 @@ div {
   -webkit-text-fill-color: transparent;
   cursor: pointer;
 }
+.product-header a :hover{
+  background: none;
+}
 
 /* Animation when i clicked on learn more */
 
@@ -159,6 +162,30 @@ div {
 
 /* ===*/
 /* Best Picks */
+
+.txtOfMainOff{
+  color:rgba(0, 0, 0, 1) !important;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 2px;
+  line-height:21.74px;
+}
+
+.txtOfSubOff{
+  color:rgba(98, 98, 98, 1);
+  font-weight: 400;
+  font-size: 15px;
+  letter-spacing: 2px;
+  line-height:20.38px;
+  text-align: center;
+}
+
+.bestPickOff{
+
+  border-bottom: rgba(193, 193, 193, 1) 1px solid;
+}
+
+
 
 #scrollHeight {
   overflow: scroll;
@@ -333,12 +360,19 @@ div {
   border-bottom: rgba(193, 193, 193, 1) 1px solid;
   padding-top: 0;
   
+  position: relative;
+  text-align: center;
 }
 
 .HeaderSideOffCanvas span {
   text-align: center;
 }
 
+.HeaderSideOffCanvas i ,.svgOff{
+  position: absolute;
+  left: 0;
+
+}
 .offcanvas-body {
   margin: 30px 0;
 }
@@ -456,8 +490,6 @@ line-height: 19.03px;
   margin-bottom: 0;
 }
 
-
-
 .menu div{
   max-height: 160px ;
   overflow-y: auto;
@@ -467,6 +499,9 @@ line-height: 19.03px;
   letter-spacing: 1px;
   line-height:21.59px;
 }
+
+
+
 
 /* === */
 /* Refurbished section */

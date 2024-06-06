@@ -15,5 +15,7 @@ export class OffCanvasService {
   toggleOffcanvas(isOpen: boolean): void {
     this.isOffcanvasOpenSubject.next(isOpen);
   }
-  
+  // closeOffcanvas(): void {
+  //   this.isOffcanvasOpenSubject.next(false);
+  // }
 }

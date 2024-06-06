@@ -16,13 +16,14 @@ import { ConditionComponent } from './condition/condition.component';
 import { StorageVariantComponent } from './Storage/StorageVariant/StorageVariant.component';
 import { ColorComponent } from './Color/Color/Color.component';
 import { OffCanvasService } from '../../../../../Services/ProductService/offCanvas.service';
+import { CarouselModule } from 'primeng/carousel';
 
 @Component({
   selector: 'app-product-variants',
   standalone: true,
   templateUrl: './product-variants.component.html',
   styleUrl: './product-variants.component.css',
-  imports: [ConditionComponent, StorageVariantComponent, ColorComponent],
+  imports: [ConditionComponent, StorageVariantComponent, ColorComponent,CarouselModule],
 })
 export class ProductVariantsComponent implements OnInit {
   @ViewChild('LearnMore') LearnMore!: ElementRef;
@@ -31,6 +32,8 @@ export class ProductVariantsComponent implements OnInit {
 
   values: IVariantValues[] = [];
   isOffCanvasVisible = false;
+  responsiveOptions!: { breakpoint: string; numVisible: number; numScroll: number; }[];
+  img!: never[];
 
   constructor(
     public productDetailsService: ProductDetailsService,
@@ -52,6 +55,29 @@ export class ProductVariantsComponent implements OnInit {
     });
     this.productDetailsService.allAttributes[this.productVariants.type] =
       this.values;
+
+    // carousal
+   
+    this.img=[]
+
+    this.responsiveOptions = [
+      {
+        breakpoint: '1024px',
+        numVisible: 3,
+        numScroll: 3,
+      },
+      {
+        breakpoint: '768px',
+        numVisible: 2,
+        numScroll: 2,
+      },
+      {
+        breakpoint: '560px',
+        numVisible: 1,
+        numScroll: 1,
+      },
+    ];
+
   }
 
   ClickingAction(val: IVariantValues) {
