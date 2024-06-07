@@ -13,5 +13,8 @@ export class CheckOutPartComponent implements OnInit {
   constructor(public _ProductDetailsService: ProductDetailsService) {}
 
   ngOnInit() {}
-  isLogin : boolean =false;
+  
+  isLogin :boolean=false;
+
+
 }
