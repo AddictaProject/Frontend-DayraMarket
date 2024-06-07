@@ -1,4 +1,4 @@
-<div class="prd-card pb-3"  draggable="false" [ngClass]="{'products-page': isProductPage,'slider':isSlider}">
+<div class="prd-card pb-3"  draggable="false" [ngClass]="{'products-page': isProductPage,'slider':isSlider}" [routerLink]="['/product/'+product.uuid]" >
   <div class="prd-image">
     <img  draggable="false" class="w-100" [src]="product.photos[0]" alt="">
   </div>

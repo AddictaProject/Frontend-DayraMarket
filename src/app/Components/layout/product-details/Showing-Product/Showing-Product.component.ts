@@ -54,15 +54,18 @@ export class ShowingProductComponent implements OnInit {
 
   constructor(
     public _ProductDetailsService: ProductDetailsService,
+
     public offCanvasOb: OffCanvasService
+
   ) {}
 
   url!: string;
 
   ngOnInit() {
     // Calling data From ProductDetails Service
-    this._ProductDetailsService.loadProductVariant();
-
+    let id = this.route.snapshot.paramMap.get('id') ??'';
+    this._ProductDetailsService.productUuid=id;
+    this._ProductDetailsService.loadProductVariant(id);
     // For getting the size of the screen
     this.checkScreenWidth(window.innerWidth);
     this.updateDragScrollStatus();
@@ -100,13 +103,19 @@ export class ShowingProductComponent implements OnInit {
     if (card === 'LowestPrice') {
       this.isActiveLowestPrice = true;
       this.isActiveMostPopular = false;
+      this._ProductDetailsService.previousStockUuid ='';
       this._ProductDetailsService.price =
         +this._ProductDetailsService.lowestPrice;
+
+        this._ProductDetailsService.getSelectedStock('',true);
     } else if (card === 'MostPopular') {
       this.isActiveMostPopular = true;
       this.isActiveLowestPrice = false;
       this._ProductDetailsService.price =
         +this._ProductDetailsService.mostPopularPrice;
+        this._ProductDetailsService.previousStockUuid='';
+      this._ProductDetailsService.getSelectedStock('');
+
     }
   }
 

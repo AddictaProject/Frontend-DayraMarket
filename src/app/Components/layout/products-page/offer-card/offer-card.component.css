@@ -12,6 +12,7 @@
   position: relative;
  overflow: hidden;
  min-height: 308px;
+ cursor: pointer;
 }
 h5{
   font-size: 18px;

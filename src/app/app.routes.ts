@@ -9,6 +9,7 @@ export const routes: Routes = [
   {path:"", component: HomeComponent},
   { path: 'Home', component: HomeComponent, title: 'Home' },
   { path: 'products', component: ProductsPageComponent, title: 'Products' },
-  { path: 'product-details', component: ProductDetailsComponent, title: 'Product Details' },
+  { path: 'product/:id', component: ProductDetailsComponent, title: 'Product Details' },
   { path: 'cart', component:CartComponent, title: 'Cart' },
+
 ];

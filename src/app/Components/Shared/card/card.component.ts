@@ -2,11 +2,12 @@ import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { SkeletonModule } from 'primeng/skeleton';
 import { IProduct } from '../../../Models/Product/All-Products/IProduct';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-card',
   standalone: true,
-  imports: [CommonModule,SkeletonModule],
+  imports: [CommonModule,SkeletonModule,RouterModule],
   templateUrl: './card.component.html',
   styleUrl: './card.component.css'
 })
