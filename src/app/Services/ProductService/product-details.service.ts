@@ -34,6 +34,7 @@ export class ProductDetailsService {
   constructor(private productApi: ProductApiService) {}
 
   loadProductVariant(id :string,lowestPrice: boolean = false) {
+    this.rest();
     this.productApi
       .getProductDetails({
         productUuid: id,
@@ -62,12 +63,7 @@ export class ProductDetailsService {
         } else {
           console.log('Error in ProductDetails or photoPaths are missing');
         }
-        this.allAttributes.forEach((attributes) => {
-          attributes.forEach((attribute) => {
-            attribute.isAvailable=false;
-            attribute.isClicked=false;
-          });
-        })
+
         this.availableAttributes = data.availableAttributes;
         this.previousStockUuid = data.selectedStock.uuid;
         this.productUuid = data.product.uuid;
@@ -122,5 +118,19 @@ export class ProductDetailsService {
   // For Gallery
   setActiveItem(item: any): void {
     this.activeItem = item;
+  }
+  rest(){
+  this.availableAttributes = [];
+  this.variantsGroup=[];
+  this.attributesValues=[];
+  this.previousStockUuid = '';
+  this.productUuid = '';
+  this.mostPopularPrice = 0;
+  this.lowestPrice = 0;
+  this.price=0;
+  this.images= [];
+  this.activeItem;
+  this.mostPopularAttributes = [];
+  this.allAttributes=[];
   }
 }
