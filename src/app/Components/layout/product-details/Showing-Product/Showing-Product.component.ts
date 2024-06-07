@@ -54,7 +54,7 @@ export class ShowingProductComponent implements OnInit {
 
   constructor(
     public _ProductDetailsService: ProductDetailsService,
-
+    private route :ActivatedRoute ,
     public offCanvasOb: OffCanvasService
 
   ) {}
