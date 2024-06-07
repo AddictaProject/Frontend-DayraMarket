@@ -33,11 +33,11 @@ export class ProductDetailsService {
 
   constructor(private productApi: ProductApiService) {}
 
-  loadProductVariant(id = '0e2798cb-7bf5-4eea-a8b8-84405f8a4046') {
+  loadProductVariant(id :string,lowestPrice: boolean = false) {
     this.productApi
       .getProductDetails({
         productUuid: id,
-        lowestPrice: false,
+        lowestPrice: lowestPrice,
         attributeValueUuid: '',
         previousStockUuid: '',
       })
@@ -48,7 +48,7 @@ export class ProductDetailsService {
             variant.attributeDisplayName.toLowerCase()
           );
         });
-
+        this.mostPopularAttributes=[];
         data.selectedStock.attributes.forEach((attribute) => {
           this.mostPopularAttributes.push(attribute.attributeValueUuid);
         });
@@ -62,7 +62,12 @@ export class ProductDetailsService {
         } else {
           console.log('Error in ProductDetails or photoPaths are missing');
         }
-
+        this.allAttributes.forEach((attributes) => {
+          attributes.forEach((attribute) => {
+            attribute.isAvailable=false;
+            attribute.isClicked=false;
+          });
+        })
         this.availableAttributes = data.availableAttributes;
         this.previousStockUuid = data.selectedStock.uuid;
         this.productUuid = data.product.uuid;
@@ -86,19 +91,19 @@ export class ProductDetailsService {
     }
   }
 
-  loadSelectedStock(attributeValueId: string) {
+  loadSelectedStock(attributeValueId: string,lowestPrice: boolean = false) {
     return this.productApi
       .getProductDetails({
         productUuid: this.productUuid,
-        lowestPrice: false,
+        lowestPrice: lowestPrice,
         attributeValueUuid: attributeValueId,
         previousStockUuid: this.previousStockUuid,
       })
       .pipe(map((data) => data.selectedStock));
   }
 
-  getSelectedStock(stockId: string) {
-    this.loadSelectedStock(stockId).subscribe((stock) => {
+  getSelectedStock(stockId: string,lowestPrice: boolean = false) {
+    this.loadSelectedStock(stockId,lowestPrice).subscribe((stock) => {
       this.price = stock.price;
       this.previousStockUuid = stock.uuid;
       let stockAttributes:string [] = [];

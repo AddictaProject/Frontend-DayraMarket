@@ -10,6 +10,7 @@
   flex-grow: 1;
   flex-direction: column;
   align-items: center;
+  cursor: pointer;
 }
 .slider{
   max-width: 235px;

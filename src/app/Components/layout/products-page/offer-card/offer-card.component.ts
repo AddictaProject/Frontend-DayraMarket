@@ -1,11 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { IProduct } from '../../../../Models/Product/All-Products/IProduct';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-offer-card',
   standalone: true,
-  imports: [ CommonModule],
+  imports: [ CommonModule,RouterModule],
   templateUrl: './offer-card.component.html',
   styleUrl: './offer-card.component.css'
 })

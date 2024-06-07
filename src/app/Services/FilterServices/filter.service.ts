@@ -64,19 +64,17 @@ export class FilterService {
   }
   brandSearchHandler(event: Event) {
     const result = (event.target as HTMLInputElement).value.trim();
-    console.log(result);
+
     this.brandsFiltered = this.brandsCheckbox.filter((b) =>
       b.name.includes(result)
     );
-    console.log(this.brandsFiltered);
+
   }
   categorySearchHandler(event: Event) {
     const result = (event.target as HTMLInputElement).value;
-    console.log(result);
     this.categoriesFiltered = this.categoriesCheckbox.filter((b) =>
       b.name.includes(result)
     );
-    console.log(this.categoriesFiltered);
   }
   openMobileFilterMenu(event: Event) {
     const menu = (event.currentTarget as HTMLElement).querySelector('.menu');
@@ -115,7 +113,6 @@ export class FilterService {
 
   loadCategories() {
     this.filterApiService.getAllCategories().subscribe((res) => {
-      console.log(res);
       this.categories = this.flat(res);
       this.categories.forEach((category) => {
         const Checkbox: CheckboxFilter = {
@@ -127,7 +124,6 @@ export class FilterService {
         this.categoriesCheckbox.push(Checkbox);
       });
       this.categoriesFiltered = [...this.categoriesCheckbox];
-      console.log(this.categoriesFiltered);
     });
   }
 
