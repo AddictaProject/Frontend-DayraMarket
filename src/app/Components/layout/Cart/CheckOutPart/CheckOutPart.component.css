@@ -1,0 +1,193 @@
+/* === */
+/* breadcrumb */
+
+.breadcrumb i {
+  color: #00000066;
+  font-size: 15px;
+}
+.breadcrumb li a {
+  text-decoration: none !important;
+  color: #00000066 !important;
+}
+.breadcrumb li:last-of-type {
+  color: #808080 !important;
+}
+
+/* === */
+/* Details Of Cart */
+
+.detailsCard {
+  border: none;
+  background-color: rgba(247, 247, 247, 1);
+}
+
+.imgOfDetails {
+  border-radius: 6px;
+  padding: 15px 20px;
+}
+/* .imgOfDetails img {
+    width: 100%;
+    height: 120px;
+} */
+
+.txtNameOfProd {
+  color: rgba(93, 93, 93, 1);
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 18.29px;
+  letter-spacing: 0.08em;
+  text-align: left;
+  padding: 10px 0;
+}
+
+.txtInfoOfProd {
+  color: rgba(134, 134, 134, 1);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14.63px;
+  letter-spacing: 0.08em;
+  text-align: left;
+}
+
+/* Left part  */
+
+.leftPartOfDetails {
+  padding: 10px 20px;
+
+  text-align: right;
+}
+.priceOfProd {
+  font-family: "Overused Grotesk";
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 22.95px;
+  letter-spacing: 0.08em;
+  text-align: left;
+  color: rgba(93, 93, 93, 1);
+  position: relative;
+}
+
+.svgOfDelete {
+  position: absolute;
+  bottom: 35px;
+  right: 36px;
+}
+
+/* === */
+/* Protection */
+.detailsCardProtection {
+  border: 2px dashed rgba(202, 202, 202, 0.6);
+}
+
+.txtProtectionHeader {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17.07px;
+  letter-spacing: 0.08em;
+  text-align: left;
+  color: rgba(85, 85, 85, 0.6);
+}
+.txtProtectionRecommend {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14.63px;
+  letter-spacing: 0.08em;
+  text-align: left;
+  color: rgba(0, 203, 124, 1);
+}
+
+.radioProtection {
+  color: rgba(0, 99, 61, 1);
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 18.29px;
+  letter-spacing: 0.08em;
+  text-align: left;
+}
+
+.form-check-input:checked{
+    background-color: rgba(0, 99, 61, 1);
+    border-color:   rgba(0, 99, 61, 1);
+
+    box-shadow: none;
+
+}
+
+.txtOfUl{
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 14.63px;
+    letter-spacing: 0.08em;
+    text-align: left;
+color: rgba(13, 48, 21, 0.6);    
+}
+
+
+
+/* === */
+/* left side */
+
+/* PromoCode */
+
+.form-control {
+  color: rgba(0, 0, 0, 0.4);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14.63px;
+  letter-spacing: 0.08em;
+  text-align: left;
+}
+.form-control:focus {
+  box-shadow: none;
+  border-color: rgba(180, 180, 180, 1);
+}
+.btnOfPromoCode {
+  background-color: rgba(180, 180, 180, 1);
+  color: rgba(255, 255, 255, 1);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 17.07px;
+  letter-spacing: 0.08em;
+  text-align: left;
+}
+
+.inputForPromo {
+  border-radius: 6px 0px 0px 6px;
+  border-right: 0;
+  background-color: rgba(244, 244, 244, 1);
+  padding: 10px !important;
+}
+
+.txtOfCount {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17.07px;
+  text-align: center;
+  color: rgba(132, 132, 132, 1);
+}
+
+.txtOfCountFinal {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 19.5px;
+  text-align: center;
+  color: rgba(0, 0, 0, 1);
+}
+
+.totalPrice {
+  border-top: 0.8px solid rgba(200, 200, 200, 1);
+}
+
+/* === */
+/* Add To Cart */
+.btnAddToCart {
+  width: 100%;
+  background: rgba(107, 155, 136, 1);
+  color: white;
+
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 19.5px;
+  letter-spacing: 0.08em;
+  text-align: center;
+}

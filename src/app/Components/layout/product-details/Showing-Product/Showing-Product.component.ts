@@ -54,8 +54,9 @@ export class ShowingProductComponent implements OnInit {
 
   constructor(
     public _ProductDetailsService: ProductDetailsService,
-    private offCanvasOb: OffCanvasService,
-    private route: ActivatedRoute
+
+    public offCanvasOb: OffCanvasService
+
   ) {}
 
   url!: string;
@@ -78,13 +79,12 @@ export class ShowingProductComponent implements OnInit {
 
   // offcanvas
   isOffCanvasVisible = false;
-
   toggleOffCanvas() {
     this.offCanvasOb.toggleOffcanvas(!this.isOffCanvasVisible);
   }
 
-  // Frequently asked questions
 
+  // Frequently asked questions
   openMenu(event: Event) {
     const filterMenu = (event.currentTarget as HTMLElement).closest(
       '.filter-menu'
