@@ -75,3 +75,7 @@
  color:  #00B770;
  cursor: pointer;
 }
+.error{
+  font-size: 12px;
+  color: hsla(358, 84%, 36%, 1);;
+}

@@ -6,25 +6,25 @@
     <div class="title">
       <h4>Verification Code</h4>
     </div>
-    <form class="w-100">
+    <form class="w-100" [formGroup]="verifyForm" (submit)="onSubmit()">
       <div class="d-flex gap-3 justify-content-center">
-      <div >
-        <input type="text" maxLength="1" size="1"   appInputNavigation />
+      <div>
+        <input type="text" maxLength="1" size="1" formControlName="num1"   appInputNavigation />
       </div>
-      <div >
-        <input type="text" maxLength="1" size="1"   appInputNavigation />
+      <div>
+        <input type="text" maxLength="1" size="1" formControlName="num2"   appInputNavigation />
       </div>
-      <div >
-        <input type="text" maxLength="1" size="1"   appInputNavigation />
+      <div>
+        <input type="text" maxLength="1" size="1" formControlName="num3"   appInputNavigation />
       </div>
-      <div >
-        <input type="text" maxLength="1" size="1"   appInputNavigation />
+      <div>
+        <input type="text" maxLength="1" size="1" formControlName="num4"   appInputNavigation />
       </div>
-      <div >
-        <input type="text" maxLength="1" size="1"   appInputNavigation />
+      <div>
+        <input type="text" maxLength="1" size="1" formControlName="num5"   appInputNavigation />
       </div>
     </div>
-    <p>Resend code after  00:33</p>
+    <p>Resend code after  00:{{num <10 ?'0'+num:num }}</p>
     <button class="verify-btn w-100">Verify</button>
     </form>
   </div>

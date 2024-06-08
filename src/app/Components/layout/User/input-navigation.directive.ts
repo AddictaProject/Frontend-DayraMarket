@@ -10,7 +10,6 @@ export class InputNavigationDirective {
   @HostListener('keydown', ['$event'])
   onKeyDown(event: KeyboardEvent) {
     const key = event.key;
-    console.log(key);
     if (key !== 'Tab' && key !== 'Backspace' && (key < '0' || key > '9')) {
       event.preventDefault();
       return false;
@@ -21,6 +20,9 @@ export class InputNavigationDirective {
   @HostListener('keyup', ['$event'])
   onKeyUp(event: KeyboardEvent) {
     const key = event.key;
+    if (key === 'Tab')
+      return
+
     const inputs = Array.from(document.querySelectorAll('input'));
     const selectedInput = event.target as HTMLInputElement;
 
