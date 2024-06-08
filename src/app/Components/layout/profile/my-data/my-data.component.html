@@ -1,0 +1,66 @@
+<form class="d-flex flex-column gap-3 w-100" [formGroup]="myDataForm" (submit)="onSubmit()">
+  <div>
+    <label for="UserName">Username</label>
+    <input formControlName="username" type="text" placeholder="username" class="w-100" readonly>
+  </div>
+  <div class="d-flex  mt-3">
+    <div class="col-6 pe-3">
+      <label for="email">Email</label>
+      <input formControlName="email" type="email" placeholder="Email" class="w-100" readonly>
+    </div>
+    <div class="col-6 ps-3">
+      <label for="phoneNumber">Phone Number</label>
+      <input class="w-100" formControlName="phoneNumber" type="text" placeholder="Phone number" readonly>
+    </div>
+  </div>
+  <div class="d-flex  mt-3">
+    <div class="col-6 pe-3">
+      <label for="Password">Change Password</label>
+      <input class="w-100" formControlName="password" type="password" placeholder="Password">
+      @if(myDataForm.controls.password.hasError('required') && myDataForm.controls.password.dirty &&
+      !myDataForm.controls.password.untouched ){
+      <div class="error mt-1">Password is Required</div>
+      }
+      @else if (myDataForm.controls.password.hasError('minlength') && myDataForm.controls.password.dirty &&
+      !myDataForm.controls.password.untouched) {
+      <div class="error mt-1">be at least be 8 characters long</div>
+      }
+      @else if (!myDataForm.controls.password.value?.match('^(?=.*[a-z])') && myDataForm.controls.password.dirty &&
+      !myDataForm.controls.password.untouched)
+      {
+      <div class="error mt-1">include at least be 1 lowercase characters long</div>
+      }
+      @else if (!myDataForm.controls.password.value?.match('^(?=.*[A-Z])') && myDataForm.controls.password.dirty &&
+      !myDataForm.controls.password.untouched)
+      {
+      <div class="error mt-1">include at least be 1 uppercase characters long</div>
+      }
+      @else if (!myDataForm.controls.password.value?.match('^(?=.*[0-9])') && myDataForm.controls.password.dirty &&
+      !myDataForm.controls.password.untouched)
+      {
+      <div class="error mt-1">include at least be 1 number characters long</div>
+      }
+      @else if (!myDataForm.controls.password.value?.match('^(?=.*[!@#$%^&*.?])') && myDataForm.controls.password.dirty
+      &&
+      !myDataForm.controls.password.untouched)
+      {
+      <div class="error mt-1">include at least be 1 symbol characters long</div>
+      }
+    </div>
+    <div class="col-6 ps-3">
+      <label for="confirmPassword">Confirm Password</label>
+      <input class="w-100" formControlName="confirmPassword" type="password" placeholder="Confirm Password">
+      @if(myDataForm.controls.confirmPassword.hasError('required') && myDataForm.controls.confirmPassword.dirty &&
+      myDataForm.controls.confirmPassword.touched ){
+      <div class="error mt-1">Confirm Password is Required</div>
+      }
+      @if(myDataForm.controls.confirmPassword.hasError('passwordsDoNotMatch') &&
+      myDataForm.controls.confirmPassword.dirty && myDataForm.controls.confirmPassword.touched ){
+      <div class="error mt-1">Password don't match</div>
+      }
+    </div>
+  </div>
+  <div class="d-flex justify-content-end">
+    <button type="submit" class="data-btn">Save Changes</button>
+  </div>
+</form>

@@ -1,30 +1,93 @@
-<div class="d-flex justify-content-center">
-  <div class="sign-up">
-    <div class="title">
-      <h4>Create an account</h4>
-    </div>
-    <form class="d-flex flex-column gap-3 w-100">
-      <input type="text" placeholder="Username">
-      <input type="email" placeholder="Email">
-      <input type="text" placeholder="Phone number">
-      <input type="password" placeholder="Password">
-      <input type="password" placeholder="Confirm Password">
-      <div class="d-flex align-items-center gap-3 ">
-        <input type="checkbox" id="policy" >
-        <label for="policy">Accept Privacy & Policy</label>
+@if(!isShowingVerify) {
+  <div class="d-flex justify-content-center">
+    <div class="sign-up">
+      <div class="title">
+        <h4>Create an account</h4>
       </div>
-      <button class="sign-up-btn">sign up</button>
-    </form>
-    <div class="or d-flex align-items-center">
-      <span></span>
-      <span>Or</span>
-      <span></span>
+      <form class="d-flex flex-column gap-3 w-100" [formGroup]="signUpForm" (submit)="onSubmit()">
+        <div>
+          <input formControlName="email" type="email" placeholder="Email" class="w-100">
+          @if(signUpForm.controls.email.hasError('required') && signUpForm.controls.email.dirty && signUpForm.controls.email.touched ){
+          <div class="error mt-1">Email is Required</div>
+          }
+          @else if (signUpForm.controls.email.invalid && signUpForm.controls.email.dirty && signUpForm.controls.email.touched) {
+          <div class="error mt-1">Email is Invalid</div>
+          }
+        </div>
+        <div>
+          <input class="w-100" formControlName="phoneNumber" type="text" placeholder="Phone number" appNumberOnly>
+          @if(signUpForm.controls.phoneNumber.hasError('required') && signUpForm.controls.phoneNumber.dirty && signUpForm.controls.phoneNumber.touched ){
+          <div class="error mt-1">Phone Number is Required</div>
+          }
+          @else if (signUpForm.controls.phoneNumber.invalid && signUpForm.controls.phoneNumber.dirty && signUpForm.controls.phoneNumber.touched) {
+          <div class="error mt-1">Phone Number is Invalid</div>
+          }
+        </div>
+        <div>
+          <input class="w-100" formControlName="password" type="password" placeholder="Password">
+          @if(signUpForm.controls.password.hasError('required') && signUpForm.controls.password.dirty && !signUpForm.controls.password.untouched ){
+          <div class="error mt-1">Password is Required</div>
+          }
+          @else if (signUpForm.controls.password.hasError('minlength') && signUpForm.controls.password.dirty && !signUpForm.controls.password.untouched) {
+          <div class="error mt-1">be at least be 8 characters long</div>
+          }
+          @else if (!signUpForm.controls.password.value?.match('^(?=.*[a-z])') && signUpForm.controls.password.dirty && !signUpForm.controls.password.untouched)
+          {
+          <div class="error mt-1">include at least be 1 lowercase characters long</div>
+          }
+          @else if (!signUpForm.controls.password.value?.match('^(?=.*[A-Z])') && signUpForm.controls.password.dirty && !signUpForm.controls.password.untouched)
+          {
+          <div class="error mt-1">include at least be 1 uppercase characters long</div>
+          }
+          @else if (!signUpForm.controls.password.value?.match('^(?=.*[0-9])') && signUpForm.controls.password.dirty && !signUpForm.controls.password.untouched)
+          {
+          <div class="error mt-1">include at least be 1 number characters long</div>
+          }
+          @else if (!signUpForm.controls.password.value?.match('^(?=.*[!@#$%^&*.?])') && signUpForm.controls.password.dirty &&
+          !signUpForm.controls.password.untouched)
+          {
+          <div class="error mt-1">include at least be 1 symbol characters long</div>
+          }
+        </div>
+        <div>
+          <input class="w-100" formControlName="confirmPassword" type="password" placeholder="Confirm Password">
+          @if(signUpForm.controls.confirmPassword.hasError('required') && signUpForm.controls.confirmPassword.dirty && signUpForm.controls.confirmPassword.touched ){
+          <div class="error mt-1">Confirm Password is Required</div>
+          }
+          @if(signUpForm.controls.confirmPassword.hasError('passwordsDoNotMatch') && signUpForm.controls.confirmPassword.dirty && signUpForm.controls.confirmPassword.touched ){
+          <div class="error mt-1">Password don't match</div>
+        }
+        </div>
+        <div>
+          <div class="d-flex align-items-center gap-3 ">
+            <input type="checkbox" id="policy" formControlName="policy">
+            <label for="policy">Accept Privacy & Policy</label>
+          </div>
+          @if(signUpForm.controls.policy.hasError('required') && signUpForm.controls.policy.dirty && signUpForm.controls.policy.touched ){
+            <div class="error mt-1">Privacy & Policy is Required</div>
+            }
+        </div>
+        @if(serverError){
+          <div class="error">
+            <span>{{serverError}}</span>
+          </div>
+        }
+        <button type="submit" class="sign-up-btn">sign up</button>
+      </form>
+      <div class="or d-flex align-items-center">
+        <span></span>
+        <span>Or</span>
+        <span></span>
+      </div>
+      <div class="icons d-flex gap-4 my-4 pb-3">
+        <i class="fa-brands fa-facebook-f"></i>
+        <i class="fa-brands fa-instagram"></i>
+        <i class="fa-brands fa-google"></i>
+      </div>
+      <div>Already have an account ? <span class="sign-in">SIGN IN</span> </div>
     </div>
-    <div class="icons d-flex gap-4 my-4 pb-3">
-      <i class="fa-brands fa-facebook-f"></i>
-      <i class="fa-brands fa-instagram"></i>
-      <i class="fa-brands fa-google"></i>
-    </div>
-    <div>Already have an account ? <span class="sign-in">SIGN IN</span> </div>
   </div>
-</div>
+}
+@else {
+  <app-verify [phoneNumber]="this.signUpForm.get('phoneNumber')?.value ??''"></app-verify>
+}

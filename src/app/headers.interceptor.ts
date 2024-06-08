@@ -3,8 +3,9 @@ import { catchError, throwError } from 'rxjs';
 import { Environment } from '../enviroment/environment';
 
 export const headersInterceptor: HttpInterceptorFn = (req, next) => {
+  let token=localStorage.getItem('accessToken') ??'';
   const authReq = req.clone({
-    headers: req.headers.set('X-API-KEY', Environment.apiKey)
+    headers: req.headers.set('X-API-KEY', Environment.apiKey).set('Authorization', `Bearer ${token}`)
   });
   return next(authReq).pipe(
     catchError((err: any) => {

@@ -1,0 +1,29 @@
+<div class="container">
+  <header>
+    <div class="overlay"></div>
+    <h4 class="fw-semibold">Profile</h4>
+  </header>
+  <nav class="breadcrumb">
+    <ol class="list-unstyled d-flex">
+      <li>
+        <a [routerLink]="['']">Home</a>
+        <i class="fa-solid fa-angle-right mx-3"></i>
+      </li>
+      <li>Profile</li>
+    </ol>
+  </nav>
+  <div class="row">
+    <div class=" col-3 col-lg-2 profile-side">
+      <h5>My Profile</h5>
+      <nav class="list-unstyled">
+        <li><a [routerLink]="'/profile'" routerLinkActive="link-active" [routerLinkActiveOptions]="{exact:true}">My Data</a> </li>
+        <li><a [routerLink]="'saved-cards'" routerLinkActive="link-active">My Saved Cards</a></li>
+        <li><a [routerLink]="'order-history'" routerLinkActive="link-active">Orders History</a> </li>
+        <li><a [routerLink]="'my-addresses'" routerLinkActive="link-active">My Addresses</a> </li>
+      </nav>
+    </div>
+    <div class="col-7 content">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
