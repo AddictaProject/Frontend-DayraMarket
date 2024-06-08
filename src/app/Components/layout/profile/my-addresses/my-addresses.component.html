@@ -1,1 +1,10 @@
-<p>my-addresses works!</p>
+<div class="col-md-9 col-10">
+@if(!isAddAddress)
+{
+    <app-show-addresses (addAddress)="isAddAddress=$event"></app-show-addresses>
+}
+@else {
+  <app-add-address (addAddress)="isAddAddress=$event"></app-add-address>
+}
+
+</div>

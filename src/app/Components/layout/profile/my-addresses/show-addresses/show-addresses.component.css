@@ -1,0 +1,27 @@
+input {
+  border: none;
+  border-radius: 6px;
+  padding: 12px 16px;
+  background-color: #F4F4F4 ;
+  ;
+}
+input::placeholder{
+  color: #848383;
+}
+label{
+  color: #000;
+}
+.data-btn{
+  background-color: #343434CC;
+  color: #FAFAFA;
+  border-radius: 6px;
+  padding: 12px 24px ;
+  border: none;
+  ;
+}
+.data-btn:hover{
+  background-color: #E07575;
+}
+.show-address .address:not(:last-of-type){
+  border-bottom: 1px solid #DCDCDC;
+}
