@@ -1,0 +1,102 @@
+
+/* First Card */
+.txtOfCountFinal {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 19.5px;
+    text-align: center;
+    color: rgba(0, 0, 0, 1);
+  }
+  
+
+  /* === */
+  /* Second Card */
+  .headerOfSelectPayment {
+    color: rgba(0, 0, 0, 1);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 19.5px;
+    text-align: left;
+  }
+  
+  .lblOfPayment {
+    color: rgba(92, 92, 92, 1);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19.5px;
+    letter-spacing: 0.08em;
+    text-align: left;
+  }
+  
+  .txtCardDetails {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17.07px;
+    letter-spacing: 0.08em;
+    text-align: left;
+    color: rgba(85, 85, 85, 1);
+  }
+  
+
+  
+.radioProtection {
+    color: rgba(0, 99, 61, 1);
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 18.29px;
+    letter-spacing: 0.08em;
+    text-align: left;
+  }
+  
+  .form-check-input:checked {
+    background-color: rgba(0, 99, 61, 1);
+    border-color: rgba(0, 99, 61, 1);
+  
+    box-shadow: none;
+  }
+
+  /* ==== */
+  /* third one */
+
+  
+
+.userInput {
+    padding: 15px 25px;
+    background-color: rgba(244, 244, 244, 1);
+    border: none;
+  }
+
+  .form-control:focus{
+    box-shadow: none;
+  }
+  
+  .iconOfInput {
+    background-color: rgba(244, 244, 244, 1);
+    border: none;
+    padding-right: 25px;
+  }
+  
+  input[type="text"],
+  input[type="tel"] {
+    color: rgba(85, 85, 85, 1);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17.07px;
+    letter-spacing: 0.08em;
+    text-align: left;
+  }
+
+  
+   /* === */
+  /* Add To Cart */
+  .btnAddToCart {
+    width: 100%;
+    background: rgba(107, 155, 136, 1);
+    color: white;
+  
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 19.5px;
+    letter-spacing: 0.08em;
+    text-align: center;
+  }
