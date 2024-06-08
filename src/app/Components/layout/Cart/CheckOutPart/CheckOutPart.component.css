@@ -105,89 +105,20 @@
   text-align: left;
 }
 
-.form-check-input:checked{
-    background-color: rgba(0, 99, 61, 1);
-    border-color:   rgba(0, 99, 61, 1);
+.form-check-input:checked {
+  background-color: rgba(0, 99, 61, 1);
+  border-color: rgba(0, 99, 61, 1);
 
-    box-shadow: none;
-
+  box-shadow: none;
 }
 
-.txtOfUl{
-    font-size: 12px;
-    font-weight: 400;
-    line-height: 14.63px;
-    letter-spacing: 0.08em;
-    text-align: left;
-color: rgba(13, 48, 21, 0.6);    
-}
-
-
-
-/* === */
-/* left side */
-
-/* PromoCode */
-
-.form-control {
-  color: rgba(0, 0, 0, 0.4);
+.txtOfUl {
   font-size: 12px;
   font-weight: 400;
   line-height: 14.63px;
   letter-spacing: 0.08em;
   text-align: left;
-}
-.form-control:focus {
-  box-shadow: none;
-  border-color: rgba(180, 180, 180, 1);
-}
-.btnOfPromoCode {
-  background-color: rgba(180, 180, 180, 1);
-  color: rgba(255, 255, 255, 1);
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 17.07px;
-  letter-spacing: 0.08em;
-  text-align: left;
+  color: rgba(13, 48, 21, 0.6);
 }
 
-.inputForPromo {
-  border-radius: 6px 0px 0px 6px;
-  border-right: 0;
-  background-color: rgba(244, 244, 244, 1);
-  padding: 10px !important;
-}
-
-.txtOfCount {
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 17.07px;
-  text-align: center;
-  color: rgba(132, 132, 132, 1);
-}
-
-.txtOfCountFinal {
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 19.5px;
-  text-align: center;
-  color: rgba(0, 0, 0, 1);
-}
-
-.totalPrice {
-  border-top: 0.8px solid rgba(200, 200, 200, 1);
-}
-
-/* === */
-/* Add To Cart */
-.btnAddToCart {
-  width: 100%;
-  background: rgba(107, 155, 136, 1);
-  color: white;
-
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 19.5px;
-  letter-spacing: 0.08em;
-  text-align: center;
-}
+/* ===== */
