@@ -29,7 +29,8 @@ export class ProductDetailsService {
   activeItem: any;
   mostPopularAttributes: string[] = [];
   allAttributes:IVariantValues [][]=[];
-  // allAttributes: { attributesUuid: string[]; values: IVariantValues[] }[] = [];
+  condition: string ='';
+  color:string='';
 
   constructor(private productApi: ProductApiService) {}
 
@@ -52,11 +53,15 @@ export class ProductDetailsService {
         this.mostPopularAttributes=[];
         data.selectedStock.attributes.forEach((attribute) => {
           this.mostPopularAttributes.push(attribute.attributeValueUuid);
+          if( attribute.attributeDisplayName.toLowerCase()=="color")
+            this.color=attribute.attributeValue;
+          else if ( attribute.attributeDisplayName.toLowerCase()=="condition")
+            this.condition=attribute.attributeValue;
         });
-
+        this.images=data.photoPaths.length>0?data.photoPaths:data.product.photos;
         // For gallery:
         if (data && data.photoPaths) {
-          this.images = data.product.photos.map((photo) => ({
+          this.images = this.images.map((photo) => ({
             source: `https://dayra-market.addictaco.com${photo}`,
             thumbnail: `https://dayra-market.addictaco.com${photo}`,
           }));
@@ -95,15 +100,26 @@ export class ProductDetailsService {
         attributeValueUuid: attributeValueId,
         previousStockUuid: this.previousStockUuid,
       })
-      .pipe(map((data) => data.selectedStock));
   }
 
   getSelectedStock(stockId: string,lowestPrice: boolean = false) {
-    this.loadSelectedStock(stockId,lowestPrice).subscribe((stock) => {
-      this.price = stock.price;
-      this.previousStockUuid = stock.uuid;
+    this.loadSelectedStock(stockId,lowestPrice).subscribe((data) => {
+      this.price = data.selectedStock.price;
+      this.previousStockUuid = data.selectedStock.uuid;
       let stockAttributes:string [] = [];
-      stock.attributes.forEach((attribute) => stockAttributes.push(attribute.attributeValueUuid));
+      data.selectedStock.attributes.forEach((attribute) => {
+       if( attribute.attributeDisplayName.toLowerCase()=="color")
+          this.color=attribute.attributeValue;
+        else if ( attribute.attributeDisplayName.toLowerCase()=="condition")
+          this.condition=attribute.attributeValue;
+
+        stockAttributes.push(attribute.attributeValueUuid)
+      });
+      this.images=data.photoPaths.length>0?data.photoPaths:data.product.photos;
+      this.images = this.images.map((photo) => ({
+        source: `https://dayra-market.addictaco.com${photo}`,
+        thumbnail: `https://dayra-market.addictaco.com${photo}`,
+      }));
       this.allAttributes.forEach(variables=>{
         variables.forEach(variable=>{
           if(stockAttributes.includes(variable.uuid))
@@ -132,5 +148,7 @@ export class ProductDetailsService {
   this.activeItem;
   this.mostPopularAttributes = [];
   this.allAttributes=[];
+  this.condition='';
+  this.color='';
   }
 }

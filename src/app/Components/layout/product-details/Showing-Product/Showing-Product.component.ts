@@ -15,6 +15,8 @@ import { ProductApiService } from '../../../../Services/ProductService/product-a
 import { ProductDetailsService } from '../../../../Services/ProductService/product-details.service';
 import { ProductVariantsComponent } from './product-variants/product-variants.component';
 import { OffCanvasService } from '../../../../Services/ProductService/offCanvas.service';
+import { ICartItem } from '../../../../Models/Cart/ICartItem';
+import { CartService } from '../../../../Services/CartService/cart.service';
 
 @Component({
   selector: 'app-Showing-Product',
@@ -55,7 +57,8 @@ export class ShowingProductComponent implements OnInit {
   constructor(
     public _ProductDetailsService: ProductDetailsService,
     private route :ActivatedRoute ,
-    public offCanvasOb: OffCanvasService
+    public offCanvasOb: OffCanvasService,
+    private cartService: CartService
 
   ) {}
 
@@ -139,5 +142,17 @@ export class ShowingProductComponent implements OnInit {
   // for scroll
   updateDragScrollStatus() {
     this.isDragScrollDisabled = window.innerWidth <= 991;
+  }
+
+  addItem(){
+    const item:ICartItem={
+      id:this._ProductDetailsService.previousStockUuid,
+      name:this._ProductDetailsService.product.displayName,
+      condition:this._ProductDetailsService.condition,
+      color:this._ProductDetailsService.color,
+      price:this._ProductDetailsService.price,
+      image:`https://dayra-market.addictaco.com${this._ProductDetailsService.product.photos[0]}`,
+    }
+    this.cartService.addToCart(item);
   }
 }

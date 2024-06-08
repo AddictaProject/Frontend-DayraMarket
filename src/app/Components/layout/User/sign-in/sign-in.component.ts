@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { UserService } from '../../../../Services/User/user.service';
+import { UserService } from '../../../../Services/UserService/user.service';
 import { ILogin } from '../../../../Models/User/ilogin';
 import { Router } from '@angular/router';
 
@@ -43,7 +43,7 @@ export class SignInComponent {
         },
         error: (err) => {
           this.serverError=true
-        },
+        }
       }
     );
   }

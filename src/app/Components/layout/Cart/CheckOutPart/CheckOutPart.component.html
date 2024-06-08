@@ -30,12 +30,12 @@
       <!-- Right Section -->
       <div class="col-lg-8 mb-5">
         <!-- Details  l-->
-        <div class="card  detailsCard me-5">
+        @for (item of cart; track $index) {
+        <div class="card  detailsCard mb-4 me-5">
           <div class="row g-0">
 
             <div class="col-md-3 imgOfDetails">
-              <img class="col-10" src="../../../../../assets/images/galleri/Frame 66.png"
-                class="img-fluid rounded-start" alt="...">
+              <img class="col-10" [src]="item.image" class="img-fluid rounded-start" alt="...">
             </div>
 
             <div class="col-md-9">
@@ -43,17 +43,17 @@
 
 
                 <div>
-                  <p class="txtNameOfProd">MackBook Pro 13.3-inch</p>
-                  <p class="txtInfoOfProd">Condition : Fair</p>
-                  <p class="txtInfoOfProd">Color : Navy</p>
+                  <p class="txtNameOfProd">{{item.name}}</p>
+                  <p class="txtInfoOfProd">Condition : {{item.condition}}</p>
+                  <p class="txtInfoOfProd">Color : {{item.color}}</p>
 
                 </div>
 
                 <div class="leftPartOfDetails">
-                  <p class="priceOfProd">10,000 L.E</p>
+                  <p class="priceOfProd">{{item.price | number: '3.0-0'}} L.E</p>
 
 
-                  <div>
+                  <div  (click)="removeItem(item.id)">
                     <svg class="svgOfDelete" width="17" height="17" viewBox="0 0 17 17" fill="none"
                       xmlns="http://www.w3.org/2000/svg">
                       <path
@@ -71,6 +71,7 @@
 
           </div>
         </div>
+        }
 
 
         <!-- Protection Plan Coverage -->
@@ -135,7 +136,7 @@
         }
         @case (CartCasesEnum.Review) {
         <app-Review-Order (nextStep)="goToNextCase()"></app-Review-Order>
-        } 
+        }
         @case (CartCasesEnum.Confirm) {
         <app-ConfirmPayment (nextStep)="goToNextCase()"></app-ConfirmPayment>
         }
@@ -153,4 +154,3 @@
 
   </div>
 </div>
-

@@ -6,19 +6,25 @@ import { AddressAddingComponent } from "./Address-Adding/Address-Adding.componen
 import { ReviewOrderComponent } from "./Review-Order/Review-Order.component";
 import { ConfirmPaymentComponent } from "./ConfirmPayment/ConfirmPayment.component";
 import { CartCasesEnum } from '../../../../Models/Cart/models/cart-cases-enum';
+import { ICartItem } from '../../../../Models/Cart/ICartItem';
+import { CartService } from '../../../../Services/CartService/cart.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
     selector: 'app-CheckOutPart',
     standalone: true,
     templateUrl: './CheckOutPart.component.html',
     styleUrls: ['./CheckOutPart.component.css'],
-    imports: [RouterModule, DefaultCheckOutComponent, AddressAddingComponent, ReviewOrderComponent, ConfirmPaymentComponent]
+    imports: [RouterModule, DefaultCheckOutComponent, AddressAddingComponent, ReviewOrderComponent, ConfirmPaymentComponent,CommonModule]
 })
 export class CheckOutPartComponent implements OnInit {
-  constructor(public _ProductDetailsService: ProductDetailsService) {}
+  cart:ICartItem[]=[];
+  constructor(public _ProductDetailsService: ProductDetailsService,private cartService:CartService) {}
 
-  ngOnInit() {}
-  
+  ngOnInit() {
+    this.cart=this.cartService.getCart();
+  }
+
   isLogin :boolean=false;
 
   CartCasesEnum = CartCasesEnum;
@@ -29,4 +35,8 @@ export class CheckOutPartComponent implements OnInit {
     }
   }
 
+  removeItem(id:string){
+    this.cartService.deleteFromCart(id);
+    this.cart=this.cartService.getCart();
+  }
 }

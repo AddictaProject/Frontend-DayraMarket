@@ -1,20 +1,20 @@
-<form class="d-flex flex-column gap-3 w-100" [formGroup]="myDataForm" (submit)="onSubmit()">
+<form class="d-flex mb-5 flex-column gap-3 w-100" [formGroup]="myDataForm" (submit)="onSubmit()">
   <div>
     <label for="UserName">Username</label>
     <input formControlName="username" type="text" placeholder="username" class="w-100" readonly>
   </div>
-  <div class="d-flex  mt-3">
-    <div class="col-6 pe-3">
+  <div class="d-flex flex-column flex-md-row mt-3">
+    <div class="col-12 col-md-6 pe-md-3 p-0 mt-3 mt-md-0 ">
       <label for="email">Email</label>
       <input formControlName="email" type="email" placeholder="Email" class="w-100" readonly>
     </div>
-    <div class="col-6 ps-3">
+    <div class="col-12 col-md-6 ps-md-3 p-0 mt-3 mt-md-0 ">
       <label for="phoneNumber">Phone Number</label>
       <input class="w-100" formControlName="phoneNumber" type="text" placeholder="Phone number" readonly>
     </div>
   </div>
-  <div class="d-flex  mt-3">
-    <div class="col-6 pe-3">
+  <div class="d-flex flex-column flex-md-row mt-3">
+    <div class="col-12 col-md-6 pe-md-3 p-0 mt-3 mt-md-0">
       <label for="Password">Change Password</label>
       <input class="w-100" formControlName="password" type="password" placeholder="Password">
       @if(myDataForm.controls.password.hasError('required') && myDataForm.controls.password.dirty &&
@@ -47,7 +47,7 @@
       <div class="error mt-1">include at least be 1 symbol characters long</div>
       }
     </div>
-    <div class="col-6 ps-3">
+    <div class="col-12 col-md-6 ps-md-3 p-0 mt-3 mt-md-0 ">
       <label for="confirmPassword">Confirm Password</label>
       <input class="w-100" formControlName="confirmPassword" type="password" placeholder="Confirm Password">
       @if(myDataForm.controls.confirmPassword.hasError('required') && myDataForm.controls.confirmPassword.dirty &&
@@ -60,7 +60,7 @@
       }
     </div>
   </div>
-  <div class="d-flex justify-content-end">
+  <div class="d-flex justify-content-md-end justify-content-center">
     <button type="submit" class="data-btn">Save Changes</button>
   </div>
 </form>

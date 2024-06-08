@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { InputNavigationDirective } from '../input-navigation.directive';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { UserService } from '../../../../Services/User/user.service';
+import { UserService } from '../../../../Services/UserService/user.service';
 import { IVerifyPhoneNumber } from '../../../../Models/User/IVerifyPhoneNumber';
 import { Router } from '@angular/router';
 

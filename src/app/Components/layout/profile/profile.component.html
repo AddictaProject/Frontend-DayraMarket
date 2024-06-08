@@ -13,7 +13,7 @@
     </ol>
   </nav>
   <div class="row">
-    <div class=" col-3 col-lg-2 profile-side">
+    <div class=" col-4 col-lg-2 profile-side">
       <h5>My Profile</h5>
       <nav class="list-unstyled">
         <li><a [routerLink]="'/profile'" routerLinkActive="link-active" [routerLinkActiveOptions]="{exact:true}">My Data</a> </li>
@@ -22,7 +22,7 @@
         <li><a [routerLink]="'my-addresses'" routerLinkActive="link-active">My Addresses</a> </li>
       </nav>
     </div>
-    <div class="col-7 content">
+    <div class="col-md-7 col-8 content">
       <router-outlet></router-outlet>
     </div>
   </div>

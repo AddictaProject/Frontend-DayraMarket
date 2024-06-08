@@ -73,3 +73,11 @@ color: #606060;
   padding-left: 100px;
   min-height: 500px;
 }
+@media (max-width: 992px) {
+  .content{
+    padding-left: 10px;
+  }
+  .profile-side  nav{
+    padding-left: 0px;
+  }
+}

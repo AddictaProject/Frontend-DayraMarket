@@ -21,6 +21,7 @@ export interface IselectedStock {
 export interface IattributesInSelectedStock {
     attributeValueUuid:string;
     attributeValue :string;
+    attributeDisplayName:string;
 }
 
 export interface IProductInDetails {

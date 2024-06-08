@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
-import { UserService } from '../../../../Services/User/user.service';
+import { UserService } from '../../../../Services/UserService/user.service';
 
 @Component({
   selector: 'app-my-data',

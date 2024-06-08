@@ -9,10 +9,10 @@
           <i class="fa-solid fa-angle-right mx-3"></i>
         </li>
         <li>
-          <a [routerLink]="['']">{{_ProductDetailsService.product.categoryDisplayName}}</a>
+          <a [routerLink]="['']">{{_ProductDetailsService.product?.categoryDisplayName}}</a>
           <i class="fa-solid fa-angle-right mx-3"></i>
         </li>
-        <li>{{_ProductDetailsService.product.displayName}} </li>
+        <li>{{_ProductDetailsService.product?.displayName}} </li>
       </ol>
     </nav>
   </div>
@@ -27,7 +27,7 @@
         <!-- Product Name -->
         <div class="d-flex justify-content-between txtOfProdName" id="hiddenDiv">
           <p>
-            {{_ProductDetailsService.product.displayName}}
+            {{_ProductDetailsService.product?.displayName }}
           </p>
           <p>
             {{_ProductDetailsService.price}} L.E
@@ -70,7 +70,7 @@
           <!-- Product Name -->
           <div class="d-flex justify-content-between txtOfProdName" id="proHeaderid">
             <p>
-              {{_ProductDetailsService.product.displayName}}
+              {{_ProductDetailsService.product?.displayName}}
             </p>
             <p>
               {{_ProductDetailsService.price}} L.E
@@ -81,7 +81,7 @@
           <div class="txtOfProdDesc ">
             <span>
               <!-- There is not description yet ! -->
-              {{_ProductDetailsService.product.description}}
+              {{_ProductDetailsService.product?.description}}
             </span>
           </div>
 
@@ -94,7 +94,7 @@
 
               <div class="product-header d-flex justify-content-between align-items-center mb-2 mt-4 me-3">
                 <p>Best Picks</p>
-                
+
                 <div>
                   <div class="" (click)="toggleOffCanvas()" style="border: none !important;">
 
@@ -409,7 +409,7 @@
           <!-- Adding To Cart -->
 
           <div class="d-flex justify-content-center mt-5 mb-5 me-4">
-            <a class="btn btnAddToCart py-3" role="button">
+            <a class="btn btnAddToCart py-3" role="button" (click)="addItem()">
               Add to Cart </a>
           </div>
 

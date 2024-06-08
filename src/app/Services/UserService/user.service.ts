@@ -4,6 +4,7 @@ import { Environment } from '../../../enviroment/environment';
 import { ISignUp } from '../../Models/User/ISignUp';
 import { ILogin } from '../../Models/User/ilogin';
 import { IVerifyPhoneNumber } from '../../Models/User/IVerifyPhoneNumber';
+import { IUserAddress } from '../../Models/Cart/IUserAddress';
 
 @Injectable({
   providedIn: 'root'
@@ -26,5 +27,8 @@ export class UserService {
   }
   getUserData(){
     return this.httpClient.get(this.URL+'users/my');
+  }
+  addUserAddress(model:IUserAddress){
+    return this.httpClient.post(this.URL+'users/my/addresses', model);
   }
 }

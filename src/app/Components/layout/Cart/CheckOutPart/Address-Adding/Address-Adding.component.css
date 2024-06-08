@@ -12,13 +12,13 @@
   .form-control:focus{
     box-shadow: none;
   }
-  
+
   .iconOfInput {
     background-color: rgba(244, 244, 244, 1);
     border: none;
     padding-right: 25px;
   }
-  
+
   input[type="text"],
   input[type="tel"] {
     color: rgba(85, 85, 85, 1);
@@ -28,7 +28,7 @@
     letter-spacing: 0.08em;
     text-align: left;
   }
-  
+
   /* Select */
   .textOfSelectList {
     font-size: 12px;
@@ -38,24 +38,24 @@
     text-align: left;
     color: rgba(85, 85, 85, 1);
   }
-  
+
   .textOfSelectList:focus {
     box-shadow: none;
   }
-  
+
   .userApartmentNumber {
     padding: 15px 25px;
     background-color: rgba(244, 244, 244, 1);
     border: none;
     color: rgba(85, 85, 85, 1);
-  
+
     font-size: 12px !important;
     font-weight: 400 !important;
     line-height: 14.63px !important;
     letter-spacing: 0.08em;
     text-align: left;
   }
-  
+
   .userDetails {
     padding: 15px 25px;
     background-color: rgba(244, 244, 244, 1);
@@ -67,7 +67,7 @@
     letter-spacing: 0.08em;
     text-align: left;
   }
-  
+
   .labelOfSaveCheckbox {
     font-size: 12px;
     font-weight: 500;
@@ -77,9 +77,9 @@
     color: rgba(63, 63, 63, 0.8);
     cursor: pointer;
   }
-  
 
-   
+
+
   .txtOfCount {
     font-size: 14px;
     font-weight: 400;
@@ -87,7 +87,7 @@
     text-align: center;
     color: rgba(132, 132, 132, 1);
   }
-  
+
   .txtOfCountFinal {
     font-size: 16px;
     font-weight: 600;
@@ -95,18 +95,18 @@
     text-align: center;
     color: rgba(0, 0, 0, 1);
   }
-  
+
   .totalPrice {
     border-top: 0.8px solid rgba(200, 200, 200, 1);
   }
-  
+
   /* === */
   /* Add To Cart */
   .btnAddToCart {
     width: 100%;
     background: rgba(107, 155, 136, 1);
     color: white;
-  
+
     font-size: 16px;
     font-weight: 600;
     line-height: 19.5px;
@@ -114,7 +114,7 @@
     text-align: center;
   }
 
-  
+
 
   /* === */
   /* save */
@@ -123,7 +123,7 @@
     border-radius: 0;
     border: rgba(182, 182, 182, 1) 2px solid;
   }
-  
+
   .form-check-input[type="checkbox"]:checked {
     background-color: rgba(182, 182, 182, 1) !important;
   }
@@ -132,4 +132,7 @@
   .form-check-input[type="checkbox"]::after {
     box-shadow: none;
   }
-  
+  .error{
+    font-size: 12px;
+    color: hsla(358, 84%, 36%, 1);;
+  }

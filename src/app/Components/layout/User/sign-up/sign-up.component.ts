@@ -3,7 +3,7 @@ import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validatio
 import { NumberOnlyDirective } from '../../../../Directives/number-only.directive';
 import { CommonModule } from '@angular/common';
 import { ISignUp } from '../../../../Models/User/ISignUp';
-import { UserService } from '../../../../Services/User/user.service';
+import { UserService } from '../../../../Services/UserService/user.service';
 import { VerifyComponent } from "../verify/verify.component";
 
 @Component({
