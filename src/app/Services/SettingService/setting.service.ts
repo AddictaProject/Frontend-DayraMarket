@@ -16,4 +16,7 @@ export class SettingService {
   getAllCityDistricts(id:string){
     return this.httpClient.get(this.URL + `values/cities/${id}/districts`);
   }
+  getShippingAddress(){
+    return this.httpClient.get(this.URL + `settings`);
+  }
 }

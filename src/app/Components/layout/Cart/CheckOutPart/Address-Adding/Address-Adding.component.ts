@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { UserService } from '../../../../../Services/UserService/user.service';
 import { SettingService } from '../../../../../Services/SettingService/setting.service';
 import { IUserAddress } from '../../../../../Models/Cart/IUserAddress';
+import { OrderService } from '../../../../../Services/OrderService/order.service';
 
 @Component({
   selector: 'app-Address-Adding',
@@ -24,9 +25,9 @@ export class AddressAddingComponent implements OnInit {
     apartmentNumber: new FormControl('',[Validators.required]),
     floorNumber: new FormControl('',[Validators.required]),
     street: new FormControl('',[Validators.required]),
-    details: new FormControl('',[Validators.required]),
+    details: new FormControl('Please enter your address here in details',[Validators.required]),
   })
-  constructor(private userService: UserService,private settingService:SettingService){}
+  constructor(private userService: UserService,private settingService:SettingService,private orderService:OrderService){}
 
 
   ngOnInit() {
@@ -60,7 +61,7 @@ export class AddressAddingComponent implements OnInit {
     }
     this.userService.addUserAddress(address).subscribe({
       next: (res:any) => {
-        console.log(res);
+        this.orderService.userAddress=res;
         this.nextStep.emit();
       },
       error: (err:any) => {

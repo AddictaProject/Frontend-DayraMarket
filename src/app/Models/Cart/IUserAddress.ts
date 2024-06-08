@@ -1,4 +1,5 @@
 export interface IUserAddress {
+  uuid?:string;
   userName: string;
   phoneNumber: string;
   cityId: string;

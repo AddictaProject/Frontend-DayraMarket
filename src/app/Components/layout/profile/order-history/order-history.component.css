@@ -1,0 +1,23 @@
+.item{
+  padding-block: 30px;
+}
+.item:not(:last-of-type){
+  border-bottom: 1px solid #DCDCDC;
+}
+.image{
+  width: 90px;
+}
+img {
+  width: 100%;
+}
+.spec{
+  color: #09764CCC;
+  ;
+}
+.change-state{
+  font-size: 12px;
+  color: #7A7A7A;
+}
+.status{
+  color: #696CFF;
+}

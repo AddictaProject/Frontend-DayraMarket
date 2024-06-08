@@ -31,4 +31,14 @@ export class UserService {
   addUserAddress(model:IUserAddress){
     return this.httpClient.post(this.URL+'users/my/addresses', model);
   }
+  getUserAddress(){
+    return this.httpClient.get(this.URL+'users/my/addresses');
+  }
+  updateUserAddress(model:IUserAddress){
+    return this.httpClient.put(this.URL+'users/my/addresses/'+model?.uuid, model);
+  }
+  deleteUserAddress(id:string){
+    return this.httpClient.delete(this.URL+'users/my/addresses/'+id);
+  }
+
 }
