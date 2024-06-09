@@ -62,11 +62,7 @@ export class AddressAddingComponent implements OnInit {
    })
   }
 
-  onDistrictChange() {
-    const districtId = this.addAddressForm.get('districtId')?.value;
-    const selectedDistrict = this.districts.find(item => item.districtId === districtId);
-    this.selectedDistrictName = selectedDistrict ? selectedDistrict.districtName : '';
-  }
+
 
 
   next() {
@@ -94,28 +90,28 @@ export class AddressAddingComponent implements OnInit {
       this.addAddressForm.get('districtId')?.markAsTouched();
       return
     }
+    const districtId = this.addAddressForm.get('districtId')?.value;
+    const selectedDistrict = this.districts.find(item => item.districtId === districtId);
+    this.selectedDistrictName = selectedDistrict ? selectedDistrict.districtName : '';
+
     let address:IUserAddress={
       userName: this.addAddressForm.get('username')?.value || '',
       phoneNumber: this.addAddressForm.get('phoneNumber')?.value || '',
       cityId: this.addAddressForm.get('cityId')?.value || '',
-      cityName: this.selectedCityName,
-      districtId: this.addAddressForm.get('districtId')?.value || '',
-      districtName: this.selectedDistrictName,
+      districtId: districtId || '',
       street: this.addAddressForm.get('street')?.value || '',
       buildingNumber: this.addAddressForm.get('buildingNumber')?.value || '',
       details: this.addAddressForm.get('details')?.value || '',
       defaultAddress: false,
       apartmentNumber: this.addAddressForm.get('apartmentNumber')?.value || '',
       floorNumber: this.addAddressForm.get('floorNumber')?.value || '',
-
     }
-
 
     this.userService.addUserAddress(address).subscribe({
       next: (res:any) => {
         this.orderService.userAddress=res;
-        this.orderService.CityName=this.selectedCityName;
-        this.orderService.DistrictName=this.selectedDistrictName;
+        this.orderService.userAddress.cityName=this.selectedCityName;
+        this.orderService.userAddress.districtName=this.selectedDistrictName;
         this.nextStep.emit();
       },
       error: (err:any) => {
