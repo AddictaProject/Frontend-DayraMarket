@@ -2,9 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Environment } from '../../../enviroment/environment';
 import { ISignUp } from '../../Models/User/ISignUp';
-import { ILogin } from '../../Models/User/ilogin';
 import { IVerifyPhoneNumber } from '../../Models/User/IVerifyPhoneNumber';
 import { IUserAddress } from '../../Models/Cart/IUserAddress';
+import { ILogin } from '../../Models/User/ilogin';
 
 @Injectable({
   providedIn: 'root'

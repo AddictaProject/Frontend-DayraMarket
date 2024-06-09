@@ -15,7 +15,7 @@ import { VerifyComponent } from "../verify/verify.component";
 })
 export class SignUpComponent {
   serverError:string = "";
-  isShowingVerify: boolean = true;
+  isShowingVerify: boolean = false;
   signUpForm= new FormGroup({
     email: new FormControl('',[Validators.required, Validators.email]),
     phoneNumber: new FormControl('',[Validators.required, Validators.maxLength(11), Validators.minLength(11)]),

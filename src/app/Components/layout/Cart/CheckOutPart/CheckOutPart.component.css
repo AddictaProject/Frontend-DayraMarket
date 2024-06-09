@@ -25,10 +25,11 @@
   border-radius: 6px;
   padding: 15px 20px;
 }
-/* .imgOfDetails img {
-    width: 100%;
-    height: 120px;
-} */
+.img-fluid {
+  width: 116px;
+  height: 116px;
+}
+
 
 .txtNameOfProd {
   color: rgba(93, 93, 93, 1);

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, input } from '@angular/core';
 import { ProductDetailsService } from '../../../../Services/ProductService/product-details.service';
 import { RouterModule } from '@angular/router';
 import { DefaultCheckOutComponent } from "./DefaultCheckOut/DefaultCheckOut.component";
@@ -19,13 +19,15 @@ import { CommonModule } from '@angular/common';
 })
 export class CheckOutPartComponent implements OnInit {
   cart:ICartItem[]=[];
+  totalPrice:number=0;
+
   constructor(public _ProductDetailsService: ProductDetailsService,private cartService:CartService) {}
 
   ngOnInit() {
     this.cart=this.cartService.getCart();
   }
 
-  isLogin :boolean=false;
+
 
   CartCasesEnum = CartCasesEnum;
   CurrentCase :CartCasesEnum = CartCasesEnum.Default;
