@@ -34,7 +34,7 @@ export class AddAddressComponent {
     apartmentNumber: new FormControl('', [Validators.required]),
     floorNumber: new FormControl('', [Validators.required]),
     street: new FormControl('', [Validators.required]),
-    details: new FormControl('Please enter your address here in details', [
+    details: new FormControl('', [
       Validators.required,
     ]),
   });

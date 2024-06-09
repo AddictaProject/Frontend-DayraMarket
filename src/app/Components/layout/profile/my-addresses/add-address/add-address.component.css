@@ -108,3 +108,7 @@ input[type="tel"] {
 .data-btn:hover{
   background-color: #E07575;
 }
+.error{
+  font-size: 12px;
+  color: hsla(358, 84%, 36%, 1);;
+}
