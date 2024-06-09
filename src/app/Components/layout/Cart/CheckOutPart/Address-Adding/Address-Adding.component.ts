@@ -26,11 +26,11 @@ export class AddressAddingComponent implements OnInit {
     apartmentNumber: new FormControl('',[Validators.required]),
     floorNumber: new FormControl('',[Validators.required]),
     street: new FormControl('',[Validators.required]),
-    details: new FormControl('Please enter your address here in details',[Validators.required]),
+    details: new FormControl('',[Validators.required]),
   })
 
-  selectedCityName: string = ''; 
-  selectedDistrictName: string = ''; 
+  selectedCityName: string = '';
+  selectedDistrictName: string = '';
 
   @Output() nextStep = new EventEmitter<void>();
   totalPrice!: number;
@@ -50,7 +50,7 @@ export class AddressAddingComponent implements OnInit {
 
   }
 
-  
+
   onCityChange() {
     const cityId = this.addAddressForm.get('cityId')?.value;
     const selectedCity = this.city.find(item => item._id === cityId);
@@ -76,6 +76,24 @@ export class AddressAddingComponent implements OnInit {
 
 
   onSubmit(){
+
+    if (this.addAddressForm.invalid) {
+      for (const key in this.addAddressForm.controls) {
+          this.addAddressForm.get(key)?.markAsDirty();
+          this.addAddressForm.get(key)?.markAsTouched();
+      }
+      return;
+    }
+
+    if(this.addAddressForm.get('cityId')?.value==='0'
+    || this.addAddressForm.get('districtId')?.value==='0')
+    {
+      this.addAddressForm.get('cityId')?.markAsDirty();
+      this.addAddressForm.get('cityId')?.markAsTouched();
+      this.addAddressForm.get('districtId')?.markAsDirty();
+      this.addAddressForm.get('districtId')?.markAsTouched();
+      return
+    }
     let address:IUserAddress={
       userName: this.addAddressForm.get('username')?.value || '',
       phoneNumber: this.addAddressForm.get('phoneNumber')?.value || '',
@@ -92,7 +110,7 @@ export class AddressAddingComponent implements OnInit {
 
     }
 
-    
+
     this.userService.addUserAddress(address).subscribe({
       next: (res:any) => {
         this.orderService.userAddress=res;

@@ -60,27 +60,35 @@
       </div>
 
 
-      <!-- Select City & Government -->
-      <div class="d-flex input-group mb-3">
-        <div class="col-6 pe-3 ">
-          <select class="form-select userInput textOfSelectList" aria-label="Default select example"
-            formControlName="cityId" (change)="onCityChange()">
-            <option value="0">City</option>
-            @for (item of city; track $index) {
-            <option [value]="item._id">{{item.name}}</option>
-            }
-          </select>
-        </div>
-        <div class="col-6">
-          <select class="form-select userInput textOfSelectList" aria-label="Default select example"
-            formControlName="districtId" (change)="onDistrictChange()">
-            <option value="0">District</option>
-            @for (item of districts; track $index) {
-            <option [value]="item.districtId">{{item.districtName}}</option>
-            }
-          </select>
-        </div>
-      </div>
+    <!-- Select City & Government -->
+  <div class="d-flex input-group mb-3">
+    <div class="col-6 pe-3 ">
+      <select class="form-select userInput textOfSelectList" aria-label="Default select example"
+        formControlName="cityId" (change)="onCityChange()">
+        <option value="0">City</option>
+        @for (item of city; track $index) {
+        <option [value]="item._id">{{item.name}}</option>
+        }
+      </select>
+      @if(
+      addAddressForm.controls.cityId.dirty && addAddressForm.controls.cityId.touched && addAddressForm.controls.cityId.value ==='0' ){
+      <div class="error mt-1">city is Required</div>
+      }
+    </div>
+    <div class="col-6">
+      <select class="form-select userInput textOfSelectList" aria-label="Default select example"
+        formControlName="districtId">
+        <option value="0">District</option>
+        @for (item of districts; track $index) {
+        <option [value]="item.districtId">{{item.districtName}}</option>
+        }
+      </select>
+      @if(
+      addAddressForm.controls.districtId.dirty && addAddressForm.controls.districtId.touched && addAddressForm.controls.districtId.value ==='0' ){
+      <div class="error mt-1">District is Required</div>
+      }
+    </div>
+  </div>
 
       <!-- Building Number &  apartment number -->
       <div class="d-flex input-group mb-3">
@@ -124,18 +132,18 @@
       </div>
 
       <!-- Details -->
-      <div class="col input-group mb-3" style="height: 88px;">
+      <div class="col input-group " style="height: 88px;">
         <textarea id="txtid" class="form-control userDetails" name="textname" rows="4" formControlName="details"
-          maxlength="200"></textarea>
-        @if(addAddressForm.controls.details.hasError('required') &&
-        addAddressForm.controls.details.dirty && addAddressForm.controls.details.touched ){
-        <div class="error mt-1">Details is Required</div>
-        }
-      </div>
+          maxlength="200" placeholder="Please enter your address here in details"></textarea>
+          </div>
+          @if(addAddressForm.controls.details.hasError('required') &&
+          addAddressForm.controls.details.dirty && addAddressForm.controls.details.touched ){
+          <div class="error mt-1">Details is Required</div>
+          }
 
 
       <!-- Save CheckBox -->
-      <div class="col input-group mb-3">
+      <div class="col input-group my-3">
         <div class="form-check">
           <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
           <label class="form-check-label labelOfSaveCheckbox" for="flexCheckDefault">
@@ -156,7 +164,7 @@
 
       <div class=" mb-3 ">
         <button type="submit" class="btn btnAddToCart py-3" role="button">
-          Next 
+          Next
         </button>
       </div>
 

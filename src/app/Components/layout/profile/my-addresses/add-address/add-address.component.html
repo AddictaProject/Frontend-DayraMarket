@@ -64,6 +64,10 @@
         <option [value]="item._id">{{item.name}}</option>
         }
       </select>
+      @if(addAddressForm.controls.cityId.hasError('required') &&
+      addAddressForm.controls.cityId.dirty && addAddressForm.controls.cityId.touched && addAddressForm.controls.cityId.value =='0' ){
+      <div class="error mt-1">city is Required</div>
+      }
     </div>
     <div class="col-6">
       <select class="form-select userInput textOfSelectList" aria-label="Default select example"
@@ -73,20 +77,32 @@
         <option [value]="item.districtId">{{item.districtName}}</option>
         }
       </select>
+      @if(addAddressForm.controls.cityId.hasError('required') &&
+      addAddressForm.controls.districtId.dirty && addAddressForm.controls.districtId.touched && addAddressForm.controls.districtId.value =='0' ){
+      <div class="error mt-1">District is Required</div>
+      }
     </div>
   </div>
 
-  <!-- Building Number &  apartment number -->
-  <div class="d-flex input-group mb-3">
-    <div class="col-6 pe-3">
-      <input type="text" class="form-control  userApartmentNumber" placeholder="Building Number"
-        aria-label="Building Number" formControlName="buildingNumber">
-    </div>
-    <div class="col-6 ">
-      <input type="text" class="form-control userApartmentNumber " placeholder="apartment number"
-        aria-label="apartment number" formControlName="apartmentNumber">
-    </div>
+ <!-- Building Number &  apartment number -->
+ <div class="d-flex input-group mb-3">
+  <div class="col-6 pe-3">
+    <input type="text" class="form-control  userApartmentNumber" placeholder="Building Number"
+      aria-label="buildingNumber" formControlName="buildingNumber">
+    @if(addAddressForm.controls.buildingNumber.hasError('required') &&
+    addAddressForm.controls.buildingNumber.dirty && addAddressForm.controls.buildingNumber.touched  ){
+    <div class="error mt-1">Building Number is Required</div>
+    }
   </div>
+  <div class="col-6 ">
+    <input type="text" class="form-control userApartmentNumber " placeholder="apartment number"
+      aria-label="apartment number" formControlName="apartmentNumber">
+    @if(addAddressForm.controls.apartmentNumber.hasError('required') &&
+    addAddressForm.controls.apartmentNumber.dirty && addAddressForm.controls.apartmentNumber.touched ){
+    <div class="error mt-1">Apartment Number is Required</div>
+    }
+  </div>
+</div>
 
   <!-- Street -->
   <div class="d-flex input-group mb-3">
@@ -94,18 +110,30 @@
     <div class="col-6 pe-3">
       <input type="text" class="form-control userApartmentNumber" formControlName="floorNumber"
         placeholder="floor number" aria-label="floorNumber">
+      @if(addAddressForm.controls.floorNumber.hasError('required') &&
+      addAddressForm.controls.floorNumber.dirty && addAddressForm.controls.floorNumber.touched ){
+      <div class="error mt-1">Floor Number is Required</div>
+      }
     </div>
     <div class="col-6">
       <input type="text" class="form-control userApartmentNumber" formControlName="street" placeholder="Street"
-        aria-label="Street">
+        aria-label="street">
+      @if(addAddressForm.controls.street.hasError('required') &&
+      addAddressForm.controls.street.dirty && addAddressForm.controls.street.touched ){
+      <div class="error mt-1">Street is Required</div>
+      }
     </div>
   </div>
 
   <!-- Details -->
-  <div class="col input-group mb-3" style="height: 88px;">
+  <div class="col input-group " style="height: 88px;">
     <textarea id="txtid" class="form-control userDetails" name="textname" rows="4" formControlName="details"
-      maxlength="200"></textarea>
-  </div>
+      maxlength="200" placeholder="Please enter your address here in details"></textarea>
+      </div>
+      @if(addAddressForm.controls.details.hasError('required') &&
+      addAddressForm.controls.details.dirty && addAddressForm.controls.details.touched ){
+      <div class="error mt-1">Details is Required</div>
+      }
 
   <div class="d-flex justify-content-md-end justify-content-center">
     <button type="submit" class="data-btn mt-4">Add new Address</button>

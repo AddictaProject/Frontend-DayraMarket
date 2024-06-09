@@ -55,8 +55,23 @@ export class AddAddressComponent {
     });
   }
   onSubmit(){
-    if (this.addAddressForm.invalid)
+    if (this.addAddressForm.invalid) {
+      for (const key in this.addAddressForm.controls) {
+          this.addAddressForm.get(key)?.markAsDirty();
+          this.addAddressForm.get(key)?.markAsTouched();
+      }
       return;
+    }
+
+    if(this.addAddressForm.get('cityId')?.value==='0'
+    || this.addAddressForm.get('districtId')?.value==='0')
+    {
+      this.addAddressForm.get('cityId')?.markAsDirty();
+      this.addAddressForm.get('cityId')?.markAsTouched();
+      this.addAddressForm.get('districtId')?.markAsDirty();
+      this.addAddressForm.get('districtId')?.markAsTouched();
+      return
+    }
 
     let address:IUserAddress={
       userName: this.addAddressForm.get('username')?.value || '',
