@@ -24,7 +24,7 @@ export class Header2Component implements OnInit {
   ngOnInit() {
     this.offCanvasOb.isOffcanvasOpen$.subscribe((isOpen) => {
       this.isOffcanvasOpen = isOpen;
-      console.log(this.isOffcanvasOpen);
+      // console.log(this.isOffcanvasOpen);
     });
   }
 

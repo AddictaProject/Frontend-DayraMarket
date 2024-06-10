@@ -14,7 +14,7 @@ import { RouterModule } from '@angular/router';
   standalone: true,
   templateUrl: './product-slider.component.html',
   styleUrl: './product-slider.component.css',
-  imports: [DragScrollComponent, DragScrollItemDirective, CardComponent,CardPlaceholderComponent,RouterModule],
+  imports: [DragScrollComponent, DragScrollItemDirective, CardComponent,CardPlaceholderComponent ,RouterModule],
 })
 export class ProductSliderComponent {
   isLoaded =false;
