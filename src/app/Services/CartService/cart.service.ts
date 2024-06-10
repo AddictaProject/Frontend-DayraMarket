@@ -7,6 +7,9 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class CartService {
   private cart: ICartItem[] = [];
+  finalTotalPrice !:number;
+  subTotalPrice!: number;
+
   totalPrice$ :BehaviorSubject<number> = new BehaviorSubject<number>(0);
 
   constructor() {

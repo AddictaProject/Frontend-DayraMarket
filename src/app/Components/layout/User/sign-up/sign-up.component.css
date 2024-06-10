@@ -74,6 +74,7 @@
 .sign-in{
  color:  #00B770;
  cursor: pointer;
+ text-decoration: none;
 }
 .error{
   font-size: 12px;

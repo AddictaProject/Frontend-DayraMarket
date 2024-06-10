@@ -1,0 +1,90 @@
+.userInput {
+  padding: 15px 25px;
+  background-color: rgba(244, 244, 244, 1);
+  border: none;
+}
+
+.form-control:focus {
+  box-shadow: none;
+}
+
+.iconOfInput {
+  background-color: rgba(244, 244, 244, 1);
+  border: none;
+  padding-right: 25px;
+}
+
+input[type="text"],
+input[type="tel"] {
+  color: rgba(85, 85, 85, 1);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 17.07px;
+  letter-spacing: 0.08em;
+  text-align: left;
+}
+
+/* ==== */
+
+.txtOfCount {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17.07px;
+  text-align: center;
+  color: rgba(132, 132, 132, 1);
+}
+
+.txtOfCountFinal {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 19.5px;
+  text-align: center;
+  color: rgba(0, 0, 0, 1);
+}
+
+.totalPrice {
+  border-top: 0.8px solid rgba(200, 200, 200, 1);
+}
+
+/* === */
+/* First Card */
+
+.borderDiv{
+  border-bottom: rgba(200, 200, 200, 0.6) 1px solid;
+
+}
+.numOfOrders {
+  color: rgba(159, 159, 159, 1);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17.07px;
+  text-align: left;
+}
+
+.orderId{
+font-size: 16px;
+font-weight: 500;
+line-height: 19.5px;
+text-align: left;
+color: rgba(10, 103, 52, 1);
+}
+
+
+.txtpaymentMethod{
+
+  color: rgba(85, 85, 85, 1);
+font-size: 16px;
+font-weight: 400;
+line-height: 19.5px;
+text-align: left;
+
+}
+
+.paymentMethod{
+color: rgba(85, 85, 85, 1);
+font-size: 14px;
+font-weight: 400;
+line-height: 17.07px;
+text-align: left;
+
+}

@@ -10,8 +10,6 @@ import { IUserAddress } from '../../Models/Cart/IUserAddress';
 export class OrderService {
   private URL!: string;
   userAddress!: IUserAddress;
-  CityName: string = ''; 
-  DistrictName: string = ''; 
 
   constructor(private httpClient: HttpClient) {
     this.URL = Environment.serverURL + '/api/v1/';

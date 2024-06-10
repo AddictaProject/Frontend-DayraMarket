@@ -5,13 +5,14 @@ import { CommonModule } from '@angular/common';
 import { ISignUp } from '../../../../Models/User/ISignUp';
 import { UserService } from '../../../../Services/UserService/user.service';
 import { VerifyComponent } from "../verify/verify.component";
+import { RouterLink, RouterModule } from '@angular/router';
 
 @Component({
     selector: 'app-sign-up',
     standalone: true,
     templateUrl: './sign-up.component.html',
     styleUrl: './sign-up.component.css',
-    imports: [ReactiveFormsModule, NumberOnlyDirective, CommonModule, VerifyComponent]
+    imports: [ReactiveFormsModule, NumberOnlyDirective, CommonModule, VerifyComponent ,RouterModule]
 })
 export class SignUpComponent {
   serverError:string = "";

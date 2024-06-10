@@ -1,5 +1,9 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { CartService } from '../../../../../Services/CartService/cart.service';
+import { OrderService } from '../../../../../Services/OrderService/order.service';
+import { ICreateOrder } from '../../../../../Models/Order/ICreateOrder';
+import { PaymentMethod } from '../../../../../Models/Cart/PaymentMethod';
 
 @Component({
   selector: 'app-ConfirmPayment',
@@ -13,15 +17,24 @@ export class ConfirmPaymentComponent implements OnInit {
   @Output() nextStep = new EventEmitter<void>();
 
   selectedPaymentMethod: string | null = null;
- 
-  constructor() { }
+
+  paymentMethodEnum =PaymentMethod;
+  
+  constructor(  public cartService: CartService, private orderService :OrderService ) { }
 
   ngOnInit() {
+    
   }
 
 
-  // Not Yet
   next() {
+    // let order:ICreateOrder={
+    //   paymentMethod:PaymentMethod;
+    //   shippingAddressUuid:string;
+    //   items:{productStockUuid:string}[]
+    //  }
+    // this.orderService.createOrder(order).subscribe()
+    this.nextStep.emit();
   }
 
   // Payment Methods

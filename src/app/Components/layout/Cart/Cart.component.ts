@@ -10,7 +10,8 @@ import { NotSignedInComponent } from "./Not-SignedIn/Not-SignedIn.component";
     standalone: true,
     templateUrl: './Cart.component.html',
     styleUrls: ['./Cart.component.css'],
-    imports: [CheckOutPartComponent, PairsWellCartComponent, PairsWellComponent, MightLikeComponent, NotSignedInComponent]
+    imports: [CheckOutPartComponent, PairsWellCartComponent, PairsWellComponent,
+       MightLikeComponent, NotSignedInComponent]
 })
 export class CartComponent implements OnInit {
 

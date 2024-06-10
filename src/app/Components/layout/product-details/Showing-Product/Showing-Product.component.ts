@@ -152,6 +152,7 @@ export class ShowingProductComponent implements OnInit {
       color:this._ProductDetailsService.color,
       price:this._ProductDetailsService.price,
       image:`https://dayra-market.addictaco.com${this._ProductDetailsService.product.photos[0]}`,
+      
     }
     this.cartService.addToCart(item);
   }

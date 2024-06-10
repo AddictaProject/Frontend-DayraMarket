@@ -11,17 +11,24 @@
           </li>
           <li>
             <!-- {{_ProductDetailsService.product.categoryDisplayName}} -->
-            <a [routerLink]="['']"> Home </a>
+            <a [routerLink]="['']"> Products </a>
             <i class="fa-solid fa-angle-right mx-3"></i>
           </li>
           <li>
-            <a [routerLink]="['']"> Home </a>
+            <a [routerLink]="['']"> Product name </a>
             <i class="fa-solid fa-angle-right mx-3"></i>
           </li>
           <li>cart </li>
         </ol>
       </nav>
     </div>
+
+    <!-- Success Statement -->
+    <!-- @if (CartCasesEnum.Success) {
+    <div class="mt-5">
+      <p class="thankAfterConfirm">Thank you for your order! </p>
+    </div>
+    } -->
 
 
     <!-- Main content -->
@@ -53,7 +60,8 @@
                   <p class="priceOfProd">{{item.price | number: '3.0-0'}} L.E</p>
 
 
-                  <div  (click)="removeItem(item.id)">
+                  @if(!CartCasesEnum.Success){
+                  <div (click)="removeItem(item.id)">
                     <svg class="svgOfDelete" width="17" height="17" viewBox="0 0 17 17" fill="none"
                       xmlns="http://www.w3.org/2000/svg">
                       <path
@@ -61,7 +69,7 @@
                         fill="#890F0F" fill-opacity="0.4" />
                     </svg>
                   </div>
-
+                  }
                 </div>
 
 
@@ -75,7 +83,7 @@
 
 
         <!-- Protection Plan Coverage -->
-        <div class="card mb-3 mt-4 detailsCardProtection me-5">
+        <!-- <div class="card mb-3 mt-4 detailsCardProtection me-5">
           <div class="row g-0">
 
             <div class="card-body m-3">
@@ -119,7 +127,7 @@
 
 
           </div>
-        </div>
+        </div> -->
 
 
       </div>
@@ -139,6 +147,9 @@
         }
         @case (CartCasesEnum.Confirm) {
         <app-ConfirmPayment (nextStep)="goToNextCase()"></app-ConfirmPayment>
+        }
+        @case (CartCasesEnum.Success) {
+        <app-SuccessCart (nextStep)="goToNextCase()"></app-SuccessCart>
         }
         @default {
         <h1>Something Wrong Please Refresh The Page ! </h1>

@@ -18,7 +18,7 @@ export class AddressAddingComponent implements OnInit {
   city:any[]=[];
   districts:any[]=[];
   addAddressForm= new FormGroup({
-    username: new FormControl('',[Validators.required , Validators.minLength(3)] ),
+    username: new FormControl('',[Validators.required ]),
     phoneNumber: new FormControl('',[Validators.required, Validators.maxLength(11), Validators.minLength(11)]),
     districtId: new FormControl('0',[Validators.required]),
     cityId: new FormControl('0',[Validators.required]),

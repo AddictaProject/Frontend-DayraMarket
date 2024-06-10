@@ -14,6 +14,21 @@
 }
 
 /* === */
+/* Success */
+
+.thankAfterConfirm {
+  color: rgba(9, 118, 76, 1);
+  font-family: "Overused Grotesk";
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0.02em;
+  text-align: left;
+  padding-bottom: 30px;
+  border-bottom: rgba(227, 227, 227, 1) 1px solid;
+}
+
+/* === */
 /* Details Of Cart */
 
 .detailsCard {
@@ -29,7 +44,6 @@
   width: 116px;
   height: 116px;
 }
-
 
 .txtNameOfProd {
   color: rgba(93, 93, 93, 1);

@@ -9,13 +9,15 @@ import { CartCasesEnum } from '../../../../Models/Cart/models/cart-cases-enum';
 import { ICartItem } from '../../../../Models/Cart/ICartItem';
 import { CartService } from '../../../../Services/CartService/cart.service';
 import { CommonModule } from '@angular/common';
+import { SuccessCartComponent } from "./SuccessCart/SuccessCart.component";
 
 @Component({
     selector: 'app-CheckOutPart',
     standalone: true,
     templateUrl: './CheckOutPart.component.html',
     styleUrls: ['./CheckOutPart.component.css'],
-    imports: [RouterModule, DefaultCheckOutComponent, AddressAddingComponent, ReviewOrderComponent, ConfirmPaymentComponent,CommonModule]
+    imports: [RouterModule, DefaultCheckOutComponent, AddressAddingComponent,
+        ReviewOrderComponent, ConfirmPaymentComponent, CommonModule, SuccessCartComponent]
 })
 export class CheckOutPartComponent implements OnInit {
   cart:ICartItem[]=[];
@@ -32,7 +34,7 @@ export class CheckOutPartComponent implements OnInit {
   CartCasesEnum = CartCasesEnum;
   CurrentCase :CartCasesEnum = CartCasesEnum.Default;
   goToNextCase() {
-    if (this.CurrentCase < CartCasesEnum.Confirm) {
+    if (this.CurrentCase < CartCasesEnum.Success) {
       this.CurrentCase++;
     }
   }

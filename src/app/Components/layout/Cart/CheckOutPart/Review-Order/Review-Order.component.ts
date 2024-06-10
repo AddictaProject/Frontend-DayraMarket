@@ -14,41 +14,33 @@ import { CartService } from '../../../../../Services/CartService/cart.service';
   styleUrls: ['./Review-Order.component.css'],
 })
 export class ReviewOrderComponent implements OnInit {
+  userAddress!: IUserAddress;
+  // shippingInfo!: IShipping;
+  // subTotalPrice!: number;
 
-  userAddress!:IUserAddress;
-  shippingInfo !:IShipping;
-  subTotalPrice !:number;
-  totalPrice: number =0;
-
-  constructor(public orderService: OrderService , private settingService: SettingService,
-    private cartService :CartService
+  constructor(
+    public orderService: OrderService,
+    public settingService: SettingService,
+    public cartService: CartService
   ) {}
 
   ngOnInit() {
-
-    this.userAddress=this.orderService.userAddress;
+    this.userAddress = this.orderService.userAddress;
 
     this.settingService.getShippingAddress().subscribe({
       next: (data: any) => {
-        this.shippingInfo = data;
+        this.settingService.shippingInfo = data;
+
+        this.cartService.totalPrice$.subscribe((t) => {
+          this.cartService.subTotalPrice = t;
+          this.updateTotalPrice();
+        });
       },
       error: (error: any) => {
         console.error('Error fetching shipping address:', error);
-      }
+      },
     });
 
-
-    this.cartService.totalPrice$.subscribe(totalprice => {
-      this.subTotalPrice= totalprice;
-    })
-
-    if(this.subTotalPrice >= this.shippingInfo.freeShippingAfter ){
-      this.totalPrice = this.subTotalPrice - this.shippingInfo.shippingCost ;
-    }else{
-      this.totalPrice = this.subTotalPrice + this.shippingInfo.shippingCost ; 
-    }
-    console.log(this.totalPrice);
-    
   }
 
   @Output() nextStep = new EventEmitter<void>();
@@ -56,4 +48,14 @@ export class ReviewOrderComponent implements OnInit {
   next() {
     this.nextStep.emit();
   }
+
+   updateTotalPrice() {
+    if (this.cartService.subTotalPrice >= this.settingService.shippingInfo.freeShippingAfter) {
+      this.cartService.finalTotalPrice=this.cartService.subTotalPrice;
+    } else {
+      this.cartService.finalTotalPrice= this.cartService.subTotalPrice + this.settingService.shippingInfo.shippingCost;
+    }
+  }
+
+
 }
