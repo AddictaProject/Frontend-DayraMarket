@@ -40,6 +40,9 @@ export class CartService {
   getCart(): ICartItem[] {
     return JSON.parse(localStorage.getItem('cart') || '[]');
   }
+  clearCart(){
+    localStorage.setItem('cart', '');
+  }
 
   calculateTotalPrice() {
     const totalPrice = this.cart.reduce((sum, item) => sum + item.price, 0);

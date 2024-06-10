@@ -1,8 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { CartService } from '../../../../../Services/CartService/cart.service';
 import { OrderService } from '../../../../../Services/OrderService/order.service';
-import { ICreateOrder } from '../../../../../Models/Order/ICreateOrder';
+import { ICreateOrder, productStockUuid } from '../../../../../Models/Order/ICreateOrder';
 import { PaymentMethod } from '../../../../../Models/Cart/PaymentMethod';
 
 @Component({
@@ -16,29 +16,40 @@ export class ConfirmPaymentComponent implements OnInit {
 
   @Output() nextStep = new EventEmitter<void>();
 
-  selectedPaymentMethod: string | null = null;
+  selectedPaymentMethod!: PaymentMethod ;
 
   paymentMethodEnum =PaymentMethod;
-  
+
   constructor(  public cartService: CartService, private orderService :OrderService ) { }
 
   ngOnInit() {
-    
+
   }
 
 
   next() {
-    // let order:ICreateOrder={
-    //   paymentMethod:PaymentMethod;
-    //   shippingAddressUuid:string;
-    //   items:{productStockUuid:string}[]
-    //  }
-    // this.orderService.createOrder(order).subscribe()
-    this.nextStep.emit();
+    const productStockUuids:productStockUuid[]= this.cartService.getCart().map(p=>{return{productStockUuid:p.id}});
+    let order:ICreateOrder={
+      paymentMethod:this.selectedPaymentMethod,
+      shippingAddressUuid:this.orderService.userAddress.uuid ??'',
+      items:productStockUuids
+    }
+    console.log(order);
+    this.orderService.createOrder(order).subscribe({
+      next: (res:any) => {
+        this.nextStep.emit();
+        this.cartService.clearCart();
+      },
+      error: (err:any) => {
+        console.log(err);
+      }
+    });
+
+
   }
 
   // Payment Methods
-  onPaymentMethodChange(method: string) {
+  onPaymentMethodChange(method:PaymentMethod ) {
     this.selectedPaymentMethod = method;
   }
 

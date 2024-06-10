@@ -21,7 +21,6 @@ export class SignInComponent {
 
   constructor(private userService: UserService,private router: Router){}
   onSubmit(){
-
     if (this.signInForm.invalid) {
       for (const key in this.signInForm.controls) {
           this.signInForm.get(key)?.markAsDirty();
