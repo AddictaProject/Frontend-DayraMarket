@@ -5,11 +5,12 @@ import { ProductDetailsService } from '../../../../Services/ProductService/produ
 import { OrderService } from '../../../../Services/OrderService/order.service';
 import { IOrder } from '../../../../Models/Order/IOrder';
 import { IProductOrderItem } from '../../../../Models/Order/IProductOrderItem';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-order-history',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './order-history.component.html',
   styleUrl: './order-history.component.css'
 })
@@ -26,7 +27,7 @@ export class OrderHistoryComponent {
       next: (res:any) => {
         this.orders=res;
         console.log(this.orders);
-        
+
       },
       error: (err:any) => {
         console.log(err);

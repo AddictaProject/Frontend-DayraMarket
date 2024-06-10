@@ -44,4 +44,11 @@ export class UserService {
     return this.httpClient.delete(this.URL+'users/my/addresses/'+id);
   }
 
+  logout(){
+
+    return this.httpClient.post(this.URL+'auth/logout','');
+  }
+
+
+
 }

@@ -6,18 +6,18 @@
   <div class="item d-flex flex-column flex-md-row justify-content-between text-center text-md-start">
     <div class="d-flex gap-3 d-flex flex-column flex-md-row align-items-center">
       <div class="image mx-auto">
-        <img [src]="item.photoPaths[0]" alt="">
+        <img [src]="'https://dayra-market.addictaco.com'+item.photoPaths[0]" alt="">
       </div>
       <div class="item-info  ">
         <h5>{{item.productDisplayName}}</h5>
         <div class="d-flex flex-column flex-md-row justify-content-between">
-          <p class="mb-2 col-10"># {{item.uuid}}</p>
-          <p class="mb-2 col-10">Date : {{item.dateCreated}}</p>
+          <p class="mb-2"># {{order.serialNumber}}</p>
+          <p class="mb-2">Date : {{item.dateCreated | date:"dd/MM/yyyy"}}</p>
         </div>
-        <div class="d-flex flex-column flex-md-row justify-content-between gap-2 spec">
+        <div class="d-flex flex-column flex-md-row justify-content-between gap-5 spec">
           <!-- Not sure if it is correct ! Look => IProductOrderItem -->
           @for (att of item.attributes; track $index) {
-          @if(att.attributeValue.toLowerCase() == 'condition' || att.attributeValue.toLowerCase() == 'color'){
+          @if(att.attributeDisplayName.toLowerCase() == 'condition' || att.attributeDisplayName.toLowerCase() == 'color'){
           <p class="mb-0">{{att.attributeValue}} : {{att.attributeDisplayName}}</p>
           }
           }
