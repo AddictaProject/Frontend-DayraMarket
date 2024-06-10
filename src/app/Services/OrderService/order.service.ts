@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Environment } from '../../../enviroment/environment';
 import { ICreateOrder } from '../../Models/Order/ICreateOrder';
 import { IUserAddress } from '../../Models/Cart/IUserAddress';
+import { IOrder } from '../../Models/Order/IOrder';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,8 @@ import { IUserAddress } from '../../Models/Cart/IUserAddress';
 export class OrderService {
   private URL!: string;
   userAddress!: IUserAddress;
+
+  confirmOrder!:IOrder;
 
   constructor(private httpClient: HttpClient) {
     this.URL = Environment.serverURL + '/api/v1/';

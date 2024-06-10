@@ -15,6 +15,9 @@ export class UserService {
   constructor(private httpClient: HttpClient) {
     this.URL = Environment.serverURL + '/api/v1/';
   }
+  get userState(): boolean {
+    return localStorage.getItem('accessToken') ? true : false;
+  }
 
   registerUser(model:ISignUp){
     return this.httpClient.post(this.URL+'users', model);

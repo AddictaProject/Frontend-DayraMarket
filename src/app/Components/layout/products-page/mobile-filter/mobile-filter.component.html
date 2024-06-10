@@ -41,21 +41,6 @@
     </div>
     <div class="filter-menu" (click)="filterService.openMobileFilterMenu($event)">
       <div class="d-flex justify-content-between align-items-center py-3 ">
-        <h5>Model</h5>
-        <i class="fa-solid fa-angle-right"></i>
-      </div>
-      <div class="menu d-none">
-        <input type="text" placeholder="Search for brand">
-        <div>
-          <i class="fa-solid fa-arrow-left" (click)="filterService.closeMobileFilterMenu($event)"></i>
-          <h5 class="mb-4">Model</h5>
-          <app-filter [isMobile]="true" [filters]="filterService.brandsFiltered"
-            (filterChange)="filterService.getChecked($event)"></app-filter>
-        </div>
-      </div>
-    </div>
-    <div class="filter-menu" (click)="filterService.openMobileFilterMenu($event)">
-      <div class="d-flex justify-content-between align-items-center py-3 ">
         <h5>Price</h5>
         <i class="fa-solid fa-angle-right"></i>
       </div>

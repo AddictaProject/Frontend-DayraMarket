@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { OffCanvasService } from '../../../../Services/ProductService/offCanvas.service';
 import { CommonModule } from '@angular/common';
+import { UserService } from '../../../../Services/UserService/user.service';
 
 @Component({
   selector: 'app-Header',
@@ -13,13 +14,13 @@ import { CommonModule } from '@angular/common';
 export class HeaderComponent implements OnInit {
   isOffcanvasOpen!: boolean;
 
-  constructor(private offCanvasOb : OffCanvasService) { }
-  
+  constructor(private offCanvasOb : OffCanvasService,public userService:UserService) { }
+
   ngOnInit() {
     this.offCanvasOb.isOffcanvasOpen$.subscribe((isOpen) => {
       this.isOffcanvasOpen = isOpen;
       console.log(this.isOffcanvasOpen);
-      
+
     });
   }
 

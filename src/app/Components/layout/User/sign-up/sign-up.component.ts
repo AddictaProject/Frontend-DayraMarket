@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 import { ISignUp } from '../../../../Models/User/ISignUp';
 import { UserService } from '../../../../Services/UserService/user.service';
 import { VerifyComponent } from "../verify/verify.component";
-import { RouterLink, RouterModule } from '@angular/router';
+import { Router, RouterLink, RouterModule } from '@angular/router';
 
 @Component({
     selector: 'app-sign-up',
@@ -25,7 +25,12 @@ export class SignUpComponent {
     policy: new FormControl('',[Validators.required]),
   })
 
-  constructor(private userService: UserService){}
+  constructor(private userService: UserService,private router: Router){
+
+    if (userService.userState) {
+      this.router.navigate(['/']);
+    }
+  }
   onSubmit(){
 
     if (this.signUpForm.invalid) {

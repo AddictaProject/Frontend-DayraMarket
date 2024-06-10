@@ -11,6 +11,7 @@ import { MyDataComponent } from './Components/layout/profile/my-data/my-data.com
 import { SavedCardsComponent } from './Components/layout/profile/saved-cards/saved-cards.component';
 import { OrderHistoryComponent } from './Components/layout/profile/order-history/order-history.component';
 import { MyAddressesComponent } from './Components/layout/profile/my-addresses/my-addresses.component';
+import { userGuard } from './user.guard';
 
 export const routes: Routes = [
   {path:"", component: HomeComponent},
@@ -20,7 +21,7 @@ export const routes: Routes = [
   { path: 'cart', component:CartComponent, title: 'Cart' },
   { path: 'login', component:SignInComponent, title: 'Login' },
   { path: 'signup', component:SignUpComponent, title: 'SignUp' },
-  { path: 'profile', component:ProfileComponent, title: 'Profile',children:[
+  { path: 'profile', component:ProfileComponent, title: 'Profile' ,canActivate: [userGuard],children:[
 
       { path: '', component:MyDataComponent },
       { path: 'saved-cards', component:SavedCardsComponent },

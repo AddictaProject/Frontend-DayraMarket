@@ -56,8 +56,8 @@
                   <p class="priceOfProd">{{item.price | number: '3.0-0'}} L.E</p>
 
 
-                  @if(CurrentCase != CartCasesEnum.Success){
-                  <div (click)="removeItem(item.id)">
+                  @if((CurrentCase != CartCasesEnum.Confirm)){
+                  <div (click)="removeItem(item.id)" [ngClass]="{'d-none':CurrentCase == CartCasesEnum.Success}">
                     <svg class="svgOfDelete" width="17" height="17" viewBox="0 0 17 17" fill="none"
                       xmlns="http://www.w3.org/2000/svg">
                       <path

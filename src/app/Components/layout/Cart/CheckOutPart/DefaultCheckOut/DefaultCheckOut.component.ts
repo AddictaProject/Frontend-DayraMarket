@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Route, Router, RouterModule } from '@angular/router';
 import { CartService } from '../../../../../Services/CartService/cart.service';
+import { UserService } from '../../../../../Services/UserService/user.service';
 
 @Component({
   selector: 'app-DefaultCheckOut',
@@ -12,8 +13,8 @@ import { CartService } from '../../../../../Services/CartService/cart.service';
 
 export class DefaultCheckOutComponent implements OnInit {
   totalPrice!: number;
-  
-  constructor(private cartService:CartService) { }
+
+  constructor(private cartService:CartService,private userService:UserService,private router:Router) { }
 
   ngOnInit() {
     this.cartService.totalPrice$.subscribe(totalprice => {
@@ -25,6 +26,9 @@ export class DefaultCheckOutComponent implements OnInit {
   @Output() nextStep = new EventEmitter<void>();
 
   next() {
-    this.nextStep.emit();
+    if(this.userService.userState)
+      this.nextStep.emit();
+    else
+      this.router.navigate(['/login']);
   }
 }

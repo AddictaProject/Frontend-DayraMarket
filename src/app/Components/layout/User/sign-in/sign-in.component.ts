@@ -19,7 +19,14 @@ export class SignInComponent {
 
   })
 
-  constructor(private userService: UserService,private router: Router){}
+  constructor(private userService: UserService,private router: Router){
+
+    if (userService.userState) {
+      this.router.navigate(['/']);
+    }
+  }
+
+
   onSubmit(){
     if (this.signInForm.invalid) {
       for (const key in this.signInForm.controls) {
@@ -38,7 +45,7 @@ export class SignInComponent {
           this.serverError=false;
           localStorage.setItem('accessToken', res.accessToken);
           localStorage.setItem('refreshToken', res.refreshToken);
-          this.router.navigate(['/cart']);
+          this.router.navigate(['/']);
         },
         error: (err) => {
           this.serverError=true

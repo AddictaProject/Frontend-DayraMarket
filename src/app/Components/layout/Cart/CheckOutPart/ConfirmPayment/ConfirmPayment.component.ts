@@ -4,6 +4,7 @@ import { CartService } from '../../../../../Services/CartService/cart.service';
 import { OrderService } from '../../../../../Services/OrderService/order.service';
 import { ICreateOrder, productStockUuid } from '../../../../../Models/Order/ICreateOrder';
 import { PaymentMethod } from '../../../../../Models/Cart/PaymentMethod';
+import { IOrder } from '../../../../../Models/Order/IOrder';
 
 @Component({
   selector: 'app-ConfirmPayment',
@@ -15,6 +16,8 @@ import { PaymentMethod } from '../../../../../Models/Cart/PaymentMethod';
 export class ConfirmPaymentComponent implements OnInit {
 
   @Output() nextStep = new EventEmitter<void>();
+
+  confirmOrder!:IOrder;
 
   selectedPaymentMethod!: PaymentMethod ;
 
@@ -34,15 +37,15 @@ export class ConfirmPaymentComponent implements OnInit {
       shippingAddressUuid:this.orderService.userAddress.uuid ??'',
       items:productStockUuids
     }
-    
+
     console.log(order);
     this.orderService.createOrder(order).subscribe({
-      next: (res:any) => {        
+      next: (res:any) => {
+        this.orderService.confirmOrder=res;
         this.nextStep.emit();
-        // this.cartService.clearCart();
       },
       error: (err:any) => {
-        console.log(err);      
+        console.log(err);
       }
 
 

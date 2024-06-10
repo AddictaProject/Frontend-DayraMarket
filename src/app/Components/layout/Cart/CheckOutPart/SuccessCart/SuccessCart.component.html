@@ -6,17 +6,17 @@
 
       <div class="justify-content-between d-flex mt-3 pb-3 borderDiv">
         <p class="txtOfCountFinal mb-0">Order Summary</p>
-        <p class="numOfOrders mb-0">2 orders</p>
+        <p class="numOfOrders mb-0">{{orderService.confirmOrder.items.length}} orders</p>
       </div>
 
       <div class="justify-content-between d-flex mt-3 pb-3 borderDiv">
         <p class="orderId mb-0">Order ID</p>
-        <p class="orderId mb-0"># 2323</p>
+        <p class="orderId mb-0">{{orderService.confirmOrder.serialNumber}}</p>
       </div>
 
       <div class="justify-content-between d-flex mt-3 pb-3 borderDiv">
         <p class="txtpaymentMethod mb-0">Payment Method</p>
-        <p class="paymentMethod mb-0">cash</p>
+        <p class="paymentMethod mb-0">{{orderService.confirmOrder.paymentMethod ==='COD' ?'Cash':'Credit Card' }}</p>
       </div>
 
       <div class="justify-content-between d-flex mt-4">
