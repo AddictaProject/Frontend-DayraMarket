@@ -30,18 +30,6 @@
   </div>
   <div class="filter-menu">
     <div class="d-flex justify-content-between align-items-center py-3 ">
-      <h5>Model</h5>
-      <i class="fa-solid fa-plus" (click)="filterService.openFilterMenu($event)"></i>
-    </div>
-    <div class="menu d-none">
-      <input type="text" placeholder="Search for brand" >
-      <div>
-        <app-filter [filters]="filterService.brandsFiltered" (filterChange)="filterService.getChecked($event)"></app-filter>
-      </div>
-    </div>
-  </div>
-  <div class="filter-menu">
-    <div class="d-flex justify-content-between align-items-center py-3 ">
       <h5>Price</h5>
       <i class="fa-solid fa-plus" (click)="filterService.openFilterMenu($event)"></i>
     </div>

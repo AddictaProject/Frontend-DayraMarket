@@ -26,14 +26,12 @@ export class SuccessCartComponent implements OnInit ,OnDestroy {
     public cartService: CartService,
     public settingService: SettingService
   ) {}
- 
+
   ngOnInit() {
     this.userAddress = this.orderService.userAddress;
   }
-  
   ngOnDestroy(): void {
     this.cartService.clearCart();
   }
-
 
 }
