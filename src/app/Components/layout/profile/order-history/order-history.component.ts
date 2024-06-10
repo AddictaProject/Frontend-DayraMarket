@@ -4,6 +4,7 @@ import { CartService } from '../../../../Services/CartService/cart.service';
 import { ProductDetailsService } from '../../../../Services/ProductService/product-details.service';
 import { OrderService } from '../../../../Services/OrderService/order.service';
 import { IOrder } from '../../../../Models/Order/IOrder';
+import { IProductOrderItem } from '../../../../Models/Order/IProductOrderItem';
 
 @Component({
   selector: 'app-order-history',
@@ -14,12 +15,23 @@ import { IOrder } from '../../../../Models/Order/IOrder';
 })
 export class OrderHistoryComponent {
 
-  order:IOrder[]=[];
+  orders:IOrder[]=[];
   totalPrice:number=0;
+  // productOrderItem !:IProductOrderItem;
 
   constructor(public _productDetailsService: ProductDetailsService,private orderService:OrderService) {}
 
   ngOnInit() {
+    this.orderService.getUserOrder().subscribe({
+      next: (res:any) => {
+        this.orders=res;
+        console.log(this.orders);
+        
+      },
+      error: (err:any) => {
+        console.log(err);
+      }
+    });
 
   }
 

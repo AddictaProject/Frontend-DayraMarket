@@ -7,13 +7,14 @@ import { IProduct } from '../../../../Models/Product/All-Products/IProduct';
 import { IProductParams } from '../../../../Models/Product/All-Products/IProductParams';
 import { CardPlaceholderComponent } from '../../../Shared/card-placeholder/card-placeholder.component';
 import { ProductApiService } from '../../../../Services/ProductService/product-api.service';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-product-slider',
   standalone: true,
   templateUrl: './product-slider.component.html',
   styleUrl: './product-slider.component.css',
-  imports: [DragScrollComponent, DragScrollItemDirective, CardComponent,CardPlaceholderComponent],
+  imports: [DragScrollComponent, DragScrollItemDirective, CardComponent,CardPlaceholderComponent ,RouterModule],
 })
 export class ProductSliderComponent {
   isLoaded =false;

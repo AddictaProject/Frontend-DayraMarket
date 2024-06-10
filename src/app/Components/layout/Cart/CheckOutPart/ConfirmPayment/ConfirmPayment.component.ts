@@ -34,15 +34,18 @@ export class ConfirmPaymentComponent implements OnInit {
       shippingAddressUuid:this.orderService.userAddress.uuid ??'',
       items:productStockUuids
     }
+    
     console.log(order);
     this.orderService.createOrder(order).subscribe({
-      next: (res:any) => {
+      next: (res:any) => {        
         this.nextStep.emit();
-        this.cartService.clearCart();
+        // this.cartService.clearCart();
       },
       error: (err:any) => {
-        console.log(err);
+        console.log(err);      
       }
+
+
     });
 
 
