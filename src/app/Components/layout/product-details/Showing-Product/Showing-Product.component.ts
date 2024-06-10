@@ -58,7 +58,8 @@ export class ShowingProductComponent implements OnInit {
     public _ProductDetailsService: ProductDetailsService,
     private route :ActivatedRoute ,
     public offCanvasOb: OffCanvasService,
-    private cartService: CartService
+    private cartService: CartService,
+    private router: Router 
 
   ) {}
 
@@ -155,5 +156,7 @@ export class ShowingProductComponent implements OnInit {
       
     }
     this.cartService.addToCart(item);
+    this.router.navigate(['/cart']);
+
   }
 }

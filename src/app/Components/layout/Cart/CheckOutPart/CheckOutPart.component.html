@@ -24,15 +24,15 @@
     </div>
 
     <!-- Success Statement -->
-    <!-- @if (CartCasesEnum.Success) {
-    <div class="mt-5">
+    @if (CurrentCase == CartCasesEnum.Success) {
+    <div class="mt-5 mb-3">
       <p class="thankAfterConfirm">Thank you for your order! </p>
     </div>
-    } -->
+    }
 
 
     <!-- Main content -->
-    <div class="row mt-4">
+    <div class="row mt-5">
 
       <!-- Right Section -->
       <div class="col-lg-8 mb-5">
@@ -60,7 +60,7 @@
                   <p class="priceOfProd">{{item.price | number: '3.0-0'}} L.E</p>
 
 
-                  @if(!CartCasesEnum.Success){
+                  @if(CurrentCase != CartCasesEnum.Success){
                   <div (click)="removeItem(item.id)">
                     <svg class="svgOfDelete" width="17" height="17" viewBox="0 0 17 17" fill="none"
                       xmlns="http://www.w3.org/2000/svg">

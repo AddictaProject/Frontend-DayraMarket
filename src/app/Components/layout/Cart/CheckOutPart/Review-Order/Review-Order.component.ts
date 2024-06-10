@@ -15,8 +15,6 @@ import { CartService } from '../../../../../Services/CartService/cart.service';
 })
 export class ReviewOrderComponent implements OnInit {
   userAddress!: IUserAddress;
-  // shippingInfo!: IShipping;
-  // subTotalPrice!: number;
 
   constructor(
     public orderService: OrderService,
