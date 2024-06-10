@@ -32,6 +32,7 @@ export class ProductDetailsService {
   condition: string ='';
   color:string='';
 
+  isLoading: boolean = false;
   constructor(private productApi: ProductApiService) {}
 
   loadProductVariant(id :string,lowestPrice: boolean = false) {
@@ -102,8 +103,9 @@ export class ProductDetailsService {
       })
   }
 
-  getSelectedStock(stockId: string,lowestPrice: boolean = false) {
-    this.loadSelectedStock(stockId,lowestPrice).subscribe((data) => {
+  getSelectedStock(val: IVariantValues,lowestPrice: boolean = false) {
+    val.isLoading=true
+    this.loadSelectedStock(val.uuid,lowestPrice).subscribe((data) => {
       this.price = data.selectedStock.price;
       this.previousStockUuid = data.selectedStock.uuid;
       let stockAttributes:string [] = [];
@@ -128,6 +130,7 @@ export class ProductDetailsService {
             variable.isClicked=false;
         })
       })
+      val.isLoading=false
     });
   }
 

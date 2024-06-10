@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IVariantValues } from '../../../../../../../Models/Product/Prod-Details/IVariantValues';
 import { CommonModule } from '@angular/common';
+import { ProductDetailsService } from '../../../../../../../Services/ProductService/product-details.service';
 
 @Component({
   selector: 'app-Color',
@@ -11,11 +12,10 @@ import { CommonModule } from '@angular/common';
 })
 export class ColorComponent implements OnInit {
 
-  
+
   @Input() value!:IVariantValues;
   @Output() variantClick = new EventEmitter<IVariantValues>();
 
-  constructor() { }
 
   ngOnInit() {
   }

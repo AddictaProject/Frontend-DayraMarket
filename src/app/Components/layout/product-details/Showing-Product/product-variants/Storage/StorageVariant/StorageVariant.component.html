@@ -2,10 +2,19 @@
   (click)="variantClick.emit(value)" [class.Active128]=" this.value.isClicked==true"
   [class.disables]="!value.isAvailable" >
 
+@if(!(value.isLoading ))
+{
   <div class="txtOfFilterItem3 ">
     {{value.displayName}}
   </div>
 
-
+}
+@else {
+  <span class="loader"></span>
+}
 
 </div>
+@if((value.isLoading))
+{
+<div class="prd-overlay"></div>
+}

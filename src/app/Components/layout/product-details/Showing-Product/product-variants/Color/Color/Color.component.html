@@ -4,6 +4,8 @@
     'cursor': value.isClicked ? 'default' : 'pointer',
   }">
 
+@if(!(value.isLoading))
+{
 
   <span class="dotOfColor me-2 " [style]="'background-color:'+ ( value.displayName) +';'"
   [class.ActiveDot]="this.value.isClicked"></span>
@@ -14,7 +16,14 @@
     'color': value.isClicked ? (value.displayName=='White'?'black':'') : ''}">
     {{value.displayName}}
   </div>
-
+}
+@else {
+  <span class="loader"></span>
+}
 
 
 </div>
+@if((value.isLoading))
+{
+<div class="prd-overlay"></div>
+}

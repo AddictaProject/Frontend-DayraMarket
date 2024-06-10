@@ -249,6 +249,7 @@
 
                     <div class="d-flex justify-content-between cardOfFilter cardOfFilterBlock col mt-3 me-4"
                       [class.active]="isActiveLowestPrice" (click)="toggleActive('LowestPrice')">
+                      @if(!lowestPriceValue.isLoading){
 
                       @if (isActiveLowestPrice) {
                       <svg class="checkmark" width="35" height="34" viewBox="0 0 35 34" fill="none"
@@ -307,11 +308,16 @@
 
                       <div class="txtOfFilterItem">Lowest Price</div>
                       <div class="txtOfPriceItem">{{_ProductDetailsService.lowestPrice}} L.E</div>
+                      }
+                      @else {
+                      <span class="loader"></span>
+                      }
                     </div>
 
 
                     <div class="d-flex justify-content-between cardOfFilter cardOfFilterBlock col mt-3 me-4"
                       [class.activeMostPopular]="isActiveMostPopular" (click)="toggleActive('MostPopular')">
+                      @if(!mostPriceValue.isLoading){
                       @if (isActiveMostPopular) {
                       <svg class="checkmark" width="35" height="36" viewBox="0 0 35 36" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
@@ -347,8 +353,15 @@
                       }
                       <div class="txtOfFilterItem">Most Popular</div>
                       <div class="txtOfPriceItem">{{_ProductDetailsService.mostPopularPrice}} L.E</div>
+                      }
+                      @else {
+                      <span class="loader"></span>
+                      }
                     </div>
-
+                    @if((mostPriceValue.isLoading || lowestPriceValue.isLoading))
+                    {
+                    <div class="prd-overlay"></div>
+                    }
                   </div>
                 </div>
               </div>
@@ -409,7 +422,7 @@
           <!-- Adding To Cart -->
 
           <div class="d-flex justify-content-center mt-5 mb-5 me-4">
-            <a class="btn btnAddToCart py-3"  role="button" (click)="addItem()">
+            <a class="btn btnAddToCart py-3" role="button" (click)="addItem()">
               Add to Cart </a>
           </div>
 
@@ -554,7 +567,7 @@
                     xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" clip-rule="evenodd"
                       d="M2.29464 0.74855C1.87428 0.333585 1.19845 0.333583 0.778093 0.748549C0.349998 1.17116 0.349998 1.86218 0.778094 2.28478L3.60626 5.07669C4.39951 5.85978 4.39951 7.14022 3.60626 7.92331L0.778093 10.7152C0.349997 11.1378 0.349998 11.8288 0.778094 12.2515C1.19845 12.6664 1.87428 12.6664 2.29463 12.2515L6.67899 7.92331C7.47224 7.14023 7.47224 5.85978 6.67899 5.07669L2.29464 0.74855Z"
-                      fill="#09764C" fill-opacity="0.8"  />
+                      fill="#09764C" fill-opacity="0.8" />
                   </svg>
 
                   <span>Technical specifications</span>

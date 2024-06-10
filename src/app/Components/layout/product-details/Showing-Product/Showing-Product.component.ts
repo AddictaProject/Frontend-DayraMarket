@@ -17,6 +17,8 @@ import { ProductVariantsComponent } from './product-variants/product-variants.co
 import { OffCanvasService } from '../../../../Services/ProductService/offCanvas.service';
 import { ICartItem } from '../../../../Models/Cart/ICartItem';
 import { CartService } from '../../../../Services/CartService/cart.service';
+import { BehaviorSubject } from 'rxjs';
+import { IVariantValues } from '../../../../Models/Product/Prod-Details/IVariantValues';
 
 @Component({
   selector: 'app-Showing-Product',
@@ -36,6 +38,21 @@ export class ShowingProductComponent implements OnInit {
   isActiveLowestPrice: boolean = false;
   isActiveMostPopular: boolean = true;
   isDragScrollDisabled: boolean = false;
+
+  mostPriceValue:IVariantValues={
+    uuid: '',
+    displayName: '',
+    isClicked: false,
+    isAvailable: false,
+    isLoading: false,
+  }
+  lowestPriceValue:IVariantValues={
+    uuid: '',
+    displayName: '',
+    isClicked: false,
+    isAvailable: false,
+    isLoading: false,
+  }
 
   responsiveOptions: any[] = [
     {
@@ -59,7 +76,7 @@ export class ShowingProductComponent implements OnInit {
     private route :ActivatedRoute ,
     public offCanvasOb: OffCanvasService,
     private cartService: CartService,
-    private router: Router 
+    private router: Router
 
   ) {}
 
@@ -111,14 +128,14 @@ export class ShowingProductComponent implements OnInit {
       this._ProductDetailsService.price =
         +this._ProductDetailsService.lowestPrice;
 
-        this._ProductDetailsService.getSelectedStock('',true);
+        this._ProductDetailsService.getSelectedStock(this.lowestPriceValue,true);
     } else if (card === 'MostPopular') {
       this.isActiveMostPopular = true;
       this.isActiveLowestPrice = false;
       this._ProductDetailsService.price =
         +this._ProductDetailsService.mostPopularPrice;
         this._ProductDetailsService.previousStockUuid='';
-      this._ProductDetailsService.getSelectedStock('');
+      this._ProductDetailsService.getSelectedStock(this.mostPriceValue);
 
     }
   }
@@ -153,7 +170,7 @@ export class ShowingProductComponent implements OnInit {
       color:this._ProductDetailsService.color,
       price:this._ProductDetailsService.price,
       image:`https://dayra-market.addictaco.com${this._ProductDetailsService.product.photos[0]}`,
-      
+
     }
     this.cartService.addToCart(item);
     this.router.navigate(['/cart']);

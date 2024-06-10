@@ -17,7 +17,7 @@ export class ConditionComponent implements OnInit {
   @Input() value!:IVariantValues;
   @Output() variantClick = new EventEmitter<IVariantValues>();
 
-  constructor(private productDetailsService:ProductDetailsService) {}
+  constructor(public productDetailsService:ProductDetailsService) {}
 
   ngOnInit(): void {
     // console.log(this.value);

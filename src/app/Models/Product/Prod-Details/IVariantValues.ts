@@ -5,4 +5,5 @@ export interface IVariantValues {
   displayName: string;
   isClicked: boolean;
   isAvailable: boolean;
+  isLoading: boolean;
 }

@@ -6,7 +6,7 @@
     background-color: rgba(240, 240, 240, 1);
     position: relative;
   }
-  
+
   .cardOfFilter:hover {
     cursor: pointer;
   }
@@ -38,34 +38,34 @@
     background-color: rgba(92, 103, 98, 1);
     cursor: default;
   }
-  
+
   .cardOfFilter.ActiveFair .txtOfFilterItem2,
   .cardOfFilter.ActiveFair .txtOfPriceItem {
     color: white;
   }
-  
+
   /* Good  Active*/
   .cardOfFilter.ActiveGood {
     background-color: rgba(139, 151, 145, 1);
     cursor: default;
   }
-  
+
   .cardOfFilter.ActiveGood .txtOfFilterItem2,
   .cardOfFilter.ActiveGood .txtOfPriceItem {
     color: white;
   }
-  
+
   /* Excellent Active*/
   .cardOfFilter.ActiveExcellent {
     background-color: rgba(42, 52, 48, 1);
     cursor: default;
   }
-  
+
   .cardOfFilter.ActiveExcellent .txtOfFilterItem2,
   .cardOfFilter.ActiveExcellent .txtOfPriceItem {
     color: white;
   }
-  
+
 
   /* === */
   /* Disabled to click */
@@ -88,7 +88,7 @@
   /* Responsive */
 
   @media screen and (max-width: 1399px) {
-   
+
     .txtOfFilterItem2
      {
       font-size: 13px;
@@ -106,11 +106,11 @@
     .cardOfFilter {
         padding: 8px;
       }
- 
+
   }
 
   @media screen and (max-width: 600px) {
-  
+
     .txtOfFilterItem2
      {
       font-size: 11px;
@@ -141,21 +141,21 @@
 }
 
 @media screen and (max-width: 600px) {
-  
+
   .txtOfFilterItem2 {
     font-size: 11px;
   }
   .txtOfPriceItem {
     font-size: 9px;
   }
-  
+
 }
 
 @media screen and (max-width: 475px) {
   .cardOfFilterBlock {
     display: block !important;
   }
- 
+
   .cardOfFilter {
     padding: 8px;
   }
@@ -168,4 +168,74 @@
     width: 30px;
   }
 
+}
+
+.card-container:has(.loader) {
+  position: relative;
+}
+.loader {
+  position: absolute;
+  width: 100%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  border: 3px solid;
+  border-color: #FFF #FFF transparent transparent;
+  box-sizing: border-box;
+  animation: rotation 2s linear infinite;
+}
+.loader::after,
+.loader::before {
+  content: '';
+  box-sizing: border-box;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  border: 3px solid;
+  border-color: transparent transparent #000 #000;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  box-sizing: border-box;
+  animation: rotationBack 1s linear infinite;
+  transform-origin: center center;
+}
+.loader::before {
+  width: 14px;
+  height: 14px;
+  border-color: #FFF #FFF transparent transparent;
+  animation: rotation 3s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotationBack {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+.prd-overlay{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
 }

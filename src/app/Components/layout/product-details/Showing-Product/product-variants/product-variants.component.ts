@@ -17,6 +17,7 @@ import { StorageVariantComponent } from './Storage/StorageVariant/StorageVariant
 import { ColorComponent } from './Color/Color/Color.component';
 import { OffCanvasService } from '../../../../../Services/ProductService/offCanvas.service';
 import { CarouselModule } from 'primeng/carousel';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-product-variants',
@@ -51,13 +52,14 @@ export class ProductVariantsComponent implements OnInit {
         isAvailable: this.productDetailsService.availableAttributes.includes(
           v.uuid
         ),
+        isLoading:false
       });
     });
     this.productDetailsService.allAttributes[this.productVariants.type] =
       this.values;
 
     // carousal
-   
+
     this.img=[]
 
     this.responsiveOptions = [
@@ -81,8 +83,8 @@ export class ProductVariantsComponent implements OnInit {
   }
 
   ClickingAction(val: IVariantValues) {
-    if (!val.isAvailable) return;
-    this.productDetailsService.getSelectedStock(val.uuid);
+    if (val.isClicked) return;
+    this.productDetailsService.getSelectedStock(val);
   }
 
   animateLearnMore() {

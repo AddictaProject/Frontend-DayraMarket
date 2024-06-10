@@ -7,7 +7,8 @@
   [ngClass]="price==0?'justify-content-center':'justify-content-between'"
   [class.disables]="!this.value.isAvailable"
   >
-
+  @if(!(value.isLoading))
+  {
   <!-- Svg For each case -->
   @if (this.value.displayName=='Fair'&& this.value.isClicked==true) {
       <svg class="checkmark" width="37" height="39" viewBox="0 0 37 39" fill="none"
@@ -83,7 +84,14 @@
   @if (price!=0) {
   <div class="txtOfPriceItem">{{price}} L.E</div>
   }
+}
+@else {
+  <span class="loader"></span>
+}
 
 </div>
-
+@if((value.isLoading))
+{
+<div class="prd-overlay"></div>
+}
 
