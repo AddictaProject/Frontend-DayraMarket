@@ -32,7 +32,7 @@ export class CheckOutPartComponent implements OnInit {
 
 
   CartCasesEnum = CartCasesEnum;
-  CurrentCase :CartCasesEnum = CartCasesEnum.Default;
+  CurrentCase :CartCasesEnum = CartCasesEnum.Success;
   goToNextCase() {
     if (this.CurrentCase < CartCasesEnum.Success) {
       this.CurrentCase++;
