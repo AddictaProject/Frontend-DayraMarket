@@ -4,7 +4,7 @@ import { Environment } from '../../../enviroment/environment';
 import { ISignUp } from '../../Models/User/ISignUp';
 import { IVerifyPhoneNumber } from '../../Models/User/IVerifyPhoneNumber';
 import { IUserAddress } from '../../Models/Cart/IUserAddress';
-import { ILogin } from '../../Models/User/ilogin';
+import { ILogin } from '../../Models/User/ILogin';
 
 @Injectable({
   providedIn: 'root'
