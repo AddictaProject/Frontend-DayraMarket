@@ -30,7 +30,7 @@
             {{_ProductDetailsService.product.displayName }}
           </p>
           <p>
-            {{_ProductDetailsService.price |  number: '3.0-0'}} L.E
+            {{_ProductDetailsService.price | number: '3.0-0'}} L.E
           </p>
 
         </div>
@@ -73,7 +73,7 @@
               {{_ProductDetailsService.product.displayName}}
             </p>
             <p>
-              {{_ProductDetailsService.price |  number: '3.0-0'}} L.E
+              {{_ProductDetailsService.price | number: '3.0-0'}} L.E
             </p>
           </div>
 
@@ -352,7 +352,8 @@
 
                       }
                       <div class="txtOfFilterItem">Most Popular</div>
-                      <div class="txtOfPriceItem">{{_ProductDetailsService.mostPopularPrice |  number: '3.0-0'}} L.E</div>
+                      <div class="txtOfPriceItem">{{_ProductDetailsService.mostPopularPrice | number: '3.0-0'}} L.E
+                      </div>
                       }
                       @else {
                       <span class="loader"></span>
@@ -369,11 +370,15 @@
             </div>
 
             <!-- Filtration -->
+            @if(_ProductDetailsService.variantsGroup.length>0)
+            {
             <div>
               <app-product-variants [productVariants]="_ProductDetailsService.variantsGroup[2]"></app-product-variants>
               <app-product-variants [productVariants]="_ProductDetailsService.variantsGroup[1]"></app-product-variants>
               <app-product-variants [productVariants]="_ProductDetailsService.variantsGroup[0]"></app-product-variants>
             </div>
+            }
+
 
 
             <!-- Comes with -->

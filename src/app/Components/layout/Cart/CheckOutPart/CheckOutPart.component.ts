@@ -26,7 +26,7 @@ export class CheckOutPartComponent implements OnInit {
   constructor(public _ProductDetailsService: ProductDetailsService,private cartService:CartService) {}
 
   ngOnInit() {
-    this.cart=this.cartService.getCart();
+    this.cart=[...this.cartService.getCart()];
   }
 
 
