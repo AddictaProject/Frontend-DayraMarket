@@ -370,7 +370,7 @@
 
             <!-- Filtration -->
             <div>
-              @for (item of _ProductDetailsService.variantsGroup.reverse(); track $index) {
+              @for (item of _ProductDetailsService.variantsGroup; track $index) {
               <app-product-variants [productVariants]="item"></app-product-variants>
               }
             </div>
