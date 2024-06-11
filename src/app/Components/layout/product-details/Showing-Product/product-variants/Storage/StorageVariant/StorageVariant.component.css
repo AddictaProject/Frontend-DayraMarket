@@ -5,6 +5,7 @@
   padding: 16px;
   background-color: rgba(240, 240, 240, 1);
   position: relative;
+
 }
 
 .cardOfFilter:hover {
@@ -73,9 +74,6 @@
 }
 
 @media screen and (max-width: 475px) {
-  .cardOfFilterBlock {
-    display: block !important;
-  }
 
   .cardOfFilter {
     padding: 8px;
@@ -152,7 +150,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 200%;
   height: 100%;
   z-index: 1;
 }
