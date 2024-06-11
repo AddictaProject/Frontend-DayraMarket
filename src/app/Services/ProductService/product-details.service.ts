@@ -44,50 +44,7 @@ export class ProductDetailsService {
   isLoading: boolean = false;
   constructor(private productApi: ProductApiService) {}
 
-  loadProductVariant(id :string,lowestPrice: boolean = false) {
-    this.rest();
-    this.productApi
-      .getProductDetails({
-        productUuid: id,
-        lowestPrice: lowestPrice,
-        attributeValueUuid: '',
-        previousStockUuid: '',
-      })
-      .subscribe((data) => {
-        this.variantsGroup = data.product.groupedVariants;
-        this.variantsGroup.forEach((variant) => {
-          variant.type = this.getVariantType(
-            variant.attributeDisplayName.toLowerCase()
-          );
-        });
-        this.mostPopularAttributes=[];
-        data.selectedStock.attributes.forEach((attribute) => {
-          this.mostPopularAttributes.push(attribute.attributeValueUuid);
-          if( attribute.attributeDisplayName.toLowerCase()=="color")
-            this.color=attribute.attributeValue;
-          else if ( attribute.attributeDisplayName.toLowerCase()=="condition")
-            this.condition=attribute.attributeValue;
-        });
-        this.images=data.photoPaths.length>0?data.photoPaths:data.product.photos;
-        // For gallery:
-        if (data && data.photoPaths) {
-          this.images = this.images.map((photo) => ({
-            source: `https://dayra-market.addictaco.com${photo}`,
-            thumbnail: `https://dayra-market.addictaco.com${photo}`,
-          }));
-        } else {
-          console.log('Error in ProductDetails or photoPaths are missing');
-        }
 
-        this.availableAttributes = data.availableAttributes;
-        this.previousStockUuid = data.selectedStock.uuid;
-        this.productUuid = data.product.uuid;
-        this.product = data.product;
-        this.mostPopularPrice = data.selectedStock.price;
-        this.lowestPrice = data.product.lowestPrice;
-        this.price = this.mostPopularPrice;
-      });
-  }
 
   getVariantType(name: string) {
     switch (name) {
