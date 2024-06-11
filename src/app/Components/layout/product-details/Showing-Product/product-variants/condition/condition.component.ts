@@ -23,9 +23,9 @@ export class ConditionComponent implements OnInit {
     // console.log(this.value);
     if (this.value.isAvailable) {
     // this.price= this.productDetailsService.selectedStockPrice(this.value.uuid);
-    this.productDetailsService.loadSelectedStock(this.value.uuid).subscribe(data=>{
-      this.price= data.selectedStock.price;
-    })
+    // this.productDetailsService.loadSelectedStock(this.value.uuid).subscribe(data=>{
+    //   this.price= data.selectedStock.price;
+    // })
     }
   }
 
