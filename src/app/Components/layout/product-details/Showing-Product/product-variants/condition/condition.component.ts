@@ -26,11 +26,11 @@ export class ConditionComponent implements OnInit,OnDestroy {
 
   ngOnInit(): void {
     // console.log(this.value);
-    if (this.value.isAvailable) {
-    this.sub=this.productDetailsService.loadSelectedStock(this.value.uuid).subscribe(data=>{
-      this.price= data.selectedStock.price;
-    })
-    }
+    // if (this.value.isAvailable) {
+    // this.sub=this.productDetailsService.loadSelectedStock(this.value.uuid).subscribe(data=>{
+    //   this.price= data.selectedStock.price;
+    // })
+    // }
   }
 
 }
