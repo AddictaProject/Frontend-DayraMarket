@@ -8,9 +8,9 @@ import {
 } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { OffCanvasService } from '../../../../Services/ProductService/offCanvas.service';
-import { OffCanvasListsService } from '../../../../Services/HeaderService/OffCanvasLists.service';
 import { ICategory } from '../../../../Models/Category/ICategory';
 import { SecondOffCanvasComponent } from "./secondOffCanvas/secondOffCanvas.component";
+import { OffCanvasListsService } from '../../../../Services/HeaderService/OffCanvasLists.service';
 
 @Component({
     selector: 'app-Header2',
