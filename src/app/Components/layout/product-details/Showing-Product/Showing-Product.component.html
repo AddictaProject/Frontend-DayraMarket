@@ -370,9 +370,9 @@
 
             <!-- Filtration -->
             <div>
-              @for (item of _ProductDetailsService.variantsGroup; track $index) {
-              <app-product-variants [productVariants]="item"></app-product-variants>
-              }
+              <app-product-variants [productVariants]="_ProductDetailsService.variantsGroup[2]"></app-product-variants>
+              <app-product-variants [productVariants]="_ProductDetailsService.variantsGroup[1]"></app-product-variants>
+              <app-product-variants [productVariants]="_ProductDetailsService.variantsGroup[0]"></app-product-variants>
             </div>
 
 
