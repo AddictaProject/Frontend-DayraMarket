@@ -83,7 +83,8 @@ export class ProductVariantsComponent implements OnInit {
   }
 
   ClickingAction(val: IVariantValues) {
-    if (val.isClicked) return;
+
+    if (val.isClicked || !val.isAvailable) return;
     this.productDetailsService.getSelectedStock(val);
   }
 

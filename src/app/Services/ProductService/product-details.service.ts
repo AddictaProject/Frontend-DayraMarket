@@ -113,34 +113,34 @@ export class ProductDetailsService {
   }
 
   getSelectedStock(val: IVariantValues,lowestPrice: boolean = false) {
-    val.isLoading=true
-    this.loadSelectedStock(val.uuid,lowestPrice).subscribe((data) => {
-      this.price = data.selectedStock.price;
-      this.previousStockUuid = data.selectedStock.uuid;
-      let stockAttributes:string [] = [];
-      data.selectedStock.attributes.forEach((attribute) => {
-       if( attribute.attributeDisplayName.toLowerCase()=="color")
-          this.color=attribute.attributeValue;
-        else if ( attribute.attributeDisplayName.toLowerCase()=="condition")
-          this.condition=attribute.attributeValue;
+    // val.isLoading=true
+    // this.loadSelectedStock(val.uuid,lowestPrice).subscribe((data) => {
+    //   this.price = data.selectedStock.price;
+    //   this.previousStockUuid = data.selectedStock.uuid;
+    //   let stockAttributes:string [] = [];
+    //   data.selectedStock.attributes.forEach((attribute) => {
+    //    if( attribute.attributeDisplayName.toLowerCase()=="color")
+    //       this.color=attribute.attributeValue;
+    //     else if ( attribute.attributeDisplayName.toLowerCase()=="condition")
+    //       this.condition=attribute.attributeValue;
 
-        stockAttributes.push(attribute.attributeValueUuid)
-      });
-      this.images=data.photoPaths.length>0?data.photoPaths:data.product.photos;
-      this.images = this.images.map((photo) => ({
-        source: `https://dayra-market.addictaco.com${photo}`,
-        thumbnail: `https://dayra-market.addictaco.com${photo}`,
-      }));
-      this.allAttributes.forEach(variables=>{
-        variables.forEach(variable=>{
-          if(stockAttributes.includes(variable.uuid))
-            variable.isClicked=true;
-          else
-            variable.isClicked=false;
-        })
-      })
-      val.isLoading=false
-    });
+    //     stockAttributes.push(attribute.attributeValueUuid)
+    //   });
+    //   this.images=data.photoPaths.length>0?data.photoPaths:data.product.photos;
+    //   this.images = this.images.map((photo) => ({
+    //     source: `https://dayra-market.addictaco.com${photo}`,
+    //     thumbnail: `https://dayra-market.addictaco.com${photo}`,
+    //   }));
+    //   this.allAttributes.forEach(variables=>{
+    //     variables.forEach(variable=>{
+    //       if(stockAttributes.includes(variable.uuid))
+    //         variable.isClicked=true;
+    //       else
+    //         variable.isClicked=false;
+    //     })
+    //   })
+    //   val.isLoading=false
+    // });
   }
 
   // For Gallery
