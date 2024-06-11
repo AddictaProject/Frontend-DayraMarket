@@ -18,6 +18,7 @@ import { OffCanvasService } from '../../../../Services/ProductService/offCanvas.
 import { ICartItem } from '../../../../Models/Cart/ICartItem';
 import { CartService } from '../../../../Services/CartService/cart.service';
 import { IVariantValues } from '../../../../Models/Product/Prod-Details/IVariantValues';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-Showing-Product',
@@ -33,11 +34,11 @@ import { IVariantValues } from '../../../../Models/Product/Prod-Details/IVariant
     ProductVariantsComponent,
   ],
 })
-export class ShowingProductComponent implements OnInit {
+export class ShowingProductComponent implements OnInit ,OnDestroy {
   isActiveLowestPrice: boolean = false;
   isActiveMostPopular: boolean = true;
   isDragScrollDisabled: boolean = false;
-
+  sub:Subscription[]=[];
   mostPriceValue:IVariantValues={
     uuid: '',
     displayName: '',
@@ -71,21 +72,24 @@ export class ShowingProductComponent implements OnInit {
   @ViewChild('LearnMore') LearnMore!: ElementRef;
 
   constructor(
-    public _ProductDetailsService: ProductDetailsService,
+    public productDetailsService: ProductDetailsService,
     private route :ActivatedRoute ,
     public offCanvasOb: OffCanvasService,
     private cartService: CartService,
     private router: Router
 
   ) {}
+  ngOnDestroy(): void {
+    this.sub.forEach(s=>s.unsubscribe());
+  }
 
   url!: string;
 
   ngOnInit() {
     // Calling data From ProductDetails Service
     let id = this.route.snapshot.paramMap.get('id') ??'';
-    this._ProductDetailsService.productUuid=id;
-    this._ProductDetailsService.loadProductVariant(id);
+    this.productDetailsService.productUuid=id;
+    this.productDetailsService.loadProductVariant(id);
     // For getting the size of the screen
     this.checkScreenWidth(window.innerWidth);
     this.updateDragScrollStatus();
@@ -123,18 +127,18 @@ export class ShowingProductComponent implements OnInit {
     if (card === 'LowestPrice') {
       this.isActiveLowestPrice = true;
       this.isActiveMostPopular = false;
-      this._ProductDetailsService.previousStockUuid ='';
-      this._ProductDetailsService.price =
-        +this._ProductDetailsService.lowestPrice;
+      this.productDetailsService.previousStockUuid ='';
+      this.productDetailsService.price =
+        +this.productDetailsService.lowestPrice;
 
-        this._ProductDetailsService.getSelectedStock(this.lowestPriceValue,true);
+        this.getSelectedStock(this.lowestPriceValue,true);
     } else if (card === 'MostPopular') {
       this.isActiveMostPopular = true;
       this.isActiveLowestPrice = false;
-      this._ProductDetailsService.price =
-        +this._ProductDetailsService.mostPopularPrice;
-        this._ProductDetailsService.previousStockUuid='';
-      this._ProductDetailsService.getSelectedStock(this.mostPriceValue);
+      this.productDetailsService.price =
+        +this.productDetailsService.mostPopularPrice;
+        this.productDetailsService.previousStockUuid='';
+      this.getSelectedStock(this.mostPriceValue);
 
     }
   }
@@ -163,16 +167,48 @@ export class ShowingProductComponent implements OnInit {
 
   addItem(){
     const item:ICartItem={
-      id:this._ProductDetailsService.previousStockUuid,
-      name:this._ProductDetailsService.product.displayName,
-      condition:this._ProductDetailsService.condition,
-      color:this._ProductDetailsService.color,
-      price:this._ProductDetailsService.price,
-      image:`https://dayra-market.addictaco.com${this._ProductDetailsService.product.photos[0]}`,
+      id:this.productDetailsService.previousStockUuid,
+      name:this.productDetailsService.product.displayName,
+      condition:this.productDetailsService.condition,
+      color:this.productDetailsService.color,
+      price:this.productDetailsService.price,
+      image:`https://dayra-market.addictaco.com${this.productDetailsService.product.photos[0]}`,
 
     }
     this.cartService.addToCart(item);
     this.router.navigate(['/cart']);
 
   }
+  getSelectedStock(val: IVariantValues,lowestPrice: boolean = false) {
+    val.isLoading=true
+   this.sub.push(
+     this.productDetailsService.loadSelectedStock(val.uuid,lowestPrice).subscribe((data) => {
+      this.productDetailsService.price = data.selectedStock.price;
+      this.productDetailsService.previousStockUuid = data.selectedStock.uuid;
+      let stockAttributes:string [] = [];
+      data.selectedStock.attributes.forEach((attribute) => {
+       if( attribute.attributeDisplayName.toLowerCase()=="color")
+          this.productDetailsService.color=attribute.attributeValue;
+        else if ( attribute.attributeDisplayName.toLowerCase()=="condition")
+          this.productDetailsService.condition=attribute.attributeValue;
+
+        stockAttributes.push(attribute.attributeValueUuid)
+      });
+      this.productDetailsService.images=data.photoPaths.length>0?data.photoPaths:data.product.photos;
+      this.productDetailsService.images = this.productDetailsService.images.map((photo) => ({
+        source: `https://dayra-market.addictaco.com${photo}`,
+        thumbnail: `https://dayra-market.addictaco.com${photo}`,
+      }));
+      this.productDetailsService.allAttributes.forEach(variables=>{
+        variables.forEach(variable=>{
+          if(stockAttributes.includes(variable.uuid))
+            variable.isClicked=true;
+          else
+            variable.isClicked=false;
+        })
+      })
+      val.isLoading=false
+    }));
+  }
+
 }

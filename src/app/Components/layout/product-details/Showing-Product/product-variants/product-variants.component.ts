@@ -4,6 +4,7 @@ import {
   ElementRef,
   Input,
   OnChanges,
+  OnDestroy,
   OnInit,
   SimpleChanges,
   ViewChild,
@@ -17,7 +18,7 @@ import { StorageVariantComponent } from './Storage/StorageVariant/StorageVariant
 import { ColorComponent } from './Color/Color/Color.component';
 import { OffCanvasService } from '../../../../../Services/ProductService/offCanvas.service';
 import { CarouselModule } from 'primeng/carousel';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-product-variants',
@@ -26,7 +27,7 @@ import { BehaviorSubject } from 'rxjs';
   styleUrl: './product-variants.component.css',
   imports: [ConditionComponent, StorageVariantComponent, ColorComponent,CarouselModule],
 })
-export class ProductVariantsComponent implements OnInit {
+export class ProductVariantsComponent implements OnInit,OnDestroy {
   @ViewChild('LearnMore') LearnMore!: ElementRef;
 
   @Input() productVariants!: IgroupedVariants;
@@ -41,6 +42,8 @@ export class ProductVariantsComponent implements OnInit {
     private offCanvasOb: OffCanvasService
   ) {}
 
+
+  sub!:Subscription;
   ngOnInit(): void {
     this.productVariants.values.forEach((v) => {
       this.values.push({
@@ -85,7 +88,7 @@ export class ProductVariantsComponent implements OnInit {
   ClickingAction(val: IVariantValues) {
 
     if (val.isClicked || !val.isAvailable) return;
-    this.productDetailsService.getSelectedStock(val);
+    this.getSelectedStock(val);
   }
 
   animateLearnMore() {
@@ -95,5 +98,40 @@ export class ProductVariantsComponent implements OnInit {
 
   toggleOffCanvas() {
     this.offCanvasOb.toggleOffcanvas(!this.isOffCanvasVisible);
+  }
+  getSelectedStock(val: IVariantValues,lowestPrice: boolean = false) {
+    val.isLoading=true
+   this.sub= this.productDetailsService.loadSelectedStock(val.uuid,lowestPrice).subscribe((data) => {
+      this.productDetailsService.price = data.selectedStock.price;
+      this.productDetailsService.previousStockUuid = data.selectedStock.uuid;
+      let stockAttributes:string [] = [];
+      data.selectedStock.attributes.forEach((attribute) => {
+       if( attribute.attributeDisplayName.toLowerCase()=="color")
+          this.productDetailsService.color=attribute.attributeValue;
+        else if ( attribute.attributeDisplayName.toLowerCase()=="condition")
+          this.productDetailsService.condition=attribute.attributeValue;
+
+        stockAttributes.push(attribute.attributeValueUuid)
+      });
+      this.productDetailsService.images=data.photoPaths.length>0?data.photoPaths:data.product.photos;
+      this.productDetailsService.images = this.productDetailsService.images.map((photo) => ({
+        source: `https://dayra-market.addictaco.com${photo}`,
+        thumbnail: `https://dayra-market.addictaco.com${photo}`,
+      }));
+      this.productDetailsService.allAttributes.forEach(variables=>{
+        variables.forEach(variable=>{
+          if(stockAttributes.includes(variable.uuid))
+            variable.isClicked=true;
+          else
+            variable.isClicked=false;
+        })
+      })
+      val.isLoading=false
+    });
+  }
+
+
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
   }
 }
