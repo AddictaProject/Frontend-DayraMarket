@@ -9,10 +9,10 @@
           <i class="fa-solid fa-angle-right mx-3"></i>
         </li>
         <li>
-          <a [routerLink]="['/products']">{{productDetailsService.product.categoryDisplayName}}</a>
+          <a [routerLink]="['/products']">{{_ProductDetailsService.product?.categoryDisplayName}}</a>
           <i class="fa-solid fa-angle-right mx-3"></i>
         </li>
-        <li>{{productDetailsService.product.displayName}} </li>
+        <li>{{_ProductDetailsService.product?.displayName}} </li>
       </ol>
     </nav>
   </div>
@@ -27,10 +27,10 @@
         <!-- Product Name -->
         <div class="d-flex justify-content-between txtOfProdName" id="hiddenDiv">
           <p>
-            {{productDetailsService.product.displayName }}
+            {{_ProductDetailsService.product?.displayName }}
           </p>
           <p>
-            {{productDetailsService.price}} L.E
+            {{_ProductDetailsService.price}} L.E
           </p>
 
         </div>
@@ -38,7 +38,7 @@
         <div class="product-image " id="galleriaSection">
           <div id="myCarousel-2" class="carousel slide">
             <div class="carousel-inner">
-              <p-galleria [value]="productDetailsService.images" [responsiveOptions]="responsiveOptions"
+              <p-galleria [value]="_ProductDetailsService.images" [responsiveOptions]="responsiveOptions"
                 [showThumbnailNavigators]="false" [showItemNavigators]="true" [numVisible]="4"
                 [thumbnailsPosition]="thumbnailsPosition" [circular]="false"
                 [containerStyle]="{ 'max-width': '640px ' }">
@@ -49,9 +49,9 @@
 
                 <ng-template pTemplate="thumbnail" let-item>
                   <div class="grid grid-nogutter justify-content-center "
-                    [ngClass]="{ 'active-thumbnail': item === productDetailsService.activeItem, 'non-active-thumbnail': item !== productDetailsService.activeItem }">
+                    [ngClass]="{ 'active-thumbnail': item === _ProductDetailsService.activeItem, 'non-active-thumbnail': item !== _ProductDetailsService.activeItem }">
                     <img [src]="item.thumbnail" class="img-fluid rounded thumbnail-image"
-                      (click)="productDetailsService.setActiveItem(item)"
+                      (click)="_ProductDetailsService.setActiveItem(item)"
                       style="width: 84.8px !important; height: 80px !important; " />
                   </div>
                 </ng-template>
@@ -70,10 +70,10 @@
           <!-- Product Name -->
           <div class="d-flex justify-content-between txtOfProdName" id="proHeaderid">
             <p>
-              {{productDetailsService.product.displayName}}
+              {{_ProductDetailsService.product?.displayName}}
             </p>
             <p>
-              {{productDetailsService.price}} L.E
+              {{_ProductDetailsService.price}} L.E
             </p>
           </div>
 
@@ -81,7 +81,7 @@
           <div class="txtOfProdDesc ">
             <span>
               <!-- There is not description yet ! -->
-              {{productDetailsService.product.description}}
+              {{_ProductDetailsService.product?.description}}
             </span>
           </div>
 
@@ -307,7 +307,7 @@
                       }
 
                       <div class="txtOfFilterItem">Lowest Price</div>
-                      <div class="txtOfPriceItem">{{productDetailsService.lowestPrice}} L.E</div>
+                      <div class="txtOfPriceItem">{{_ProductDetailsService.lowestPrice}} L.E</div>
                       }
                       @else {
                       <span class="loader"></span>
@@ -352,7 +352,7 @@
 
                       }
                       <div class="txtOfFilterItem">Most Popular</div>
-                      <div class="txtOfPriceItem">{{productDetailsService.mostPopularPrice}} L.E</div>
+                      <div class="txtOfPriceItem">{{_ProductDetailsService.mostPopularPrice}} L.E</div>
                       }
                       @else {
                       <span class="loader"></span>
@@ -370,7 +370,7 @@
 
             <!-- Filtration -->
             <div>
-              @for (item of productDetailsService.variantsGroup.reverse(); track $index) {
+              @for (item of _ProductDetailsService.variantsGroup.reverse(); track $index) {
               <app-product-variants [productVariants]="item"></app-product-variants>
               }
             </div>
