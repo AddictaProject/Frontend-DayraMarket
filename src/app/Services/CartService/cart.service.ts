@@ -41,6 +41,7 @@ export class CartService {
     return JSON.parse(localStorage.getItem('cart') || '[]');
   }
   clearCart(){
+    this.cart=[];
     localStorage.setItem('cart', '');
   }
 

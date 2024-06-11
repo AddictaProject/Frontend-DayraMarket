@@ -63,3 +63,7 @@
   text-wrap: nowrap;
 }
 
+.btnOfCtegories{
+  border: none;
+  outline: none;
+}

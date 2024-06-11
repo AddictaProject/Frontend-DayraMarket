@@ -38,10 +38,10 @@ export class ConfirmPaymentComponent implements OnInit {
       items:productStockUuids
     }
 
-    console.log(order);
     this.orderService.createOrder(order).subscribe({
       next: (res:any) => {
         this.orderService.confirmOrder=res;
+        this.cartService.clearCart();
         this.nextStep.emit();
       },
       error: (err:any) => {

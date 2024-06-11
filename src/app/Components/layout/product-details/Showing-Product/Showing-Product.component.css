@@ -607,9 +607,6 @@ line-height: 19.03px;
 }
 
 @media screen and (max-width: 475px) {
-  .cardOfFilterBlock {
-    display: block !important;
-  }
   .txtOfProdName p {
     margin-bottom: 0.5rem !important;
   }

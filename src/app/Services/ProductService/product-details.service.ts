@@ -17,7 +17,7 @@ import { map } from 'rxjs';
 })
 export class ProductDetailsService {
   availableAttributes: string[] = [];
-  variantsGroup!: IgroupedVariants[];
+  variantsGroup: IgroupedVariants[]=[];
   attributesValues!: Ivalues[];
   previousStockUuid: string = '';
   productUuid: string = '';
@@ -28,7 +28,7 @@ export class ProductDetailsService {
   product: IProductInDetails={
     uuid:'',
     brandDisplayName:'',
-    categoryDisplayName: '',
+    categoryDisplayName:'',
     description:'',
     displayName:'',
     groupedVariants:[],
