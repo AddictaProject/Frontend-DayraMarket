@@ -9,10 +9,10 @@
           <i class="fa-solid fa-angle-right mx-3"></i>
         </li>
         <li>
-          <a [routerLink]="['/products']">{{_ProductDetailsService.product?.categoryDisplayName}}</a>
+          <a [routerLink]="['/products']">{{_ProductDetailsService.product.categoryDisplayName}}</a>
           <i class="fa-solid fa-angle-right mx-3"></i>
         </li>
-        <li>{{_ProductDetailsService.product?.displayName}} </li>
+        <li>{{_ProductDetailsService.product.displayName}} </li>
       </ol>
     </nav>
   </div>
@@ -27,7 +27,7 @@
         <!-- Product Name -->
         <div class="d-flex justify-content-between txtOfProdName" id="hiddenDiv">
           <p>
-            {{_ProductDetailsService.product?.displayName }}
+            {{_ProductDetailsService.product.displayName }}
           </p>
           <p>
             {{_ProductDetailsService.price}} L.E
@@ -70,7 +70,7 @@
           <!-- Product Name -->
           <div class="d-flex justify-content-between txtOfProdName" id="proHeaderid">
             <p>
-              {{_ProductDetailsService.product?.displayName}}
+              {{_ProductDetailsService.product.displayName}}
             </p>
             <p>
               {{_ProductDetailsService.price}} L.E
@@ -81,7 +81,7 @@
           <div class="txtOfProdDesc ">
             <span>
               <!-- There is not description yet ! -->
-              {{_ProductDetailsService.product?.description}}
+              {{_ProductDetailsService.product.description}}
             </span>
           </div>
 

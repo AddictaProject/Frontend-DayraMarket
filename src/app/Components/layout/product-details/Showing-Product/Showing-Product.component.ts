@@ -72,7 +72,7 @@ export class ShowingProductComponent implements OnInit {
   @ViewChild('LearnMore') LearnMore!: ElementRef;
 
   constructor(
-    public _ProductDetailsService: ProductDetailsService={},
+    public _ProductDetailsService: ProductDetailsService,
     private route :ActivatedRoute ,
     public offCanvasOb: OffCanvasService,
     private cartService: CartService,

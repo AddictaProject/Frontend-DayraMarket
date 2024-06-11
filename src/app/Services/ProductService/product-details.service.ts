@@ -25,7 +25,16 @@ export class ProductDetailsService {
   lowestPrice: number = 0;
   price!: number;
   images: any[] = [];
-  product!: IProductInDetails;
+  product: IProductInDetails={
+    uuid:'',
+    brandDisplayName:'',
+    categoryDisplayName: '',
+    description:'',
+    displayName:'',
+    groupedVariants:[],
+    lowestPrice :0,
+    photos:[],
+  };
   activeItem: any;
   mostPopularAttributes: string[] = [];
   allAttributes:IVariantValues [][]=[];
