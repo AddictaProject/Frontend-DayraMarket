@@ -40,12 +40,12 @@
 
     <div class="offcanvas-body">
 
-      <div class=" mt-3">
+      <div class=" mt-4">
 
-        <ul class="list-unstyled" style="gap: 24px; ">
+        <ul class="list-unstyled " style="gap: 24px;">
 
           @for (item of category; track $index) {
-          <li class="itemOffCanvas"  (click)="showOffCanvas(item)">
+          <li class="itemOffCanvas " (mouseover)="showOffCanvas(item)">
             <a class="categoryOffCanvas" data-bs-toggle="additionalOffCanvas" href="#additionalOffCanvas"
               data-bs-target="#additionalOffCanvas" aria-controls="additionalOffCanvas" >
 
@@ -65,36 +65,8 @@
   </div>
 
   <!-- Additional OffCanvas -->
-   <app-secondOffCanvas [selectedCategory]="selectedCategory"></app-secondOffCanvas>
-<!-- 
-  <div class="offcanvas offcanvas-end" [ngClass]="{'show': isOffCanvasVisible}" 
-  id="additionalOffCanvas" tabindex="-1"
-    aria-labelledby="additionalOffCanvasLabel">
-    <div class="offcanvas-body">
-      @for (item of category; track $index) {
+   <app-secondOffCanvas [selectedCategory]="selectedCategory" (close)="closeAdditionalOffCanvas()"></app-secondOffCanvas>
 
-        @for (level2 of item.children ; track $index) {
-      <div class="product-section">
-        <div class="header">
-          <h2 class="title">{{level2.displayName}}</h2>
-          <a href="#" class="view-all">View All
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrowhead">
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </a>
-        </div>
-        <div class="product-list">
-          @for (level3 of level2.children ; track $index) {
-
-          <a href="#">{{level3.displayName}}</a>
-          }
-        </div>
-      </div>
-    }
-    }
-    </div>
-  </div> -->
 </div>
 
 

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ICategory } from '../../../../../Models/Category/ICategory';
 
@@ -12,11 +12,14 @@ import { ICategory } from '../../../../../Models/Category/ICategory';
 export class SecondOffCanvasComponent implements OnInit {
 
   @Input() selectedCategory !: ICategory;
+  // @Output() close = new EventEmitter<void>();
 
   constructor() { }
 
   ngOnInit() {
   }
-
+  // closeOffCanvas() {
+  //   this.close.emit();
+  // }
 
 }
