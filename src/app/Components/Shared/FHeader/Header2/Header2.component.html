@@ -1,5 +1,4 @@
-<nav class="navbar  navbar-light bg-light borderOfNav"
- [class.BehaviorWithOffcanvas]="currentOffcanvasState === 'offcanvasTechnical'">
+<nav class="navbar  navbar-light bg-light borderOfNav" [class.BehaviorWithOffcanvas]="isOffcanvasOpen">
   <div class="container d-flex">
     <div>
       <a class="btn p-0 border-0" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button"
@@ -51,7 +50,7 @@
             <a class="categoryOffCanvas" data-bs-toggle="additionalOffCanvas" href="#additionalOffCanvas"
               data-bs-target="#additionalOffCanvas" aria-controls="additionalOffCanvas" >
 
-              <img [src]="'https://dayra-market.addictaco.com'+item.iconPath"[width]="20"[height]="20" alt="">
+              <img [src]="'https://dayra-market.addictaco.com'+item.iconPath" alt="">
 
               {{item.displayName.slice(0,15)}}
               {{ item.displayName.length > 15 ? "..." : "" }}
@@ -59,7 +58,7 @@
             </a>
           </li>
           }
-      
+
         </ul>
 
       </div>

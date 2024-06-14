@@ -24,35 +24,28 @@ import { SecondOffCanvasComponent } from "./secondOffCanvas/secondOffCanvas.comp
 export class Header2Component implements OnInit {
   category :ICategory[]=[];
   selectedCategory: any;
-  // isOffcanvasOpen!: boolean ;
-  currentOffcanvasState: string | null = null;
+  isOffcanvasOpen!: boolean ;
 
   constructor(private offCanvasOb: OffCanvasService,
     private renderer: Renderer2
      , private offCanvasListsService:OffCanvasListsService) {}
 
   ngOnInit() {
-    this.offCanvasOb.offcanvasState$.subscribe((state) => {
-      this.currentOffcanvasState = state;
+    this.offCanvasOb.isOffcanvasOpen$.subscribe((isOpen) => {
+      this.isOffcanvasOpen = isOpen;
     });
-
 
     this.offCanvasListsService.getCategoryTree().subscribe({
       next: (res:any) => {
         this.category=res;
       },error(err) {
         console.log(err);
-        
+
       },
     })
 
   }
 
-      // offcanvas
-      toggleOffCanvas(state: string | null) {
-        this.offCanvasOb.toggleOffcanvas(state);
-      }
-    
 
 
   smartTechList: string[] = [
@@ -74,6 +67,8 @@ export class Header2Component implements OnInit {
     'HomePod',
   ];
 
+  isOffCanvasVisible = false;
+
   showOffCanvas(category: ICategory) {
     this.selectedCategory = category;
     const additionalOffCanvas = document.getElementById('additionalOffCanvas');
@@ -82,7 +77,7 @@ export class Header2Component implements OnInit {
       this.renderer.addClass(document.body, 'offcanvas-open');
     }
   }
-  
+
   @HostListener('document:click', ['$event'])
   onClick(event: Event) {
     const target = event.target as HTMLElement;
@@ -99,6 +94,5 @@ export class Header2Component implements OnInit {
       this.renderer.removeClass(document.body, 'offcanvas-open');
     }
   }
-  
-  
+
 }
