@@ -13,6 +13,7 @@ import { UserService } from '../../../../../Services/UserService/user.service';
 
 export class DefaultCheckOutComponent implements OnInit {
   totalPrice!: number;
+  PromoCode: boolean = false;
 
   constructor(private cartService:CartService,private userService:UserService,private router:Router) { }
 

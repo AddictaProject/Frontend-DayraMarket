@@ -16,6 +16,8 @@ import { SettingService } from '../../../../../Services/SettingService/setting.s
 })
 export class SuccessCartComponent implements OnInit ,OnDestroy {
   userAddress!: IUserAddress;
+  isPriceFreeShipping :boolean=false;
+
   // shippingInfo!: IShipping;
   // subTotalPrice!: number;
 

@@ -9,6 +9,7 @@ export class CartService {
   private cart: ICartItem[] = [];
   finalTotalPrice !:number;
   subTotalPrice!: number;
+  isPriceFreeShipping :boolean=false;
 
   totalPrice$ :BehaviorSubject<number> = new BehaviorSubject<number>(0);
 

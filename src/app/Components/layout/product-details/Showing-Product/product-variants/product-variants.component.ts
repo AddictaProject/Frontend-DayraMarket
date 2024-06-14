@@ -92,7 +92,7 @@ export class ProductVariantsComponent implements OnInit {
     element.classList.add('dissolveclass');
   }
 
-  toggleOffCanvas() {
-    this.offCanvasOb.toggleOffcanvas(!this.isOffCanvasVisible);
+  toggleOffCanvas(state: string | null) {
+    this.offCanvasOb.toggleOffcanvas(state);
   }
 }

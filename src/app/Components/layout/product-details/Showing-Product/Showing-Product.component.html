@@ -96,7 +96,7 @@
                 <p>Best Picks</p>
 
                 <div>
-                  <div class="" (click)="toggleOffCanvas()" style="border: none !important;">
+                  <div class=""  (click)="toggleOffCanvas('offcanvasTechnical')" style="border: none !important;">
 
                     <a class="btn border-0 d-flex justify-content-between " data-bs-toggle="offcanvas"
                       href="#offcanvasLearnMoreBest" role="button" data-bs-target="#offcanvasLearnMoreBest"
@@ -117,7 +117,7 @@
                       <div class="HeaderSideOffCanvas">
 
                         <svg class="svgOff" width="8" height="13" viewBox="0 0 8 13" fill="none"
-                          xmlns="http://www.w3.org/2000/svg">
+                          xmlns="http://www.w3.org/2000/svg"  data-bs-dismiss="offcanvas">
                           <path fill-rule="evenodd" clip-rule="evenodd"
                             d="M2.29464 0.74855C1.87428 0.333585 1.19845 0.333583 0.778093 0.748549C0.349998 1.17116 0.349998 1.86218 0.778094 2.28478L3.60626 5.07669C4.39951 5.85978 4.39951 7.14022 3.60626 7.92331L0.778093 10.7152C0.349997 11.1378 0.349998 11.8288 0.778094 12.2515C1.19845 12.6664 1.87428 12.6664 2.29463 12.2515L6.67899 7.92331C7.47224 7.14023 7.47224 5.85978 6.67899 5.07669L2.29464 0.74855Z"
                             fill="#09764C" fill-opacity="0.8" />
@@ -535,7 +535,7 @@
           <!-- Technical offcanvas -->
           <div>
             <!-- Button of Technical offcanvas -->
-            <div class=" HeadOfOffcanvas py-2" (click)="toggleOffCanvas()">
+            <div class=" HeadOfOffcanvas py-2" (click)="toggleOffCanvas('offcanvasTechnical')">
 
               <a class="btn border-0 d-flex justify-content-between " data-bs-toggle="offcanvas"
                 href="#offcanvasTechnical" role="button" data-bs-target="#offcanvasTechnical"
@@ -558,7 +558,7 @@
             </div>
 
             <!-- The exact Offcanvas -->
-            <div class="offcanvas offcanvas-end container" [class.open]="isOffCanvasVisible" data-bs-scroll="false"
+            <div class="offcanvas offcanvas-end container" data-bs-scroll="false"
               tabindex="-1" id="offcanvasTechnical" aria-labelledby="offcanvasTechnicalLabel">
 
               <div class="offcanvas-body ">
@@ -566,9 +566,8 @@
                 <!-- Header -->
                 <div class="HeaderSideOffCanvas">
 
-
-
                   <svg class="svgOff" width="8" height="13" viewBox="0 0 8 13" fill="none"
+                   data-bs-dismiss="offcanvas"
                     xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" clip-rule="evenodd"
                       d="M2.29464 0.74855C1.87428 0.333585 1.19845 0.333583 0.778093 0.748549C0.349998 1.17116 0.349998 1.86218 0.778094 2.28478L3.60626 5.07669C4.39951 5.85978 4.39951 7.14022 3.60626 7.92331L0.778093 10.7152C0.349997 11.1378 0.349998 11.8288 0.778094 12.2515C1.19845 12.6664 1.87428 12.6664 2.29463 12.2515L6.67899 7.92331C7.47224 7.14023 7.47224 5.85978 6.67899 5.07669L2.29464 0.74855Z"
@@ -623,7 +622,7 @@
           <!-- Perks offcanvas -->
           <div>
             <!-- Button of Perks offcanvas -->
-            <div class="HeadOfOffcanvas  py-2" (click)="toggleOffCanvas()">
+            <div class="HeadOfOffcanvas  py-2"  (click)="toggleOffCanvas('offcanvasTechnical')">
 
               <a class="btn border-0 d-flex justify-content-between " data-bs-toggle="offcanvas" href="#offcanvasPerks"
                 role="button" data-bs-target="#offcanvasPerks" aria-controls="offcanvasPerks">
@@ -653,7 +652,7 @@
                 <div class="HeaderSideOffCanvas">
 
                   <svg class="svgOff" width="8" height="13" viewBox="0 0 8 13" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
+                    xmlns="http://www.w3.org/2000/svg"  data-bs-dismiss="offcanvas">
                     <path fill-rule="evenodd" clip-rule="evenodd"
                       d="M2.29464 0.74855C1.87428 0.333585 1.19845 0.333583 0.778093 0.748549C0.349998 1.17116 0.349998 1.86218 0.778094 2.28478L3.60626 5.07669C4.39951 5.85978 4.39951 7.14022 3.60626 7.92331L0.778093 10.7152C0.349997 11.1378 0.349998 11.8288 0.778094 12.2515C1.19845 12.6664 1.87428 12.6664 2.29463 12.2515L6.67899 7.92331C7.47224 7.14023 7.47224 5.85978 6.67899 5.07669L2.29464 0.74855Z"
                       fill="#09764C" fill-opacity="0.8" />
@@ -690,7 +689,7 @@
           <!-- Frequently offcanvas -->
           <div>
             <!-- Button of Frequently offcanvas -->
-            <div class="mb-3 HeadOfOffcanvas  py-2" (click)="toggleOffCanvas()" style="border: none !important;">
+            <div class="mb-3 HeadOfOffcanvas  py-2"  (click)="toggleOffCanvas('offcanvasTechnical')" style="border: none !important;">
 
               <a class="btn border-0 d-flex justify-content-between " data-bs-toggle="offcanvas"
                 href="#offcanvasFrequently" role="button" data-bs-target="#offcanvasFrequently"
@@ -722,7 +721,7 @@
                 <div class="HeaderSideOffCanvas">
 
                   <svg class="svgOff" width="8" height="13" viewBox="0 0 8 13" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
+                    xmlns="http://www.w3.org/2000/svg"  data-bs-dismiss="offcanvas">
                     <path fill-rule="evenodd" clip-rule="evenodd"
                       d="M2.29464 0.74855C1.87428 0.333585 1.19845 0.333583 0.778093 0.748549C0.349998 1.17116 0.349998 1.86218 0.778094 2.28478L3.60626 5.07669C4.39951 5.85978 4.39951 7.14022 3.60626 7.92331L0.778093 10.7152C0.349997 11.1378 0.349998 11.8288 0.778094 12.2515C1.19845 12.6664 1.87428 12.6664 2.29463 12.2515L6.67899 7.92331C7.47224 7.14023 7.47224 5.85978 6.67899 5.07669L2.29464 0.74855Z"
                       fill="#09764C" fill-opacity="0.8" />

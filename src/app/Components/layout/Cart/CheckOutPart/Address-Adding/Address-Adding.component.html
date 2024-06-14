@@ -3,7 +3,7 @@
 
     <form class="card-body" [formGroup]="addAddressForm" (submit)="onSubmit()">
 
-
+      
       <!-- User Name -->
       <div class="mb-3 mt-3">
         <div class="input-group ">
@@ -22,19 +22,6 @@
         <div class="error mt-2">username is Required</div>
         }
       </div>
-
-      <!-- Email -->
-      <!-- <div class="input-group mb-3">
-        <input type="text" class="form-control userInput" placeholder="Email" aria-label="Email"
-          aria-describedby="basic-addon1">
-        <span class="input-group-text iconOfInput" id="basic-addon1">
-          <svg width="15" height="12" viewBox="0 0 15 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M13.5 3L7.5 6.75L1.5 3V1.5L7.5 5.25L13.5 1.5V3ZM13.5 0H1.5C0.6675 0 0 0.6675 0 1.5V10.5C0 10.8978 0.158035 11.2794 0.43934 11.5607C0.720644 11.842 1.10218 12 1.5 12H13.5C13.8978 12 14.2794 11.842 14.5607 11.5607C14.842 11.2794 15 10.8978 15 10.5V1.5C15 0.6675 14.325 0 13.5 0Z"
-              fill="#BABABA" />
-          </svg>
-        </span>
-      </div> -->
 
       <!-- Phone Number -->
       <div class="mb-3">
@@ -59,36 +46,37 @@
         }
       </div>
 
-
-    <!-- Select City & Government -->
-  <div class="d-flex input-group mb-3">
-    <div class="col-6 pe-3 ">
-      <select class="form-select userInput textOfSelectList" aria-label="Default select example"
-        formControlName="cityId" (change)="onCityChange()">
-        <option value="0">City</option>
-        @for (item of city; track $index) {
-        <option [value]="item._id">{{item.name}}</option>
-        }
-      </select>
-      @if(
-      addAddressForm.controls.cityId.dirty && addAddressForm.controls.cityId.touched && addAddressForm.controls.cityId.value ==='0' ){
-      <div class="error mt-1">city is Required</div>
-      }
-    </div>
-    <div class="col-6">
-      <select class="form-select userInput textOfSelectList" aria-label="Default select example"
-        formControlName="districtId">
-        <option value="0">District</option>
-        @for (item of districts; track $index) {
-        <option [value]="item.districtId">{{item.districtName}}</option>
-        }
-      </select>
-      @if(
-      addAddressForm.controls.districtId.dirty && addAddressForm.controls.districtId.touched && addAddressForm.controls.districtId.value ==='0' ){
-      <div class="error mt-1">District is Required</div>
-      }
-    </div>
-  </div>
+      <!-- Select City & Government -->
+      <div class="d-flex input-group mb-3">
+        <div class="col-6 pe-3 ">
+          <select class="form-select userInput textOfSelectList" aria-label="Default select example"
+            formControlName="cityId" (change)="onCityChange()">
+            <option value="0">City</option>
+            @for (item of city; track $index) {
+            <option [value]="item._id">{{item.name}}</option>
+            }
+          </select>
+          @if(
+          addAddressForm.controls.cityId.dirty && addAddressForm.controls.cityId.touched &&
+          addAddressForm.controls.cityId.value ==='0' ){
+          <div class="error mt-1">city is Required</div>
+          }
+        </div>
+        <div class="col-6">
+          <select class="form-select userInput textOfSelectList" aria-label="Default select example"
+            formControlName="districtId">
+            <option value="0">District</option>
+            @for (item of districts; track $index) {
+            <option [value]="item.districtId">{{item.districtName}}</option>
+            }
+          </select>
+          @if(
+          addAddressForm.controls.districtId.dirty && addAddressForm.controls.districtId.touched &&
+          addAddressForm.controls.districtId.value ==='0' ){
+          <div class="error mt-1">District is Required</div>
+          }
+        </div>
+      </div>
 
       <!-- Building Number &  apartment number -->
       <div class="d-flex input-group mb-3">
@@ -135,12 +123,20 @@
       <div class="col input-group " style="height: 88px;">
         <textarea id="txtid" class="form-control userDetails" name="textname" rows="4" formControlName="details"
           maxlength="200" placeholder="Please enter your address here in details"></textarea>
-          </div>
-          @if(addAddressForm.controls.details.hasError('required') &&
-          addAddressForm.controls.details.dirty && addAddressForm.controls.details.touched ){
-          <div class="error mt-1">Details is Required</div>
-          }
+      </div>     
+      @if(addAddressForm.controls.details.hasError('required') &&
+      addAddressForm.controls.details.dirty && addAddressForm.controls.details.touched ){
+      <div class="error mt-1">Details is Required</div>
+      }
 
+
+      <!-- <select class="form-select userInput textOfSelectList" aria-label="Default select example"
+        formControlName="address" (change)="onChooseAddress()">
+        <option value="0">Address</option>
+        @for (item of addresses; track $index) {
+        <option [value]="item.uuid">{{item.cityName +", " + item.districtName+", " +item.street}}</option>
+        }
+      </select> -->
 
       <!-- Save CheckBox -->
       <div class="col input-group my-3">

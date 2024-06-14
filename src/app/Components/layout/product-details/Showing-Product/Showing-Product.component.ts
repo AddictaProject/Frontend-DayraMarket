@@ -98,13 +98,12 @@ export class ShowingProductComponent implements OnInit {
     element.classList.add('dissolve');
   }
 
-  // offcanvas
-  isOffCanvasVisible = false;
-  toggleOffCanvas() {
-    this.offCanvasOb.toggleOffcanvas(!this.isOffCanvasVisible);
+  // toggleOffcanvas for Header !! 
+  toggleOffCanvas(state: string | null) {
+    this.offCanvasOb.toggleOffcanvas(state);
   }
 
-
+  
   // Frequently asked questions
   openMenu(event: Event) {
     const filterMenu = (event.currentTarget as HTMLElement).closest(

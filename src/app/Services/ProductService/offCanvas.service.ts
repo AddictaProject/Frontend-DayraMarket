@@ -6,16 +6,13 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class OffCanvasService {
 
-  private isOffcanvasOpenSubject = new BehaviorSubject<boolean>(false);
-
-  isOffcanvasOpen$ = this.isOffcanvasOpenSubject.asObservable();
+  private offcanvasStateSubject = new BehaviorSubject<string | null>(null);
+  offcanvasState$ = this.offcanvasStateSubject.asObservable();
 
   constructor() {}
 
-  toggleOffcanvas(isOpen: boolean): void {
-    this.isOffcanvasOpenSubject.next(isOpen);
+  toggleOffcanvas(state: string | null): void {
+    this.offcanvasStateSubject.next(state);
   }
-  // closeOffcanvas(): void {
-  //   this.isOffcanvasOpenSubject.next(false);
-  // }
+  
 }

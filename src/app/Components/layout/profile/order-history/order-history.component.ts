@@ -27,7 +27,7 @@ export class OrderHistoryComponent {
       next: (res:any) => {
         this.orders=res;
         console.log(this.orders);
-
+        
       },
       error: (err:any) => {
         console.log(err);

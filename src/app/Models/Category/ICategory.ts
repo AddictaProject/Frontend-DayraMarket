@@ -3,7 +3,8 @@ export interface ICategory {
   dateCreated:string ,
   displayName: string,
   children: ICategory[],
-  parentUuid: string,
+  // ??
+  parentUuid?: string,
   iconPath: string,
   level: number
 }

@@ -12,24 +12,17 @@ import { UserService } from '../../../../Services/UserService/user.service';
   styleUrls: ['./Header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  isOffcanvasOpen!: boolean;
+
+  currentOffcanvasState: string | null = null;
 
   constructor(private offCanvasOb : OffCanvasService,public userService:UserService) { }
 
   ngOnInit() {
-    this.offCanvasOb.isOffcanvasOpen$.subscribe((isOpen) => {
-      this.isOffcanvasOpen = isOpen;
-      console.log(this.isOffcanvasOpen);
-
+    this.offCanvasOb.offcanvasState$.subscribe((state) => {
+      this.currentOffcanvasState = state;
     });
   }
 
-  // For Dropdown List Of User :
-  isDropdownOpen: boolean = false;
 
-  toggleDropdown() {
-    this.isDropdownOpen = !this.isDropdownOpen;
-  }
-
-
+  
 }

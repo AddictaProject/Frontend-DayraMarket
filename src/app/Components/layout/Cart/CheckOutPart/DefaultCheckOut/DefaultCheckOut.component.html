@@ -8,16 +8,18 @@
         <button class="btn btnOfPromoCode my-2 my-sm-0 py-3" type="submit">Apply</button>
       </form>
 
-      <div class="justify-content-between d-flex mt-3">
+      <div class="justify-content-between d-flex mt-3  pb-2">
         <p class="txtOfCount">Subtotal</p>
         <p class="txtOfCount">{{totalPrice}} L.E</p>
       </div>
 
+      <!-- There is no promo code for now !.. -->
+      @if (PromoCode) {
       <div class="justify-content-between d-flex pb-3">
         <p class="txtOfCount">Discount</p>
         <p class="txtOfCount">0 L.E</p>
       </div>
-
+    }
 
       <div class="justify-content-between d-flex totalPrice py-3">
         <p class="txtOfCountFinal mb-0">Total </p>
