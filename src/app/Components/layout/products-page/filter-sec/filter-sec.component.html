@@ -34,7 +34,7 @@
       <i class="fa-solid fa-plus" (click)="filterService.openFilterMenu($event)"></i>
     </div>
     <div class="menu d-none">
-      <input #rangeRef class="w-100" type="range" min="10000" max="100000" value="100000" (change)="filterService.onPriceChange(rangeRef.value)">
+      <input #rangeRef class="w-100" type="range" [min]="filterService.productService.lowestPrice" [max]="filterService.productService.highestPrice" [value]="rangeRef.max" (change)="filterService.onPriceChange(rangeRef.value)">
       <div class="d-flex justify-content-between">
         <span>{{rangeRef.min}} L.E</span>
         <span>{{rangeRef.value}} L.E</span>

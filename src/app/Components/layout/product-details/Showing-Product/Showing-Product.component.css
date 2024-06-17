@@ -232,8 +232,16 @@ div {
   top: -20px;
   right: -13px;
   z-index: 1;
+  animation: checkmark ease-in-out 1s  ;
 }
-
+@keyframes checkmark{
+  0% {
+    transform: rotate(60deg);
+  }
+  100% {
+    transform: rotate(0);
+  }
+}
 .txtOfFilterItem {
   color: rgba(125, 125, 125, 0.8);
   font-weight: 500;

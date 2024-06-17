@@ -17,7 +17,9 @@ export class ProductService {
   tempArr:number[]=[];
   pageArr:number[]=[];
   maxPageNum:number = 0;
-  totalCount:number = 0;
+  totalCount:number = 6;
+  lowestPrice:number = 1000;
+  highestPrice:number = 10000;
   brandsParams: string[] = [];
   categoriesPrams: string[] = [];
   maxPrice: number | null = null;
@@ -45,7 +47,7 @@ export class ProductService {
         p.photos[0] = `https://dayra-market.addictaco.com${p.photos[0]}`;
         let colors: any = [];
         p.groupedVariants[0]?.values?.forEach((v: any) =>
-          colors.push(v?.value)
+          colors.push(v?.hexCode)
         );
         p.groupedVariants = colors;
       });
@@ -56,6 +58,8 @@ export class ProductService {
       }
       this.products.next(prods);
       this.totalCount=products.totalCount;
+      this.lowestPrice=products.lowestPrice;
+      this.highestPrice=products.highestPrice;
       this.maxPageNum=Math.ceil(products.totalCount / this.numOfProducts );
 
       this.pageArr=Array(Math.abs(this.maxPageNum-1)).fill(0).map((_,i)=>i+1);

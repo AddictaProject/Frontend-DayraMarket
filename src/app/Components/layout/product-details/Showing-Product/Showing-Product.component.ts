@@ -19,24 +19,26 @@ import { ICartItem } from '../../../../Models/Cart/ICartItem';
 import { CartService } from '../../../../Services/CartService/cart.service';
 import { BehaviorSubject } from 'rxjs';
 import { IVariantValues } from '../../../../Models/Product/Prod-Details/IVariantValues';
+import { ProductPlaceholderComponent } from "../product-placeholder/product-placeholder.component";
+import { SkeletonModule } from 'primeng/skeleton';
 
 @Component({
-  selector: 'app-Showing-Product',
-  standalone: true,
-  templateUrl: './Showing-Product.component.html',
-  styleUrls: ['./Showing-Product.component.css'],
-  imports: [
-    RouterModule,
-    FormsModule,
-    GalleriaModule,
-    DragScrollComponent,
-    DragScrollItemDirective,
-    ProductVariantsComponent,
-  ],
+    selector: 'app-Showing-Product',
+    standalone: true,
+    templateUrl: './Showing-Product.component.html',
+    styleUrls: ['./Showing-Product.component.css'],
+    imports: [
+        RouterModule,
+        FormsModule,
+        GalleriaModule,
+        DragScrollComponent,
+        DragScrollItemDirective,
+        ProductVariantsComponent,
+        ProductPlaceholderComponent,
+        SkeletonModule
+    ]
 })
 export class ShowingProductComponent implements OnInit {
-  isActiveLowestPrice: boolean = false;
-  isActiveMostPopular: boolean = true;
   isDragScrollDisabled: boolean = false;
 
   mostPriceValue:IVariantValues={
@@ -98,12 +100,12 @@ export class ShowingProductComponent implements OnInit {
     element.classList.add('dissolve');
   }
 
-  // toggleOffcanvas for Header !! 
+  // toggleOffcanvas for Header !!
   toggleOffCanvas(state: string | null) {
     this.offCanvasOb.toggleOffcanvas(state);
   }
 
-  
+
   // Frequently asked questions
   openMenu(event: Event) {
     const filterMenu = (event.currentTarget as HTMLElement).closest(
@@ -121,16 +123,16 @@ export class ShowingProductComponent implements OnInit {
   // Best Picks
   toggleActive(card: string): void {
     if (card === 'LowestPrice') {
-      this.isActiveLowestPrice = true;
-      this.isActiveMostPopular = false;
+      this._ProductDetailsService.isActiveLowestPrice = true;
+      this._ProductDetailsService.isActiveMostPopular = false;
       this._ProductDetailsService.previousStockUuid ='';
       this._ProductDetailsService.price =
         +this._ProductDetailsService.lowestPrice;
 
         this._ProductDetailsService.getSelectedStock(this.lowestPriceValue,true);
     } else if (card === 'MostPopular') {
-      this.isActiveMostPopular = true;
-      this.isActiveLowestPrice = false;
+      this._ProductDetailsService.isActiveMostPopular = true;
+      this._ProductDetailsService.isActiveLowestPrice = false;
       this._ProductDetailsService.price =
         +this._ProductDetailsService.mostPopularPrice;
         this._ProductDetailsService.previousStockUuid='';

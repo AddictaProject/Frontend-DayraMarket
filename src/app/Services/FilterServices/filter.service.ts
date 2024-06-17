@@ -25,7 +25,7 @@ export class FilterService {
 
   constructor(
     private filterApiService: FilterApiService,
-    private productService: ProductService
+    public productService: ProductService
   ) {
     this.loadCategories();
     this.loadBrands();

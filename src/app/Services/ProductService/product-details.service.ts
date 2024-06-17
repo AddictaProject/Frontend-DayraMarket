@@ -17,7 +17,7 @@ import { map } from 'rxjs';
 })
 export class ProductDetailsService {
   availableAttributes: string[] = [];
-  variantsGroup: IgroupedVariants[]=[];
+  variantsGroup: IgroupedVariants[] = [];
   attributesValues!: Ivalues[];
   previousStockUuid: string = '';
   productUuid: string = '';
@@ -25,27 +25,31 @@ export class ProductDetailsService {
   lowestPrice: number = 0;
   price!: number;
   images: any[] = [];
-  product: IProductInDetails={
-    uuid:'',
-    brandDisplayName:'',
-    categoryDisplayName:'',
-    description:'',
-    displayName:'',
-    groupedVariants:[],
-    lowestPrice :0,
-    photos:[],
+  product: IProductInDetails = {
+    uuid: '',
+    brandDisplayName: '',
+    categoryDisplayName: '',
+    description: '',
+    displayName: '',
+    groupedVariants: [],
+    lowestPrice: 0,
+    photos: [],
   };
   activeItem: any;
   mostPopularAttributes: string[] = [];
-  allAttributes:IVariantValues [][]=[];
-  condition: string ='';
-  color:string='';
-
+  allAttributes: IVariantValues[][] = [];
+  condition: string = '';
+  color: string = '';
+  mostPopularId: string = '';
+  isActiveLowestPrice: boolean = false;
+  isActiveMostPopular: boolean = true;
   isLoading: boolean = false;
+  isPageLoading: boolean = false;
   constructor(private productApi: ProductApiService) {}
 
-  loadProductVariant(id :string,lowestPrice: boolean = false) {
+  loadProductVariant(id: string, lowestPrice: boolean = false) {
     this.rest();
+    this.isPageLoading = true;
     this.productApi
       .getProductDetails({
         productUuid: id,
@@ -60,15 +64,16 @@ export class ProductDetailsService {
             variant.attributeDisplayName.toLowerCase()
           );
         });
-        this.mostPopularAttributes=[];
+        this.mostPopularAttributes = [];
         data.selectedStock.attributes.forEach((attribute) => {
           this.mostPopularAttributes.push(attribute.attributeValueUuid);
-          if( attribute.attributeDisplayName.toLowerCase()=="color")
-            this.color=attribute.attributeValue;
-          else if ( attribute.attributeDisplayName.toLowerCase()=="condition")
-            this.condition=attribute.attributeValue;
+          if (attribute.attributeDisplayName.toLowerCase() == 'color')
+            this.color = attribute.attributeValue;
+          else if (attribute.attributeDisplayName.toLowerCase() == 'condition')
+            this.condition = attribute.attributeValue;
         });
-        this.images=data.photoPaths.length>0?data.photoPaths:data.product.photos;
+        this.images =
+          data.photoPaths.length > 0 ? data.photoPaths : data.product.photos;
         // For gallery:
         if (data && data.photoPaths) {
           this.images = this.images.map((photo) => ({
@@ -84,8 +89,10 @@ export class ProductDetailsService {
         this.productUuid = data.product.uuid;
         this.product = data.product;
         this.mostPopularPrice = data.selectedStock.price;
+        this.mostPopularId = data.selectedStock.uuid;
         this.lowestPrice = data.product.lowestPrice;
         this.price = this.mostPopularPrice;
+        this.isPageLoading = false;
       });
   }
 
@@ -102,44 +109,52 @@ export class ProductDetailsService {
     }
   }
 
-  loadSelectedStock(attributeValueId: string,lowestPrice: boolean = false) {
-    return this.productApi
-      .getProductDetails({
-        productUuid: this.productUuid,
-        lowestPrice: lowestPrice,
-        attributeValueUuid: attributeValueId,
-        previousStockUuid: this.previousStockUuid,
-      })
+  loadSelectedStock(attributeValueId: string, lowestPrice: boolean = false) {
+    return this.productApi.getProductDetails({
+      productUuid: this.productUuid,
+      lowestPrice: lowestPrice,
+      attributeValueUuid: attributeValueId,
+      previousStockUuid: this.previousStockUuid,
+    });
   }
 
-  getSelectedStock(val: IVariantValues,lowestPrice: boolean = false) {
-    val.isLoading=true
-    this.loadSelectedStock(val.uuid,lowestPrice).subscribe((data) => {
+  getSelectedStock(val: IVariantValues, lowestPrice: boolean = false) {
+    val.isLoading = true;
+    this.loadSelectedStock(val.uuid, lowestPrice).subscribe((data) => {
       this.price = data.selectedStock.price;
       this.previousStockUuid = data.selectedStock.uuid;
-      let stockAttributes:string [] = [];
+      let stockAttributes: string[] = [];
       data.selectedStock.attributes.forEach((attribute) => {
-       if( attribute.attributeDisplayName.toLowerCase()=="color")
-          this.color=attribute.attributeValue;
-        else if ( attribute.attributeDisplayName.toLowerCase()=="condition")
-          this.condition=attribute.attributeValue;
+        if (attribute.attributeDisplayName.toLowerCase() == 'color')
+          this.color = attribute.attributeValue;
+        else if (attribute.attributeDisplayName.toLowerCase() == 'condition')
+          this.condition = attribute.attributeValue;
 
-        stockAttributes.push(attribute.attributeValueUuid)
+        stockAttributes.push(attribute.attributeValueUuid);
       });
-      this.images=data.photoPaths.length>0?data.photoPaths:data.product.photos;
+      this.images =
+        data.photoPaths.length > 0 ? data.photoPaths : data.product.photos;
       this.images = this.images.map((photo) => ({
         source: `https://dayra-market.addictaco.com${photo}`,
         thumbnail: `https://dayra-market.addictaco.com${photo}`,
       }));
-      this.allAttributes.forEach(variables=>{
-        variables.forEach(variable=>{
-          if(stockAttributes.includes(variable.uuid))
-            variable.isClicked=true;
-          else
-            variable.isClicked=false;
-        })
-      })
-      val.isLoading=false
+      this.allAttributes.forEach((variables) => {
+        variables.forEach((variable) => {
+          if (stockAttributes.includes(variable.uuid))
+            variable.isClicked = true;
+          else variable.isClicked = false;
+        });
+      });
+
+      if (this.price == this.lowestPrice)
+        this.isActiveLowestPrice = true;
+      else this.isActiveLowestPrice = false;
+
+      if (this.previousStockUuid == this.mostPopularId)
+        this.isActiveMostPopular = true;
+      else this.isActiveMostPopular = false;
+
+      val.isLoading = false;
     });
   }
 
@@ -147,20 +162,23 @@ export class ProductDetailsService {
   setActiveItem(item: any): void {
     this.activeItem = item;
   }
-  rest(){
-  this.availableAttributes = [];
-  this.variantsGroup=[];
-  this.attributesValues=[];
-  this.previousStockUuid = '';
-  this.productUuid = '';
-  this.mostPopularPrice = 0;
-  this.lowestPrice = 0;
-  this.price=0;
-  this.images= [];
-  this.activeItem;
-  this.mostPopularAttributes = [];
-  this.allAttributes=[];
-  this.condition='';
-  this.color='';
+  rest() {
+    this.availableAttributes = [];
+    this.variantsGroup = [];
+    this.attributesValues = [];
+    this.previousStockUuid = '';
+    this.productUuid = '';
+    this.mostPopularPrice = 0;
+    this.lowestPrice = 0;
+    this.price = 0;
+    this.images = [];
+    this.activeItem;
+    this.mostPopularAttributes = [];
+    this.allAttributes = [];
+    this.condition = '';
+    this.color = '';
+    this.mostPopularId = '';
+    this.isActiveLowestPrice = false;
+    this.isActiveMostPopular = true;
   }
 }

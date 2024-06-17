@@ -11,7 +11,7 @@ body {
   font-family: "Montserrat", sans-serif;
   overflow-x: hidden;
 }
-
+body:has(.offcanvas.show),
 body:has(.mobile-filter:not(.d-none)){
   overflow: hidden;
 }

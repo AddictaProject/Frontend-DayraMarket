@@ -9,6 +9,7 @@
   display: flex;
   flex-grow: 1;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   cursor: pointer;
 }
@@ -59,6 +60,7 @@
 
   .products-page .prd-image {
     width: 100px;
+    height: 140px;
   }
 
   .products-page .prd-info {

@@ -48,7 +48,7 @@
         <div>
           <i class="fa-solid fa-arrow-left" (click)="filterService.closeMobileFilterMenu($event)"></i>
           <h5 class="mb-4">Price</h5>
-          <input #rangeRef class="w-100" type="range" min="10000" max="100000" value="100000" (change)="filterService.onPriceChange(rangeRef.value)">
+          <input #rangeRef class="w-100" type="range" [min]="filterService.productService.lowestPrice" [max]="filterService.productService.highestPrice" [value]="rangeRef.max" (change)="filterService.onPriceChange(rangeRef.value)">
           <div class="d-flex justify-content-between">
             <span>{{rangeRef.min}} L.E</span>
             <span>{{rangeRef.value}} L.E</span>
@@ -56,7 +56,7 @@
         </div>
       </div>
     </div>
-    <button class="prd-btn">See 384 products</button>
+    <button class="prd-btn" (click)="isShowFilter=false">See {{filterService.productService.totalCount}} products</button>
   </form>
 </div>
 <button class="filter-btn" [hidden]="isShowFilter" (click)="isShowFilter=true">Filter <svg aria-hidden="true"

@@ -46,4 +46,5 @@ export interface IgroupedVariants {
 export interface Ivalues {
     uuid:string;
     value:string;
+    hexCode?:string;
 }

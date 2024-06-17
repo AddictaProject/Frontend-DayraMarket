@@ -6,4 +6,5 @@ export interface IVariantValues {
   isClicked: boolean;
   isAvailable: boolean;
   isLoading: boolean;
+  hexCode?: string;
 }

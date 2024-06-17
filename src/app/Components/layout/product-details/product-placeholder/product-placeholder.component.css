@@ -1,0 +1,33 @@
+.prd-info{
+  border-bottom: 1px solid rgba(0, 0, 0, .15);
+  padding-block: 24px 40px;
+}
+.product-header p {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 17.07px;
+  color: rgba(0, 0, 0, 0.4);
+  margin-bottom: 0;
+}
+.product-header a {
+  text-align: Center;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16px;
+  font-family: "Montserrat", sans-serif;
+  background: linear-gradient(
+    90deg,
+    rgba(9, 118, 76, 0.64) 3.05%,
+    rgba(89, 105, 99, 0.8) 103.66%
+  );
+
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  cursor: pointer;
+}
+.prd-variants div{
+  width: 30%;
+}
+.best-picks div{
+  width: 47%;
+}

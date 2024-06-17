@@ -42,7 +42,7 @@ export class Header2Component implements OnInit {
         this.category=res;
       },error(err) {
         console.log(err);
-        
+
       },
     })
 
@@ -52,7 +52,7 @@ export class Header2Component implements OnInit {
       toggleOffCanvas(state: string | null) {
         this.offCanvasOb.toggleOffcanvas(state);
       }
-    
+
 
 
   smartTechList: string[] = [
@@ -82,7 +82,7 @@ export class Header2Component implements OnInit {
       this.renderer.addClass(document.body, 'offcanvas-open');
     }
   }
-  
+
   @HostListener('document:click', ['$event'])
   onClick(event: Event) {
     const target = event.target as HTMLElement;
@@ -99,6 +99,4 @@ export class Header2Component implements OnInit {
       this.renderer.removeClass(document.body, 'offcanvas-open');
     }
   }
-  
-  
 }

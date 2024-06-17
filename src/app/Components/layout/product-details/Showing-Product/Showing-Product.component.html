@@ -22,9 +22,10 @@
   <div>
     <div class="row product">
 
-      <div class="col-lg-6 col-md-12 col-sm-12 col-12">
 
+      <div class="col-lg-6 col-md-12 col-sm-12 col-12">
         <!-- Product Name -->
+        @if(!_ProductDetailsService.isPageLoading){
         <div class="d-flex justify-content-between txtOfProdName" id="hiddenDiv">
           <p>
             {{_ProductDetailsService.product.displayName }}
@@ -34,7 +35,6 @@
           </p>
 
         </div>
-
         <div class="product-image " id="galleriaSection">
           <div id="myCarousel-2" class="carousel slide">
             <div class="carousel-inner">
@@ -59,14 +59,16 @@
             </div>
           </div>
         </div>
+      }@else {
+        <div class="product-image p-4">
+          <p-skeleton  width="100%" height="500px" />
+        </div>
+        }
 
       </div>
-
-
       <div class="col-lg-6 col-md-12  col-sm-12 col-xs-12 besideSection">
-
         <div id="scrollHeight">
-
+          @if(!_ProductDetailsService.isPageLoading){
           <!-- Product Name -->
           <div class="d-flex justify-content-between txtOfProdName" id="proHeaderid">
             <p>
@@ -76,7 +78,6 @@
               {{_ProductDetailsService.price | number: '3.0-0'}} L.E
             </p>
           </div>
-
           <!-- Product Description -->
           <div class="txtOfProdDesc ">
             <span>
@@ -84,9 +85,7 @@
               {{_ProductDetailsService.product.description}}
             </span>
           </div>
-
           <!-- Product filters -->
-
           <div class="prodFilters mb-2">
 
             <!-- Best pics -->
@@ -96,7 +95,7 @@
                 <p>Best Picks</p>
 
                 <div>
-                  <div class=""  (click)="toggleOffCanvas('offcanvasTechnical')" style="border: none !important;">
+                  <div class="" (click)="toggleOffCanvas('offcanvasTechnical')" style="border: none !important;">
 
                     <a class="btn border-0 d-flex justify-content-between " data-bs-toggle="offcanvas"
                       href="#offcanvasLearnMoreBest" role="button" data-bs-target="#offcanvasLearnMoreBest"
@@ -117,7 +116,7 @@
                       <div class="HeaderSideOffCanvas">
 
                         <svg class="svgOff" width="8" height="13" viewBox="0 0 8 13" fill="none"
-                          xmlns="http://www.w3.org/2000/svg"  data-bs-dismiss="offcanvas">
+                          xmlns="http://www.w3.org/2000/svg" data-bs-dismiss="offcanvas">
                           <path fill-rule="evenodd" clip-rule="evenodd"
                             d="M2.29464 0.74855C1.87428 0.333585 1.19845 0.333583 0.778093 0.748549C0.349998 1.17116 0.349998 1.86218 0.778094 2.28478L3.60626 5.07669C4.39951 5.85978 4.39951 7.14022 3.60626 7.92331L0.778093 10.7152C0.349997 11.1378 0.349998 11.8288 0.778094 12.2515C1.19845 12.6664 1.87428 12.6664 2.29463 12.2515L6.67899 7.92331C7.47224 7.14023 7.47224 5.85978 6.67899 5.07669L2.29464 0.74855Z"
                             fill="#09764C" fill-opacity="0.8" />
@@ -248,10 +247,10 @@
                   <div class="d-flex justify-content-between col">
 
                     <div class="d-flex justify-content-between cardOfFilter cardOfFilterBlock col mt-3 me-4"
-                      [class.active]="isActiveLowestPrice" (click)="toggleActive('LowestPrice')">
+                      [class.active]="_ProductDetailsService.isActiveLowestPrice" (click)="toggleActive('LowestPrice')">
                       @if(!lowestPriceValue.isLoading){
 
-                      @if (isActiveLowestPrice) {
+                      @if (_ProductDetailsService.isActiveLowestPrice) {
                       <svg class="checkmark" width="35" height="34" viewBox="0 0 35 34" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -316,9 +315,9 @@
 
 
                     <div class="d-flex justify-content-between cardOfFilter cardOfFilterBlock col mt-3 me-4"
-                      [class.activeMostPopular]="isActiveMostPopular" (click)="toggleActive('MostPopular')">
+                      [class.activeMostPopular]="_ProductDetailsService.isActiveMostPopular" (click)="toggleActive('MostPopular')">
                       @if(!mostPriceValue.isLoading){
-                      @if (isActiveMostPopular) {
+                      @if (_ProductDetailsService.isActiveMostPopular) {
                       <svg class="checkmark" width="35" height="36" viewBox="0 0 35 36" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -422,11 +421,14 @@
 
 
           </div>
+          }@else {
+          <app-product-placeholder></app-product-placeholder>
+          }
 
 
           <!-- Adding To Cart -->
 
-          <div class="d-flex justify-content-center mt-5 mb-5 me-4">
+          <div class="d-flex justify-content-center mt-5 mb-5">
             <a class="btn btnAddToCart py-3" role="button" (click)="addItem()">
               Add to Cart </a>
           </div>
@@ -558,16 +560,15 @@
             </div>
 
             <!-- The exact Offcanvas -->
-            <div class="offcanvas offcanvas-end container" data-bs-scroll="false"
-              tabindex="-1" id="offcanvasTechnical" aria-labelledby="offcanvasTechnicalLabel">
+            <div class="offcanvas offcanvas-end container" data-bs-scroll="false" tabindex="-1" id="offcanvasTechnical"
+              aria-labelledby="offcanvasTechnicalLabel">
 
               <div class="offcanvas-body ">
 
                 <!-- Header -->
                 <div class="HeaderSideOffCanvas">
 
-                  <svg class="svgOff" width="8" height="13" viewBox="0 0 8 13" fill="none"
-                   data-bs-dismiss="offcanvas"
+                  <svg class="svgOff" width="8" height="13" viewBox="0 0 8 13" fill="none" data-bs-dismiss="offcanvas"
                     xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" clip-rule="evenodd"
                       d="M2.29464 0.74855C1.87428 0.333585 1.19845 0.333583 0.778093 0.748549C0.349998 1.17116 0.349998 1.86218 0.778094 2.28478L3.60626 5.07669C4.39951 5.85978 4.39951 7.14022 3.60626 7.92331L0.778093 10.7152C0.349997 11.1378 0.349998 11.8288 0.778094 12.2515C1.19845 12.6664 1.87428 12.6664 2.29463 12.2515L6.67899 7.92331C7.47224 7.14023 7.47224 5.85978 6.67899 5.07669L2.29464 0.74855Z"
@@ -622,7 +623,7 @@
           <!-- Perks offcanvas -->
           <div>
             <!-- Button of Perks offcanvas -->
-            <div class="HeadOfOffcanvas  py-2"  (click)="toggleOffCanvas('offcanvasTechnical')">
+            <div class="HeadOfOffcanvas  py-2" (click)="toggleOffCanvas('offcanvasTechnical')">
 
               <a class="btn border-0 d-flex justify-content-between " data-bs-toggle="offcanvas" href="#offcanvasPerks"
                 role="button" data-bs-target="#offcanvasPerks" aria-controls="offcanvasPerks">
@@ -652,7 +653,7 @@
                 <div class="HeaderSideOffCanvas">
 
                   <svg class="svgOff" width="8" height="13" viewBox="0 0 8 13" fill="none"
-                    xmlns="http://www.w3.org/2000/svg"  data-bs-dismiss="offcanvas">
+                    xmlns="http://www.w3.org/2000/svg" data-bs-dismiss="offcanvas">
                     <path fill-rule="evenodd" clip-rule="evenodd"
                       d="M2.29464 0.74855C1.87428 0.333585 1.19845 0.333583 0.778093 0.748549C0.349998 1.17116 0.349998 1.86218 0.778094 2.28478L3.60626 5.07669C4.39951 5.85978 4.39951 7.14022 3.60626 7.92331L0.778093 10.7152C0.349997 11.1378 0.349998 11.8288 0.778094 12.2515C1.19845 12.6664 1.87428 12.6664 2.29463 12.2515L6.67899 7.92331C7.47224 7.14023 7.47224 5.85978 6.67899 5.07669L2.29464 0.74855Z"
                       fill="#09764C" fill-opacity="0.8" />
@@ -689,7 +690,8 @@
           <!-- Frequently offcanvas -->
           <div>
             <!-- Button of Frequently offcanvas -->
-            <div class="mb-3 HeadOfOffcanvas  py-2"  (click)="toggleOffCanvas('offcanvasTechnical')" style="border: none !important;">
+            <div class="mb-3 HeadOfOffcanvas  py-2" (click)="toggleOffCanvas('offcanvasTechnical')"
+              style="border: none !important;">
 
               <a class="btn border-0 d-flex justify-content-between " data-bs-toggle="offcanvas"
                 href="#offcanvasFrequently" role="button" data-bs-target="#offcanvasFrequently"
@@ -721,7 +723,7 @@
                 <div class="HeaderSideOffCanvas">
 
                   <svg class="svgOff" width="8" height="13" viewBox="0 0 8 13" fill="none"
-                    xmlns="http://www.w3.org/2000/svg"  data-bs-dismiss="offcanvas">
+                    xmlns="http://www.w3.org/2000/svg" data-bs-dismiss="offcanvas">
                     <path fill-rule="evenodd" clip-rule="evenodd"
                       d="M2.29464 0.74855C1.87428 0.333585 1.19845 0.333583 0.778093 0.748549C0.349998 1.17116 0.349998 1.86218 0.778094 2.28478L3.60626 5.07669C4.39951 5.85978 4.39951 7.14022 3.60626 7.92331L0.778093 10.7152C0.349997 11.1378 0.349998 11.8288 0.778094 12.2515C1.19845 12.6664 1.87428 12.6664 2.29463 12.2515L6.67899 7.92331C7.47224 7.14023 7.47224 5.85978 6.67899 5.07669L2.29464 0.74855Z"
                       fill="#09764C" fill-opacity="0.8" />

@@ -1,13 +1,13 @@
 <div class="d-flex cardOfFilter cardOfFilterBlock justify-content-center col-11 mt-3 "  (click)="variantClick.emit(value)"
    [class.disables]="!value.isAvailable" [ngStyle]="{
-    'background-color': value.isClicked ? (value.displayName) : '',
+    'background-color': value.isClicked ? (value.hexCode) : '',
     'cursor': value.isClicked ? 'default' : 'pointer',
   }">
 
 @if(!(value.isLoading))
 {
 
-  <span class="dotOfColor me-2 " [style]="'background-color:'+ ( value.displayName) +';'"
+  <span class="dotOfColor me-2 " [style]="'background-color:'+ ( value.hexCode) +';'"
   [class.ActiveDot]="this.value.isClicked"></span>
 
 

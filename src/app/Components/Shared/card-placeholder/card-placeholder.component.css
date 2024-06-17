@@ -9,6 +9,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+
 }
 .products-page{
   min-width: 292px;
@@ -45,8 +46,8 @@
     padding-block: 30px;
   }
 
-  .products-page .prd-image {
-    width: 100px;
+  .prd-image {
+    width: 150px;
   }
 
   .products-page .prd-info {

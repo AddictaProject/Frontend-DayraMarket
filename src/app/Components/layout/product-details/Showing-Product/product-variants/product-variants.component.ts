@@ -52,7 +52,8 @@ export class ProductVariantsComponent implements OnInit {
         isAvailable: this.productDetailsService.availableAttributes.includes(
           v.uuid
         ),
-        isLoading:false
+        isLoading:false,
+        hexCode: v?.hexCode,
       });
     });
     this.productDetailsService.allAttributes[this.productVariants.type] =
