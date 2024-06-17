@@ -246,7 +246,7 @@
 
                   <div class="d-flex justify-content-between col">
 
-                    <div class="d-flex justify-content-between cardOfFilter cardOfFilterBlock col mt-3 me-4"
+                    <div class="d-flex justify-content-between cardOfFilter cardOfFilterBlock col mt-3 me-2 me-md-4"
                       [class.active]="_ProductDetailsService.isActiveLowestPrice" (click)="toggleActive('LowestPrice')">
                       @if(!lowestPriceValue.isLoading){
 
@@ -314,7 +314,7 @@
                     </div>
 
 
-                    <div class="d-flex justify-content-between cardOfFilter cardOfFilterBlock col mt-3 me-4"
+                    <div class="d-flex justify-content-between cardOfFilter cardOfFilterBlock col mt-3 me-2 me-md-4 "
                       [class.activeMostPopular]="_ProductDetailsService.isActiveMostPopular" (click)="toggleActive('MostPopular')">
                       @if(!mostPriceValue.isLoading){
                       @if (_ProductDetailsService.isActiveMostPopular) {
