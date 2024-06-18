@@ -3,10 +3,10 @@
 
     <div class="card-body ">
 
-      <form class="form-inline py-3 my-lg-0 d-flex  PromoCodeDiv">
-        <input class="form-control inputForPromo mr-sm-2 py-3" type="text" placeholder="Apply Promo Code">
-        <button class="btn btnOfPromoCode my-2 my-sm-0 py-3" type="submit">Apply</button>
-      </form>
+      <div class="form-inline my-3 my-lg-0 d-flex  position-relative">
+        <input class="form-control inputForPromo py-3" type="text" placeholder="Apply Promo Code">
+        <button class="btn btnOfPromoCode" type="submit">Apply</button>
+      </div>
 
       <div class="justify-content-between d-flex mt-3  pb-2">
         <p class="txtOfCount">Subtotal</p>
@@ -19,7 +19,7 @@
         <p class="txtOfCount">Discount</p>
         <p class="txtOfCount">0 L.E</p>
       </div>
-    }
+      }
 
       <div class="justify-content-between d-flex totalPrice py-3">
         <p class="txtOfCountFinal mb-0">Total </p>
@@ -27,7 +27,7 @@
       </div>
 
       <div class="d-flex justify-content-center mb-3 ">
-        <a class="btn btnAddToCart py-3" role="button"  (click)="next()">
+        <a class="btn btnAddToCart py-3" role="button" (click)="next()">
           Checkout </a>
       </div>
 

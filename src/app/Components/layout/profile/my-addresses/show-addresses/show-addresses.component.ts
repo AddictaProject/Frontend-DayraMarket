@@ -3,17 +3,16 @@ import { UserService } from '../../../../../Services/UserService/user.service';
 import { SettingService } from '../../../../../Services/SettingService/setting.service';
 import { IUserAddress } from '../../../../../Models/Cart/IUserAddress';
 import { BehaviorSubject } from 'rxjs';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-show-addresses',
   standalone: true,
-  imports: [],
+  imports: [RouterModule],
   templateUrl: './show-addresses.component.html',
   styleUrl: './show-addresses.component.css'
 })
 export class ShowAddressesComponent {
-  @Output() addAddress = new EventEmitter<boolean>();
-
   addresses: IUserAddress[] = [];
   city: any[] = [];
   constructor(
@@ -28,7 +27,6 @@ export class ShowAddressesComponent {
       this.userService.getUserAddress().subscribe({
         next: (data: any) => {
           this.addresses = data;
-          console.log(this.city);
           this.addresses.forEach(add=>{
             add.cityName=this.city.find(c=>c._id==add.cityId)?.name;
             this.settingService.getAllCityDistricts(add.cityId).subscribe({
@@ -44,5 +42,16 @@ export class ShowAddressesComponent {
         },
       });
     });
+  }
+  deleteAddress(id:string){
+    this.userService.deleteUserAddress(id).subscribe({
+      next:(res:any)=>{
+        const addressIndex=this.addresses.findIndex(a=>a.uuid==id);
+      this.addresses.splice(addressIndex,1);
+      },
+      error:(err:any)=>{
+        console.log(err);
+      }
+    })
   }
 }

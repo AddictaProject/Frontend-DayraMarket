@@ -3,7 +3,7 @@
 
     <form class="card-body" [formGroup]="addAddressForm" (submit)="onSubmit()">
 
-      
+
       <!-- User Name -->
       <div class="mb-3 mt-3">
         <div class="input-group ">
@@ -115,6 +115,9 @@
           @if(addAddressForm.controls.street.hasError('required') &&
           addAddressForm.controls.street.dirty && addAddressForm.controls.street.touched ){
           <div class="error mt-1">Street is Required</div>
+          }@else if (addAddressForm.controls.street.invalid && addAddressForm.controls.street.dirty &&
+          addAddressForm.controls.street.touched) {
+          <div class="error mt-1">Street must be at least 5 letter</div>
           }
         </div>
       </div>
@@ -123,7 +126,7 @@
       <div class="col input-group " style="height: 88px;">
         <textarea id="txtid" class="form-control userDetails" name="textname" rows="4" formControlName="details"
           maxlength="200" placeholder="Please enter your address here in details"></textarea>
-      </div>     
+      </div>
       @if(addAddressForm.controls.details.hasError('required') &&
       addAddressForm.controls.details.dirty && addAddressForm.controls.details.touched ){
       <div class="error mt-1">Details is Required</div>

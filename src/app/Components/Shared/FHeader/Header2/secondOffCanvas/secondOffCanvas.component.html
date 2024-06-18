@@ -1,10 +1,10 @@
 
-  <div class="offcanvas offcanvas-end" 
+  <div class="offcanvas offcanvas-end"
   id="additionalOffCanvas" tabindex="-1"
     aria-labelledby="additionalOffCanvasLabel">
     <div class="offcanvas-body">
-
-        @for (level2 of selectedCategory.children ; track $index) {
+@if (selectedCategory) {
+      @for (level2 of selectedCategory.children ; track $index) {
       <div class="product-section">
         <div class="header">
           <h2 class="title">{{level2.displayName}}</h2>
@@ -21,7 +21,7 @@
           }
         </div>
       </div>
-  
     }
+  }
     </div>
   </div>

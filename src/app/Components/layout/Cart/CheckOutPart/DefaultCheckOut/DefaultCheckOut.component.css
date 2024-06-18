@@ -2,7 +2,6 @@
 /* left side */
 
 /* PromoCode */
-
 .form-control {
     color: rgba(0, 0, 0, 0.4);
     font-size: 12px;
@@ -16,6 +15,7 @@
     border-color: rgba(180, 180, 180, 1);
   }
   .btnOfPromoCode {
+    position: absolute;
     background-color: rgba(180, 180, 180, 1);
     color: rgba(255, 255, 255, 1);
     font-size: 14px;
@@ -23,15 +23,17 @@
     line-height: 17.07px;
     letter-spacing: 0.08em;
     text-align: left;
+    right: 0;
+    bottom: 0;
+    top: 0;
   }
-  
+
   .inputForPromo {
     border-radius: 6px 0px 0px 6px;
     border-right: 0;
     background-color: rgba(244, 244, 244, 1);
-    padding: 10px !important;
   }
-  
+
   .txtOfCount {
     font-size: 14px;
     font-weight: 400;
@@ -39,7 +41,7 @@
     text-align: center;
     color: rgba(132, 132, 132, 1);
   }
-  
+
   .txtOfCountFinal {
     font-size: 16px;
     font-weight: 600;
@@ -47,18 +49,18 @@
     text-align: center;
     color: rgba(0, 0, 0, 1);
   }
-  
+
   .totalPrice {
     border-top: 0.8px solid rgba(200, 200, 200, 1);
   }
-  
+
   /* === */
   /* Add To Cart */
   .btnAddToCart {
     width: 100%;
     background: rgba(107, 155, 136, 1);
     color: white;
-  
+
     font-size: 16px;
     font-weight: 600;
     line-height: 19.5px;

@@ -1,10 +1,10 @@
-<div class="col-md-9 col-10">
-  <form class="d-flex mb-5 flex-column gap-3 w-100" [formGroup]="myDataForm" (submit)="onSubmit()">
+<div class="col-lg-9 col-12 px-3">
+  <form class="d-flex mb-5 flex-column gap-sm-3  w-100" [formGroup]="myDataForm" (submit)="onSubmit()">
     <div>
       <label for="UserName">Username</label>
       <input formControlName="username" type="text" placeholder="username" class="w-100" readonly>
     </div>
-    <div class="d-flex flex-column flex-md-row mt-3">
+    <div class="d-flex flex-column flex-md-row mt-sm-3">
       <div class="col-12 col-md-6 pe-md-3 p-0 mt-3 mt-md-0 ">
         <label for="email">Email</label>
         <input formControlName="email" type="email" placeholder="Email" class="w-100" readonly>
@@ -14,7 +14,7 @@
         <input class="w-100" formControlName="phoneNumber" type="text" placeholder="Phone number" readonly>
       </div>
     </div>
-    <div class="d-flex flex-column flex-md-row mt-3">
+    <div class="d-flex flex-column flex-md-row mt-sm-3">
       <div class="col-12 col-md-6 pe-md-3 p-0 mt-3 mt-md-0">
         <label for="Password">Change Password</label>
         <input class="w-100" formControlName="password" type="password" placeholder="Password">
@@ -62,7 +62,7 @@
         }
       </div>
     </div>
-    <div class="d-flex justify-content-md-end justify-content-center">
+    <div class="d-flex justify-content-md-end justify-content-center mt-4">
       <button type="submit" class="data-btn">Save Changes</button>
     </div>
   </form>

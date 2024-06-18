@@ -10,8 +10,10 @@ import { ProfileComponent } from './Components/layout/profile/profile.component'
 import { MyDataComponent } from './Components/layout/profile/my-data/my-data.component';
 import { SavedCardsComponent } from './Components/layout/profile/saved-cards/saved-cards.component';
 import { OrderHistoryComponent } from './Components/layout/profile/order-history/order-history.component';
-import { MyAddressesComponent } from './Components/layout/profile/my-addresses/my-addresses.component';
 import { userGuard } from './user.guard';
+import { NoAccountComponent } from './Components/layout/User/no-account/no-account.component';
+import { ShowAddressesComponent } from './Components/layout/profile/my-addresses/show-addresses/show-addresses.component';
+import { AddressComponent } from './Components/layout/profile/my-addresses/address/address.component';
 
 export const routes: Routes = [
   {path:"", component: HomeComponent},
@@ -19,6 +21,7 @@ export const routes: Routes = [
   { path: 'products', component: ProductsPageComponent, title: 'Products' },
   { path: 'product/:id', component: ProductDetailsComponent, title: 'Product Details' },
   { path: 'cart', component:CartComponent, title: 'Cart' },
+  { path: 'no-account', component:NoAccountComponent, title: 'No Account' },
   { path: 'login', component:SignInComponent, title: 'Login' },
   { path: 'signup', component:SignUpComponent, title: 'SignUp' },
   { path: 'profile', component:ProfileComponent, title: 'Profile' ,canActivate: [userGuard],children:[
@@ -26,7 +29,11 @@ export const routes: Routes = [
       { path: '', component:MyDataComponent },
       { path: 'saved-cards', component:SavedCardsComponent },
       { path: 'order-history', component:OrderHistoryComponent },
-      { path: 'my-addresses', component:MyAddressesComponent },
+      { path: 'my-addresses',children:[
+        { path: '', component:ShowAddressesComponent },
+        { path: 'add-address', component:AddressComponent },
+        { path: 'update-address', component:AddressComponent }
+      ]},
   ]} ,
 
 ];

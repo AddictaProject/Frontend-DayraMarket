@@ -30,6 +30,6 @@ export class DefaultCheckOutComponent implements OnInit {
     if(this.userService.userState)
       this.nextStep.emit();
     else
-      this.router.navigate(['/login']);
+      this.router.navigate(['/no-account']);
   }
 }

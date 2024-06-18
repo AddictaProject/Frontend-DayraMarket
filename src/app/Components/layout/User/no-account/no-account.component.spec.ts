@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AddAddressComponent } from './add-address.component';
+import { NoAccountComponent } from './no-account.component';
 
-describe('AddAddressComponent', () => {
-  let component: AddAddressComponent;
-  let fixture: ComponentFixture<AddAddressComponent>;
+describe('NoAccountComponent', () => {
+  let component: NoAccountComponent;
+  let fixture: ComponentFixture<NoAccountComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AddAddressComponent]
+      imports: [NoAccountComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(AddAddressComponent);
+    fixture = TestBed.createComponent(NoAccountComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

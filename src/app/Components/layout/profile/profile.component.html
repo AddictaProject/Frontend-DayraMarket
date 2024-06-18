@@ -13,17 +13,20 @@
     </ol>
   </nav>
   <div class="row">
-    <div class=" col-4 col-lg-2 profile-side">
-      <h5>My Profile</h5>
+    <div class=" col-sm-4 col-12 col-lg-3 profile-side">
+      <div class="d-flex gap-3 align-items-center">
+        <h5 class="m-0">My Profile</h5>
+        <i #iconRef class="fa-solid fa-angle-down d-sm-none" (click)="iconRef.classList.toggle('fa-angle-up')"></i>
+      </div>
       <nav class="list-unstyled">
-        <li><a [routerLink]="'/profile'" routerLinkActive="link-active" [routerLinkActiveOptions]="{exact:true}">My Data</a> </li>
-        <li><a [routerLink]="'saved-cards'" routerLinkActive="link-active">My Saved Cards</a></li>
-        <li><a [routerLink]="'order-history'" routerLinkActive="link-active">Orders History</a> </li>
-        <li><a [routerLink]="'my-addresses'" routerLinkActive="link-active">My Addresses</a> </li>
+        <li><a [routerLink]="'/profile'" routerLinkActive="link-active" [routerLinkActiveOptions]="{exact:true}" (click)="iconRef.classList.remove('fa-angle-up')">My Data</a> </li>
+        <li><a [routerLink]="'saved-cards'" routerLinkActive="link-active" (click)="iconRef.classList.remove('fa-angle-up')">My Saved Cards</a></li>
+        <li><a [routerLink]="'order-history'" routerLinkActive="link-active" (click)="iconRef.classList.remove('fa-angle-up')">Orders History</a> </li>
+        <li><a [routerLink]="'my-addresses'" routerLinkActive="link-active" (click)="iconRef.classList.remove('fa-angle-up')">My Addresses</a> </li>
         <li><a (click)="onClick()">Logout</a> </li>
       </nav>
     </div>
-    <div class="col-8 col-lg-10 content">
+    <div class="col-sm-8 col-12 col-lg-9 content">
       <router-outlet></router-outlet>
     </div>
   </div>

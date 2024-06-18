@@ -25,7 +25,7 @@ export class AddressAddingComponent implements OnInit {
     buildingNumber: new FormControl('',[Validators.required]),
     apartmentNumber: new FormControl('',[Validators.required]),
     floorNumber: new FormControl('',[Validators.required]),
-    street: new FormControl('',[Validators.required]),
+    street: new FormControl('',[Validators.required, Validators.minLength(5)]),
     details: new FormControl('',[Validators.required]),
   })
 

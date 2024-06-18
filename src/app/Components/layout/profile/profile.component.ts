@@ -11,7 +11,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css'
 })
-export class ProfileComponent implements OnDestroy {
+export class ProfileComponent  {
   // sub!:Subscription;
   constructor(public userService: UserService,private router:Router){}
   onClick(){
@@ -20,7 +20,7 @@ export class ProfileComponent implements OnDestroy {
     this.router.navigate(['/']);
     // this.sub=this.userService.logout().subscribe();
   }
-  ngOnDestroy(): void {
-    // this.sub.unsubscribe();
+  onProfileClick(e:Event){
+
   }
 }

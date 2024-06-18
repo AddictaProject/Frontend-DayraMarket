@@ -22,6 +22,16 @@ label{
 .data-btn:hover{
   background-color: #E07575;
 }
+.show-address{
+  height: 620px;
+  overflow: auto;
+  padding-right: 40px;
+}
 .show-address .address:not(:last-of-type){
   border-bottom: 1px solid #DCDCDC;
 }
+/* width */
+::-webkit-scrollbar {
+  display: none;
+}
+

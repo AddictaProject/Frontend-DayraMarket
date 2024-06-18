@@ -1,19 +1,30 @@
 /* === */
 /* Whole Div */
-.notSignedSection {
-  padding: 133px 0 400px 0;
-}
 
 /* === */
 /* image */
+.no-account{
+  position: relative;
+  margin-block:100px ;
+}
 .imgOfNotSign {
-  width: 189px;
+  width: 139px;
   height: 199px;
+  position: relative;
+  left: -25px;
+  background-image: url("/assets/images/no-account1.png");
+  background-size: cover;
+  animation: picMove 2.5s cubic-bezier(1, -0.77, 0, 1.5) .5s infinite;
 }
 
 .pleaseSignIn {
   border-top: 2px rgba(138, 154, 148, 1) solid;
-  padding: 45px 164px;
+  width: 100%;
+  max-width: 675px;
+  padding-block:45px;
+  position: relative;
+  top: -55px;
+  background-color: #fff;
 }
 
 .txtNotAccount {
@@ -44,3 +55,14 @@
   line-height: 16px;
   text-align: center;
 }
+
+@keyframes picMove{
+  0%{
+    background-image: url("/assets/images/no-account1.png");
+  }
+  100%{
+    background-image: url("/assets/images/no-account2.png");
+  }
+
+}
+
