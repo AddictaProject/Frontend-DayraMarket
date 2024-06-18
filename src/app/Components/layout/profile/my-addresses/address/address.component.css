@@ -65,18 +65,6 @@ input[type="tel"] {
   text-align: left;
 }
 
-.labelOfSaveCheckbox {
-  font-size: 12px;
-  font-weight: 500;
-  line-height: 14.63px;
-  letter-spacing: 0.08em;
-  text-align: left;
-  color: rgba(63, 63, 63, 0.8);
-  cursor: pointer;
-}
-
-
-
 .txtOfCount {
   font-size: 14px;
   font-weight: 400;
@@ -112,3 +100,26 @@ input[type="tel"] {
   font-size: 12px;
   color: hsla(358, 84%, 36%, 1);;
 }
+.form-check-input[type="checkbox"] {
+  border-radius: 0;
+  border: rgba(182, 182, 182, 1) 2px solid;
+}
+
+.form-check-input[type="checkbox"]:checked {
+  background-color: rgba(182, 182, 182, 1) !important;
+}
+.form-check-input[type="checkbox"] :focus,
+.form-check-input:focus,
+.form-check-input[type="checkbox"]::after {
+  box-shadow: none;
+}
+.labelOfSaveCheckbox {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 14.63px;
+  letter-spacing: 0.08em;
+  text-align: left;
+  color: rgba(63, 63, 63, 0.8);
+  cursor: pointer;
+}
+

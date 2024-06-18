@@ -27,13 +27,16 @@ export class ShowAddressesComponent {
       this.userService.getUserAddress().subscribe({
         next: (data: any) => {
           this.addresses = data;
-          this.addresses.forEach(add=>{
+          this.addresses.forEach((add,i)=>{
             add.cityName=this.city.find(c=>c._id==add.cityId)?.name;
             this.settingService.getAllCityDistricts(add.cityId).subscribe({
               next:(districts:any)=>{
                 add.districtName=districts.find((d:any)=>d.districtId==add.districtId)?.districtName;
               },
             })
+            if (add.defaultAddress) {
+              [this.addresses[0],this.addresses[i]]=[this.addresses[i],this.addresses[0]]
+            }
           })
 
         },

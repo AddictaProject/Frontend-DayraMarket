@@ -35,6 +35,7 @@ export class AddressComponent {
     floorNumber: new FormControl('', [Validators.required]),
     street: new FormControl('', [Validators.required, Validators.minLength(5)]),
     details: new FormControl('', [Validators.required]),
+    defaultAddress: new FormControl(false),
   });
   constructor(
     private userService: UserService,
@@ -51,7 +52,7 @@ export class AddressComponent {
       console.log(history.state);
       if (!Object.hasOwn(history.state, 'userName'))
         this.router.navigateByUrl('profile/my-addresses');
-      let address:IUserAddress=history.state;
+      let address: IUserAddress = history.state;
       this.settingService
         .getAllCityDistricts(address.cityId)
         .subscribe((res: any) => {
@@ -67,6 +68,7 @@ export class AddressComponent {
         floorNumber: address.floorNumber,
         street: address.street,
         details: address.details,
+        defaultAddress: address.defaultAddress,
       });
     }
   }
@@ -104,17 +106,30 @@ export class AddressComponent {
       street: this.AddressForm.get('street')?.value || '',
       buildingNumber: this.AddressForm.get('buildingNumber')?.value || '',
       details: this.AddressForm.get('details')?.value || '',
-      defaultAddress: false,
+      defaultAddress: this.AddressForm.get('defaultAddress')?.value ?? false,
       apartmentNumber: this.AddressForm.get('apartmentNumber')?.value || '',
       floorNumber: this.AddressForm.get('floorNumber')?.value || '',
     };
-    this.userService.addUserAddress(address).subscribe({
-      next: (res: any) => {
-        this.router.navigateByUrl('profile/my-addresses');
-      },
-      error: (err: any) => {
-        console.log(err);
-      },
-    });
+    if (this.router.url.includes('add-address')) {
+      this.userService.addUserAddress(address).subscribe({
+        next: (res: any) => {
+          this.router.navigateByUrl('profile/my-addresses');
+        },
+        error: (err: any) => {
+          console.log(err);
+        },
+      });
+    }
+    else if (this.router.url.includes('update')){
+      address.uuid=history.state.uuid;
+      this.userService.updateUserAddress(address).subscribe({
+        next: (res: any) => {
+          this.router.navigateByUrl('profile/my-addresses');
+        },
+        error: (err: any) => {
+          console.log(err);
+        },
+      });
+    }
   }
 }

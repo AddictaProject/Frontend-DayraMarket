@@ -11,21 +11,51 @@ input::placeholder{
 label{
   color: #000;
 }
-.data-btn{
+.btn{
   background-color: #343434CC;
   color: #FAFAFA;
   border-radius: 6px;
   padding: 12px 24px ;
   border: none;
-  ;
+  transition: .3s;
 }
+.del-btn,
 .data-btn:hover{
   background-color: #E07575;
+  border: 1px solid #E07575;
 }
+.del-btn:hover{
+  background-color: #fff;
+  color: #E07575;
+}
+.edit-btn{
+  border: 1px solid #343434CC;
+  background-color: #fff;
+  color: #343434CC;
+}
+.edit-btn:hover{
+  background-color: #343434CC;
+  color: #fff;
+}
+
 .show-address{
   height: 620px;
   overflow: auto;
   padding-right: 40px;
+}
+.address{
+  position: relative;
+}
+.default{
+  position: absolute;
+  right: 0px;
+  top: 5px;
+  background-color: #20A06ECC;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 20px;
+  text-transform: capitalize;
+  font-size: 12px;
 }
 .show-address .address:not(:last-of-type){
   border-bottom: 1px solid #DCDCDC;
