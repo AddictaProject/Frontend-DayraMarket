@@ -21,7 +21,7 @@ export class ShowAddressesComponent {
   @Output() addressStep = new EventEmitter();
   addressSteps = AddressSteps;
   @Output() selectedAddress = new EventEmitter();
-  isLoading=true;
+  isLoading=false;
   city: any[] = [];
   constructor(
     private userService: UserService,
@@ -31,6 +31,7 @@ export class ShowAddressesComponent {
 
   ngOnInit(): void {
     if (!this.addresses.length ) {
+      this.isLoading=true;
       this.settingService.getAllCity().subscribe((res: any) => {
         this.city = res;
 
