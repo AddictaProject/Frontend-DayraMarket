@@ -1,5 +1,5 @@
-<div class="col-md-9 col-12">
-  <form class="card-body my-sm-5 my-0" [formGroup]="AddressForm" (submit)="onSubmit()">
+<div class="col-12" [ngClass]="{'col-md-9': !isCart}">
+  <form class="card-body  my-0" [ngClass]="{'my-sm-5': !isCart}" [formGroup]="AddressForm" (submit)="onSubmit()">
     <!-- User Name -->
     <div class="mb-3 mt-3">
 
@@ -14,8 +14,8 @@
           </svg>
         </span>
       </div>
-      @if(AddressForm.controls.username.hasError('required') && AddressForm.controls.username.dirty &&
-      AddressForm.controls.username.touched ){
+      @if(AddressForm.get('username')?.hasError('required') && AddressForm.get('username')?.dirty &&
+      AddressForm.get('username')?.touched ){
       <div class="error mt-2">username is Required</div>
       }
     </div>
@@ -46,8 +46,8 @@
           </svg>
         </span>
       </div>
-      @if(AddressForm.controls.phoneNumber.hasError('required') && AddressForm.controls.phoneNumber.dirty &&
-      AddressForm.controls.phoneNumber.touched ){
+      @if(AddressForm.get('phoneNumber')?.hasError('required') && AddressForm.get('phoneNumber')?.dirty &&
+      AddressForm.get('phoneNumber')?.touched ){
       <div class="error mt-2">phone number is Required</div>
       }
     </div>
@@ -64,7 +64,7 @@
           }
         </select>
         @if(
-        AddressForm.controls.cityId.dirty && AddressForm.controls.cityId.touched && AddressForm.controls.cityId.value
+        AddressForm.get('cityId')?.dirty && AddressForm.get('cityId')?.touched && AddressForm.get('cityId')?.value
         =='0' ){
         <div class="error mt-1">city is Required</div>
         }
@@ -78,8 +78,8 @@
           }
         </select>
         @if(
-        AddressForm.controls.districtId.dirty && AddressForm.controls.districtId.touched &&
-        AddressForm.controls.districtId.value =='0' ){
+        AddressForm.get('districtId')?.dirty && AddressForm.get('districtId')?.touched &&
+        AddressForm.get('districtId')?.value =='0' ){
         <div class="error mt-1">District is Required</div>
         }
       </div>
@@ -90,16 +90,16 @@
       <div class="col-6 pe-3">
         <input type="text" class="form-control  userApartmentNumber" placeholder="Building Number"
           aria-label="buildingNumber" formControlName="buildingNumber">
-        @if(AddressForm.controls.buildingNumber.hasError('required') &&
-        AddressForm.controls.buildingNumber.dirty && AddressForm.controls.buildingNumber.touched ){
+        @if(AddressForm.get('buildingNumber')?.hasError('required') &&
+        AddressForm.get('buildingNumber')?.dirty && AddressForm.get('buildingNumber')?.touched ){
         <div class="error mt-1">Building Number is Required</div>
         }
       </div>
       <div class="col-6 ">
         <input type="text" class="form-control userApartmentNumber " placeholder="apartment number"
           aria-label="apartment number" formControlName="apartmentNumber">
-        @if(AddressForm.controls.apartmentNumber.hasError('required') &&
-        AddressForm.controls.apartmentNumber.dirty && AddressForm.controls.apartmentNumber.touched ){
+        @if(AddressForm.get('apartmentNumber')?.hasError('required') &&
+        AddressForm.get('apartmentNumber')?.dirty && AddressForm.get('apartmentNumber')?.touched ){
         <div class="error mt-1">Apartment Number is Required</div>
         }
       </div>
@@ -111,19 +111,19 @@
       <div class="col-6 pe-3">
         <input type="text" class="form-control userApartmentNumber" formControlName="floorNumber"
           placeholder="floor number" aria-label="floorNumber">
-        @if(AddressForm.controls.floorNumber.hasError('required') &&
-        AddressForm.controls.floorNumber.dirty && AddressForm.controls.floorNumber.touched ){
+        @if(AddressForm.get('floorNumber')?.hasError('required') &&
+        AddressForm.get('floorNumber')?.dirty && AddressForm.get('floorNumber')?.touched ){
         <div class="error mt-1">Floor Number is Required</div>
         }
       </div>
       <div class="col-6">
         <input type="text" class="form-control userApartmentNumber" formControlName="street" placeholder="Street"
           aria-label="street">
-        @if(AddressForm.controls.street.hasError('required') &&
-        AddressForm.controls.street.dirty && AddressForm.controls.street.touched ){
+        @if(AddressForm.get('street')?.hasError('required') &&
+        AddressForm.get('street')?.dirty && AddressForm.get('street')?.touched ){
         <div class="error mt-1">Street is Required</div>
-        }@else if (AddressForm.controls.street.invalid && AddressForm.controls.street.dirty &&
-        AddressForm.controls.street.touched) {
+        }@else if (AddressForm.get('street')?.invalid && AddressForm.get('street')?.dirty &&
+        AddressForm.get('street')?.touched) {
         <div class="error mt-1">Street must be at least 5 letter</div>
         }
       </div>
@@ -134,21 +134,23 @@
       <textarea id="txtid" class="form-control userDetails" name="textname" rows="4" formControlName="details"
         maxlength="200" placeholder="Please enter your address here in details"></textarea>
     </div>
-    @if(AddressForm.controls.details.hasError('required') &&
-    AddressForm.controls.details.dirty && AddressForm.controls.details.touched ){
+    @if(AddressForm.get('details')?.hasError('required') &&
+    AddressForm.get('details')?.dirty && AddressForm.get('details')?.touched ){
     <div class="error mt-1">Details is Required</div>
     }
     <div class="col input-group my-3">
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" [checked]="address?.defaultAddress">
         <label class="form-check-label labelOfSaveCheckbox" for="flexCheckDefault">
           Make this address as default
         </label>
       </div>
     </div>
+    @if (!isCart) {
     <div class="d-flex justify-content-md-end justify-content-center">
       <button type="submit" class="data-btn mt-4">Save Address</button>
     </div>
+  }
 
   </form>
 </div>

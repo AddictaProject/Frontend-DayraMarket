@@ -18,6 +18,8 @@ label{
   padding: 12px 24px ;
   border: none;
   transition: .3s;
+  position: relative;
+  z-index: 3;
 }
 .del-btn,
 .data-btn:hover{
@@ -28,38 +30,52 @@ label{
   background-color: #fff;
   color: #E07575;
 }
+.add-btn:hover,
 .edit-btn{
   border: 1px solid #343434CC;
   background-color: #fff;
   color: #343434CC;
 }
+
 .edit-btn:hover{
   background-color: #343434CC;
   color: #fff;
 }
 
 .show-address{
-  height: 620px;
+  max-height: 620px;
   overflow: auto;
-  padding-right: 40px;
+  padding: 10px;
+
 }
-.address{
+.show-address .address:not(:last-of-type){
+  border-bottom: 1px solid #DCDCDC;
+}
+.show-address .address{
   position: relative;
+  padding: 20px;
+  margin-bottom: 10px;
+}
+.show-address .address.cart{
+  cursor: pointer;
+}
+.show-address:not(:has(.active)):not(:has(p-skeleton)) .address:first-of-type,
+.show-address .address.active{
+  border: 1.5px solid #6b9b88;
+  border-radius: 8px;
 }
 .default{
   position: absolute;
-  right: 0px;
-  top: 5px;
-  background-color: #20A06ECC;
+  right: 10px;
+  top: 15px;
+  background-color: #6b9b88;
   color: #fff;
   padding: 5px 10px;
   border-radius: 20px;
   text-transform: capitalize;
   font-size: 12px;
 }
-.show-address .address:not(:last-of-type){
-  border-bottom: 1px solid #DCDCDC;
-}
+
 /* width */
 ::-webkit-scrollbar {
   display: none;

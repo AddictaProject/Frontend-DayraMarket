@@ -1,0 +1,15 @@
+.change-address{
+  cursor: pointer;
+  color:#343434CC ;
+  font-size: 14px;
+}
+.skelton > div{
+  position: relative;
+}
+.skelton > div span{
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+

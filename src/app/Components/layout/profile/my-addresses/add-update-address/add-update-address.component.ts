@@ -9,66 +9,76 @@ import { SettingService } from '../../../../../Services/SettingService/setting.s
 import { UserService } from '../../../../../Services/UserService/user.service';
 import { IUserAddress } from '../../../../../Models/Cart/IUserAddress';
 import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-address',
+  selector: 'app-add-update-address',
   standalone: true,
-  imports: [ReactiveFormsModule],
-  templateUrl: './address.component.html',
-  styleUrl: './address.component.css',
+  imports: [ReactiveFormsModule,CommonModule],
+  templateUrl: './add-update-address.component.html',
+  styleUrl: './add-update-address.component.css',
 })
-export class AddressComponent {
+export class AddUpdateAddressComponent {
   city: any[] = [];
   districts: any[] = [];
+  @Input() AddressForm!:FormGroup;
+  @Input() isCart: boolean = false;
+  @Input() address!: IUserAddress;
 
-  AddressForm = new FormGroup({
-    username: new FormControl('', [Validators.required]),
-    phoneNumber: new FormControl('', [
-      Validators.required,
-      Validators.maxLength(11),
-      Validators.minLength(11),
-    ]),
-    districtId: new FormControl('0', [Validators.required]),
-    cityId: new FormControl('0', [Validators.required]),
-    buildingNumber: new FormControl('', [Validators.required]),
-    apartmentNumber: new FormControl('', [Validators.required]),
-    floorNumber: new FormControl('', [Validators.required]),
-    street: new FormControl('', [Validators.required, Validators.minLength(5)]),
-    details: new FormControl('', [Validators.required]),
-    defaultAddress: new FormControl(false),
-  });
   constructor(
     private userService: UserService,
     private settingService: SettingService,
     private router: Router
-  ) {}
+  ) {
+    if (!this.AddressForm)
+    this.AddressForm = new FormGroup({
+      username: new FormControl('', [Validators.required]),
+      phoneNumber: new FormControl('', [
+        Validators.required,
+        Validators.maxLength(11),
+        Validators.minLength(11),
+      ]),
+      districtId: new FormControl('0', [Validators.required]),
+      cityId: new FormControl('0', [Validators.required]),
+      buildingNumber: new FormControl('', [Validators.required]),
+      apartmentNumber: new FormControl('', [Validators.required]),
+      floorNumber: new FormControl('', [Validators.required]),
+      street: new FormControl('', [Validators.required, Validators.minLength(5)]),
+      details: new FormControl('', [Validators.required]),
+      defaultAddress: new FormControl(false),
+    });
+  }
 
   ngOnInit() {
     this.settingService.getAllCity().subscribe((res: any) => {
       this.city = res;
     });
 
-    if (this.router.url.includes('update')) {
-      console.log(history.state);
-      if (!Object.hasOwn(history.state, 'userName'))
+    if (this.router.url.includes('update') || this.router.url.includes('cart')) {
+
+      if (!Object.hasOwn(history.state, 'userName') && !this.router.url.includes('cart') )
         this.router.navigateByUrl('profile/my-addresses');
-      let address: IUserAddress = history.state;
+
+      if(this.router.url.includes('update'))
+        this.address = history.state;
+
       this.settingService
-        .getAllCityDistricts(address.cityId)
+        .getAllCityDistricts(this.address.cityId)
         .subscribe((res: any) => {
           this.districts = res;
         });
+
       this.AddressForm.patchValue({
-        username: address.userName,
-        phoneNumber: address.phoneNumber,
-        cityId: address.cityId,
-        districtId: address.districtId,
-        buildingNumber: address.buildingNumber,
-        apartmentNumber: address.apartmentNumber,
-        floorNumber: address.floorNumber,
-        street: address.street,
-        details: address.details,
-        defaultAddress: address.defaultAddress,
+        username: this.address.userName,
+        phoneNumber: this.address.phoneNumber,
+        cityId: this.address.cityId,
+        districtId: this.address.districtId,
+        buildingNumber: this.address.buildingNumber,
+        apartmentNumber: this.address.apartmentNumber,
+        floorNumber: this.address.floorNumber,
+        street: this.address.street,
+        details: this.address.details,
+        defaultAddress: this.address.defaultAddress,
       });
     }
   }

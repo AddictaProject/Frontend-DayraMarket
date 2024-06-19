@@ -13,7 +13,7 @@ import { OrderHistoryComponent } from './Components/layout/profile/order-history
 import { userGuard } from './user.guard';
 import { NoAccountComponent } from './Components/layout/User/no-account/no-account.component';
 import { ShowAddressesComponent } from './Components/layout/profile/my-addresses/show-addresses/show-addresses.component';
-import { AddressComponent } from './Components/layout/profile/my-addresses/address/address.component';
+import { AddUpdateAddressComponent } from './Components/layout/profile/my-addresses/add-update-address/add-update-address.component';
 
 export const routes: Routes = [
   {path:"", component: HomeComponent},
@@ -31,8 +31,8 @@ export const routes: Routes = [
       { path: 'order-history', component:OrderHistoryComponent },
       { path: 'my-addresses',children:[
         { path: '', component:ShowAddressesComponent },
-        { path: 'add-address', component:AddressComponent },
-        { path: 'update-address', component:AddressComponent }
+        { path: 'add-address', component:AddUpdateAddressComponent },
+        { path: 'update-address', component:AddUpdateAddressComponent }
       ]},
   ]} ,
 
