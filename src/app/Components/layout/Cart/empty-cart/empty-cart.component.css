@@ -1,0 +1,30 @@
+.container{
+  margin-block: 150px;
+}
+.shop-btn{
+  background-color: #09764CCC;
+  color: #fff;
+  padding: 10px 40px;
+  border-radius: 6px;
+  margin-block: 40px;
+  font-size: 16px;
+}
+p{
+  color: #000;
+}
+p:first-of-type{
+  font-size: 22px;
+  font-weight: 500;
+  text-transform: capitalize;
+  margin-bottom: 28px;
+  line-height: 26.82px;
+
+}
+p:last-of-type{
+  font-size: 18px;
+  line-height: 16px;
+
+}
+.cart-img{
+  margin-bottom: 50px;
+}

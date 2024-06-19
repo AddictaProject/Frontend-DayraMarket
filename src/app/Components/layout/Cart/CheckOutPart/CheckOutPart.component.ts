@@ -10,6 +10,7 @@ import { ICartItem } from '../../../../Models/Cart/ICartItem';
 import { CartService } from '../../../../Services/CartService/cart.service';
 import { CommonModule } from '@angular/common';
 import { SuccessCartComponent } from "./SuccessCart/SuccessCart.component";
+import { EmptyCartComponent } from "../empty-cart/empty-cart.component";
 
 @Component({
     selector: 'app-CheckOutPart',
@@ -17,7 +18,7 @@ import { SuccessCartComponent } from "./SuccessCart/SuccessCart.component";
     templateUrl: './CheckOutPart.component.html',
     styleUrls: ['./CheckOutPart.component.css'],
     imports: [RouterModule, DefaultCheckOutComponent, AddressAddingComponent,
-        ReviewOrderComponent, ConfirmPaymentComponent, CommonModule, SuccessCartComponent]
+        ReviewOrderComponent, ConfirmPaymentComponent, CommonModule, SuccessCartComponent, EmptyCartComponent]
 })
 export class CheckOutPartComponent implements OnInit {
   cart:ICartItem[]=[];
