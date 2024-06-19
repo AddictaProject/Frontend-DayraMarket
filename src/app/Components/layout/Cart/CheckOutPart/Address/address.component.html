@@ -11,7 +11,7 @@
         <app-add-update-address [AddressForm]="addAddressForm" [isCart]="true" [address]="currentAddress"></app-add-update-address>
       }
       @case (addressSteps.showAll) {
-      <app-show-addresses [addresses]="addresses" [isCart]="true" (selectedAddress)="currentAddress=$event" (addressStep)="currentAddressStep=$event"></app-show-addresses>
+      <app-show-addresses [isLoading]="isLoading" [addresses]="addresses" [isCart]="true" (selectedAddress)="currentAddress=$event" (addressStep)="currentAddressStep=$event"></app-show-addresses>
       }
     }
   </div>

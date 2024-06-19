@@ -21,7 +21,7 @@ export class ShowAddressesComponent {
   @Output() addressStep = new EventEmitter();
   addressSteps = AddressSteps;
   @Output() selectedAddress = new EventEmitter();
-  isLoading=false;
+  @Input() isLoading=false;
   city: any[] = [];
   constructor(
     private userService: UserService,
