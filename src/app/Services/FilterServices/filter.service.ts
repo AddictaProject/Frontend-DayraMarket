@@ -16,7 +16,7 @@ export class FilterService {
   brands: IBrand[] = [];
   categories: ICategory[] = [];
 
-  categoriesCheckbox: CheckboxFilter[] = [];
+  categoriesCheckbox: CheckboxFilter[] = []; //for Search All Categories
   brandsCheckbox: CheckboxFilter[] = [];
   checkedBrands: CheckboxFilter[] = [];
   checkedCategories: CheckboxFilter[] = [];
@@ -42,17 +42,33 @@ export class FilterService {
   getChecked(filter: CheckboxFilter) {
     filter.isChecked = !filter.isChecked;
     if (filter.type === FilterType.Brand) {
-      if (filter.isChecked) this.checkedBrands.push(filter);
+      let selected1=this.brandsFiltered.find(b=>b.id === filter.id) ?? filter;
+      let selected2=this.brandsCheckbox.find(b=>b.id === filter.id) ?? filter;
+      console.log(selected1);
+      console.log(selected2);
+      if (filter.isChecked)
+        {
+          this.checkedBrands.push(filter);
+          selected1.isChecked=selected2.isChecked=true;
+        }
       else {
         const idx = this.checkedBrands.findIndex((f) => f.id == filter.id);
         this.checkedBrands.splice(idx, 1);
+        selected1.isChecked=selected2.isChecked=false;
       }
     }
     else if(filter.type === FilterType.Category){
-      if (filter.isChecked) this.checkedCategories.push(filter);
+      let selected1=this.categoriesFiltered.find(b=>b.id === filter.id) ?? filter;
+      let selected2=this.categoriesCheckbox.find(b=>b.id === filter.id) ?? filter;
+
+      if (filter.isChecked){
+        this.checkedCategories.push(filter);
+        selected1.isChecked=selected2.isChecked=true;
+      }
       else {
         const idx = this.checkedCategories.findIndex((f) => f.id == filter.id);
         this.checkedCategories.splice(idx, 1);
+        selected1.isChecked=selected2.isChecked=false;
       }
     }
     this.filterProduct();

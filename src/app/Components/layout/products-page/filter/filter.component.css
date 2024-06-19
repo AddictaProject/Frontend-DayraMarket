@@ -13,16 +13,20 @@ input:checked + label{
 .mobile-checkbox{
   cursor: pointer;
   color: #121212;
-  padding:15px ;
+  padding:0 15px;
   display: flex;
   margin-bottom: 20px;
   border-radius: 6px;
-  gap: 12px;
+  gap: 12px;;
   border: 1px solid rgb(18,18,18,.43);
 }
 .mobile-checkbox input[type="checkbox"] {
   width: 20px;
   cursor: pointer;
+  padding-block:15px ;
+}
+.mobile-checkbox label{
+  padding-block:15px ;
 }
 label{
   cursor: pointer;
