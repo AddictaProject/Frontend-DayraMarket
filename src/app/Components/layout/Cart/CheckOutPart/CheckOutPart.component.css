@@ -90,7 +90,15 @@
   right: 36px;
   cursor: pointer;
 }
+@media (max-width: 768px) {
+.svgOfDelete {
+  right: 18px;
+}
+.leftPartOfDetails {
+  padding: 6px 0px;
 
+}
+}
 /* === */
 /* Protection */
 .detailsCardProtection {

@@ -1,7 +1,7 @@
 <div class=" col-12  ps-sm-0" [ngClass]="{'col-lg-9': !isCart}">
   <div class="show-address">
     @if (isCart) {
-    <button class="btn w-100 mb-4 add-btn" (click)="addressStep.emit(addressSteps.add)">Add New Address</button>
+    <button class="btn w-100 mb-4 mt-2 add-btn" (click)="addressStep.emit(addressSteps.add)">Add New Address</button>
     }
     @if (!isLoading) {
       @for (item of addresses; track $index) {
@@ -23,10 +23,10 @@
             class="w-100" readonly>
         </div>
         <div class="d-flex justify-content-end mt-md-4  mt-3  gap-3">
-          <button class="btn pt-2 edit-btn px-3" (click)="onEditClick($event,item)"><i class="fa-solid fa-pen fa-xs"></i>
+          <button class="btn py-2 edit-btn px-3" (click)="onEditClick($event,item)"><i class="fa-solid fa-pen fa-xs"></i>
             Edit </button>
           @if (!item.defaultAddress && !isCart) {
-          <button class="btn del-btn pt-2 px-3" (click)="deleteAddress(item.uuid ?? '')"><i
+          <button class="btn del-btn py-2 px-3" (click)="deleteAddress(item.uuid ?? '')"><i
               class="fa-solid fa-trash fa-xs"></i> Delete</button>
           }
         </div>
@@ -75,7 +75,7 @@
     }
   </div>
   @if (!isCart) {
-  <div class="d-flex justify-content-md-end justify-content-center my-5 pb-5">
+  <div class="d-flex justify-content-md-end justify-content-center">
     <button type="submit" class=" btn data-btn mt-4" [routerLink]="['add-address']"
       routerLinkActive="router-link-active">Add new Address</button>
   </div>

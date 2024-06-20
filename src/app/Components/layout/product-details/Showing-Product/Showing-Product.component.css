@@ -632,6 +632,27 @@ line-height: 19.03px;
   }
 }
 
+@media screen and (max-width: 400px) {
+  .breadcrumb {
+    font-size: 10px;
+  }
+  .breadcrumb i {
+    font-size: 10px;
+  }
+  .txtOfProdDesc {
+    font-size: 10px;
+  }
+  .txtOfFirstRefurbished {
+    font-size: 14px;
+  }
+
+  .checkmark {
+    width: 30px;
+  }
+  .txtOfFilterItem3 {
+    font-size: 9px;
+  }
+}
 @media screen and (max-width: 375px) {
   .breadcrumb {
     font-size: 9px;

@@ -13,3 +13,8 @@
   bottom: 0;
 }
 
+span{
+  width: 42px;
+  display: flex;
+  justify-content: center;
+}

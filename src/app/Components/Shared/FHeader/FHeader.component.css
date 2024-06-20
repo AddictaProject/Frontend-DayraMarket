@@ -1,5 +1,9 @@
 
-
+header{
+    position: sticky;
+    top: 0px;
+    z-index: 1024;
+}
 @media screen and (max-width: 769px) {
 
     .navUnderHeader{
