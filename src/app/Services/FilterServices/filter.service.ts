@@ -44,8 +44,6 @@ export class FilterService {
     if (filter.type === FilterType.Brand) {
       let selected1=this.brandsFiltered.find(b=>b.id === filter.id) ?? filter;
       let selected2=this.brandsCheckbox.find(b=>b.id === filter.id) ?? filter;
-      console.log(selected1);
-      console.log(selected2);
       if (filter.isChecked)
         {
           this.checkedBrands.push(filter);

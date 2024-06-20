@@ -30,7 +30,6 @@ export class CartService {
   }
   deleteFromCart(id: string) {
     let indexProdInCart = this.cart.findIndex((val) => val.id === id);
-    console.log(indexProdInCart);
     if (indexProdInCart === -1) return;
 
     this.cart.splice(indexProdInCart, 1);

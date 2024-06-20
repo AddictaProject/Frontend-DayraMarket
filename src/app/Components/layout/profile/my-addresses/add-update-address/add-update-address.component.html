@@ -140,7 +140,7 @@
     }
     <div class="col input-group my-3">
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" [checked]="address?.defaultAddress">
+        <input formControlName="defaultAddress" class="form-check-input" type="checkbox" id="flexCheckDefault" [checked]="address?.defaultAddress">
         <label class="form-check-label labelOfSaveCheckbox" for="flexCheckDefault">
           Make this address as default
         </label>

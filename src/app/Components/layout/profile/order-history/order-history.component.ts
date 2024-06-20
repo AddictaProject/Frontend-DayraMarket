@@ -26,8 +26,7 @@ export class OrderHistoryComponent {
     this.orderService.getUserOrder().subscribe({
       next: (res:any) => {
         this.orders=res;
-        console.log(this.orders);
-        
+
       },
       error: (err:any) => {
         console.log(err);

@@ -14,7 +14,7 @@
   left: -25px;
   background-image: url("/assets/images/no-account1.png");
   background-size: cover;
-  animation: picMove 2.5s cubic-bezier(1, -0.77, 0, 1.5) .5s infinite;
+  animation: picMove 2.2s cubic-bezier(1, -0.77, 0, 1.5) infinite;
 }
 
 .pleaseSignIn {
@@ -58,10 +58,10 @@
 
 @keyframes picMove{
   0%{
-    background-image: url("/assets/images/no-account1.png");
+    background-image: url("/assets/images/no-account2.png");
   }
   100%{
-    background-image: url("/assets/images/no-account2.png");
+    background-image: url("/assets/images/no-account1.png");
   }
 
 }

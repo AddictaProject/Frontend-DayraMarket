@@ -21,7 +21,6 @@ export class BrandSliderComponent implements OnInit {
       while(this.brands.length<8){
         this.brands.push(...this.brands);
       }
-      console.log(this.brands);
     })
   }
 }
