@@ -1,5 +1,5 @@
 export interface IBrand {
   uuid: string;
-  dateCreated:string;
+  photoPath:string;
   displayName:string;
 }

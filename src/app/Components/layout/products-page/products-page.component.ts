@@ -1,5 +1,5 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Router, RouterModule } from '@angular/router';
 import { CardComponent } from '../../Shared/card/card.component';
 import { OfferCardComponent } from './offer-card/offer-card.component';
 import { FilterSecComponent } from './filter-sec/filter-sec.component';
@@ -26,11 +26,18 @@ import { CommonModule } from '@angular/common';
         CommonModule
     ]
 })
-export class ProductsPageComponent implements OnInit {
+export class ProductsPageComponent implements OnInit,OnDestroy {
 
 
   @ViewChild('paginationRef')  paginationRef!:ElementRef;
-  constructor(public productService: ProductService) {}
+  constructor(public productService: ProductService,private router: Router) {
+    if(history.state?.brandId)
+      productService.brandsParams.push(history.state.brandId);
+
+  }
+  ngOnDestroy(): void {
+    this.productService.reset();
+  }
   ngOnInit(): void {
     this.productService.loadProducts(1);
   }

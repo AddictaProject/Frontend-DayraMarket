@@ -32,7 +32,6 @@ img{
   flex-wrap: nowrap;
   animation: scroll var(--_animation-duration, 40s)
     var(--_animation-direction, forwards) linear infinite ;
-    animation-direction: alternate-reverse;
 }
 
 .scroller[data-direction="right"] {

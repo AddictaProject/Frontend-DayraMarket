@@ -5,41 +5,43 @@ import { IProductParams } from '../../Models/Product/All-Products/IProductParams
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProductService {
-
+  brandId: string | undefined;
   products: BehaviorSubject<IProduct[]> = new BehaviorSubject<IProduct[]>([]);
-  offerProduct!: IProduct ;
+  offerProduct!: IProduct;
   isLoaded = false;
   numOfProducts: number = 11;
-  pageNumber: number =1;
-  tempArr:number[]=[];
-  pageArr:number[]=[];
-  maxPageNum:number = 0;
-  totalCount:number = 6;
-  lowestPrice:number = 1000;
-  highestPrice:number = 10000;
+  pageNumber: number = 1;
+  tempArr: number[] = [];
+  pageArr: number[] = [];
+  maxPageNum: number = 0;
+  totalCount: number = 6;
+  lowestPrice: number = 1000;
+  highestPrice: number = 10000;
   brandsParams: string[] = [];
   categoriesPrams: string[] = [];
   maxPrice: number | null = null;
-  constructor(private productApi:ProductApiService){}
+  constructor(private productApi: ProductApiService) {}
 
-  loadProducts(pageNum:number){
-    this.isLoaded=false;
-    this.pageNumber=pageNum;
-    const tempNum=this.pageNumber ===1 ? this.numOfProducts-1: this.totalCount-(this.numOfProducts*(this.pageNumber-1));
-    this.tempArr=Array(tempNum);
+  loadProducts(pageNum: number) {
+    this.isLoaded = false;
+    this.pageNumber = pageNum;
+    const tempNum =
+      this.pageNumber === 1
+        ? this.numOfProducts - 1
+        : this.totalCount - this.numOfProducts * (this.pageNumber - 1);
+    this.tempArr = Array(tempNum);
 
     const params: IProductParams = {
       rowCount: this.numOfProducts,
       pageNo: pageNum,
-      brandUuids:this.brandsParams,
-      categoryUuids:this.categoriesPrams,
+      brandUuids: this.brandsParams,
+      categoryUuids: this.categoriesPrams,
     };
 
-    if(this.maxPrice)
-      params.maxPrice=this.maxPrice;
+    if (this.maxPrice) params.maxPrice = this.maxPrice;
 
     this.productApi.getProducts(params).subscribe((products) => {
       let prods = products.result;
@@ -51,21 +53,34 @@ export class ProductService {
         );
         p.groupedVariants = colors;
       });
-      if(this.pageNumber==1)
-      {
+      if (this.pageNumber == 1) {
         this.offerProduct = prods[0];
-        prods.splice(0,1);
+        prods.splice(0, 1);
       }
       this.products.next(prods);
-      this.totalCount=products.totalCount;
-      this.lowestPrice=products.lowestPrice;
-      this.highestPrice=products.highestPrice;
-      this.maxPageNum=Math.ceil(products.totalCount / this.numOfProducts );
+      this.totalCount = products.totalCount;
+      this.lowestPrice = products.lowestPrice;
+      this.highestPrice = products.highestPrice;
+      this.maxPageNum = Math.ceil(products.totalCount / this.numOfProducts);
 
-      this.pageArr=Array(Math.abs(this.maxPageNum-1)).fill(0).map((_,i)=>i+1);
+      this.pageArr = Array(Math.abs(this.maxPageNum - 1))
+        .fill(0)
+        .map((_, i) => i + 1);
       this.isLoaded = true;
     });
   }
-
-
+  reset() {
+    this.maxPrice = null;
+    this.categoriesPrams = [];
+    this.brandsParams = [];
+    this.isLoaded = false;
+    this.numOfProducts = 11;
+    this.pageNumber = 1;
+    this.tempArr = [];
+    this.pageArr = [];
+    this.maxPageNum = 0;
+    this.totalCount = 6;
+    this.lowestPrice = 1000;
+    this.highestPrice = 10000;
+  }
 }

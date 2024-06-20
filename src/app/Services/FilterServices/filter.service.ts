@@ -134,7 +134,7 @@ export class FilterService {
         const Checkbox: CheckboxFilter = {
           id: category.uuid,
           name: category.displayName,
-          isChecked: false,
+          isChecked: this.productService.categoriesPrams.includes(category.uuid),
           type: FilterType.Category,
         };
         this.categoriesCheckbox.push(Checkbox);
@@ -150,7 +150,7 @@ export class FilterService {
         const Checkbox: CheckboxFilter = {
           id: brand.uuid,
           name: brand.displayName,
-          isChecked: false,
+          isChecked: this.productService.brandsParams.includes(brand.uuid),
           type: FilterType.Brand,
         };
         this.brandsCheckbox.push(Checkbox);
