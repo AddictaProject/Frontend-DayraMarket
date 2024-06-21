@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
 import { IOrderItem } from '../../../../Models/Order/IOrderItem';
 import { StarHoverDirective } from '../../../../Directives/star-hover.directive';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { IReview } from '../../../../Models/Order/ireview';
+import { IReview } from '../../../../Models/Order/IReview';
 
 @Component({
   selector: 'app-order-history',
