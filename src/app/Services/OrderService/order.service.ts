@@ -4,7 +4,7 @@ import { Environment } from '../../../enviroment/environment';
 import { ICreateOrder } from '../../Models/Order/ICreateOrder';
 import { IUserAddress } from '../../Models/Cart/IUserAddress';
 import { IOrder } from '../../Models/Order/IOrder';
-import { IReview } from '../../Models/Order/ireview';
+import { IReview } from '../../Models/Order/IReview';
 
 @Injectable({
   providedIn: 'root'
