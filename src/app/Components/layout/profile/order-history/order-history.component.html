@@ -14,21 +14,62 @@
           <p class="mb-2"># {{order.serialNumber}}</p>
           <p class="mb-2">Date : {{item.dateCreated | date:"dd / MM / yyyy"}}</p>
         </div>
-        <div class="d-flex flex-column flex-md-row justify-content-between column-gap-5 row-gap-2 spec">
+        <div class="d-flex flex-column flex-md-row justify-content-between column-gap-4 row-gap-2 spec">
           <!-- Not sure if it is correct ! Look => IProductOrderItem -->
           @for (att of item.attributes; track $index) {
-          @if(att.attributeDisplayName.toLowerCase() == 'condition' || att.attributeDisplayName.toLowerCase() == 'color'){
-          <p class="mb-0">{{att.attributeValue}} : {{att.attributeDisplayName}}</p>
+          @if(att.attributeDisplayName.toLowerCase() == 'condition' || att.attributeDisplayName.toLowerCase() ==
+          'color'){
+          <p class="mb-0">{{att.attributeDisplayName}} : {{att.attributeValue}}</p>
           }
           }
         </div>
       </div>
     </div>
-    <div class="d-flex flex-column justify-content-between gap-4 mt-4 mt-md-0">
-      <p class="mb-0 status">{{item.status}}</p>
-      <p class="change-state mb-0 text-center text-md-end">Cancel Order</p>
+    <div class="d-flex flex-column justify-content-between text-center column-gap-4 row-gap-2 mt-4 mt-md-0">
+      <p class="mb-0 status ">{{item.status}}</p>
+      @if (item.status!='Delivered' ) {
+      <button class="change-state mb-0  border-0 bg-transparent" (click)="openReview(item)">Review</button>
+      }
+      @if (item.status=='New' || item.status=='PendingPickup') {
+      <button class="change-state mb-0 border-0 bg-transparent" (click)="cancelOrderItem(item.uuid)">Cancel Order</button>
+      }@else if (item.status=='Delivered') {
+      <button class="change-state mb-0  border-0 bg-transparent" (click)="returnOrderItem(item.uuid)">Refund</button>
+      }
     </div>
   </div>
   }
   }
-</div>
+  @if (reviewItem) {
+
+  <div class="review show test" [ngClass]="{'show':reviewVisible}">
+    <div class="modal-content">
+      <div class="d-flex gap-4">
+        <div class="image">
+          <img [src]="'https://dayra-market.addictaco.com'+reviewItem.photoPaths[0]" alt="">
+        </div>
+        <div>
+          <h5>{{reviewItem.productDisplayName}}</h5>
+          <p class="my-3 fa-sm ">Date : {{reviewItem.dateCreated | date:"dd / MM / yyyy"}}</p>
+        </div>
+      </div>
+     <div class="rate d-flex gap-3 mt-4">
+      <h6 class="mb-0">How do you rate this product?</h6>
+      <div class="stars d-flex gap-1">
+        @for (val of [1,2,3,4,5]; track $index) {
+        <i StarHover class="fa-solid fa-star" (click)="onClick($event,val)" ></i>
+        }
+      </div>
+     </div>
+     <form [formGroup]="form" (submit)="onSubmit()">
+     <div class="comment mt-4">
+      <h6>Write a product review</h6>
+      <textarea formControlName="comment" placeholder="What did you like or dislike? How did you use the product? What should others know before buying?" maxlength="1000"></textarea>
+     </div>
+     <div class="btns d-flex justify-content-end gap-3 mt-4 ">
+       <button type="reset" class="btn btn-secondary" (click)="reviewVisible=false">Cancel</button>
+      <button class="btn btn-submit" type="submit" [disabled]="!rate || form.invalid">Submit</button>
+     </div>
+    </form>
+    </div>
+  </div>
+  }

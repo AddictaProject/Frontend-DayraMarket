@@ -4,6 +4,7 @@ import { Environment } from '../../../enviroment/environment';
 import { ICreateOrder } from '../../Models/Order/ICreateOrder';
 import { IUserAddress } from '../../Models/Cart/IUserAddress';
 import { IOrder } from '../../Models/Order/IOrder';
+import { IReview } from '../../Models/Order/ireview';
 
 @Injectable({
   providedIn: 'root'
@@ -23,4 +24,16 @@ export class OrderService {
   getUserOrder(){
     return this.httpClient.get(this.URL+'orders/my');
   }
+
+  reviewOrderItem(itemId:string,review:IReview){
+    return this.httpClient.post(this.URL+`orders/items/${itemId}/review`, review);
+  }
+  cancelOrderItem(itemId:string){
+    return this.httpClient.put(this.URL+`orders/items/${itemId}/cancel`,'');
+  }
+  returnOrderItem(itemId:string){
+    return this.httpClient.put(this.URL+`orders/items/${itemId}/return`,'');
+  }
+
+
 }

@@ -1,25 +1,101 @@
-.item{
+.item {
   padding-block: 30px;
 }
-.item:not(:last-of-type){
+
+.item:not(:last-of-type) {
   border-bottom: 1px solid #DCDCDC;
 }
-.image{
+
+.image {
   width: 100px;
   height: 100px;
 }
+
 img {
   width: 100%;
   height: 100%;
 }
-.spec{
+
+.spec {
   color: #09764CCC;
-  ;
 }
-.change-state{
+
+.change-state {
   font-size: 12px;
   color: #7A7A7A;
+  letter-spacing: 8%;
 }
-.status{
-  color: #696CFF;
+
+.status {
+  color: #00CB7C;
+}
+
+.review {
+  z-index: 1024;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(1.1);
+  transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+}
+
+.show {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1.0);
+  transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+}
+
+.modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 2rem;
+  width: 50%;
+  border-radius: 0.5rem;
+}
+@media (max-width: 1140px) {
+.modal-content {
+  width: 60%;
+}
+}
+@media (max-width: 768px) {
+.modal-content {
+  width: 100%;
+  height: 100%;
+}
+}
+.fa-star {
+  color: #DBDDE3;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.fa-star.hover,
+.fa-star.fixed {
+  color: #F0AD4E
+}
+
+textarea {
+  width: 100%;
+  font-size: 14px;
+  outline: none;
+  border-radius: 4px;
+  min-height: 6em;
+  padding: 10px;
+  border: 1px solid rgb(218, 220, 227);
+  color: rgb(126, 133, 155);
+  margin-top: 8px;
+  white-space: pre-wrap;
+}
+.btn-submit{
+  background-color: #09764CCC;
+  color: #fff;
 }
