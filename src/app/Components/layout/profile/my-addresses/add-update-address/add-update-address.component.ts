@@ -50,6 +50,21 @@ export class AddUpdateAddressComponent {
   }
 
   ngOnInit() {
+    this.AddressForm.reset();
+
+    this.AddressForm.patchValue({
+      username: '',
+      phoneNumber: '',
+      cityId: '0',
+      districtId: '0',
+      buildingNumber: '',
+      apartmentNumber: '',
+      floorNumber: '',
+      street: '',
+      details: '',
+      defaultAddress: false,
+    });
+
     this.settingService.getAllCity().subscribe((res: any) => {
       this.city = res;
     });
@@ -61,6 +76,8 @@ export class AddUpdateAddressComponent {
 
       if(this.router.url.includes('update'))
         this.address = history.state;
+
+      if (this.address) {
 
       this.settingService
         .getAllCityDistricts(this.address.cityId)
@@ -80,6 +97,8 @@ export class AddUpdateAddressComponent {
         details: this.address.details,
         defaultAddress: this.address.defaultAddress,
       });
+    }
+
     }
   }
   onCityChange() {

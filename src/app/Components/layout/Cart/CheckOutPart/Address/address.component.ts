@@ -82,24 +82,29 @@ export class AddressComponent implements OnInit, OnDestroy {
       this.userService.getUserAddress().subscribe({
         next: (data: any) => {
           this.addresses = data;
-          this.addresses.forEach((add, i) => {
-            add.cityName = this.city.find((c) => c._id == add.cityId)?.name;
-            this.settingService.getAllCityDistricts(add.cityId).subscribe({
-              next: (districts: any) => {
-                add.districtName = districts.find(
-                  (d: any) => d.districtId == add.districtId
-                )?.districtName;
-                if (i === this.addresses.length - 1) this.isLoading = false;
-              },
+          if (!this.addresses.length) {
+            this.currentAddressStep = AddressSteps.add;
+          } else {
+            this.addresses.forEach((add, i) => {
+              add.cityName = this.city.find((c) => c._id == add.cityId)?.name;
+              this.settingService.getAllCityDistricts(add.cityId).subscribe({
+                next: (districts: any) => {
+                  add.districtName = districts.find(
+                    (d: any) => d.districtId == add.districtId
+                  )?.districtName;
+                  if (i === this.addresses.length - 1) this.isLoading = false;
+                },
+              });
+              if (add.defaultAddress) {
+                [this.addresses[0], this.addresses[i]] = [
+                  this.addresses[i],
+                  this.addresses[0],
+                ];
+                this.currentAddress = add;
+                this.orderService.userAddress = add;
+              }
             });
-            if (add.defaultAddress) {
-              [this.addresses[0], this.addresses[i]] = [
-                this.addresses[i],
-                this.addresses[0],
-              ];
-              this.currentAddress = add;
-            }
-          });
+          }
         },
         error: (err) => {
           console.log(err);
@@ -108,12 +113,13 @@ export class AddressComponent implements OnInit, OnDestroy {
     });
   }
   onSubmit() {
-    if (
-      this.currentAddressStep === this.addressSteps.default ||
-      this.currentAddressStep === this.addressSteps.showAll
-    ) {
+    if (this.currentAddressStep === this.addressSteps.default) {
       this.orderService.userAddress = this.currentAddress;
       this.nextStep.emit();
+      return;
+    } else if (this.currentAddressStep === this.addressSteps.showAll) {
+      this.orderService.userAddress = this.currentAddress;
+      this.currentAddressStep = AddressSteps.default;
       return;
     }
 
@@ -135,19 +141,12 @@ export class AddressComponent implements OnInit, OnDestroy {
       this.addAddressForm.get('districtId')?.markAsTouched();
       return;
     }
-    const districtId = this.addAddressForm.get('districtId')?.value;
-    const selectedDistrict = this.districts.find(
-      (item) => item.districtId === districtId
-    );
-    this.selectedDistrictName = selectedDistrict
-      ? selectedDistrict.districtName
-      : '';
 
     let address: IUserAddress = {
       userName: this.addAddressForm.get('username')?.value || '',
       phoneNumber: this.addAddressForm.get('phoneNumber')?.value || '',
       cityId: this.addAddressForm.get('cityId')?.value || '',
-      districtId: districtId || '',
+      districtId: this.addAddressForm.get('districtId')?.value || '',
       street: this.addAddressForm.get('street')?.value || '',
       buildingNumber: this.addAddressForm.get('buildingNumber')?.value || '',
       details: this.addAddressForm.get('details')?.value || '',
@@ -156,23 +155,36 @@ export class AddressComponent implements OnInit, OnDestroy {
       floorNumber: this.addAddressForm.get('floorNumber')?.value || '',
     };
     if (this.currentAddressStep === this.addressSteps.add) {
+      const cityId = this.addAddressForm.get('cityId')?.value ?? '';
+      const selectedCity = this.city.find((item) => item._id === cityId);
+      this.selectedCityName = selectedCity ? selectedCity.name : '';
+      this.settingService.getAllCityDistricts(cityId).subscribe((res: any) => {
+        this.districts = res;
+        const districtId = this.addAddressForm.get('districtId')?.value;
+        const selectedDistrict = this.districts.find(
+          (item) => item.districtId === districtId
+        );
+        this.selectedDistrictName = selectedDistrict
+          ? selectedDistrict.districtName
+          : '';
+        this.orderService.userAddress.districtName = this.selectedDistrictName;
+      });
+
       this.userService.addUserAddress(address).subscribe({
         next: (res: any) => {
           this.orderService.userAddress = res;
           this.orderService.userAddress.cityName = this.selectedCityName;
-          this.orderService.userAddress.districtName =
-            this.selectedDistrictName;
-          this.nextStep.emit();
+          this.currentAddressStep = AddressSteps.default;
         },
         error: (err: any) => {
           console.log(err);
         },
       });
     } else if (this.currentAddressStep === this.addressSteps.update) {
-      address.uuid=this.currentAddress.uuid;
+      address.uuid = this.currentAddress.uuid;
       this.userService.updateUserAddress(address).subscribe();
       this.orderService.userAddress = this.currentAddress;
-      this.nextStep.emit();
+      this.currentAddressStep = AddressSteps.default;
     }
   }
 

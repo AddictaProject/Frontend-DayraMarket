@@ -1,9 +1,9 @@
 
 <div class="card-body ">
   <!-- User Name -->
-   @if (userAddress && !isLoading ) {
+   @if (_orderService.userAddress && !isLoading ) {
   <div class="input-group mb-3 mt-3">
-    <input type="text" class=" userInput form-control" placeholder="{{userAddress.userName}}" aria-label="Username"
+    <input type="text" class=" userInput form-control" placeholder="{{_orderService.userAddress.userName}}" aria-label="Username"
       aria-describedby="basic-addon1" readonly>
     <span class="input-group-text iconOfInput" id="basic-addon1">
       <svg width="13" height="16" viewBox="0 0 13 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -16,7 +16,7 @@
 
   <!-- Phone Number -->
   <div class="input-group mb-3">
-    <input type="tel" class="form-control userInput" placeholder="{{userAddress.phoneNumber}}"
+    <input type="tel" class="form-control userInput" placeholder="{{_orderService.userAddress.phoneNumber}}"
       aria-label="PhoneNumber" aria-describedby="basic-addon1" readonly>
     <span class="input-group-text iconOfInput" id="basic-addon1"><svg width="15" height="13" viewBox="0 0 15 13"
         fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -30,7 +30,7 @@
   <!-- Address -->
   <div class="input-group mb-3">
     <input type="tel" class="form-control userInput"
-    placeholder="{{userAddress.cityName}} ,{{userAddress.districtName}} ,{{userAddress.street}} ,{{userAddress.buildingNumber}} {{userAddress.apartmentNumber}}"
+    placeholder="{{_orderService.userAddress.cityName}} ,{{_orderService.userAddress.districtName}} ,{{_orderService.userAddress.street}} ,{{_orderService.userAddress.buildingNumber}} {{_orderService.userAddress.apartmentNumber}}"
       aria-label="PhoneNumber" aria-describedby="basic-addon1" readonly>
     <span class="input-group-text iconOfInput" id="basic-addon1">
       <svg width="13" height="16" viewBox="0 0 13 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -87,7 +87,7 @@
 
 }
   <div class="text-end">
-    <a (click)="addressStep.emit(addressSteps.showAll)" class="change-address">Change the address</a>
+    <a (click)="!isLoading && addressStep.emit(addressSteps.showAll)" class="change-address" >Change the address</a>
   </div>
 </div>
 

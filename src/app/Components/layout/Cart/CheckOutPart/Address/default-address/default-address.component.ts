@@ -23,18 +23,16 @@ import { SkeletonModule } from 'primeng/skeleton';
 export class DefaultAddressComponent implements OnInit, OnDestroy {
   @Output() addressStep = new EventEmitter();
   addressSteps=AddressSteps;
-  @Input() userAddress!: IUserAddress;
   @Input() isLoading!:boolean ;
 
   totalPrice!: number;
   sub!: Subscription;
-  constructor(private _cartService: CartService,private _orderService:OrderService) {}
+  constructor(private _cartService: CartService,public _orderService:OrderService) {}
 
   ngOnInit() {
     this.sub = this._cartService.totalPrice$.subscribe((p) => {
       this.totalPrice = p;
     });
-    this._orderService.userAddress=this.userAddress;
   }
 
   ngOnDestroy(): void {

@@ -2,7 +2,7 @@
   <div class="row g-0">
     @switch (currentAddressStep) {
       @case (addressSteps.default) {
-        <app-default-address [userAddress]="currentAddress" (addressStep)="currentAddressStep=$event" [isLoading]="isLoading"></app-default-address>
+        <app-default-address  (addressStep)="currentAddressStep=$event" [isLoading]="isLoading"></app-default-address>
       }
       @case (addressSteps.add) {
         <app-add-update-address [AddressForm]="addAddressForm" [isCart]="true"></app-add-update-address>
@@ -24,7 +24,7 @@
     </div>
 
     <div class=" mb-3 ">
-      <button type="submit" class="btn btnAddToCart py-3" (click)="onSubmit()" role="button">
+      <button type="submit" class="btn btnAddToCart py-3" (click)="onSubmit()" [disabled]="isLoading" role="button">
         Next
       </button>
     </div>
