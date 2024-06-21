@@ -27,7 +27,7 @@
     </div>
     <div class="d-flex flex-column justify-content-between text-center column-gap-4 row-gap-2 mt-4 mt-md-0">
       <p class="mb-0 status ">{{item.status}}</p>
-      @if (item.status!='Delivered' ) {
+      @if (item.status=='Delivered' ) {
       <button class="change-state mb-0  border-0 bg-transparent" (click)="openReview(item)">Review</button>
       }
       @if (item.status=='New' || item.status=='PendingPickup') {
