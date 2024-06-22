@@ -8,52 +8,62 @@ import {
   Renderer2,
   ViewChild,
 } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { OffCanvasService } from '../../../../Services/ProductService/offCanvas.service';
 import { OffCanvasListsService } from '../../../../Services/HeaderService/OffCanvasLists.service';
 import { ICategory } from '../../../../Models/Category/ICategory';
-import { SecondOffCanvasComponent } from "./secondOffCanvas/secondOffCanvas.component";
+import { SecondOffCanvasComponent } from './secondOffCanvas/secondOffCanvas.component';
+import { IBrand } from '../../../../Models/Brand/IBrand';
+import { FilterApiService } from '../../../../Services/FilterServices/filter-api.service';
 
 @Component({
-    selector: 'app-Header2',
-    standalone: true,
-    templateUrl: './Header2.component.html',
-    styleUrls: ['./Header2.component.css'],
-    imports: [RouterModule, CommonModule, SecondOffCanvasComponent]
+  selector: 'app-Header2',
+  standalone: true,
+  templateUrl: './Header2.component.html',
+  styleUrls: ['./Header2.component.css'],
+  imports: [RouterModule, CommonModule, SecondOffCanvasComponent],
 })
 export class Header2Component implements OnInit {
-  category :ICategory[]=[];
+  category: ICategory[] = [];
+  brands:IBrand[]=[];
   selectedCategory: any;
   // isOffcanvasOpen!: boolean ;
   currentOffcanvasState: string | null = null;
 
-  constructor(private offCanvasOb: OffCanvasService,
-    private renderer: Renderer2
-     , private offCanvasListsService:OffCanvasListsService) {}
+  constructor(
+    private offCanvasOb: OffCanvasService,
+    private renderer: Renderer2,
+    private filterService: FilterApiService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.offCanvasOb.offcanvasState$.subscribe((state) => {
       this.currentOffcanvasState = state;
     });
 
-
-    this.offCanvasListsService.getCategoryTree().subscribe({
-      next: (res:any) => {
-        this.category=res;
-      },error(err) {
-        console.log(err);
-
+    this.filterService.getAllCategories().subscribe({
+      next: (res: any) => {
+        this.category = res;
       },
-    })
-
+      error(err) {
+        console.log(err);
+      },
+    });
+    this.filterService.getAllBrand().subscribe({
+      next: (res: any) => {
+        this.brands = res;
+      },
+      error(err) {
+        console.log(err);
+      },
+    });
   }
 
-      // offcanvas
-      toggleOffCanvas(state: string | null) {
-        this.offCanvasOb.toggleOffcanvas(state);
-      }
-
-
+  // offcanvas
+  toggleOffCanvas(state: string | null) {
+    this.offCanvasOb.toggleOffcanvas(state);
+  }
 
   smartTechList: string[] = [
     'iPhone',
@@ -87,7 +97,11 @@ export class Header2Component implements OnInit {
   onClick(event: Event) {
     const target = event.target as HTMLElement;
     const additionalOffCanvas = document.getElementById('additionalOffCanvas');
-    if (additionalOffCanvas && !additionalOffCanvas.contains(target) && !target.closest('.categoryOffCanvas')) {
+    if (
+      additionalOffCanvas &&
+      !additionalOffCanvas.contains(target) &&
+      !target.closest('.categoryOffCanvas')
+    ) {
       this.closeAdditionalOffCanvas();
     }
   }
@@ -98,5 +112,15 @@ export class Header2Component implements OnInit {
       additionalOffCanvas.classList.remove('show');
       this.renderer.removeClass(document.body, 'offcanvas-open');
     }
+  }
+  goToCategory(categoryId: string) {
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate([`/products`], { state: { categoryId } });
+    });
+  }
+  goToBrand(brandId: string) {
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate([`/products`], { state: { brandId } });
+    });
   }
 }

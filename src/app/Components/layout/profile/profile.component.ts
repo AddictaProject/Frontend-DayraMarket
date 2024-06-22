@@ -7,20 +7,24 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [RouterModule,CommonModule],
+  imports: [RouterModule, CommonModule],
   templateUrl: './profile.component.html',
-  styleUrl: './profile.component.css'
+  styleUrl: './profile.component.css',
 })
-export class ProfileComponent  {
+export class ProfileComponent {
   // sub!:Subscription;
-  constructor(public userService: UserService,private router:Router){}
-  onClick(){
-    localStorage.removeItem('accessToken');
-    localStorage.removeItem('refreshToken');
-    this.router.navigate(['/']);
-    // this.sub=this.userService.logout().subscribe();
+  constructor(public userService: UserService, private router: Router) {}
+  onClick() {
+    this.userService.logout().subscribe({
+      next: () => {
+        localStorage.removeItem('accessToken');
+        localStorage.removeItem('refreshToken');
+        this.router.navigate(['/']);
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
   }
-  onProfileClick(e:Event){
-
-  }
+  onProfileClick(e: Event) {}
 }

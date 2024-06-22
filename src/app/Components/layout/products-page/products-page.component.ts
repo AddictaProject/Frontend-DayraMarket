@@ -34,6 +34,8 @@ export class ProductsPageComponent implements OnInit,AfterViewInit,OnDestroy {
   constructor(public productService: ProductService,private router: Router) {
     if(history.state?.brandId)
       productService.brandsParams.push(history.state.brandId);
+    if(history.state?.categoryId)
+      productService.categoriesPrams.push(history.state.categoryId);
 
   }
   ngAfterViewInit(): void {

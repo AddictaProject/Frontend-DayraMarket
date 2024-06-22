@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { ICategory } from '../../../../../Models/Category/ICategory';
 
 @Component({
@@ -9,17 +9,17 @@ import { ICategory } from '../../../../../Models/Category/ICategory';
   templateUrl: './secondOffCanvas.component.html',
   styleUrls: ['./secondOffCanvas.component.css']
 })
-export class SecondOffCanvasComponent implements OnInit {
+export class SecondOffCanvasComponent  {
 
   @Input() selectedCategory !: ICategory;
-  // @Output() close = new EventEmitter<void>();
 
-  constructor() { }
+  constructor(private router:Router) { }
 
-  ngOnInit() {
+  goToCategory(categoryId: string) {
+    //skipLocationChange:true means dont update the url to / when navigating
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate([`/products`], { state: { categoryId } });
+    });
   }
-  // closeOffCanvas() {
-  //   this.close.emit();
-  // }
 
 }

@@ -46,7 +46,7 @@
       position: fixed;
       width: 472px;
       height: auto;
-      top: 120px;
+      top: 135px;
       border-width: 1px;
       border-style: solid;
       border-color: #D4D4D4;
@@ -58,12 +58,12 @@
 
     .offcanvas-start.show {
       opacity: 1;
-      left: 303px;
+      left: 300px;
     }
 
   .product-section
   {
-     margin: 40px 20px;
+    margin: 40px 20px;
   }
 
 
@@ -135,3 +135,17 @@
 .offcanvas-body::-webkit-scrollbar {
   display: none;
 } */
+a,
+.close  i{
+  cursor: pointer;
+}
+@media (max-width: 992px) {
+  .offcanvas{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0 !important;
+    width: 100%;
+    height: 100%;
+  }
+}

@@ -21,7 +21,7 @@
 /* For Horizontal Scroll */
 .scrolling-wrapper {
   overflow-x: scroll;
-  overflow-y: hidden;
+  overflow-y:auto;
   white-space: nowrap;
   width: 100%;
 }
@@ -52,6 +52,7 @@
   transition: color 0.3s ease, text-decoration 0.3s ease;
   align-items: center;
   line-height: 16px;
+  cursor: pointer;
 }
 
 .stylingCategory:hover {
@@ -66,10 +67,10 @@
 .offcanvas {
   overflow-y: auto;
   width: 265px;
-  min-width: 18%;
+  min-width: 300px;
   border-top: 1px solid  rgba(212, 212, 212, 1);
   border-right: 1px solid  rgba(212, 212, 212, 1);
-  top: 120px;
+  top: 135px;
 }
 
 .offcanvas .btn-close {
@@ -83,6 +84,7 @@
     font-weight: 400;
     font-size: 18px;
     text-align: Center;
+    cursor: pointer;
   }
 
   .itemOffCanvas{
@@ -98,7 +100,7 @@
   /* === */
   /* Border Nav */
   .borderOfNav{
-    border: 1px 0px 1px 0px;
+    border-width: 1px 0px 1px 0px;
     border-color:rgba(212, 212, 212, 1) ;
   }
 
@@ -168,6 +170,42 @@
   text-decoration: underline;
 }
 
+.close  i{
+  cursor: pointer;
+}
 
+@media (max-width: 992px) {
+  .bars{
+    position: absolute;
+    top:-100px;
+    margin-left: 10px;
+  }
+
+  .offcanvas{
+    padding-top: 10px;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .itemOffCanvas{
+    height: fit-content;
+    border: none;
+    margin: 0px;
+  }
+  .itemOffCanvas a{
+    padding: 20px;
+    display: block;
+    text-align: left;
+  }
+  .itemOffCanvas:not(:last-of-type){
+    border-bottom: 1px solid #D7D7D780;
+  }
+  .offcanvas-body{
+    padding: 0;
+  }
+}
 
 
