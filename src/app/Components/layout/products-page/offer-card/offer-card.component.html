@@ -1,4 +1,4 @@
-<div class="offer-card" draggable="false" [routerLink]="'/product/'+product.uuid">
+<div class="offer-card" draggable="false" [routerLink]="['/product/'+product.displayName]" [state]="{id:product.uuid}">
   <span class="offer">offer</span>
   <div class="d-flex  flex-column align-items-center ">
     <div class="image">

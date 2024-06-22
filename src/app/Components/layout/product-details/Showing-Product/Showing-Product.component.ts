@@ -19,42 +19,42 @@ import { ICartItem } from '../../../../Models/Cart/ICartItem';
 import { CartService } from '../../../../Services/CartService/cart.service';
 import { BehaviorSubject } from 'rxjs';
 import { IVariantValues } from '../../../../Models/Product/Prod-Details/IVariantValues';
-import { ProductPlaceholderComponent } from "../product-placeholder/product-placeholder.component";
+import { ProductPlaceholderComponent } from '../product-placeholder/product-placeholder.component';
 import { SkeletonModule } from 'primeng/skeleton';
 
 @Component({
-    selector: 'app-Showing-Product',
-    standalone: true,
-    templateUrl: './Showing-Product.component.html',
-    styleUrls: ['./Showing-Product.component.css'],
-    imports: [
-        RouterModule,
-        FormsModule,
-        GalleriaModule,
-        DragScrollComponent,
-        DragScrollItemDirective,
-        ProductVariantsComponent,
-        ProductPlaceholderComponent,
-        SkeletonModule
-    ]
+  selector: 'app-Showing-Product',
+  standalone: true,
+  templateUrl: './Showing-Product.component.html',
+  styleUrls: ['./Showing-Product.component.css'],
+  imports: [
+    RouterModule,
+    FormsModule,
+    GalleriaModule,
+    DragScrollComponent,
+    DragScrollItemDirective,
+    ProductVariantsComponent,
+    ProductPlaceholderComponent,
+    SkeletonModule,
+  ],
 })
 export class ShowingProductComponent implements OnInit {
   isDragScrollDisabled: boolean = false;
 
-  mostPriceValue:IVariantValues={
+  mostPriceValue: IVariantValues = {
     uuid: '',
     displayName: '',
     isClicked: false,
     isAvailable: false,
     isLoading: false,
-  }
-  lowestPriceValue:IVariantValues={
+  };
+  lowestPriceValue: IVariantValues = {
     uuid: '',
     displayName: '',
     isClicked: false,
     isAvailable: false,
     isLoading: false,
-  }
+  };
 
   responsiveOptions: any[] = [
     {
@@ -75,20 +75,27 @@ export class ShowingProductComponent implements OnInit {
 
   constructor(
     public _ProductDetailsService: ProductDetailsService,
-    private route :ActivatedRoute ,
+    private route: ActivatedRoute,
     public offCanvasOb: OffCanvasService,
     private cartService: CartService,
     private router: Router
-
   ) {}
 
   url!: string;
 
   ngOnInit() {
+    let id = '';
+    if (history.state?.id) id = history.state.id;
+    else this.router.navigate(['/']);
+
+    let stockId='';
+    if (history.state?.stockId)
+      stockId=history.state.stockId;
+
     // Calling data From ProductDetails Service
-    let id = this.route.snapshot.paramMap.get('id') ??'';
-    this._ProductDetailsService.productUuid=id;
-    this._ProductDetailsService.loadProductVariant(id);
+
+    this._ProductDetailsService.productUuid = id;
+    this._ProductDetailsService.loadProductVariant(id,false,stockId);
     // For getting the size of the screen
     this.checkScreenWidth(window.innerWidth);
     this.updateDragScrollStatus();
@@ -104,7 +111,6 @@ export class ShowingProductComponent implements OnInit {
   toggleOffCanvas(state: string | null) {
     this.offCanvasOb.toggleOffcanvas(state);
   }
-
 
   // Frequently asked questions
   openMenu(event: Event) {
@@ -125,19 +131,18 @@ export class ShowingProductComponent implements OnInit {
     if (card === 'LowestPrice') {
       this._ProductDetailsService.isActiveLowestPrice = true;
       this._ProductDetailsService.isActiveMostPopular = false;
-      this._ProductDetailsService.previousStockUuid ='';
+      this._ProductDetailsService.previousStockUuid = '';
       this._ProductDetailsService.price =
         +this._ProductDetailsService.lowestPrice;
 
-        this._ProductDetailsService.getSelectedStock(this.lowestPriceValue,true);
+      this._ProductDetailsService.getSelectedStock(this.lowestPriceValue, true);
     } else if (card === 'MostPopular') {
       this._ProductDetailsService.isActiveMostPopular = true;
       this._ProductDetailsService.isActiveLowestPrice = false;
       this._ProductDetailsService.price =
         +this._ProductDetailsService.mostPopularPrice;
-        this._ProductDetailsService.previousStockUuid='';
+      this._ProductDetailsService.previousStockUuid = '';
       this._ProductDetailsService.getSelectedStock(this.mostPriceValue);
-
     }
   }
 
@@ -163,18 +168,17 @@ export class ShowingProductComponent implements OnInit {
     this.isDragScrollDisabled = window.innerWidth <= 991;
   }
 
-  addItem(){
-    const item:ICartItem={
-      id:this._ProductDetailsService.previousStockUuid,
-      name:this._ProductDetailsService.product.displayName,
-      condition:this._ProductDetailsService.condition,
-      color:this._ProductDetailsService.color,
-      price:this._ProductDetailsService.price,
-      image:`https://dayra-market.addictaco.com${this._ProductDetailsService.product.photos[0]}`,
-
-    }
+  addItem() {
+    const item: ICartItem = {
+      id: this._ProductDetailsService.previousStockUuid,
+      name: this._ProductDetailsService.product.displayName,
+      condition: this._ProductDetailsService.condition,
+      color: this._ProductDetailsService.color,
+      price: this._ProductDetailsService.price,
+      image: `https://dayra-market.addictaco.com${this._ProductDetailsService.product.photos[0]}`,
+      productId: this._ProductDetailsService.productUuid,
+    };
     this.cartService.addToCart(item);
     this.router.navigate(['/cart']);
-
   }
 }

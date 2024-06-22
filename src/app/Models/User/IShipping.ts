@@ -1,4 +1,4 @@
 export interface IShipping {
-    shippingCost: number,
+  shippingCost: number,
   freeShippingAfter: number,
 }

@@ -40,7 +40,7 @@
           <div class="row g-0">
 
             <div class="col-md-3 imgOfDetails">
-              <img class="col-10" [src]="item.image" class="img-fluid rounded-start" alt="...">
+              <img class="col-10" [routerLink]="'/product/'+item.name" [state]="{id:item.productId,stockId:item.id}" [src]="item.image" class="img-fluid rounded-start" alt="...">
             </div>
 
             <div class="col-md-9">

@@ -1,16 +1,14 @@
-
 <footer>
   <div class="row justify-content-between gap-5">
     <ul class=" row list d-flex justify-content-between col-lg-7 col-12 list-unstyled ">
       <li class="col-md-4 col-6 mt-lg-0 mt-3">
         <h5 class="mb-4">Brands</h5>
         <ul class="list-unstyled">
-          <li>Apple</li>
-          <li>Samsung</li>
-          <li>Lenovo</li>
-          <li>Huawei</li>
-          <li>Motorola</li>
-          <li>Nokia</li>
+          @for (brand of brands; track $index) {
+          <li>
+            <a (click)="goToBrand(brand.uuid)">{{brand.displayName}}</a>
+          </li>
+          }
         </ul>
       </li>
       <li class="col-md-4 col-6 mt-lg-0 mt-3">
@@ -77,4 +75,3 @@
     </ul>
   </div>
 </footer>
-

@@ -5,4 +5,5 @@ export interface ICartItem {
   color:string;
   price:number;
   image:string;
+  productId:string;
 }

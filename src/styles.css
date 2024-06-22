@@ -67,3 +67,20 @@ body:has(.mobile-filter:not(.d-none)){
   display: none;
 }
 
+/* pagination */
+
+.pagination .p-highlight,
+.pagination .p-paginator-page{
+  min-width: 2rem ;
+  color: rgba(0 ,0 ,0 ,.3);
+}
+.pagination .p-highlight{
+  background-color: transparent;
+  color: #000;
+}
+.p-paginator .p-paginator-first, .p-paginator .p-paginator-prev, .p-paginator .p-paginator-next, .p-paginator .p-paginator-last{
+  min-width: 2rem ;
+}
+.pagination p-paginator{
+  cursor: default;
+}

@@ -29,9 +29,14 @@ footer >div:first-of-type{
 .row ul ul li{
   margin-bottom: 12px;
   opacity: 75%;
+}
+.row ul ul li a{
+  color: #fff;
+  text-decoration: none;
   cursor: pointer;
 }
-.row ul ul li:hover{
+
+.row ul ul li a:hover{
   text-decoration: underline;
 }
 .subscribe{

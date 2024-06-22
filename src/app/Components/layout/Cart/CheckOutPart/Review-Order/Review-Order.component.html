@@ -75,7 +75,7 @@
 
       <div class="justify-content-between d-flex pb-3">
         <p class="txtOfCount" [ngClass]="{'text-decoration-line-through': cartService.isPriceFreeShipping}">Shipping</p>
-        <p class="txtOfCount" [ngClass]="{'text-decoration-line-through': cartService.isPriceFreeShipping}">{{settingService.shippingInfo?.shippingCost}} L.E</p>
+        <p class="txtOfCount" [ngClass]="{'text-decoration-line-through': cartService.isPriceFreeShipping}">{{settingService.shippingInfo ? settingService.shippingInfo.shippingCost :''}} L.E</p>
       </div>
 
       <div class="justify-content-between d-flex totalPrice  py-4 ">

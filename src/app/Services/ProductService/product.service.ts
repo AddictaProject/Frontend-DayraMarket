@@ -12,10 +12,9 @@ export class ProductService {
   products: BehaviorSubject<IProduct[]> = new BehaviorSubject<IProduct[]>([]);
   offerProduct!: IProduct;
   isLoaded = false;
-  numOfProducts: number = 11;
+  numOfProducts: number = 3;
   pageNumber: number = 1;
   tempArr: number[] = [];
-  pageArr: number[] = [];
   maxPageNum: number = 0;
   totalCount: number = 6;
   lowestPrice: number = 1000;
@@ -63,9 +62,8 @@ export class ProductService {
       this.highestPrice = products.highestPrice;
       this.maxPageNum = Math.ceil(products.totalCount / this.numOfProducts);
 
-      this.pageArr = Array(Math.abs(this.maxPageNum - 1))
-        .fill(0)
-        .map((_, i) => i + 1);
+      if (this.maxPageNum <= 3)
+        document.querySelector('.p-paginator .p-paginator-last')?.classList.add('d-none');
       this.isLoaded = true;
     });
   }
@@ -77,7 +75,6 @@ export class ProductService {
     this.numOfProducts = 11;
     this.pageNumber = 1;
     this.tempArr = [];
-    this.pageArr = [];
     this.maxPageNum = 0;
     this.totalCount = 6;
     this.lowestPrice = 1000;

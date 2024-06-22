@@ -47,7 +47,7 @@ export class ProductDetailsService {
   isPageLoading: boolean = false;
   constructor(private productApi: ProductApiService) {}
 
-  loadProductVariant(id: string, lowestPrice: boolean = false) {
+  loadProductVariant(id: string,lowestPrice: boolean = false,stockId: string='') {
     this.rest();
     this.isPageLoading = true;
     this.productApi
@@ -55,7 +55,7 @@ export class ProductDetailsService {
         productUuid: id,
         lowestPrice: lowestPrice,
         attributeValueUuid: '',
-        previousStockUuid: '',
+        previousStockUuid: stockId,
       })
       .subscribe((data) => {
         this.variantsGroup = data.product.groupedVariants;
