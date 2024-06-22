@@ -1,9 +1,7 @@
 
-/* .navbar{
-  position: sticky;
-  top: 80px;
-  z-index: 9999;
-} */
+ .navbar{
+  z-index: 1041;
+}
 
 /* === */
 /* Behavior With Off-canvas on Product details */
@@ -69,8 +67,8 @@
   overflow-y: auto;
   width: 265px;
   min-width: 18%;
-  border: 1px, 0px, 0px, 0px;
-  border-color: rgba(212, 212, 212, 1);
+  border-top: 1px solid  rgba(212, 212, 212, 1);
+  border-right: 1px solid  rgba(212, 212, 212, 1);
   top: 120px;
 }
 
@@ -100,31 +98,17 @@
   /* === */
   /* Border Nav */
   .borderOfNav{
-    border: 0px 0px 1px 0px;
+    border: 1px 0px 1px 0px;
     border-color:rgba(212, 212, 212, 1) ;
   }
 
 
-  .offcanvas-end {
-    /* transition: right 0.3s; */
-    position: fixed;
-    width: 472px;
-    height: auto;
-    top: 115px;
-    left: 265px;
-    border-width: 1px, 0px, 0px, 1px;
-    border-style: solid;
-    border-color: #D4D4D4;
-  }
 
-  .offcanvas-end.show {
-    right: 0;
-  }
 
 
 .product-section
 {
-   margin: 40px 20px;
+  margin: 40px 20px;
 }
 
 
