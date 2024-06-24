@@ -7,26 +7,11 @@
   <div class="scroller" #scrollerRef data-direction="right" data-speed="fast" data-animated="true">
     <div class="scroller__inner">
       @for (brand of brands; track $index) {
-      <!-- <a [routerLink]="['products']" [state]="{brandId:brand.uuid}"> <img [src]="'https://dayra-market.addictaco.com'+brand.photoPath" [alt]="brand.displayName" /></a> -->
-      @if (brand.displayName.toLowerCase()==='samsung') {
-      <a [routerLink]="['/products']" [state]="{brandId:brand.uuid}"> <img
-          [src]="'assets/images/Brands/b5141669d508295a4eb6c97d72780847.png'" [alt]="brand.displayName" /></a>
-      }
-      @else {
-        <a [routerLink]="['/products']" [state]="{brandId:brand.uuid}"> <img
-          [src]="'assets/images/Brands/f47e8cddcc37bda9a3fa3bf0b27dc338.jpeg'" [alt]="brand.displayName" /></a>
-      }
+      <a [routerLink]="['products']" [state]="{brandId:brand.uuid}"> <img [src]="'https://dayra-market.addictaco.com'+brand.photoPath" [alt]="brand.displayName" /></a>
+
       }
       @for (brand of brands; track $index) {
-      <!-- <a [routerLink]="['products']" [state]="{brandId:brand.uuid}"> <img [src]="'https://dayra-market.addictaco.com'+brand.photoPath" [alt]="brand.displayName" /></a> -->
-      @if (brand.displayName.toLowerCase()==='samsung') {
-      <a [routerLink]="['/products']" [state]="{brandId:brand.uuid}" aria-hidden="true"> <img
-          [src]="'assets/images/Brands/b5141669d508295a4eb6c97d72780847.png'" [alt]="brand.displayName" /></a>
-      }
-      @else {
-        <a [routerLink]="['/products']" [state]="{brandId:brand.uuid}" aria-hidden="true"> <img
-          [src]="'assets/images/Brands/f47e8cddcc37bda9a3fa3bf0b27dc338.jpeg'" [alt]="brand.displayName" /></a>
-      }
+      <a [routerLink]="['products']" [state]="{brandId:brand.uuid}" aria-hidden="true"> <img [src]="'https://dayra-market.addictaco.com'+brand.photoPath" [alt]="brand.displayName" /></a>
       }
     </div>
   </div>

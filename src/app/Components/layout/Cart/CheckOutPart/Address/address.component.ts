@@ -7,7 +7,6 @@ import {
 } from '@angular/core';
 import { IUserAddress } from '../../../../../Models/Cart/IUserAddress';
 import { UserService } from '../../../../../Services/UserService/user.service';
-import { SettingService } from '../../../../../Services/SettingService/setting.service';
 import {
   FormControl,
   FormGroup,
@@ -67,7 +66,6 @@ export class AddressComponent implements OnInit, OnDestroy {
   sub!: Subscription;
   constructor(
     private userService: UserService,
-    private settingService: SettingService,
     private orderService: OrderService,
     private cartService: CartService
   ) {}
@@ -76,40 +74,28 @@ export class AddressComponent implements OnInit, OnDestroy {
     this.sub = this.cartService.totalPrice$.subscribe((p) => {
       this.totalPrice = p;
     });
-    this.settingService.getAllCity().subscribe((res: any) => {
-      this.city = res;
-
-      this.userService.getUserAddress().subscribe({
-        next: (data: any) => {
-          this.addresses = data;
-          if (!this.addresses.length) {
-            this.currentAddressStep = AddressSteps.add;
-          } else {
-            this.addresses.forEach((add, i) => {
-              add.cityName = this.city.find((c) => c._id == add.cityId)?.name;
-              this.settingService.getAllCityDistricts(add.cityId).subscribe({
-                next: (districts: any) => {
-                  add.districtName = districts.find(
-                    (d: any) => d.districtId == add.districtId
-                  )?.districtName;
-                  if (i === this.addresses.length - 1) this.isLoading = false;
-                },
-              });
-              if (add.defaultAddress) {
-                [this.addresses[0], this.addresses[i]] = [
-                  this.addresses[i],
-                  this.addresses[0],
-                ];
-                this.currentAddress = add;
-                this.orderService.userAddress = add;
-              }
-            });
-          }
-        },
-        error: (err) => {
-          console.log(err);
-        },
-      });
+    this.userService.getUserAddress().subscribe({
+      next: (data: any) => {
+        this.addresses = data;
+        if (!this.addresses.length) {
+          this.currentAddressStep = AddressSteps.add;
+        } else {
+          this.addresses.forEach((add, i) => {
+            if (add.defaultAddress) {
+              [this.addresses[0], this.addresses[i]] = [
+                this.addresses[i],
+                this.addresses[0],
+              ];
+              this.currentAddress = add;
+              this.orderService.userAddress = add;
+            }
+          });
+          this.isLoading = false;
+        }
+      },
+      error: (err) => {
+        console.log(err);
+      },
     });
   }
   onSubmit() {
@@ -155,21 +141,6 @@ export class AddressComponent implements OnInit, OnDestroy {
       floorNumber: this.addAddressForm.get('floorNumber')?.value || '',
     };
     if (this.currentAddressStep === this.addressSteps.add) {
-      const cityId = this.addAddressForm.get('cityId')?.value ?? '';
-      const selectedCity = this.city.find((item) => item._id === cityId);
-      this.selectedCityName = selectedCity ? selectedCity.name : '';
-      this.settingService.getAllCityDistricts(cityId).subscribe((res: any) => {
-        this.districts = res;
-        const districtId = this.addAddressForm.get('districtId')?.value;
-        const selectedDistrict = this.districts.find(
-          (item) => item.districtId === districtId
-        );
-        this.selectedDistrictName = selectedDistrict
-          ? selectedDistrict.districtName
-          : '';
-        this.orderService.userAddress.districtName = this.selectedDistrictName;
-      });
-
       this.userService.addUserAddress(address).subscribe({
         next: (res: any) => {
           this.orderService.userAddress = res;
