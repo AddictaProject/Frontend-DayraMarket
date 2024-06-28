@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { StarComponent } from '../../../Shared/star/star.component';
 import { CommonModule } from '@angular/common';
 import { RatingModule } from 'primeng/rating';
 import { FormsModule } from '@angular/forms';
+import { ProductDetailsService } from '../../../../Services/ProductService/product-details.service';
 
 @Component({
   selector: 'app-Comments',
@@ -14,10 +15,15 @@ import { FormsModule } from '@angular/forms';
 })
 export class CommentsComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public _ProductDetailsService: ProductDetailsService,
+
+  ) { }
 
   ngOnInit() {
   }
-  valueOfFirstStars : number = 4;
+  
   valueOfSecondStars : number = 5 ;
+
+  
 }

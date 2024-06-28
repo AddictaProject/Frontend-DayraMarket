@@ -69,7 +69,7 @@
   cursor: pointer;
 }
 form{
-  width: 40%;
+  width: 50%;
 }
 @media (max-width:992px) {
   form{

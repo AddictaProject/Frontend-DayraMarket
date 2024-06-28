@@ -460,18 +460,25 @@
                 </defs>
               </svg>
 
-              <!-- Not complete in api -->
-              <span class="me-3">4.3</span>
+              @if(_ProductDetailsService.product.reviewCount>0){
+                <span class="me-3">{{_ProductDetailsService.product.averageRate}}</span>
 
-              <!-- Not complete in api -->
-              <p>
-                (400 Reviews)
-              </p>
+                <p>
+                  ({{_ProductDetailsService.product.reviewCount}} Reviews)
+                </p>
+              }@else {
+                <span class="me-3">No Reviews Yet</span>
+              }
+         
+
             </div>
 
             <div>
-              <a href="#reveiw" class="moreLink"> more </a>
+              @if(_ProductDetailsService.product.reviewCount>0){
+              <a class="moreLink"  (click)="scrollToComments()"> more </a>
+            }
             </div>
+        
           </div>
 
 

@@ -2,9 +2,11 @@ import {
   ChangeDetectorRef,
   Component,
   ElementRef,
+  EventEmitter,
   HostListener,
   OnDestroy,
   OnInit,
+  Output,
   ViewChild,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -40,6 +42,10 @@ import { SkeletonModule } from 'primeng/skeleton';
 })
 export class ShowingProductComponent implements OnInit {
   isDragScrollDisabled: boolean = false;
+
+  @Output() scrollToCommentEvent = new EventEmitter<void>();
+
+
 
   mostPriceValue: IVariantValues = {
     uuid: '',
@@ -181,4 +187,9 @@ export class ShowingProductComponent implements OnInit {
     this.cartService.addToCart(item);
     this.router.navigate(['/cart']);
   }
+
+  // Scrolling From More to Comments
+  scrollToComments() {
+    this.scrollToCommentEvent.emit();
+  } 
 }

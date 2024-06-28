@@ -302,6 +302,7 @@ div {
   font-size: 16px;
   font-family: "Montserrat", sans-serif;
   align-items: center;
+  cursor: pointer;
 }
 
 /* === */

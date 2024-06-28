@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { ShowingProductComponent } from './Showing-Product/Showing-Product.component';
 import { MightLikeComponent } from './might-like/might-like.component';
@@ -28,6 +28,15 @@ export class ProductDetailsComponent implements OnInit  {
 
   }
 
+  @ViewChild('CommentSection') CommentSection!: ElementRef;
 
+
+
+  scrollToCommentsSection() {
+    if (this.CommentSection) {
+      console.log('Scrolling to CommentSection', this.CommentSection);
+      this.CommentSection.nativeElement.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
 
 }

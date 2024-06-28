@@ -14,6 +14,7 @@ import { userGuard } from './user.guard';
 import { NoAccountComponent } from './Components/layout/User/no-account/no-account.component';
 import { ShowAddressesComponent } from './Components/layout/profile/my-addresses/show-addresses/show-addresses.component';
 import { AddUpdateAddressComponent } from './Components/layout/profile/my-addresses/add-update-address/add-update-address.component';
+import { CommentsComponent } from './Components/layout/product-details/Comments/Comments.component';
 
 export const routes: Routes = [
   {path:"", component: HomeComponent},
@@ -34,6 +35,6 @@ export const routes: Routes = [
         { path: 'add-address', component:AddUpdateAddressComponent },
         { path: 'update-address', component:AddUpdateAddressComponent }
       ]},
-  ]} ,
+  ]},
 
 ];

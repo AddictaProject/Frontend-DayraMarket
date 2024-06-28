@@ -5,7 +5,7 @@
 
   <div>
     <!-- Button of Frequently offcanvas -->
-    <div class="HeadOfOffcanvas "  (click)="toggleOffCanvas('offcanvasTechnical')" style="border: none !important;">
+    <div class="HeadOfOffcanvas " (click)="toggleOffCanvas('offcanvasTechnical')" style="border: none !important;">
 
       <a class="btn border-0 d-flex justify-content-between " data-bs-toggle="offcanvas" href="#offcanvasLearnMoreCon"
         role="button" data-bs-target="#offcanvasLearnMoreCon" aria-controls="offcanvasLearnMoreCon"
@@ -25,60 +25,53 @@
         <!-- Header -->
         <div class="HeaderSideOffCanvas">
 
-          <svg class="me-5" width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg"
-          data-bs-dismiss="offcanvas" style="cursor: pointer;">
-            <path fill-rule="evenodd" clip-rule="evenodd" 
+          <svg class="svgOff" width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg"
+            data-bs-dismiss="offcanvas" style="cursor: pointer;">
+            <path fill-rule="evenodd" clip-rule="evenodd"
               d="M2.29464 0.74855C1.87428 0.333585 1.19845 0.333583 0.778093 0.748549C0.349998 1.17116 0.349998 1.86218 0.778094 2.28478L3.60626 5.07669C4.39951 5.85978 4.39951 7.14022 3.60626 7.92331L0.778093 10.7152C0.349997 11.1378 0.349998 11.8288 0.778094 12.2515C1.19845 12.6664 1.87428 12.6664 2.29463 12.2515L6.67899 7.92331C7.47224 7.14023 7.47224 5.85978 6.67899 5.07669L2.29464 0.74855Z"
               fill="#09764C" fill-opacity="0.8" />
           </svg>
 
-          <span>Best Picks</span>
+          <span>Conditions</span>
         </div>
 
+        <!-- Slider -->
 
-
-
-        <div class=" mt-5 d-flex align-items-center flex-column bestPickOff pb-5">
-
-          <div class="card flex justify-content-center">
-            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-              <ol class="carousel-indicators">
-                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-              </ol>
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <img class="d-block w-100"
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjFPF4RytKJyaL7GS9-yLCKVF5EWQAYIKgnQ&s"
-                    alt="First slide">
+        <div class="container-fluid mb-5 mt-5">
+          <div class="row">
+            <div class="col-md-12">
+              <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                <ol class="carousel-indicators">
+                  <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"></li>
+                  <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></li>
+                  <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" class="active"></li>
+                </ol>
+                <div class="carousel-inner">
+                  <div class="carousel-item">
+                    <img class="d-block w-100" src="https://i.imgur.com/K7A78We.jpg" alt="Carousel Bootstrap First" />
+                  </div>
+                  <div class="carousel-item">
+                    <img class="d-block w-100" src="https://i.imgur.com/c8952Iz.jpg" alt="Carousel Bootstrap Second" />
+                  </div>
+                  <div class="carousel-item active">
+                    <img class="d-block w-100" src="https://i.imgur.com/K7A78We.jpg" alt="Carousel Bootstrap Third" />
+                  </div>
                 </div>
-                <div class="carousel-item">
-                  <img class="d-block w-100" src="https://i.postimg.cc/pVzg3LWn/2.jpg" alt="Second slide">
-                </div>
-                <div class="carousel-item">
-                  <img class="d-block w-100"
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKNIzsa6dGOfAWIsMh-QhYq80_BDwnYHqQZA&s"
-                    alt="Third slide">
-                </div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
               </div>
-              <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-              </a>
-              <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-              </a>
             </div>
           </div>
-
-
-
         </div>
 
 
-
+        <!-- Buttons -->
         <div class="flex-wrap d-flex text-center pb-4">
 
           <div class="col-4 ">

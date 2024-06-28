@@ -34,6 +34,8 @@ export class ProductDetailsService {
     groupedVariants: [],
     lowestPrice: 0,
     photos: [],
+    reviewCount:0,
+    averageRate:0
   };
   activeItem: any;
   mostPopularAttributes: string[] = [];
@@ -62,7 +64,7 @@ export class ProductDetailsService {
         this.variantsGroup.forEach((variant) => {
           variant.type = this.getVariantType(
             variant.attributeDisplayName.toLowerCase()
-          );
+          );          
         });
         this.mostPopularAttributes = [];
         data.selectedStock.attributes.forEach((attribute) => {

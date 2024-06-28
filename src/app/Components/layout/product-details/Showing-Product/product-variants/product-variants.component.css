@@ -72,11 +72,21 @@
   line-height: 21.94px;
   border-bottom: rgba(193, 193, 193, 1) 1px solid;
   padding-top: 0;
-  
+
+  position: relative;
+  text-align: center;
+
 }
 
 .HeaderSideOffCanvas span {
   text-align: center;
+}
+
+.HeaderSideOffCanvas i ,.svgOff{
+  position: absolute;
+  left: 0;
+
+  cursor: pointer;
 }
 
 .offcanvas-body {
@@ -144,6 +154,39 @@ color:rgba(98, 98, 98, 1) !important;
   letter-spacing: 0.08em;
   color: rgba(98, 98, 98, 1);
 }
+
+/* ==== */
+/* SliderCondition */
+.carousel-item img{
+  height:200px;
+}
+
+.carousel-indicators {
+bottom: -50px ;
+list-style: none;
+
+}
+
+.carousel-indicators li{
+  background-color: rgba(219, 219, 219, 1);
+}
+
+.carousel-indicators .active {
+  background-color: rgba(170, 170, 170, 1);
+}
+
+/* next & previous */
+/* .carousel-control-prev-icon,
+.carousel-control-next-icon{
+  height: 1rem;
+}
+
+
+.product-header a{
+  bottom: -250px;
+} */
+
+
 
   /* ======== */
 /* Responsive */

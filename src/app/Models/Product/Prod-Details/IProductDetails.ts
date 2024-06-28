@@ -33,7 +33,8 @@ export interface IProductInDetails {
     groupedVariants:IgroupedVariants[];
     lowestPrice :number;
     photos:string[];
-    // averageRate:number;
+    reviewCount:number;
+    averageRate:number;
 
 }
 

@@ -1,10 +1,12 @@
+
+@if (_ProductDetailsService.product.reviewCount>0) {
 <div class="container mb-5 commentsSection">
 
 
   <!-- Product Name -->
   <div class="reviewSec">
 
-    <p>MacBook Pro 13" (2020) - customer reviews</p>
+    <p>{{_ProductDetailsService.product.displayName}} - customer reviews</p>
 
   </div>
 
@@ -14,9 +16,9 @@
 
     <div class="d-flex starsReview verifiedpart">
       <div class="d-flex">
-        <app-star [(value)]="valueOfFirstStars" [isFirstStyle]="true" ></app-star>
+        <app-star [(value)]="_ProductDetailsService.product.averageRate" [isFirstStyle]="true" ></app-star>
 
-      <p class="ms-2"> {{ valueOfFirstStars }}/5</p>
+      <p class="ms-2"> {{ _ProductDetailsService.product.averageRate }}/5</p>
 
       </div>
 
@@ -30,7 +32,7 @@
             fill="#064121" />
         </svg>
   
-        <p class="ms-1 txtBesideStar">67 verified reviews in the last 6 months.</p>
+        <p class="ms-1 txtBesideStar">{{_ProductDetailsService.product.reviewCount}} verified reviews in the last 6 months.</p>
      
       </div>
 
@@ -233,7 +235,7 @@
       <!-- button See all -->
       <div>
         <a class="btn btnOfSeeAll ms-1 mt-3">
-          See all 67 reviews
+          See all {{_ProductDetailsService.product.reviewCount}} reviews
         </a>
       </div>
 
@@ -244,3 +246,4 @@
   </div>
 
 </div>
+}
