@@ -20,8 +20,6 @@ export class ConditionComponent implements OnInit {
   constructor(public productDetailsService:ProductDetailsService) {}
 
   ngOnInit(): void {
-    // console.log(this.value);
-
   }
 
 }

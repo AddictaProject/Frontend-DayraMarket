@@ -40,7 +40,6 @@ export class FilterService {
   }
 
   getChecked(filter: CheckboxFilter) {
-    debugger
     filter.isChecked = !filter.isChecked;
     if (filter.type === FilterType.Brand) {
       let selected1Indx =
@@ -152,6 +151,7 @@ export class FilterService {
   }
 
   loadCategories() {
+    this.categoriesCheckbox=[];
     this.filterApiService.getAllCategories().subscribe((res) => {
       this.categories = this.flat(res);
       this.categories.forEach((category) => {
@@ -174,6 +174,7 @@ export class FilterService {
   }
 
   loadBrands() {
+    this.brandsCheckbox=[];
     this.filterApiService.getAllBrand().subscribe((b) => {
       this.brands = b;
       this.brands.forEach((brand) => {
