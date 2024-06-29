@@ -10,7 +10,8 @@ import {
 import { VariantType } from '../../Models/Product/Prod-Details/enum/variant-type';
 import { IProductDetailsParams } from '../../Models/Product/Prod-Details/IProductDetailsParams';
 import { IVariantValues } from '../../Models/Product/Prod-Details/IVariantValues';
-import { map } from 'rxjs';
+import { BehaviorSubject, Observable, map, tap } from 'rxjs';
+import { IVendorReview } from '../../Models/Product/Prod-Details/ivendor-review';
 
 @Injectable({
   providedIn: 'root',
@@ -34,8 +35,8 @@ export class ProductDetailsService {
     groupedVariants: [],
     lowestPrice: 0,
     photos: [],
-    reviewCount:0,
-    averageRate:0
+    reviewCount: 0,
+    averageRate: 0
   };
   activeItem: any;
   mostPopularAttributes: string[] = [];
@@ -47,9 +48,16 @@ export class ProductDetailsService {
   isActiveMostPopular: boolean = true;
   isLoading: boolean = false;
   isPageLoading: boolean = false;
-  constructor(private productApi: ProductApiService) {}
 
-  loadProductVariant(id: string,lowestPrice: boolean = false,stockId: string='') {
+  vendorId !: string;
+  // VendorReview!: IVendorReview[];
+  private vendorReviewSubject = new BehaviorSubject<IVendorReview[]>([]);
+  vendorReview$ = this.vendorReviewSubject.asObservable();
+
+
+  constructor(private productApi: ProductApiService) { }
+
+  loadProductVariant(id: string, lowestPrice: boolean = false, stockId: string = '') {
     this.rest();
     this.isPageLoading = true;
     this.productApi
@@ -61,10 +69,11 @@ export class ProductDetailsService {
       })
       .subscribe((data) => {
         this.variantsGroup = data.product.groupedVariants;
+
         this.variantsGroup.forEach((variant) => {
           variant.type = this.getVariantType(
             variant.attributeDisplayName.toLowerCase()
-          );          
+          );
         });
         this.mostPopularAttributes = [];
         data.selectedStock.attributes.forEach((attribute) => {
@@ -95,7 +104,12 @@ export class ProductDetailsService {
         this.lowestPrice = data.product.lowestPrice;
         this.price = this.mostPopularPrice;
         this.isPageLoading = false;
+
+        this.vendorId = data.selectedStock.vendorUuid;
+        this.loadReviews();
+
       });
+
   }
 
   getVariantType(name: string) {
@@ -183,4 +197,20 @@ export class ProductDetailsService {
     this.isActiveLowestPrice = false;
     this.isActiveMostPopular = true;
   }
+
+  loadReviews(id: string = this.vendorId, rate?: number) {
+    this.productApi
+      .getVendorReview({
+        vendorUuid: id,
+      })
+      .subscribe((data: IVendorReview[]) => {
+        if (data.length > 0) {
+          this.vendorReviewSubject.next(data); 
+        }
+      
+      })
+  }
+
+
+
 }

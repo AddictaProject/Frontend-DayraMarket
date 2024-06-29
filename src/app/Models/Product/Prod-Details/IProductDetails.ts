@@ -11,11 +11,10 @@ export interface IProductDetails {
 
 
 export interface IselectedStock {
-    // stockid
     uuid:string;
     price :number;
     attributes:IattributesInSelectedStock[];
-
+    vendorUuid:string;
 }
 
 export interface IattributesInSelectedStock {

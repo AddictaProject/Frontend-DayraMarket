@@ -173,73 +173,121 @@
     <div class="col-lg-9 col-md-12 ps-lg-5 pt-3 commentClass ">
 
       <!--1 comment -->
-      <div class=" mb-5">
-
-
-        <div class="d-flex mb-4">
-
-          <!-- image -->
-          <div>
-            <img src="../../../../../assets/images/G.png" width="40px" height="40px" alt="">
-          </div>
-
-          <!-- Header Sec -->
-          <div class="w-100 ms-3">
-
-            <div class="d-flex justify-content-between" style="height: 23px;">
-
-              <p class="nameOfUser">George</p>
-
-
-              <div class="d-flex text-dark" style="font-size: small; ">
-                <app-star [(value)]="valueOfSecondStars" [isFirstStyle]="false" ></app-star>
-                <p class="ms-2"> {{ valueOfSecondStars }}/5</p>
-              </div>
-
+      @if(showRemainCategories){
+      @for(review of vendorReview ; track review){
+        <div class=" mb-5">
+          <div class="d-flex mb-4">
+  
+            <!-- image -->
+            <div>
+              <img src="../../../../../assets/images/G.png" width="40px" height="40px" alt="">
             </div>
-
-
-            <p class="dateOfRev">Reviewed in the Cairo on May 14, 2023</p>
+  
+            <!-- Header Sec -->
+            <div class="w-100 ms-3">   
+              <div class="d-flex justify-content-between" style="height: 23px;">
+  
+                <p class="nameOfUser">{{review.userName}}</p>
+  
+  
+                <div class="d-flex text-dark" style="font-size: small; ">
+                  <app-star [(value)]="review.rate" [isFirstStyle]="false" ></app-star>
+                  <p class="ms-2"> {{ review.rate }}/5</p>
+                </div>
+  
+              </div>
+  
+  
+              <p class="dateOfRev">Reviewed in Cairo on {{review.dateCreated | date : 'MMMM d, y' }}</p>
+            </div>
+  
+  
           </div>
-
-
+  
+  
+          <!-- User Comment -->
+          <div>
+            <p class="userComment">{{review.comment}}</p>
+          </div>
+  
+          <!-- Product Name -->
+          <div class="ProdNameInComm my-4 ms-1">
+            <a href=""> {{_ProductDetailsService.product.displayName}} - {{review.description}}</a>
+          </div>
+  
+          <!-- Date Of Publish the comment -->
+          <div class="dateOfPublish">
+            <p>Purchased on May 1, 2023</p>
+          </div>
+  
         </div>
+      }
 
-
-        <!-- User Comment -->
-        <div>
-          <p class="userComment">I’m very happy with my purchase. The MacBook arrived in 2 days. I bought in excellent
-            condition and that’s
-            how it arrived. No cosmetic issues at all. I will be back when the time comes for another refurbished item.
-            5/5 rating.</p>
-        </div>
-
-        <!-- Product Name -->
-        <div class="ProdNameInComm my-4 ms-1">
-          <a href=""> MacBook Pro (2020) 13.3-inch - Apple M1 8-core and 8-core GPU - 8GB RAM - SSD 256GB</a>
-        </div>
-
-        <!-- Date Of Publish the comment -->
-        <div class="dateOfPublish">
-          <p>Purchased on May 1, 2023</p>
-        </div>
-
-      </div>
-
-
-      <!--2 comment -->
-
-
+      }@else {
+        @for(review of vendorReview.slice(0,4) ; track review){
+          <div class=" mb-5">
+            <div class="d-flex mb-4">
+    
+              <!-- image -->
+              <div>
+                <img src="../../../../../assets/images/G.png" width="40px" height="40px" alt="">
+              </div>
+    
+              <!-- Header Sec -->
+              <div class="w-100 ms-3">   
+                <div class="d-flex justify-content-between" style="height: 23px;">
+    
+                  <p class="nameOfUser">{{review.userName}}</p>
+    
+    
+                  <div class="d-flex text-dark" style="font-size: small; ">
+                    <app-star [(value)]="review.rate" [isFirstStyle]="false" ></app-star>
+                    <p class="ms-2"> {{ review.rate }}/5</p>
+                  </div>
+    
+                </div>
+    
+    
+                <p class="dateOfRev">Reviewed in Cairo on {{review.dateCreated | date : 'MMMM d, y' }}</p>
+              </div>
+    
+    
+            </div>
+    
+    
+            <!-- User Comment -->
+            <div>
+              <p class="userComment">{{review.comment}}</p>
+            </div>
+    
+            <!-- Product Name -->
+            <div class="ProdNameInComm my-4 ms-1">
+              <a href=""> {{_ProductDetailsService.product.displayName}} - {{review.description}}</a>
+            </div>
+    
+            <!-- Date Of Publish the comment -->
+            <div class="dateOfPublish">
+              <p>Purchased on May 1, 2023</p>
+            </div>
+    
+          </div>
+        }
+      }
 
 
       <!-- button See all -->
+       @if (vendorReview.length > 4) {
       <div>
-        <a class="btn btnOfSeeAll ms-1 mt-3">
-          See all {{_ProductDetailsService.product.reviewCount}} reviews
+        <a class="btn btnOfSeeAll ms-1 mt-3" (click)="showMore()">
+          @if (remainNumOfComments ==1) {
+          {{ showRemainCategories ? 'Show less' : 'See ' + remainNumOfComments + ' more review' }}
+        }@else {
+          {{ showRemainCategories ? 'Show less' : 'See ' + remainNumOfComments + ' more reviews' }}
+
+        }
         </a>
       </div>
-
-
+    }
 
     </div>
 
