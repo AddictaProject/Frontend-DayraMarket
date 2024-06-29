@@ -12,7 +12,7 @@
 
       <div >
         <label for="Password">Change Password</label>
-        <input class="w-100" formControlName="password" type="password" placeholder="Password">
+        <input class="w-100" formControlName="password" type="password" placeholder="Password" autocomplete="on">
         @if(myDataForm.controls.password.hasError('required') && myDataForm.controls.password.dirty &&
         !myDataForm.controls.password.untouched ){
         <div class="error mt-1">Password is Required</div>
@@ -46,7 +46,7 @@
       </div>
       <div >
         <label for="confirmPassword">Confirm Password</label>
-        <input class="w-100" formControlName="confirmPassword" type="password" placeholder="Confirm Password">
+        <input class="w-100" formControlName="confirmPassword" type="password" placeholder="Confirm Password" autocomplete="on">
         @if(myDataForm.controls.confirmPassword.hasError('required') && myDataForm.controls.confirmPassword.dirty &&
         myDataForm.controls.confirmPassword.touched ){
         <div class="error mt-1">Confirm Password is Required</div>

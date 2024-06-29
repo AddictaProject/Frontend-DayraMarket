@@ -5,6 +5,7 @@ import { ISignUp } from '../../Models/User/ISignUp';
 import { IVerifyPhoneNumber } from '../../Models/User/IVerifyPhoneNumber';
 import { IUserAddress } from '../../Models/Cart/IUserAddress';
 import { ILogin } from '../../Models/User/ILogin';
+import { IResetPassword } from '../../Models/User/IResetPassword';
 
 @Injectable({
   providedIn: 'root'
@@ -43,12 +44,10 @@ export class UserService {
   deleteUserAddress(id:string){
     return this.httpClient.delete(this.URL+'users/my/addresses/'+id);
   }
-
+  resetUserPassword(model:IResetPassword){
+    return this.httpClient.post(this.URL+'users/reset-password', model);
+  }
   logout(){
-
     return this.httpClient.post(this.URL+'auth/logout','');
   }
-
-
-
 }
