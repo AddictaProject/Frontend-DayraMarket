@@ -6,7 +6,7 @@
   <!-- Product Name -->
   <div class="reviewSec">
 
-    <p>{{_ProductDetailsService.product.displayName}} - customer reviews</p>
+    <p>{{_ProductDetailsService.product.displayName}} - Vendor reviews</p>
 
   </div>
 
@@ -46,7 +46,7 @@
 
   <div class="row mt-5 " style="margin-bottom: 200px;">
 
-    <!-- filteration by stars -->
+    <!-- filtration by stars -->
     <div class="col-lg-3 col-md-12 filtrationStars ">
 
       <!-- naming -->
@@ -57,7 +57,7 @@
 
       </div>
 
-      <!-- filteration process -->
+      <!-- filtration process -->
 
       <article class="card-group-item mt-4">
 
@@ -65,6 +65,7 @@
           <div class="card-body">
 
             <!-- 5 stars  -->
+             @for(item of rating ; track item){
             <label class="form-check mb-3">
 
               <input class="form-check-input checkInputStyle me-3 mb-0 mt-0" type="radio" name="exampleRadio" value="">
@@ -72,98 +73,24 @@
               <span class="form-check-label d-flex">
                 <i class="fa-solid fa-star starOfFilter me-2"> </i>
 
-                <span class="numOfStar"> 5 </span>
+                <span class="numOfStar"> {{item}} </span>
 
                 <div class="progress w-100 ms-2 mt-1" style="height: 7px; ">
-                  <div class="progress-bar " role="progressbar" style="width: 50%; 
-                  background-color :rgba(88, 51, 193, 1) !important;" aria-valuenow="25" aria-valuemin="0"
+                  <div class="progress-bar " role="progressbar"
+                  [style.width]="getWidth(item)" 
+                   style=" background-color :rgba(88, 51, 193, 1) !important;" 
+                   aria-valuenow="25" aria-valuemin="0"
                     aria-valuemax="100"></div>
                 </div>
 
               </span>
             </label>
+          }
 
 
-            <!-- 4 stars  -->
-            <label class="form-check mb-3">
-
-              <input class="form-check-input checkInputStyle me-3 mb-0 mt-0" type="radio" name="exampleRadio" value="">
-
-              <span class="form-check-label d-flex">
-                <i class="fa-solid fa-star starOfFilter me-2"> </i>
-
-                <span class="numOfStar"> 4 </span>
-
-                <div class="progress w-100 ms-2 mt-1" style="height: 7px; ">
-                  <div class="progress-bar " role="progressbar"
-                    style="width: 70%;  background-color :rgba(88, 51, 193, 1) !important;" aria-valuenow="25"
-                    aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-
-              </span>
-            </label>
-
-            <!-- 3 stars  -->
-            <label class="form-check mb-3">
-
-              <input class="form-check-input checkInputStyle me-3 mb-0 mt-0" type="radio" name="exampleRadio" value="">
-
-              <span class="form-check-label d-flex">
-                <i class="fa-solid fa-star starOfFilter me-2"> </i>
-
-                <span class="numOfStar"> 3 </span>
-
-                <div class="progress w-100 ms-2 mt-1" style="height: 7px; ">
-                  <div class="progress-bar " role="progressbar"
-                    style="width: 20%;  background-color :rgba(88, 51, 193, 1) !important;" aria-valuenow="25"
-                    aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-
-              </span>
-            </label>
-
-            <!-- 2 stars  -->
-            <label class="form-check mb-3">
-
-              <input class="form-check-input checkInputStyle me-3 mb-0 mt-0" type="radio" name="exampleRadio" value="">
-
-              <span class="form-check-label d-flex">
-                <i class="fa-solid fa-star starOfFilter me-2"> </i>
-
-                <span class="numOfStar"> 2 </span>
-
-                <div class="progress w-100 ms-2 mt-1" style="height: 7px; ">
-                  <div class="progress-bar " role="progressbar"
-                    style="width: 10%;  background-color :rgba(88, 51, 193, 1) !important;" aria-valuenow="25"
-                    aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-
-              </span>
-            </label>
-
-            <!-- 1 stars  -->
-            <label class="form-check mb-3">
-
-              <input class="form-check-input checkInputStyle me-3 mb-0 mt-0" type="radio" name="exampleRadio" value="">
-
-              <span class="form-check-label d-flex">
-                <i class="fa-solid fa-star starOfFilter me-2"> </i>
-
-                <span class="numOfStar"> 1 </span>
-
-                <div class="progress w-100 ms-2 mt-1" style="height: 7px; ">
-                  <div class="progress-bar " role="progressbar"
-                    style="width: 0%;  background-color :rgba(88, 51, 193, 1) !important;" aria-valuenow="25"
-                    aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-
-              </span>
-            </label>
-
-
-          </div> <!-- card-body.// -->
+          </div>
         </div>
-      </article> <!-- card-group-item.// -->
+      </article>
 
 
 
@@ -282,7 +209,7 @@
           @if (remainNumOfComments ==1) {
           {{ showRemainCategories ? 'Show less' : 'See ' + remainNumOfComments + ' more review' }}
         }@else {
-          {{ showRemainCategories ? 'Show less' : 'See ' + remainNumOfComments + ' more reviews' }}
+          {{ showRemainCategories ? 'Show less' : 'See more ' + remainNumOfComments + ' reviews' }}
 
         }
         </a>
