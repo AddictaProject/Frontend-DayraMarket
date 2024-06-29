@@ -77,9 +77,8 @@ export class AddressComponent implements OnInit, OnDestroy {
     this.userService.getUserAddress().subscribe({
       next: (data: any) => {
         this.addresses = data;
-        if (!this.addresses.length) {
-          this.currentAddressStep = AddressSteps.add;
-        } else {
+        if (!this.addresses.length) this.currentAddressStep = AddressSteps.add;
+        else
           this.addresses.forEach((add, i) => {
             if (add.defaultAddress) {
               [this.addresses[0], this.addresses[i]] = [
@@ -90,8 +89,7 @@ export class AddressComponent implements OnInit, OnDestroy {
               this.orderService.userAddress = add;
             }
           });
-          this.isLoading = false;
-        }
+        this.isLoading = false;
       },
       error: (err) => {
         console.log(err);
