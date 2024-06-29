@@ -8,6 +8,7 @@ import { IProductParams } from '../../Models/Product/All-Products/IProductParams
 import { CheckboxFilter } from '../../Models/Product/All-Products/CheckboxFilter';
 import { ProductApiService } from '../ProductService/product-api.service';
 import { FilterType } from '../../Models/Product/All-Products/FilterType';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -16,65 +17,86 @@ export class FilterService {
   brands: IBrand[] = [];
   categories: ICategory[] = [];
 
-  categoriesCheckbox: CheckboxFilter[] = []; //for Search All Categories
+  categoriesCheckbox: CheckboxFilter[] = []; //for All Categories
   brandsCheckbox: CheckboxFilter[] = [];
+  checkedCategories: CheckboxFilter[] = []; //  for checked only
   checkedBrands: CheckboxFilter[] = [];
-  checkedCategories: CheckboxFilter[] = [];
+  categoriesFiltered: CheckboxFilter[] = []; // for display
   brandsFiltered: CheckboxFilter[] = [];
-  categoriesFiltered: CheckboxFilter[] = [];
+  isBrandsHasChecked: BehaviorSubject<boolean> = new BehaviorSubject(false);
+  isCategoryHasChecked: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
   constructor(
     private filterApiService: FilterApiService,
     public productService: ProductService
-  ) {
-    this.loadCategories();
-    this.loadBrands();
-  }
+  ) {}
 
-  openFilterMenu(event: Event) {
-    (event.target as HTMLElement).classList.toggle('fa-plus');
-    (event.target as HTMLElement).classList.toggle('fa-minus');
-    const filterMenu = (event.target as HTMLElement).closest('.filter-menu');
+  openFilterMenu(elem: HTMLElement) {
+    elem.classList.toggle('fa-plus');
+    elem.classList.toggle('fa-minus');
+    const filterMenu = elem.closest('.filter-menu');
     filterMenu?.classList.toggle('active');
     filterMenu?.querySelector('.menu')?.classList.toggle('d-none');
   }
 
   getChecked(filter: CheckboxFilter) {
+    debugger
     filter.isChecked = !filter.isChecked;
     if (filter.type === FilterType.Brand) {
-      let selected1=this.brandsFiltered.find(b=>b.id === filter.id) ?? filter;
-      let selected2=this.brandsCheckbox.find(b=>b.id === filter.id) ?? filter;
-      if (filter.isChecked)
-        {
-          this.checkedBrands.push(filter);
-          selected1.isChecked=selected2.isChecked=true;
-        }
-      else {
+      let selected1Indx =
+        this.brandsFiltered.findIndex((b) => b.id === filter.id);
+      let selected2Indx =
+        this.brandsCheckbox.findIndex((b) => b.id === filter.id);
+
+      if (filter.isChecked) {
+        this.checkedBrands.push(filter);
+        this.brandsFiltered[selected1Indx].isChecked = this.brandsCheckbox[selected2Indx].isChecked  = true;
+        this.brandsFiltered.some((b,i)=>{
+          if (selected1Indx==i && b.isChecked)
+            return true;
+
+          if (!b.isChecked) {
+            [this.brandsFiltered[i],this.brandsFiltered[selected1Indx]]=[this.brandsFiltered[selected1Indx],this.brandsFiltered[i]];
+            (this.brandsFiltered[i].elemRef as HTMLInputElement).checked=false;
+            return true;
+          }
+          return false
+        })
+      } else {
         const idx = this.checkedBrands.findIndex((f) => f.id == filter.id);
         this.checkedBrands.splice(idx, 1);
-        selected1.isChecked=selected2.isChecked=false;
+        this.brandsFiltered[selected1Indx].isChecked = this.brandsCheckbox[selected2Indx].isChecked = false;
       }
-    }
-    else if(filter.type === FilterType.Category){
-      let selected1=this.categoriesFiltered.find(b=>b.id === filter.id) ?? filter;
-      let selected2=this.categoriesCheckbox.find(b=>b.id === filter.id) ?? filter;
-
-      if (filter.isChecked){
+    } else if (filter.type === FilterType.Category) {
+      let selected1Indx =
+        this.categoriesFiltered.findIndex((b) => b.id === filter.id);
+      let selected2Indx =
+        this.categoriesCheckbox.findIndex((b) => b.id === filter.id);
+      if (filter.isChecked) {
         this.checkedCategories.push(filter);
-        selected1.isChecked=selected2.isChecked=true;
-      }
-      else {
+        this.categoriesFiltered[selected1Indx].isChecked = this.categoriesCheckbox[selected2Indx].isChecked = true;
+        this.categoriesFiltered.some((b,i)=>{
+          if (selected1Indx==i && b.isChecked)
+            return true;
+
+          if (!b.isChecked) {
+            [this.categoriesFiltered[i],this.categoriesFiltered[selected1Indx]]=[this.categoriesFiltered[selected1Indx],this.categoriesFiltered[i]];
+            (this.categoriesFiltered[i].elemRef as HTMLInputElement).checked=false;
+            return true;
+          }
+          return false
+        })
+      } else {
         const idx = this.checkedCategories.findIndex((f) => f.id == filter.id);
         this.checkedCategories.splice(idx, 1);
-        selected1.isChecked=selected2.isChecked=false;
+        this.categoriesFiltered[selected1Indx].isChecked = this.categoriesCheckbox[selected2Indx].isChecked  = false;
       }
     }
     this.filterProduct();
   }
-
-  onPriceChange(val:string){
-    this.productService.maxPrice=parseInt(val);
-    this.productService.loadProducts(1)
+  onPriceChange(val: string) {
+    this.productService.maxPrice = parseInt(val);
+    this.productService.loadProducts();
   }
   brandSearchHandler(event: Event) {
     const result = (event.target as HTMLInputElement).value.trim();
@@ -82,7 +104,6 @@ export class FilterService {
     this.brandsFiltered = this.brandsCheckbox.filter((b) =>
       b.name.includes(result)
     );
-
   }
   categorySearchHandler(event: Event) {
     const result = (event.target as HTMLInputElement).value;
@@ -102,16 +123,21 @@ export class FilterService {
     menu?.classList.add('d-none');
   }
 
-  reset(formRef: HTMLFormElement) {
+  formReset(formRef: HTMLFormElement) {
+    this.reset();
+    this.productService.loadProducts(1);
+    formRef.reset();
+  }
+  reset() {
     this.checkedBrands.forEach((c) => (c.isChecked = false));
     this.checkedBrands = [];
     this.checkedCategories.forEach((c) => (c.isChecked = false));
     this.checkedCategories = [];
-    this.productService.brandsParams=[];
-    this.productService.categoriesPrams=[];
-    this.productService.maxPrice=null;
-    this.productService.loadProducts(1)
-    formRef.reset();
+    this.productService.brandsParams = [];
+    this.productService.categoriesPrams = [];
+    this.productService.maxPrice = null;
+    this.isCategoryHasChecked.next(false);
+    this.isBrandsHasChecked.next(false);
   }
 
   flat(array: any) {
@@ -132,10 +158,16 @@ export class FilterService {
         const Checkbox: CheckboxFilter = {
           id: category.uuid,
           name: category.displayName,
-          isChecked: this.productService.categoriesPrams.includes(category.uuid),
+          isChecked: this.productService.categoriesPrams.includes(
+            category.uuid
+          ),
           type: FilterType.Category,
         };
-        this.categoriesCheckbox.push(Checkbox);
+        if (Checkbox.isChecked) {
+          this.checkedCategories.push(Checkbox);
+          this.isCategoryHasChecked.next(true);
+          this.categoriesCheckbox.unshift(Checkbox);
+        } else this.categoriesCheckbox.push(Checkbox);
       });
       this.categoriesFiltered = [...this.categoriesCheckbox];
     });
@@ -151,7 +183,11 @@ export class FilterService {
           isChecked: this.productService.brandsParams.includes(brand.uuid),
           type: FilterType.Brand,
         };
-        this.brandsCheckbox.push(Checkbox);
+        if (Checkbox.isChecked) {
+          this.checkedBrands.push(Checkbox);
+          this.isBrandsHasChecked.next(true);
+          this.brandsCheckbox.unshift(Checkbox); // to show checked brands at top
+        } else this.brandsCheckbox.push(Checkbox);
       });
       this.brandsFiltered = [...this.brandsCheckbox];
     });
@@ -160,22 +196,20 @@ export class FilterService {
   filterProduct() {
     //brands
     let brandsPrams: string[] = [];
-    this.checkedBrands.forEach(f=>{
+    this.checkedBrands.forEach((f) => {
       brandsPrams.push(f.id);
-    })
-    this.productService.brandsParams=brandsPrams;
+    });
+    this.productService.brandsParams = brandsPrams;
 
     //categories
 
     let categoriesPrams: string[] = [];
-    this.checkedCategories.forEach(f=>{
+    this.checkedCategories.forEach((f) => {
       categoriesPrams.push(f.id);
-    })
+    });
 
-    this.productService.categoriesPrams=categoriesPrams;
-    this.productService.loadProducts(1)
+    this.productService.categoriesPrams = categoriesPrams;
+    this.productService.loadProducts(1);
   }
-
-
-
 }
+

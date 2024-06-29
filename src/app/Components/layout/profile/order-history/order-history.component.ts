@@ -10,11 +10,13 @@ import { IOrderItem } from '../../../../Models/Order/IOrderItem';
 import { StarHoverDirective } from '../../../../Directives/star-hover.directive';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { IReview } from '../../../../Models/Order/IReview';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-order-history',
   standalone: true,
-  imports: [CommonModule, StarHoverDirective,ReactiveFormsModule],
+  imports: [CommonModule, StarHoverDirective,ReactiveFormsModule,SweetAlert2Module  ],
   templateUrl: './order-history.component.html',
   styleUrl: './order-history.component.css',
 })
@@ -88,14 +90,43 @@ export class OrderHistoryComponent {
     })
   }
   cancelOrderItem(id:string) {
-    this.orderService.cancelOrderItem(id).subscribe({
-      next:(res:any)=>{
-        console.log(res);
-      },
-      error:(err:any)=>{
-        console.log(err);
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+
+      showCancelButton: true,
+      confirmButtonText: "Yes, cancel it!",
+      buttonsStyling: false,
+      customClass: {
+          confirmButton: 'btn btn-danger px-4',
+          cancelButton: 'btn border border-1 border-danger text-danger  ms-2 px-4',
+          },
+      }).then((result) =>{
+      if (result.value) {
+        this.orderService.cancelOrderItem(id).subscribe({
+          next:(res:any)=>{
+            Swal.fire({
+              title: 'Canceled!',
+              text: 'Your order has been canceled.',
+              icon: 'success'
+              })
+          },
+          error:(err:any)=>{
+            Swal.fire({
+              icon: "error",
+              title: "Oops...",
+              text: "Something went wrong!",
+              buttonsStyling:true,
+              iconColor:"#09764CCC"
+            });
+          }
+        })
+
       }
-    })
+      });
+
+
   }
 
   returnOrderItem(id:string) {

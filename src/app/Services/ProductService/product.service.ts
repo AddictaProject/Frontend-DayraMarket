@@ -12,7 +12,7 @@ export class ProductService {
   products: BehaviorSubject<IProduct[]> = new BehaviorSubject<IProduct[]>([]);
   offerProduct!: IProduct;
   isLoaded = false;
-  numOfProducts: number = 3;
+  numOfProducts: number = 11;
   pageNumber: number = 1;
   tempArr: number[] = [];
   maxPageNum: number = 0;
@@ -24,7 +24,7 @@ export class ProductService {
   maxPrice: number | null = null;
   constructor(private productApi: ProductApiService) {}
 
-  loadProducts(pageNum: number) {
+  loadProducts(pageNum: number=1) {
     this.isLoaded = false;
     this.pageNumber = pageNum;
     const tempNum =

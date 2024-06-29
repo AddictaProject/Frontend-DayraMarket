@@ -5,11 +5,14 @@ import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AddressSteps } from '../../../../../Models/Cart/AddressStep';
 import { SkeletonModule } from 'primeng/skeleton';
+import Swal from 'sweetalert2';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+
 
 @Component({
   selector: 'app-show-addresses',
   standalone: true,
-  imports: [RouterModule, CommonModule, SkeletonModule],
+  imports: [RouterModule, CommonModule, SkeletonModule,SweetAlert2Module],
   templateUrl: './show-addresses.component.html',
   styleUrl: './show-addresses.component.css',
 })
@@ -48,15 +51,36 @@ export class ShowAddressesComponent {
     }
   }
   deleteAddress(id: string) {
-    this.userService.deleteUserAddress(id).subscribe({
-      next: (res: any) => {
-        const addressIndex = this.addresses.findIndex((a) => a.uuid == id);
-        this.addresses.splice(addressIndex, 1);
-      },
-      error: (err: any) => {
-        console.log(err);
-      },
-    });
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, delete it!",
+      buttonsStyling: false,
+      customClass: {
+          confirmButton: 'btn btn-danger px-4',
+          cancelButton: 'btn border border-1 border-danger text-danger  ms-2 px-4',
+          },
+      }).then((result) =>{
+      if (result.value) {
+        this.userService.deleteUserAddress(id).subscribe({
+          next: (res: any) => {
+            const addressIndex = this.addresses.findIndex((a) => a.uuid == id);
+            this.addresses.splice(addressIndex, 1);
+            Swal.fire({
+              title: 'Deleted!',
+              text: 'Your address has been deleted.',
+              icon: 'success'
+              })
+          },
+          error:(err:any)=>{
+            console.log(err);
+          }
+        })
+
+      }
+      });
   }
   onAddressClick(e: Event, selectedAddress: IUserAddress) {
     if (!this.isCart) return;
