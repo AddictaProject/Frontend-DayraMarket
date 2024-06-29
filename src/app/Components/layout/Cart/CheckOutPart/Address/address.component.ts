@@ -97,20 +97,6 @@ export class AddressComponent implements OnInit, OnDestroy {
     });
   }
   onSubmit() {
-
-    let address: IUserAddress = {
-      userName: this.addAddressForm.get('username')?.value || '',
-      phoneNumber: this.addAddressForm.get('phoneNumber')?.value || '',
-      cityId: this.addAddressForm.get('cityId')?.value || '',
-      districtId: this.addAddressForm.get('districtId')?.value || '',
-      street: this.addAddressForm.get('street')?.value || '',
-      buildingNumber: this.addAddressForm.get('buildingNumber')?.value || '',
-      details: this.addAddressForm.get('details')?.value || '',
-      defaultAddress: this.addAddressForm.get('defaultAddress')?.value || false,
-      apartmentNumber: this.addAddressForm.get('apartmentNumber')?.value || '',
-      floorNumber: this.addAddressForm.get('floorNumber')?.value || '',
-    };
-    
     if (this.currentAddressStep === this.addressSteps.default) {
       this.orderService.userAddress = this.currentAddress;
       this.nextStep.emit();
@@ -119,24 +105,6 @@ export class AddressComponent implements OnInit, OnDestroy {
       this.orderService.userAddress = this.currentAddress;
       this.currentAddressStep = AddressSteps.default;
       return;
-    } else if (this.currentAddressStep === this.addressSteps.add) {
-      this.userService.addUserAddress(address).subscribe({
-        next: (res: any) => {
-          this.orderService.userAddress = res;
-          this.orderService.userAddress.cityName = this.selectedCityName;
-          this.currentAddressStep = AddressSteps.default;
-          this.nextStep.emit();
-
-        },
-        error: (err: any) => {
-          console.log(err);
-        },
-      });
-    } else if (this.currentAddressStep === this.addressSteps.update) {
-      address.uuid = this.currentAddress.uuid;
-      this.userService.updateUserAddress(address).subscribe();
-      this.orderService.userAddress = this.currentAddress;
-      this.currentAddressStep = AddressSteps.default;
     }
 
     if (this.addAddressForm.invalid) {
@@ -158,8 +126,35 @@ export class AddressComponent implements OnInit, OnDestroy {
       return;
     }
 
-   
-
+    let address: IUserAddress = {
+      userName: this.addAddressForm.get('username')?.value || '',
+      phoneNumber: this.addAddressForm.get('phoneNumber')?.value || '',
+      cityId: this.addAddressForm.get('cityId')?.value || '',
+      districtId: this.addAddressForm.get('districtId')?.value || '',
+      street: this.addAddressForm.get('street')?.value || '',
+      buildingNumber: this.addAddressForm.get('buildingNumber')?.value || '',
+      details: this.addAddressForm.get('details')?.value || '',
+      defaultAddress: this.addAddressForm.get('defaultAddress')?.value || false,
+      apartmentNumber: this.addAddressForm.get('apartmentNumber')?.value || '',
+      floorNumber: this.addAddressForm.get('floorNumber')?.value || '',
+    };
+    if (this.currentAddressStep === this.addressSteps.add) {
+      this.userService.addUserAddress(address).subscribe({
+        next: (res: any) => {
+          this.orderService.userAddress = res;
+          this.orderService.userAddress.cityName = this.selectedCityName;
+          this.currentAddressStep = AddressSteps.default;
+        },
+        error: (err: any) => {
+          console.log(err);
+        },
+      });
+    } else if (this.currentAddressStep === this.addressSteps.update) {
+      address.uuid = this.currentAddress.uuid;
+      this.userService.updateUserAddress(address).subscribe();
+      this.orderService.userAddress = this.currentAddress;
+      this.currentAddressStep = AddressSteps.default;
+    }
   }
 
   ngOnDestroy(): void {
