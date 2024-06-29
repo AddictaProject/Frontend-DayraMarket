@@ -31,9 +31,9 @@
             d="M8.55859 15.1673C8.51851 15.1677 8.47879 15.1597 8.44193 15.144C6.24526 14.334 2.55859 12.3507 2.55859 8.16732V2.16732C2.55859 2.07892 2.59371 1.99413 2.65622 1.93162C2.71874 1.86911 2.80352 1.83399 2.89193 1.83399H14.2253C14.2691 1.83374 14.3126 1.84214 14.3532 1.85873C14.3938 1.87532 14.4308 1.89976 14.4619 1.93066C14.4928 1.9618 14.5173 1.99874 14.5339 2.03935C14.5504 2.07997 14.5588 2.12345 14.5586 2.16732V8.16732C14.5586 11.244 12.4119 13.7873 8.67193 15.1473C8.63559 15.1605 8.59725 15.1673 8.55859 15.1673ZM3.22526 2.50066V8.16732C3.22526 11.8773 6.51526 13.7007 8.55859 14.4773C13.1953 12.7507 13.8919 9.78732 13.8919 8.16732V2.50066H3.22526Z"
             fill="#064121" />
         </svg>
-  
+
         <p class="ms-1 txtBesideStar">{{_ProductDetailsService.product.reviewCount}} verified reviews in the last 6 months.</p>
-     
+
       </div>
 
    </div>
@@ -77,8 +77,8 @@
 
                 <div class="progress w-100 ms-2 mt-1" style="height: 7px; ">
                   <div class="progress-bar " role="progressbar"
-                  [style.width]="getWidth(item)" 
-                   style=" background-color :rgba(88, 51, 193, 1) !important;" 
+                  [style.width]="getWidth(item)"
+                   style=" background-color :rgba(88, 51, 193, 1) !important;"
                    aria-valuenow="25" aria-valuemin="0"
                     aria-valuemax="100"></div>
                 </div>
@@ -104,49 +104,49 @@
       @for(review of vendorReview ; track review){
         <div class=" mb-5">
           <div class="d-flex mb-4">
-  
+
             <!-- image -->
-            <div>
-              <img src="../../../../../assets/images/G.png" width="40px" height="40px" alt="">
+            <div class="user-img">
+              <span>{{review.userName.at(0)?.toUpperCase()}}</span>
             </div>
-  
+
             <!-- Header Sec -->
-            <div class="w-100 ms-3">   
+            <div class="w-100 ms-3">
               <div class="d-flex justify-content-between" style="height: 23px;">
-  
+
                 <p class="nameOfUser">{{review.userName}}</p>
-  
-  
+
+
                 <div class="d-flex text-dark" style="font-size: small; ">
                   <app-star [(value)]="review.rate" [isFirstStyle]="false" ></app-star>
                   <p class="ms-2"> {{ review.rate }}/5</p>
                 </div>
-  
+
               </div>
-  
-  
+
+
               <p class="dateOfRev">Reviewed in Cairo on {{review.dateCreated | date : 'MMMM d, y' }}</p>
             </div>
-  
-  
+
+
           </div>
-  
-  
+
+
           <!-- User Comment -->
           <div>
             <p class="userComment">{{review.comment}}</p>
           </div>
-  
+
           <!-- Product Name -->
           <div class="ProdNameInComm my-4 ms-1">
             <a href=""> {{_ProductDetailsService.product.displayName}} - {{review.description}}</a>
           </div>
-  
+
           <!-- Date Of Publish the comment -->
           <div class="dateOfPublish">
             <p>Purchased on May 1, 2023</p>
           </div>
-  
+
         </div>
       }
 
@@ -154,49 +154,49 @@
         @for(review of vendorReview.slice(0,4) ; track review){
           <div class=" mb-5">
             <div class="d-flex mb-4">
-    
+
               <!-- image -->
-              <div>
-                <img src="../../../../../assets/images/G.png" width="40px" height="40px" alt="">
+              <div class="user-img">
+                <span>{{review.userName.at(0)?.toUpperCase()}}</span>
               </div>
-    
+
               <!-- Header Sec -->
-              <div class="w-100 ms-3">   
+              <div class="w-100 ms-3">
                 <div class="d-flex justify-content-between" style="height: 23px;">
-    
+
                   <p class="nameOfUser">{{review.userName}}</p>
-    
-    
+
+
                   <div class="d-flex text-dark" style="font-size: small; ">
                     <app-star [(value)]="review.rate" [isFirstStyle]="false" ></app-star>
                     <p class="ms-2"> {{ review.rate }}/5</p>
                   </div>
-    
+
                 </div>
-    
-    
+
+
                 <p class="dateOfRev">Reviewed in Cairo on {{review.dateCreated | date : 'MMMM d, y' }}</p>
               </div>
-    
-    
+
+
             </div>
-    
-    
+
+
             <!-- User Comment -->
             <div>
               <p class="userComment">{{review.comment}}</p>
             </div>
-    
+
             <!-- Product Name -->
             <div class="ProdNameInComm my-4 ms-1">
               <a href=""> {{_ProductDetailsService.product.displayName}} - {{review.description}}</a>
             </div>
-    
+
             <!-- Date Of Publish the comment -->
             <div class="dateOfPublish">
               <p>Purchased on May 1, 2023</p>
             </div>
-    
+
           </div>
         }
       }

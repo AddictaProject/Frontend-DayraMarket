@@ -23,6 +23,8 @@ export class ConfirmPaymentComponent implements OnInit {
 
   paymentMethodEnum =PaymentMethod;
 
+  isOrdered=true;
+
   constructor(  public cartService: CartService, private orderService :OrderService ) { }
 
   ngOnInit() {
@@ -31,6 +33,7 @@ export class ConfirmPaymentComponent implements OnInit {
 
 
   next() {
+    this.isOrdered=false;
     const productStockUuids:productStockUuid[]= this.cartService.getCart().map(p=>{return{productStockUuid:p.id}});
     let order:ICreateOrder={
       paymentMethod:this.selectedPaymentMethod,

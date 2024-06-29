@@ -49,8 +49,8 @@
           @if(selectedPaymentMethod==paymentMethodEnum.COD){
             <!-- Confirm -->
           <div class="d-flex justify-content-center  mt-4 " >
-            <a class="btn btnAddToCart py-3" role="button"  (click)="next()">
-              Confirm </a>
+            <button class="btn btnAddToCart py-3" role="button" [disabled]="!isOrdered" (click)="next()">
+              Confirm </button>
           </div>
           }
 

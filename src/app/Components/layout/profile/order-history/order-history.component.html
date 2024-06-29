@@ -31,10 +31,10 @@
       <button class="change-state mb-0  border-0 bg-transparent" (click)="openReview(item)">Review</button>
       }
       @if (item.status=='New' || item.status=='PendingPickup') {
-      <button class="change-state mb-0 border-0 bg-transparent" (click)="cancelOrderItem(item.uuid)">Cancel
+      <button class="change-state mb-0 border-0 bg-transparent" (click)="cancelOrderItem($event,item.uuid)">Cancel
         Order</button>
       }@else if (item.status=='Delivered') {
-      <button class="change-state mb-0  border-0 bg-transparent" (click)="returnOrderItem(item.uuid)">Refund</button>
+      <button class="change-state mb-0  border-0 bg-transparent" (click)="returnOrderItem($event,item.uuid)">Refund</button>
       }
     </div>
   </div>

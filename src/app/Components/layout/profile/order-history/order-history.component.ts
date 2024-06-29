@@ -89,7 +89,7 @@ export class OrderHistoryComponent {
       }
     })
   }
-  cancelOrderItem(id:string) {
+  cancelOrderItem(e:Event,id:string) {
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -106,6 +106,7 @@ export class OrderHistoryComponent {
       if (result.value) {
         this.orderService.cancelOrderItem(id).subscribe({
           next:(res:any)=>{
+            let elem=(e.target as HTMLElement).closest('div')!.querySelector('.status')!.textContent="Cancelled";
             Swal.fire({
               title: 'Canceled!',
               text: 'Your order has been canceled.',
@@ -129,14 +130,42 @@ export class OrderHistoryComponent {
 
   }
 
-  returnOrderItem(id:string) {
-    this.orderService.returnOrderItem(id).subscribe({
-      next:(res:any)=>{
-        console.log(res);
-      },
-      error:(err:any)=>{
-        console.log(err);
+  returnOrderItem(e:Event,id:string) {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+
+      showCancelButton: true,
+      confirmButtonText: "Yes, return it!",
+      buttonsStyling: false,
+      customClass: {
+          confirmButton: 'btn btn-danger px-4',
+          cancelButton: 'btn border border-1 border-danger text-danger  ms-2 px-4',
+          },
+      }).then((result) =>{
+      if (result.value) {
+        this.orderService.returnOrderItem(id).subscribe({
+          next:(res:any)=>{
+            let elem=(e.target as HTMLElement).closest('div')!.querySelector('.status')!.textContent="ReturnRequested";
+            Swal.fire({
+              title: 'ReturnRequested!',
+              text: 'Your order has been requested to return.',
+              icon: 'success'
+              })
+          },
+          error:(err:any)=>{
+            Swal.fire({
+              icon: "error",
+              title: "Oops...",
+              text: "Something went wrong!",
+              buttonsStyling:true,
+              iconColor:"#09764CCC"
+            });
+          }
+        })
+
       }
-    })
+      });
   }
 }
