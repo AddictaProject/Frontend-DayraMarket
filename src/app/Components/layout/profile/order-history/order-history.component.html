@@ -31,7 +31,8 @@
       <button class="change-state mb-0  border-0 bg-transparent" (click)="openReview(item)">Review</button>
       }
       @if (item.status=='New' || item.status=='PendingPickup') {
-      <button class="change-state mb-0 border-0 bg-transparent" (click)="cancelOrderItem(item.uuid)">Cancel Order</button>
+      <button class="change-state mb-0 border-0 bg-transparent" (click)="cancelOrderItem(item.uuid)">Cancel
+        Order</button>
       }@else if (item.status=='Delivered') {
       <button class="change-state mb-0  border-0 bg-transparent" (click)="returnOrderItem(item.uuid)">Refund</button>
       }
@@ -52,24 +53,26 @@
           <p class="my-3 fa-sm ">Date : {{reviewItem.dateCreated | date:"dd / MM / yyyy"}}</p>
         </div>
       </div>
-     <div class="rate d-flex gap-3 mt-4">
-      <h6 class="mb-0">How do you rate this product?</h6>
-      <div class="stars d-flex gap-1">
-        @for (val of [1,2,3,4,5]; track $index) {
-        <i StarHover class="fa-solid fa-star" (click)="onClick($event,val)" ></i>
-        }
+      <div class="rate d-flex gap-3 mt-4">
+        <h6 class="mb-0">How do you rate this product?</h6>
+        <div class="stars d-flex gap-1">
+          @for (val of [1,2,3,4,5]; track $index) {
+          <i StarHover class="fa-solid fa-star" (click)="onClick($event,val)"></i>
+          }
+        </div>
       </div>
-     </div>
-     <form [formGroup]="form" (submit)="onSubmit()">
-     <div class="comment mt-4">
-      <h6>Write a product review</h6>
-      <textarea formControlName="comment" placeholder="What did you like or dislike? How did you use the product? What should others know before buying?" maxlength="1000"></textarea>
-     </div>
-     <div class="btns d-flex justify-content-end gap-3 mt-4 ">
-       <button type="reset" class="btn btn-secondary" (click)="reviewVisible=false">Cancel</button>
-      <button class="btn btn-submit" type="submit" [disabled]="!rate || form.invalid">Submit</button>
-     </div>
-    </form>
+      <form [formGroup]="form" (submit)="onSubmit()">
+        <div class="comment mt-4">
+          <h6>Write a product review</h6>
+          <textarea formControlName="comment"
+            placeholder="What did you like or dislike? How did you use the product? What should others know before buying?"
+            maxlength="1000"></textarea>
+        </div>
+        <div class="btns d-flex justify-content-end gap-3 mt-4 ">
+          <button type="reset" class="btn btn-secondary" (click)="reviewVisible=false">Cancel</button>
+          <button class="btn btn-submit" type="submit" [disabled]="!rate || form.invalid">Submit</button>
+        </div>
+      </form>
     </div>
   </div>
   }
