@@ -18,24 +18,23 @@ import { CommentsComponent } from './Comments/Comments.component';
     CommentsComponent,
   ],
 })
-export class ProductDetailsComponent implements OnInit  {
- 
+export class ProductDetailsComponent implements OnInit {
+
   constructor(
-    
-  ) {}
+    private elementRef: ElementRef
+  ) { }
 
   ngOnInit() {
 
   }
 
-  @ViewChild('CommentSection') CommentSection!: ElementRef;
+  @ViewChild(CommentsComponent, { static: true }) commentComponent: CommentsComponent | undefined;
 
 
 
   scrollToCommentsSection() {
-    if (this.CommentSection) {
-      console.log('Scrolling to CommentSection', this.CommentSection);
-      this.CommentSection.nativeElement.scrollIntoView({ behavior: 'smooth' });
+    if (this.commentComponent && this.commentComponent.elementRef) {
+      this.commentComponent.elementRef.nativeElement.scrollIntoView({ behavior: 'smooth' });
     }
   }
 

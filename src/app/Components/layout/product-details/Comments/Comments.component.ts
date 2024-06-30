@@ -27,8 +27,12 @@ export class CommentsComponent implements OnInit {
   ratingCount: { [key: number]: number } = {};
   rating : number[]=[5,4,3,2,1]
 
+  @ViewChild('commentSection', { static: true }) commentSection!: ElementRef;
+
+
   constructor(
     public _ProductDetailsService: ProductDetailsService,
+    public elementRef: ElementRef
   ) { }
 
   ngOnInit() {
@@ -42,8 +46,6 @@ export class CommentsComponent implements OnInit {
 
       this.remainNumOfComments =this.vendorReview.length-4;   
       this.calculateRatings();
-      console.log(this.vendorReview);
-      
     }); 
     
   }
