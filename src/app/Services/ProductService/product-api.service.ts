@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { IProductParams } from '../../Models/Product/All-Products/IProductParams';
 import { IProductPagination } from '../../Models/Product/All-Products/IProductPagination';
@@ -35,5 +35,4 @@ export class ProductApiService {
       params: { ...reviewParams }
     });
   }
-
 }

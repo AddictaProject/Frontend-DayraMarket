@@ -11,7 +11,7 @@ import { VariantType } from '../../Models/Product/Prod-Details/enum/variant-type
 import { IProductDetailsParams } from '../../Models/Product/Prod-Details/IProductDetailsParams';
 import { IVariantValues } from '../../Models/Product/Prod-Details/IVariantValues';
 import { BehaviorSubject, Observable, map, tap } from 'rxjs';
-import { IVendorReview } from '../../Models/Product/Prod-Details/ivendor-review';
+import { IVendorReview, IVendorReviewParam } from '../../Models/Product/Prod-Details/ivendor-review';
 
 @Injectable({
   providedIn: 'root',
@@ -50,7 +50,7 @@ export class ProductDetailsService {
   isPageLoading: boolean = false;
 
   vendorId !: string;
-  // VendorReview!: IVendorReview[];
+
   private vendorReviewSubject = new BehaviorSubject<IVendorReview[]>([]);
   vendorReview$ = this.vendorReviewSubject.asObservable();
 
@@ -199,17 +199,20 @@ export class ProductDetailsService {
   }
 
   loadReviews(id: string = this.vendorId, rate?: number) {
+
+    const reviewParams: IVendorReviewParam  = { vendorUuid: id };
+    if (rate !== undefined) {
+      reviewParams.rateFilter = rate;
+    }
+    
     this.productApi
-      .getVendorReview({
-        vendorUuid: id,
-      })
+      .getVendorReview(reviewParams)
       .subscribe((data: IVendorReview[]) => {
-        if (data.length > 0) {
-          this.vendorReviewSubject.next(data); 
-        }
-      
+        this.vendorReviewSubject.next(data);
+        
       })
   }
+
 
 
 

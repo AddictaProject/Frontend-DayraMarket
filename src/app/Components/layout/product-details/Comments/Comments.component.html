@@ -1,4 +1,3 @@
-
 @if (_ProductDetailsService.product.reviewCount>0) {
 <div class="container mb-5 commentsSection">
 
@@ -16,14 +15,15 @@
 
     <div class="d-flex starsReview verifiedpart">
       <div class="d-flex">
-        <app-star [(value)]="_ProductDetailsService.product.averageRate" [isFirstStyle]="true" ></app-star>
+        <app-star [(value)]="_ProductDetailsService.product.averageRate" [isFirstStyle]="true"></app-star>
 
-      <p class="ms-2"> {{ _ProductDetailsService.product.averageRate }}/5</p>
+        <p class="ms-2"> {{ _ProductDetailsService.product.averageRate }}/5</p>
 
       </div>
 
       <div class="d-flex ">
-        <svg class="ms-3 verficatedSvg" width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg class="ms-3 verficatedSvg" width="17" height="17" viewBox="0 0 17 17" fill="none"
+          xmlns="http://www.w3.org/2000/svg">
           <path
             d="M7.8924 9.71928C7.84853 9.71953 7.80504 9.71112 7.76443 9.69453C7.72382 9.67795 7.68688 9.6535 7.65573 9.62261L5.2024 7.16594C5.14032 7.10349 5.10547 7.01901 5.10547 6.93094C5.10547 6.84288 5.14032 6.7584 5.2024 6.69594C5.23339 6.6647 5.27025 6.6399 5.31087 6.62298C5.35149 6.60606 5.39506 6.59734 5.43907 6.59734C5.48307 6.59734 5.52664 6.60606 5.56726 6.62298C5.60788 6.6399 5.64475 6.6647 5.67573 6.69594L7.8924 8.91594L11.4424 5.37594C11.4734 5.3447 11.5103 5.3199 11.5509 5.30298C11.5915 5.28606 11.6351 5.27734 11.6791 5.27734C11.7231 5.27734 11.7666 5.28606 11.8073 5.30298C11.8479 5.3199 11.8847 5.3447 11.9157 5.37594C11.9778 5.4384 12.0127 5.52288 12.0127 5.61094C12.0127 5.69901 11.9778 5.78349 11.9157 5.84594L8.13907 9.62261C8.10674 9.65473 8.06818 9.67988 8.02575 9.6965C7.98332 9.71313 7.93794 9.72088 7.8924 9.71928Z"
             fill="#064121" />
@@ -32,11 +32,12 @@
             fill="#064121" />
         </svg>
 
-        <p class="ms-1 txtBesideStar">{{_ProductDetailsService.product.reviewCount}} verified reviews in the last 6 months.</p>
+        <p class="ms-1 txtBesideStar">{{_ProductDetailsService.product.reviewCount}} verified reviews in the last 6
+          months.</p>
 
       </div>
 
-   </div>
+    </div>
 
 
   </div>
@@ -53,7 +54,7 @@
       <div class="d-flex justify-content-between HeaderOfNaming">
 
         <p class="txtOfNaming">Filter by Stars</p>
-        <p class="txtOfReset">reset</p>
+        <p class="txtOfReset" (click)="reset()">reset</p>
 
       </div>
 
@@ -65,27 +66,25 @@
           <div class="card-body">
 
             <!-- 5 stars  -->
-             @for(item of rating ; track item){
-            <label class="form-check mb-3">
+            @for(item of rating ; track item){
+            <label class="form-check mb-3" style="cursor: pointer;">
 
-              <input class="form-check-input checkInputStyle me-3 mb-0 mt-0" type="radio" name="exampleRadio" value="">
-
+              <input class="form-check-input checkInputStyle me-3 mb-0 mt-0" type="radio" name="exampleRadio"
+                [value]="item" (click)="filterReviews(item)">
               <span class="form-check-label d-flex">
                 <i class="fa-solid fa-star starOfFilter me-2"> </i>
 
                 <span class="numOfStar"> {{item}} </span>
 
                 <div class="progress w-100 ms-2 mt-1" style="height: 7px; ">
-                  <div class="progress-bar " role="progressbar"
-                  [style.width]="getWidth(item)"
-                   style=" background-color :rgba(88, 51, 193, 1) !important;"
-                   aria-valuenow="25" aria-valuemin="0"
+                  <div class="progress-bar " role="progressbar" [style.width]="getWidth(item)"
+                    style=" background-color :rgba(88, 51, 193, 1) !important;" aria-valuenow="25" aria-valuemin="0"
                     aria-valuemax="100"></div>
                 </div>
 
               </span>
             </label>
-          }
+            }
 
 
           </div>
@@ -102,119 +101,119 @@
       <!--1 comment -->
       @if(showRemainCategories){
       @for(review of vendorReview ; track review){
-        <div class=" mb-5">
-          <div class="d-flex mb-4">
+      <div class=" mb-5">
+        <div class="d-flex mb-4">
 
-            <!-- image -->
-            <div class="user-img">
-              <span>{{review.userName.at(0)?.toUpperCase()}}</span>
-            </div>
+          <!-- image -->
+          <div class="user-img">
+            <span>{{review.userName.at(0)?.toUpperCase()}}</span>
+          </div>
 
-            <!-- Header Sec -->
-            <div class="w-100 ms-3">
-              <div class="d-flex justify-content-between" style="height: 23px;">
+          <!-- Header Sec -->
+          <div class="w-100 ms-3">
+            <div class="d-flex justify-content-between" style="height: 23px;">
 
-                <p class="nameOfUser">{{review.userName}}</p>
+              <p class="nameOfUser">{{review.userName}}</p>
 
 
-                <div class="d-flex text-dark" style="font-size: small; ">
-                  <app-star [(value)]="review.rate" [isFirstStyle]="false" ></app-star>
-                  <p class="ms-2"> {{ review.rate }}/5</p>
-                </div>
-
+              <div class="d-flex text-dark" style="font-size: small; ">
+                <app-star [(value)]="review.rate" [isFirstStyle]="false"></app-star>
+                <p class="ms-2"> {{ review.rate }}/5</p>
               </div>
 
-
-              <p class="dateOfRev">Reviewed in Cairo on {{review.dateCreated | date : 'MMMM d, y' }}</p>
             </div>
 
 
+            <p class="dateOfRev">Reviewed in Cairo on {{review.dateCreated | date : 'MMMM d, y' }}</p>
           </div>
 
-
-          <!-- User Comment -->
-          <div>
-            <p class="userComment">{{review.comment}}</p>
-          </div>
-
-          <!-- Product Name -->
-          <div class="ProdNameInComm my-4 ms-1">
-            <a href=""> {{_ProductDetailsService.product.displayName}} - {{review.description}}</a>
-          </div>
-
-          <!-- Date Of Publish the comment -->
-          <div class="dateOfPublish">
-            <p>Purchased on May 1, 2023</p>
-          </div>
 
         </div>
+
+
+        <!-- User Comment -->
+        <div>
+          <p class="userComment">{{review.comment}}</p>
+        </div>
+
+        <!-- Product Name -->
+        <div class="ProdNameInComm my-4 ms-1">
+          <a href=""> {{_ProductDetailsService.product.displayName}} - {{review.description}}</a>
+        </div>
+
+        <!-- Date Of Publish the comment -->
+        <div class="dateOfPublish">
+          <p>Purchased on May 1, 2023</p>
+        </div>
+
+      </div>
       }
 
       }@else {
-        @for(review of vendorReview.slice(0,4) ; track review){
-          <div class=" mb-5">
-            <div class="d-flex mb-4">
+      @for(review of vendorReview.slice(0,4) ; track review){
+      <div class=" mb-5">
+        <div class="d-flex mb-4">
 
-              <!-- image -->
-              <div class="user-img">
-                <span>{{review.userName.at(0)?.toUpperCase()}}</span>
-              </div>
-
-              <!-- Header Sec -->
-              <div class="w-100 ms-3">
-                <div class="d-flex justify-content-between" style="height: 23px;">
-
-                  <p class="nameOfUser">{{review.userName}}</p>
-
-
-                  <div class="d-flex text-dark" style="font-size: small; ">
-                    <app-star [(value)]="review.rate" [isFirstStyle]="false" ></app-star>
-                    <p class="ms-2"> {{ review.rate }}/5</p>
-                  </div>
-
-                </div>
-
-
-                <p class="dateOfRev">Reviewed in Cairo on {{review.dateCreated | date : 'MMMM d, y' }}</p>
-              </div>
-
-
-            </div>
-
-
-            <!-- User Comment -->
-            <div>
-              <p class="userComment">{{review.comment}}</p>
-            </div>
-
-            <!-- Product Name -->
-            <div class="ProdNameInComm my-4 ms-1">
-              <a href=""> {{_ProductDetailsService.product.displayName}} - {{review.description}}</a>
-            </div>
-
-            <!-- Date Of Publish the comment -->
-            <div class="dateOfPublish">
-              <p>Purchased on May 1, 2023</p>
-            </div>
-
+          <!-- image -->
+          <div class="user-img">
+            <span>{{review.userName.at(0)?.toUpperCase()}}</span>
           </div>
-        }
+
+          <!-- Header Sec -->
+          <div class="w-100 ms-3">
+            <div class="d-flex justify-content-between" style="height: 23px;">
+
+              <p class="nameOfUser">{{review.userName}}</p>
+
+
+              <div class="d-flex text-dark" style="font-size: small; ">
+                <app-star [(value)]="review.rate" [isFirstStyle]="false"></app-star>
+                <p class="ms-2"> {{ review.rate }}/5</p>
+              </div>
+
+            </div>
+
+
+            <p class="dateOfRev">Reviewed in Cairo on {{review.dateCreated | date : 'MMMM d, y' }}</p>
+          </div>
+
+
+        </div>
+
+
+        <!-- User Comment -->
+        <div>
+          <p class="userComment">{{review.comment}}</p>
+        </div>
+
+        <!-- Product Name -->
+        <div class="ProdNameInComm my-4 ms-1">
+          <a href=""> {{_ProductDetailsService.product.displayName}} - {{review.description}}</a>
+        </div>
+
+        <!-- Date Of Publish the comment -->
+        <div class="dateOfPublish">
+          <p>Purchased on May 1, 2023</p>
+        </div>
+
+      </div>
+      }
       }
 
 
       <!-- button See all -->
-       @if (vendorReview.length > 4) {
+      @if (vendorReview.length > 4) {
       <div>
         <a class="btn btnOfSeeAll ms-1 mt-3" (click)="showMore()">
           @if (remainNumOfComments ==1) {
           {{ showRemainCategories ? 'Show less' : 'See ' + remainNumOfComments + ' more review' }}
-        }@else {
+          }@else {
           {{ showRemainCategories ? 'Show less' : 'See more ' + remainNumOfComments + ' reviews' }}
 
-        }
+          }
         </a>
       </div>
-    }
+      }
 
     </div>
 

@@ -48,6 +48,13 @@
   font-family: "Montserrat", sans-serif;
   line-height: 20px;
   font-size: 16px;
+  cursor: pointer;
+}
+
+.txtOfReset:hover{
+  color: rgb(103, 101, 101);
+  font-size: 16.5px;
+
 }
 
 /* === */
@@ -172,7 +179,9 @@
   height: 21px;
   text-align: center;
 }
-
+.form-check-input:focus {
+  box-shadow: none;
+}
 .form-check-input:checked {
   background-color: black;
   box-shadow: none;

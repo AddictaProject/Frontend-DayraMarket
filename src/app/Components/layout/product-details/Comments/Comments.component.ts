@@ -19,24 +19,11 @@ import { filter } from 'rxjs';
 export class CommentsComponent implements OnInit {
 
   vendorReview: IVendorReview[] = [];
+  initialVendorReview: IVendorReview[] = [];
+
   showRemainCategories: boolean = false;
   remainNumOfComments !:number;
-  vReview :IVendorReview ={
-    dateCreated :"",
-    rate: 3,
-    comment: "fkdjfkdjk",
-    userName: "nada",
-    description: "sdksdjsk",
 
-  }
-  vReview2 :IVendorReview ={
-    dateCreated :"",
-    rate: 2,
-    comment: "fkdjfkdjk",
-    userName: "nada",
-    description: "sdksdjsk",
-
-  }
   ratingCount: { [key: number]: number } = {};
   rating : number[]=[5,4,3,2,1]
 
@@ -46,39 +33,49 @@ export class CommentsComponent implements OnInit {
 
   ngOnInit() {
 
-    this._ProductDetailsService.vendorReview$.pipe(
-      filter(reviews => reviews.length > 0)
-    ).subscribe(reviews => {
+    this._ProductDetailsService.vendorReview$.subscribe(reviews => {
+
+      if (this.initialVendorReview.length === 0) {
+        this.initialVendorReview = reviews;
+      }
       this.vendorReview = reviews;
-      this.vendorReview.push(this.vReview ,this.vReview ,this.vReview,this.vReview,this.vReview,
-        this.vReview2,this.vReview2
-      );
-      this.remainNumOfComments =this.vendorReview.length-4;
-      
+
+      this.remainNumOfComments =this.vendorReview.length-4;   
       this.calculateRatings();
+      console.log(this.vendorReview);
+      
     }); 
     
-  
   }
 
+
+  // For button 
   showMore() {
     this.showRemainCategories = !this.showRemainCategories; 
   }
 
+  // For Bar Color In filtration
   calculateRatings() {
+    
     this.ratingCount = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
 
-    this.vendorReview.forEach(review => {
+    this.initialVendorReview.forEach(review => {
       if (this.ratingCount.hasOwnProperty(review.rate)) {
         this.ratingCount[review.rate]++;
       }
-    });
-
-    console.log(this.ratingCount);
+    });    
   }
 
   getWidth(rating: number): string {
-    return this.vendorReview.length > 0 ? (this.ratingCount[rating] / this.vendorReview.length  * 100) + '%' : '0%';
+    return this.initialVendorReview.length > 0 ? (this.ratingCount[rating] / this.initialVendorReview.length  * 100) + '%' : '0%';
   }
 
+  // Action to review 
+  filterReviews(rate: number): void {
+    this._ProductDetailsService.loadReviews(this._ProductDetailsService.vendorId, rate);
+  }
+
+  reset(){
+    this.vendorReview = this.initialVendorReview;
+  }
 }
