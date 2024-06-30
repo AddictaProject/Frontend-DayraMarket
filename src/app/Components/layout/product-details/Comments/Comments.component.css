@@ -178,6 +178,7 @@
   width: 21px;
   height: 21px;
   text-align: center;
+  cursor: pointer;
 }
 .form-check-input:focus {
   box-shadow: none;
