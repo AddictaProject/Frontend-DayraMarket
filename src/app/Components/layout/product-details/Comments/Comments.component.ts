@@ -76,7 +76,7 @@ export class CommentsComponent implements OnInit {
 
   // Action to review 
   filterReviews(rate: number): void {
-    this._ProductDetailsService.loadReviews(this._ProductDetailsService.vendorId, rate);
+    this._ProductDetailsService.loadReviews(this._ProductDetailsService.product.uuid,this._ProductDetailsService.vendorId, rate);
     this.selectedRating = rate;
   }
 

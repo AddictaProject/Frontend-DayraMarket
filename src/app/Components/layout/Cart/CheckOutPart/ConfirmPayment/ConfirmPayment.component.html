@@ -36,6 +36,7 @@
           </div>
 
 
+          @if (cartService.finalTotalPrice <= 30000) {
           <div class="form-check " >
             <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4"
             [value]="'cash'"
@@ -45,6 +46,7 @@
               Cash on Delivery
             </label>
           </div>
+        }
 
           @if(selectedPaymentMethod==paymentMethodEnum.COD){
             <!-- Confirm -->

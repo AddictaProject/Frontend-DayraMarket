@@ -1,0 +1,46 @@
+/* === */
+/* Whole Div */
+.notSignedSection {
+  padding: 133px 0 400px 0;
+}
+
+/* === */
+/* image */
+.imgOfNotSign {
+  width: 189px;
+  height: 199px;
+}
+
+.pleaseSignIn {
+  border-top: 2px rgba(138, 154, 148, 1) solid;
+  padding: 45px 164px;
+}
+
+.txtNotAccount {
+  color: rgba(0, 0, 0, 1);
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 26.82px;
+  text-align: center;
+}
+
+.txtToRegister {
+  color: rgba(0, 0, 0, 1);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 16px;
+  text-align: center;
+}
+
+.btnOfSignIn {
+  background-color: rgba(9, 118, 76, 0.8);
+  color: white;
+  padding: 14px 10px 14px 10px;
+  gap: 10;
+  border-radius: 6px;
+  width: 198px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 16px;
+  text-align: center;
+}

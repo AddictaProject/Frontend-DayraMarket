@@ -106,7 +106,9 @@ export class ProductDetailsService {
         this.isPageLoading = false;
 
         this.vendorId = data.selectedStock.vendorUuid;
-        this.loadReviews();
+        if(this.product.reviewCount>0){
+          this.loadReviews();
+        }
 
       });
 
@@ -198,9 +200,9 @@ export class ProductDetailsService {
     this.isActiveMostPopular = true;
   }
 
-  loadReviews(id: string = this.vendorId, rate?: number) {
+  loadReviews(prodId :string = this.product.uuid ,Vendid: string = this.vendorId, rate?: number) {
 
-    const reviewParams: IVendorReviewParam  = { vendorUuid: id };
+    const reviewParams: IVendorReviewParam  = { vendorUuid: Vendid ,productUuid:prodId};
     if (rate !== undefined) {
       reviewParams.rateFilter = rate;
     }

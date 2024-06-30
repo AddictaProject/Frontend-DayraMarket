@@ -70,8 +70,7 @@
             <label class="form-check mb-3" style="cursor: pointer;">
 
               <input class="form-check-input checkInputStyle me-3 mb-0 mt-0" type="radio" name="exampleRadio"
-                [value]="item" (click)="filterReviews(item)" 
-                [checked]="selectedRating === item">
+                [value]="item" (click)="filterReviews(item)" [checked]="selectedRating === item">
               <span class="form-check-label d-flex">
                 <i class="fa-solid fa-star starOfFilter me-2"> </i>
 
@@ -101,6 +100,7 @@
 
       <!--1 comment -->
       @if(showRemainCategories){
+
       @for(review of vendorReview ; track review){
       <div class=" mb-5">
         <div class="d-flex mb-4">
@@ -125,7 +125,7 @@
             </div>
 
 
-            <p class="dateOfRev">Reviewed in Cairo on {{review.dateCreated | date : 'MMMM d, y' }}</p>
+            <p class="dateOfRev">Reviewed in {{review.userCity}} on {{review.dateCreated | date : 'MMMM d, y' }}</p>
           </div>
 
 
@@ -144,7 +144,7 @@
 
         <!-- Date Of Publish the comment -->
         <div class="dateOfPublish">
-          <p>Purchased on May 1, 2023</p>
+          <p>Purchased on {{review.purchaseDate | date : 'MMMM d, y'}}</p>
         </div>
 
       </div>
@@ -175,7 +175,7 @@
             </div>
 
 
-            <p class="dateOfRev">Reviewed in Cairo on {{review.dateCreated | date : 'MMMM d, y' }}</p>
+            <p class="dateOfRev">Reviewed in {{review.userCity}} on {{review.dateCreated | date : 'MMMM d, y' }}</p>
           </div>
 
 
@@ -194,7 +194,7 @@
 
         <!-- Date Of Publish the comment -->
         <div class="dateOfPublish">
-          <p>Purchased on May 1, 2023</p>
+          <p>Purchased on {{review.purchaseDate | date : 'MMMM d, y'}}</p>
         </div>
 
       </div>
