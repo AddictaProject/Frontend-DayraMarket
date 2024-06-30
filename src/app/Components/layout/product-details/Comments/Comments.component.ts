@@ -27,6 +27,8 @@ export class CommentsComponent implements OnInit {
   ratingCount: { [key: number]: number } = {};
   rating : number[]=[5,4,3,2,1]
 
+  selectedRating: number | undefined;
+
   @ViewChild('commentSection', { static: true }) commentSection!: ElementRef;
 
 
@@ -75,9 +77,14 @@ export class CommentsComponent implements OnInit {
   // Action to review 
   filterReviews(rate: number): void {
     this._ProductDetailsService.loadReviews(this._ProductDetailsService.vendorId, rate);
+    this.selectedRating = rate;
   }
 
+  
   reset(){
     this.vendorReview = this.initialVendorReview;
+    this.selectedRating = undefined;
   }
+
+
 }
