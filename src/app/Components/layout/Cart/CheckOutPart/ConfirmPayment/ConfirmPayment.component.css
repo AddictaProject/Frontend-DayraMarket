@@ -7,7 +7,7 @@
     text-align: center;
     color: rgba(0, 0, 0, 1);
   }
-  
+
 
   /* === */
   /* Second Card */
@@ -18,7 +18,7 @@
     line-height: 19.5px;
     text-align: left;
   }
-  
+
   .lblOfPayment {
     color: rgba(92, 92, 92, 1);
     font-size: 16px;
@@ -27,7 +27,7 @@
     letter-spacing: 0.08em;
     text-align: left;
   }
-  
+
   .txtCardDetails {
     font-size: 14px;
     font-weight: 500;
@@ -36,9 +36,9 @@
     text-align: left;
     color: rgba(85, 85, 85, 1);
   }
-  
 
-  
+
+
 .radioProtection {
     color: rgba(0, 99, 61, 1);
     font-size: 15px;
@@ -47,18 +47,18 @@
     letter-spacing: 0.08em;
     text-align: left;
   }
-  
+
   .form-check-input:checked {
     background-color: rgba(0, 99, 61, 1);
     border-color: rgba(0, 99, 61, 1);
-  
+
     box-shadow: none;
   }
 
   /* ==== */
   /* third one */
 
-  
+
 
 .userInput {
     padding: 15px 25px;
@@ -69,13 +69,13 @@
   .form-control:focus{
     box-shadow: none;
   }
-  
+
   .iconOfInput {
     background-color: rgba(244, 244, 244, 1);
     border: none;
     padding-right: 25px;
   }
-  
+
   input[type="text"],
   input[type="tel"] {
     color: rgba(85, 85, 85, 1);
@@ -86,17 +86,71 @@
     text-align: left;
   }
 
-  
+
    /* === */
   /* Add To Cart */
   .btnAddToCart {
     width: 100%;
     background: rgba(107, 155, 136, 1);
     color: white;
-  
+
     font-size: 16px;
     font-weight: 600;
     line-height: 19.5px;
     letter-spacing: 0.08em;
     text-align: center;
+  }
+
+  .loader {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+    border: 3px solid;
+    border-color: #FFF #FFF transparent transparent;
+    box-sizing: border-box;
+    animation: rotation 2s linear infinite;
+  }
+  .loader::after,
+  .loader::before {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    border: 3px solid;
+    border-color: transparent transparent #000 #000;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    box-sizing: border-box;
+    animation: rotationBack 1s linear infinite;
+    transform-origin: center center;
+  }
+  .loader::before {
+    width: 16px;
+    height: 16px;
+    border-color: #FFF #FFF transparent transparent;
+    animation: rotation 3s linear infinite;
+  }
+
+  @keyframes rotation {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes rotationBack {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(-360deg);
+    }
   }

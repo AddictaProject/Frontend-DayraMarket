@@ -46,6 +46,7 @@ export class ConfirmPaymentComponent implements OnInit {
         this.orderService.confirmOrder=res;
         this.cartService.clearCart();
         this.nextStep.emit();
+        this.isOrdered=true
       },
       error: (err:any) => {
         console.log(err);

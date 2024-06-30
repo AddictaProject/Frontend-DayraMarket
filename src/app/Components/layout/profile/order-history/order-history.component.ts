@@ -106,7 +106,9 @@ export class OrderHistoryComponent {
       if (result.value) {
         this.orderService.cancelOrderItem(id).subscribe({
           next:(res:any)=>{
-            let elem=(e.target as HTMLElement).closest('div')!.querySelector('.status')!.textContent="Cancelled";
+            let elem=(e.target as HTMLElement);
+            elem.classList.add('d-none');
+            elem.closest('div')!.querySelector('.status')!.textContent="Cancelled";
             Swal.fire({
               title: 'Canceled!',
               text: 'Your order has been canceled.',
@@ -147,7 +149,9 @@ export class OrderHistoryComponent {
       if (result.value) {
         this.orderService.returnOrderItem(id).subscribe({
           next:(res:any)=>{
-            let elem=(e.target as HTMLElement).closest('div')!.querySelector('.status')!.textContent="ReturnRequested";
+            let elem=(e.target as HTMLElement);
+            elem.classList.add('d-none');
+            elem.closest('div')!.querySelector('.status')!.textContent="ReturnRequested";
             Swal.fire({
               title: 'ReturnRequested!',
               text: 'Your order has been requested to return.',

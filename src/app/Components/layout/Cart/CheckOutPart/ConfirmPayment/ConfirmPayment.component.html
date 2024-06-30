@@ -1,120 +1,124 @@
-  <!-- First One -->
-  <div class="card mb-3">
-    <div class="row g-0">
+<!-- First One -->
+<div class="card mb-3">
+  <div class="row g-0">
 
-      <div class="card-body ">
+    <div class="card-body ">
 
 
-        <div class="justify-content-between d-flex totalPrice py-2 px-2  " style="border-top: none;">
-          <p class="txtOfCountFinal mb-0">Total </p>
-          <p class="txtOfCountFinal mb-0">{{cartService.finalTotalPrice}} L.E</p>
-        </div>
-
+      <div class="justify-content-between d-flex totalPrice py-2 px-2  " style="border-top: none;">
+        <p class="txtOfCountFinal mb-0">Total </p>
+        <p class="txtOfCountFinal mb-0">{{cartService.finalTotalPrice}} L.E</p>
       </div>
 
-
     </div>
+
+
   </div>
+</div>
 
-  <!-- Second One -->
-  <div class="card mb-3">
-    <div class="row g-0">
+<!-- Second One -->
+<div class="card mb-3">
+  <div class="row g-0">
 
-      <div class="card-body ">
+    <div class="card-body ">
 
-        <div class="py-2 px-2">
-          <p class="headerOfSelectPayment mb-4">Select Payment Method</p>
+      <div class="py-2 px-2">
+        <p class="headerOfSelectPayment mb-4">Select Payment Method</p>
 
-          <div class="form-check pb-2">
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3"
-            [value]="'credit'"
+        <div class="form-check pb-2">
+          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" [value]="'credit'"
             (change)="onPaymentMethodChange(paymentMethodEnum.CreditCard)"
-            [checked]="selectedPaymentMethod === paymentMethodEnum.CreditCard" >
-            <label class="form-check-label lblOfPayment" for="flexRadioDefault3">
-              Credit Card
-            </label>
-          </div>
+            [checked]="selectedPaymentMethod === paymentMethodEnum.CreditCard">
+          <label class="form-check-label lblOfPayment" for="flexRadioDefault3">
+            Credit Card
+          </label>
+        </div>
 
 
-          @if (cartService.finalTotalPrice <= 30000) {
-          <div class="form-check " >
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4"
-            [value]="'cash'"
+        @if (cartService.finalTotalPrice <= 30000) { <div class="form-check ">
+          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4" [value]="'cash'"
             (change)="onPaymentMethodChange(paymentMethodEnum.COD)"
             [checked]="selectedPaymentMethod === paymentMethodEnum.COD">
-            <label class="form-check-label lblOfPayment" for="flexRadioDefault4">
-              Cash on Delivery
-            </label>
-          </div>
-        }
+          <label class="form-check-label lblOfPayment" for="flexRadioDefault4">
+            Cash on Delivery
+          </label>
+      </div>
+      }
 
-          @if(selectedPaymentMethod==paymentMethodEnum.COD){
-            <!-- Confirm -->
-          <div class="d-flex justify-content-center  mt-4 " >
-            <button class="btn btnAddToCart py-3" role="button" [disabled]="!isOrdered" (click)="next()">
-              Confirm </button>
-          </div>
+      @if(selectedPaymentMethod==paymentMethodEnum.COD){
+      <!-- Confirm -->
+
+      <div class="d-flex justify-content-center  mt-4 ">
+        <button class="btn btnAddToCart py-3" role="button" [disabled]="!isOrdered" (click)="next()">
+          @if(isOrdered)
+          {
+          Confirm
           }
+          @else {
+            <div class="loader"></div>
+          }
+        </button>
+      </div>
+      }
 
+    </div>
+
+
+  </div>
+
+
+</div>
+</div>
+
+<!-- third One -->
+
+@if (selectedPaymentMethod==paymentMethodEnum.CreditCard) {
+<div class="card ">
+  <div class="row g-0">
+
+    <div class="card-body ">
+
+      <div class="py-2 px-2">
+
+        <!-- card Name -->
+        <div class="input-group mb-3 mt-3">
+          <input type="text" class=" userInput form-control" placeholder="Card Holder Name" aria-label="Username"
+            aria-describedby="basic-addon1">
 
         </div>
 
+        <!-- card number -->
+        <div class="input-group mb-3">
+          <input type="text" class="form-control userInput" placeholder="Card Number" aria-label="Email"
+            aria-describedby="basic-addon1">
+
+        </div>
+
+        <!-- card details -->
+        <div class="d-flex input-group mb-3">
+          <div class="col-6 pe-3">
+            <input type="text" class="form-control userInput  txtCardDetails" placeholder="CVV"
+              aria-label="Building Number">
+          </div>
+          <div class="col-6 ">
+            <input type="text" class="form-control userInput txtCardDetails " placeholder="MM / YY"
+              aria-label="apartment number">
+          </div>
+        </div>
+
+        <!-- Confirm -->
+        <div class="d-flex justify-content-center mb-3 ">
+          <a class="btn btnAddToCart py-3" role="button" (click)="next()">
+            Confirm </a>
+        </div>
 
       </div>
 
 
     </div>
+
+
   </div>
-
-  <!-- third One -->
-
-  @if (selectedPaymentMethod==paymentMethodEnum.CreditCard) {
-  <div class="card ">
-    <div class="row g-0">
-
-      <div class="card-body ">
-
-        <div class="py-2 px-2">
-
-          <!-- card Name -->
-          <div class="input-group mb-3 mt-3">
-            <input type="text" class=" userInput form-control" placeholder="Card Holder Name"
-              aria-label="Username" aria-describedby="basic-addon1">
-
-          </div>
-
-          <!-- card number -->
-          <div class="input-group mb-3">
-            <input type="text" class="form-control userInput" placeholder="Card Number" aria-label="Email"
-              aria-describedby="basic-addon1">
-
-          </div>
-
-          <!-- card details -->
-          <div class="d-flex input-group mb-3">
-            <div class="col-6 pe-3">
-              <input type="text" class="form-control userInput  txtCardDetails" placeholder="CVV"
-                aria-label="Building Number">
-            </div>
-            <div class="col-6 ">
-              <input type="text" class="form-control userInput txtCardDetails " placeholder="MM / YY"
-                aria-label="apartment number">
-            </div>
-          </div>
-
-          <!-- Confirm -->
-          <div class="d-flex justify-content-center mb-3 ">
-            <a class="btn btnAddToCart py-3" role="button"  (click)="next()">
-              Confirm </a>
-          </div>
-
-        </div>
-
-
-      </div>
-
-
-    </div>
-  </div>
+</div>
 
 }

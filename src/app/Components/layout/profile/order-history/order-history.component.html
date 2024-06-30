@@ -34,7 +34,8 @@
       <button class="change-state mb-0 border-0 bg-transparent" (click)="cancelOrderItem($event,item.uuid)">Cancel
         Order</button>
       }@else if (item.status=='Delivered') {
-      <button class="change-state mb-0  border-0 bg-transparent" (click)="returnOrderItem($event,item.uuid)">Refund</button>
+      <button class="change-state mb-0  border-0 bg-transparent"
+        (click)="returnOrderItem($event,item.uuid)">Refund</button>
       }
     </div>
   </div>
@@ -56,21 +57,32 @@
       <div class="rate d-flex gap-3 mt-4">
         <h6 class="mb-0">How do you rate this product?</h6>
         <div class="stars d-flex gap-1">
+          @if(reviewItem.review && reviewItem.review.rate){
+          @for (val of [1,2,3,4,5]; track $index) {
+          @if(reviewItem.review.rate >= val){
+          <i class="fa-solid fa-star fixed reviewed"></i>
+          } @else {
+          <i class="fa-solid fa-star reviewed"></i>
+          }
+          }
+          }@else {
           @for (val of [1,2,3,4,5]; track $index) {
           <i StarHover class="fa-solid fa-star" (click)="onClick($event,val)"></i>
           }
+          }
+
         </div>
       </div>
       <form [formGroup]="form" (submit)="onSubmit()">
         <div class="comment mt-4">
           <h6>Write a product review</h6>
-          <textarea formControlName="comment"
-            placeholder="What did you like or dislike? How did you use the product? What should others know before buying?"
+          <textarea [readOnly]="reviewItem.review" formControlName="comment"
+            [placeholder]="reviewItem.review ?reviewItem.review.comment:'What did you like or dislike? How did you use the product? What should others know before buying?'"
             maxlength="1000"></textarea>
         </div>
         <div class="btns d-flex justify-content-end gap-3 mt-4 ">
           <button type="reset" class="btn btn-secondary" (click)="reviewVisible=false">Cancel</button>
-          <button class="btn btn-submit" type="submit" [disabled]="!rate || form.invalid">Submit</button>
+          <button class="btn btn-submit" type="submit" [disabled]="reviewItem.review" [disabled]="!rate || form.invalid">Submit</button>
         </div>
       </form>
     </div>

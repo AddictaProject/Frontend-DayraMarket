@@ -1,3 +1,5 @@
+import { IReview } from "./IReview";
+
 export interface IOrderItem {
   dateCreated:Date;
   uuid: string;
@@ -6,13 +8,12 @@ export interface IOrderItem {
   productStockUuid: string;
   photoPaths:string[],
   attributes:IAttributesOrder[] ,
-  productDisplayName:string
-
+  productDisplayName:string,
+  review?:IReview
 }
 
 export interface IAttributesOrder {
   uuid?: string;
   attributeDisplayName: string;
   attributeValue: string;
-
 }

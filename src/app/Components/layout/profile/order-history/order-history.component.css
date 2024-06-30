@@ -83,6 +83,9 @@ img {
 .fa-star.fixed {
   color: #F0AD4E
 }
+.fa-star.reviewed{
+  cursor: default ;
+}
 
 textarea {
   width: 100%;
