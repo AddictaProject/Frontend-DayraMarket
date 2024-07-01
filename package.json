@@ -22,6 +22,7 @@
     "@sweetalert2/ngx-sweetalert2": "^12.3.0",
     "bootstrap": "^5.3.3",
     "bootstrap-vue": "^2.23.1",
+    "gsap": "^3.12.5",
     "jquery": "^3.7.1",
     "ngx-drag-scroll": "^17.0.1",
     "primeng": "^17.17.0",

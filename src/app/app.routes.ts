@@ -15,6 +15,7 @@ import { NoAccountComponent } from './Components/layout/User/no-account/no-accou
 import { ShowAddressesComponent } from './Components/layout/profile/my-addresses/show-addresses/show-addresses.component';
 import { AddUpdateAddressComponent } from './Components/layout/profile/my-addresses/add-update-address/add-update-address.component';
 import { CommentsComponent } from './Components/layout/product-details/Comments/Comments.component';
+import { NotFoundComponent } from './Components/layout/NotFound/NotFound.component';
 
 export const routes: Routes = [
   {path:"", component: HomeComponent},
@@ -36,5 +37,6 @@ export const routes: Routes = [
         { path: 'update-address', component:AddUpdateAddressComponent }
       ]},
   ]},
+  {path:'**', component:NotFoundComponent, title:'Not Found' }
 
 ];

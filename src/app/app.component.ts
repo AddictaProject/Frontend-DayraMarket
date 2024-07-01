@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import {  NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './Components/Shared/FHeader/Header/Header.component';
 import { FooterComponent } from './Components/Shared/Footer/Footer.component';
 import { Header2Component } from './Components/Shared/FHeader/Header2/Header2.component';
@@ -15,6 +15,7 @@ import { FilterSecComponent } from "./Components/layout/products-page/filter-sec
 import { VerifyComponent } from "./Components/layout/User/verify/verify.component";
 import { SignUpComponent } from "./Components/layout/User/sign-up/sign-up.component";
 import { SignInComponent } from "./Components/layout/User/sign-in/sign-in.component";
+import { filter } from 'rxjs';
 
 @Component({
     selector: 'app-root',
@@ -24,8 +25,15 @@ import { SignInComponent } from "./Components/layout/User/sign-in/sign-in.compon
     imports: [RouterOutlet, HeaderComponent, FooterComponent, Header2Component, ProductsPageComponent,
         ShowingProductComponent, MightLikeComponent, ProductDetailsComponent, MobileFilterComponent, FilterComponent, FilterSecComponent, FHeaderComponent, VerifyComponent, SignUpComponent, SignInComponent]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'Addicta';
+  headerFooterVisible = true;
+
+  constructor(private router: Router) {}
+  
+  ngOnInit(): void {
+
+  }
 
 
 }
