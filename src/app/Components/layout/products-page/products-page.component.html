@@ -39,9 +39,17 @@
         class="flex-md-grow-0 flex-grow-1 d-flex mb-4"></app-card-placeholder>
       }
       }
+      }@else {
+        <div class="text-center">
+        <img src="./../../../../assets/images/NoProducts3.webp" alt="NoProducts"
+        width="100%" height="400px">
+        <p class="txtNoProducts">No Products Found !</p>
+      </div>
       }
     </div>
   </section>
+  @if(productService.totalCount>0)
+      {
   <div class="pagination d-flex justify-content-md-end justify-content-center mt-5">
     <div #paginationRef class="d-flex gap-2 align-items-center">
       <p-paginator
@@ -50,5 +58,6 @@
     [totalRecords]="productService.totalCount" />
     </div>
   </div>
+}
 </section>
 <app-mobile-filter class="d-lg-none d-block"></app-mobile-filter>

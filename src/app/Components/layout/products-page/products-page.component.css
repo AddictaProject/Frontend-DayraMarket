@@ -55,3 +55,9 @@ h4{
   cursor: pointer;
 }
 
+
+.txtNoProducts{
+  font-weight: 400;
+  font-size: xx-large;
+  line-height: 15px;
+}

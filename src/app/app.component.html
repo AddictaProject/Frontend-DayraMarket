@@ -1,8 +1,10 @@
 
-<!-- @if (headerFooterVisible) { -->
+@if (!isNotFound) {
 <app-FHeader></app-FHeader>
-<!-- } -->
+}
 
 <router-outlet></router-outlet>
 
+@if (!isNotFound) {
 <app-Footer></app-Footer>
+}

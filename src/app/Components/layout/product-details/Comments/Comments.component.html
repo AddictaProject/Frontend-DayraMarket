@@ -5,7 +5,7 @@
   <!-- Product Name -->
   <div class="reviewSec">
 
-    <p>{{_ProductDetailsService.product.displayName}} - Vendor reviews</p>
+    <p>{{_ProductDetailsService.product.displayName}} - Customer reviews</p>
 
   </div>
 
@@ -99,6 +99,8 @@
     <div class="col-lg-9 col-md-12 ps-lg-5 pt-3 commentClass ">
 
       <!--1 comment -->
+      @if(vendorReview.length>0){
+
       @if(showRemainCategories){
 
       @for(review of vendorReview ; track review){
@@ -133,7 +135,7 @@
 
 
         <!-- User Comment -->
-        <div>
+        <div style="flex-wrap: wrap;">
           <p class="userComment">{{review.comment}}</p>
         </div>
 
@@ -199,6 +201,14 @@
 
       </div>
       }
+      }
+
+      }@else {
+      <div class="text-center">
+        <img src="./../../../../../assets/images/NoReview7.jfif" alt="No Review Yet" width="35%" height="200px">
+   
+        <p class="txtNoProducts">No Reviews Were Found Matching Your Selection :( !</p>
+      </div>
       }
 
 

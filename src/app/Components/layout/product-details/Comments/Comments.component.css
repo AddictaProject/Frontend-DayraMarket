@@ -141,6 +141,7 @@
   font-family: "Montserrat", sans-serif;
   line-height: 20px;
   font-size: 15.13px;
+  text-wrap: wrap;
 }
 
 .ProdNameInComm a {
@@ -200,13 +201,28 @@
   font-size: 18px;
 }
 
+.user-img{
+  background-color: #E9D1FF;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.txtNoProducts{
+  font-weight: 400;
+  font-size: larger;
+  line-height: 15px;
+}
+
 /*===*/
 /* Responsive */
 
 @media screen and (max-width: 577px) {
-  .filtrationStars {
-    display: none;
-  }
+ 
 
   .commentsSection {
     padding: 0 20px 0 20px;
@@ -218,8 +234,27 @@
   .verficatedSvg{
     margin-left: 0 !important;
   }
+
+  .txtNoProducts{
+    font-size:medium;
+
+  }
 }
 
+@media screen and (max-width: 476px) {
+
+  .txtNoProducts{
+    font-size:small;
+
+  }
+}
+@media screen and (max-width: 381px) {
+
+  .txtNoProducts{
+    font-size:x-small;
+
+  }
+}
 
 @media screen and (max-width: 992px) {
  .commentClass{
@@ -227,12 +262,3 @@
  }
 }
 
-.user-img{
-  background-color: #E9D1FF;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
