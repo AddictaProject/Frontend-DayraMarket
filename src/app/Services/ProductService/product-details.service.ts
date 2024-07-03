@@ -173,6 +173,10 @@ export class ProductDetailsService {
       else this.isActiveMostPopular = false;
 
       val.isLoading = false;
+      this.vendorId = data.selectedStock.vendorUuid;
+        if(this.product.reviewCount>0){
+          this.loadReviews();
+        }
     });
   }
 
