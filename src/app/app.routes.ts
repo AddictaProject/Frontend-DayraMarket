@@ -37,6 +37,7 @@ export const routes: Routes = [
         { path: 'update-address', component:AddUpdateAddressComponent }
       ]},
   ]},
-  {path:'**', component:NotFoundComponent, title:'Not Found' }
+  { path: 'not-found', component: NotFoundComponent , title:'Not Found'},
+  { path: '**', redirectTo: 'not-found' },
 
 ];
