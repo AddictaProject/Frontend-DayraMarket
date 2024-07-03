@@ -36,7 +36,7 @@ export class AppComponent implements OnInit {
       filter((event): event is NavigationEnd => event instanceof NavigationEnd)
     ).subscribe((event: NavigationEnd) => {
       // this.isNotFound = this.router.routerState.snapshot.root.firstChild?.routeConfig?.path === '**';
-      this.isNotFound = this.router.url === '/not-found';
+      this.isNotFound = this.router.url.includes( '/not-found');
 
     });
   }
