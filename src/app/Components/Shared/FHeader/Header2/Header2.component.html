@@ -19,7 +19,7 @@
       <!-- Categories  and brands-->
       <div class="">
         <div class="row flex-row flex-nowrap ">
-          @if(!isBrandLoaded && isCategoryLoaded){
+          @if(isBrandLoaded && isCategoryLoaded){
 
           @for (item of brands; track $index) {
           <span style="width: auto;">
