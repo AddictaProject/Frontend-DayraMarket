@@ -9,6 +9,7 @@ export interface IOrderItem {
   photoPaths:string[],
   attributes:IAttributesOrder[] ,
   productDisplayName:string,
+  orderUuid:string,
   review?:IReview
 }
 

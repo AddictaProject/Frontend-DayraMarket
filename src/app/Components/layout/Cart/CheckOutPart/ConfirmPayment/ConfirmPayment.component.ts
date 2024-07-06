@@ -25,12 +25,11 @@ export class ConfirmPaymentComponent implements OnInit {
 
   isOrdered=true;
 
-  constructor(  public cartService: CartService, private orderService :OrderService ) { }
+  constructor(  public cartService: CartService, private orderService :OrderService,private router:Router ) { }
 
   ngOnInit() {
 
   }
-
 
   next() {
     this.isOrdered=false;
@@ -40,24 +39,22 @@ export class ConfirmPaymentComponent implements OnInit {
       shippingAddressUuid:this.orderService.userAddress.uuid ??'',
       items:productStockUuids
     }
-
     this.orderService.createOrder(order).subscribe({
       next: (res:any) => {
         this.orderService.confirmOrder=res;
+        localStorage.setItem('orderPlaced','true');
         this.cartService.clearCart();
-        this.nextStep.emit();
-        this.isOrdered=true
+        if(res.paymentMethod==="COD")
+          this.router.navigate(["order-placed"]);
+        else
+          window.location.href=res.redirect_Url;
+        this.isOrdered=true;
       },
       error: (err:any) => {
         console.log(err);
       }
-
-
     });
-
-
   }
-
   // Payment Methods
   onPaymentMethodChange(method:PaymentMethod ) {
     this.selectedPaymentMethod = method;

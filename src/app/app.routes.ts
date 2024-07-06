@@ -16,6 +16,8 @@ import { ShowAddressesComponent } from './Components/layout/profile/my-addresses
 import { AddUpdateAddressComponent } from './Components/layout/profile/my-addresses/add-update-address/add-update-address.component';
 import { CommentsComponent } from './Components/layout/product-details/Comments/Comments.component';
 import { NotFoundComponent } from './Components/layout/NotFound/NotFound.component';
+import { SuccessCartComponent } from './Components/layout/Cart/CheckOutPart/SuccessCart/SuccessCart.component';
+import { orderPlacedGuard } from './order-placed.guard';
 
 export const routes: Routes = [
   {path:"", component: HomeComponent},
@@ -23,13 +25,13 @@ export const routes: Routes = [
   { path: 'products', component: ProductsPageComponent, title: 'Products' },
   { path: 'product/:id', component: ProductDetailsComponent, title: 'Product Details' },
   { path: 'cart', component:CartComponent, title: 'Cart' },
+  { path:'order-placed',component:SuccessCartComponent ,canActivate:[orderPlacedGuard]},
   { path: 'no-account', component:NoAccountComponent, title: 'No Account' },
   { path: 'login', component:SignInComponent, title: 'Login' },
   { path: 'signup', component:SignUpComponent, title: 'SignUp' },
   { path: 'profile', component:ProfileComponent, title: 'Profile' ,canActivate: [userGuard],children:[
 
       { path: '', component:MyDataComponent },
-      { path: 'saved-cards', component:SavedCardsComponent },
       { path: 'order-history', component:OrderHistoryComponent },
       { path: 'my-addresses',children:[
         { path: '', component:ShowAddressesComponent },

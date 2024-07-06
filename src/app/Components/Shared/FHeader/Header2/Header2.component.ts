@@ -15,13 +15,14 @@ import { ICategory } from '../../../../Models/Category/ICategory';
 import { SecondOffCanvasComponent } from './secondOffCanvas/secondOffCanvas.component';
 import { IBrand } from '../../../../Models/Brand/IBrand';
 import { FilterApiService } from '../../../../Services/FilterServices/filter-api.service';
+import { SkeletonModule } from 'primeng/skeleton';
 
 @Component({
   selector: 'app-Header2',
   standalone: true,
   templateUrl: './Header2.component.html',
   styleUrls: ['./Header2.component.css'],
-  imports: [RouterModule, CommonModule, SecondOffCanvasComponent],
+  imports: [RouterModule, CommonModule, SecondOffCanvasComponent,SkeletonModule],
 })
 export class Header2Component implements OnInit {
   category: ICategory[] = [];
@@ -29,7 +30,8 @@ export class Header2Component implements OnInit {
   selectedCategory: any;
   // isOffcanvasOpen!: boolean ;
   currentOffcanvasState: string | null = null;
-
+  isBrandLoaded: boolean = false;
+  isCategoryLoaded: boolean = false;
   constructor(
     private offCanvasOb: OffCanvasService,
     private renderer: Renderer2,
@@ -45,6 +47,7 @@ export class Header2Component implements OnInit {
     this.filterService.getAllCategories().subscribe({
       next: (res: any) => {
         this.category = res;
+        this.isCategoryLoaded=true;
       },
       error(err) {
         console.log(err);
@@ -53,6 +56,7 @@ export class Header2Component implements OnInit {
     this.filterService.getAllBrand().subscribe({
       next: (res: any) => {
         this.brands = res;
+        this.isBrandLoaded=true;
       },
       error(err) {
         console.log(err);
@@ -117,10 +121,20 @@ export class Header2Component implements OnInit {
     this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
       this.router.navigate([`/products`], { state: { categoryId } });
     });
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
   }
   goToBrand(brandId: string) {
     this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
       this.router.navigate([`/products`], { state: { brandId } });
+    });
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
     });
   }
 }

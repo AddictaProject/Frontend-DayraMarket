@@ -1,54 +1,59 @@
 <nav class="navbar py-3 navbar-light bg-light borderOfNav"
- [class.BehaviorWithOffcanvas]="currentOffcanvasState === 'offcanvasTechnical'">
+  [class.BehaviorWithOffcanvas]="currentOffcanvasState === 'offcanvasTechnical'">
   <div class="container scrolling-wrapper">
-    <div class="d-flex flex-nowrap gap-4">
+    <div class="d-flex flex-nowrap gap-4 align-items-center">
 
-    <div class="bars">
-      <a class="btn p-0 border-0" data-bs-toggle="offcanvas" role="button"
-        data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"
-        (click)="toggleOffCanvas('navOfHeader')">
+      <div class="bars">
+        <a class="btn p-0 border-0" data-bs-toggle="offcanvas" role="button" data-bs-target="#offcanvasExample"
+          aria-controls="offcanvasExample" (click)="toggleOffCanvas('navOfHeader')">
 
-        <svg width="23" height="17" viewBox="0 0 23 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path
-            d="M17.25 1.15C17.25 0.514894 16.7351 0 16.1 0H1.15C0.514894 0 0 0.514894 0 1.15C0 1.78511 0.514894 2.3 1.15 2.3H16.1C16.7351 2.3 17.25 1.78506 17.25 1.15ZM1.15 6.9H21.85C22.4851 6.9 23 7.41494 23 8.05C23 8.6851 22.4851 9.2 21.85 9.2H1.15C0.514894 9.2 0 8.6851 0 8.05C0 7.41494 0.514894 6.9 1.15 6.9ZM1.15 13.8H11.5C12.1351 13.8 12.65 14.3149 12.65 14.95C12.65 15.5851 12.1351 16.1 11.5 16.1H1.15C0.514894 16.1 0 15.5851 0 14.95C0 14.3149 0.514894 13.8 1.15 13.8Z"
-            fill="#677788" />
-        </svg>
-      </a>
+          <svg width="23" height="17" viewBox="0 0 23 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M17.25 1.15C17.25 0.514894 16.7351 0 16.1 0H1.15C0.514894 0 0 0.514894 0 1.15C0 1.78511 0.514894 2.3 1.15 2.3H16.1C16.7351 2.3 17.25 1.78506 17.25 1.15ZM1.15 6.9H21.85C22.4851 6.9 23 7.41494 23 8.05C23 8.6851 22.4851 9.2 21.85 9.2H1.15C0.514894 9.2 0 8.6851 0 8.05C0 7.41494 0.514894 6.9 1.15 6.9ZM1.15 13.8H11.5C12.1351 13.8 12.65 14.3149 12.65 14.95C12.65 15.5851 12.1351 16.1 11.5 16.1H1.15C0.514894 16.1 0 15.5851 0 14.95C0 14.3149 0.514894 13.8 1.15 13.8Z"
+              fill="#677788" />
+          </svg>
+        </a>
 
 
-    </div>
-    <!-- Categories  and brands-->
-    <div class="">
-      <div class="row flex-row flex-nowrap ">
+      </div>
+      <!-- Categories  and brands-->
+      <div class="">
+        <div class="row flex-row flex-nowrap ">
+          @if(!isBrandLoaded && isCategoryLoaded){
 
-        @for (item of brands; track $index) {
-        <span style="width: auto;">
-          <a class="stylingCategory " (click)="goToBrand(item.uuid)">
-            {{item.displayName}}
-          </a>
-        </span>
+          @for (item of brands; track $index) {
+          <span style="width: auto;">
+            <a class="stylingCategory " (click)="goToBrand(item.uuid)">
+              {{item.displayName}}
+            </a>
+          </span>
 
-        }
-        @for (item of category; track $index) {
-        <span style="width: auto;">
-          <a class="stylingCategory " (click)="goToCategory(item.uuid)">
-            {{item.displayName}}
-          </a>
-        </span>
-        <!-- 2 level deep -->
+          }
+          @for (item of category; track $index) {
+          <span style="width: auto;">
+            <a class="stylingCategory " (click)="goToCategory(item.uuid)">
+              {{item.displayName}}
+            </a>
+          </span>
+          <!-- 2 level deep -->
 
-        <!-- @for (item2 of item.children; track $index){
+          <!-- @for (item2 of item.children; track $index){
           <span style="width: auto;">
             <a class="stylingCategory " (click)="goToCategory(item.uuid)">
               {{item2.displayName}}
             </a>
           </span>
         } -->
-        }
+          }
+          }@else {
+          @for (item of [1,2,3,4,5,6,7]; track $index) {
+          <p-skeleton width="100%" height=".75rem" />
+          }
+          }
 
+        </div>
       </div>
     </div>
-  </div>
 
   </div>
 </nav>
@@ -65,10 +70,10 @@
 
           @for (item of category; track $index) {
           <li class="itemOffCanvas " (mouseover)="showOffCanvas(item)">
-            <a class="categoryOffCanvas" data-bs-toggle="additionalOffCanvas"
-              data-bs-target="#additionalOffCanvas" aria-controls="additionalOffCanvas" >
+            <a class="categoryOffCanvas" data-bs-toggle="additionalOffCanvas" data-bs-target="#additionalOffCanvas"
+              aria-controls="additionalOffCanvas">
 
-              <img [src]="'https://dayra-market.addictaco.com'+item.iconPath"[width]="20"[height]="20" alt="">
+              <img [src]="'https://dayra-market.addictaco.com'+item.iconPath" [width]="20" [height]="20" alt="">
 
               {{item.displayName.slice(0,15)}}
               {{ item.displayName.length > 15 ? "..." : "" }}
@@ -84,16 +89,17 @@
       <div class="d-lg-none d-block p-3 ">
         <div class="d-flex justify-content-between align-items-center py-3 px-2 mb-2 ">
           <h5 class="mb-0">Categories</h5>
-          <span class="close" data-bs-dismiss="offcanvas" aria-label="Close" (click)="offcanvasRef.classList.remove('show')"><i  class="fa-solid fa-x fw-lighter fa-xl"></i></span>
+          <span class="close" data-bs-dismiss="offcanvas" aria-label="Close"
+            (click)="offcanvasRef.classList.remove('show')"><i class="fa-solid fa-x fw-lighter fa-xl"></i></span>
         </div>
         <ul class="list-unstyled " style="gap: 24px;">
 
           @for (item of category; track $index) {
           <li class="itemOffCanvas " (click)="showOffCanvas(item)">
-            <a class="categoryOffCanvas" data-bs-toggle="additionalOffCanvas"
-              data-bs-target="#additionalOffCanvas" aria-controls="additionalOffCanvas" >
+            <a class="categoryOffCanvas" data-bs-toggle="additionalOffCanvas" data-bs-target="#additionalOffCanvas"
+              aria-controls="additionalOffCanvas">
 
-              <img [src]="'https://dayra-market.addictaco.com'+item.iconPath"[width]="20"[height]="20" alt="">
+              <img [src]="'https://dayra-market.addictaco.com'+item.iconPath" [width]="20" [height]="20" alt="">
 
               {{item.displayName.slice(0,15)}}
               {{ item.displayName.length > 15 ? "..." : "" }}
@@ -108,9 +114,6 @@
   </div>
 
   <!-- Additional OffCanvas -->
-   <app-secondOffCanvas [selectedCategory]="selectedCategory" (close)="closeAdditionalOffCanvas()"></app-secondOffCanvas>
+  <app-secondOffCanvas [selectedCategory]="selectedCategory" (close)="closeAdditionalOffCanvas()"></app-secondOffCanvas>
 
 </div>
-
-
-

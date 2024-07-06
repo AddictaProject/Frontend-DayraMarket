@@ -12,7 +12,6 @@ import { IReview } from '../../Models/Order/IReview';
 export class OrderService {
   private URL!: string;
   userAddress!: IUserAddress;
-
   confirmOrder!:IOrder;
 
   constructor(private httpClient: HttpClient) {
@@ -33,6 +32,10 @@ export class OrderService {
   }
   returnOrderItem(itemId:string){
     return this.httpClient.put(this.URL+`orders/items/${itemId}/return`,'');
+  }
+
+  paymentRequest(orderId:string){
+    return this.httpClient.post(this.URL+`orders/${orderId}/payment-request`,'');
   }
 
 

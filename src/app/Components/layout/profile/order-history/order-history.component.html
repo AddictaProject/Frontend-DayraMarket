@@ -29,8 +29,10 @@
       <p class="mb-0 status ">{{item.status}}</p>
       @if (item.status=='Delivered' ) {
       <button class="change-state mb-0  border-0 bg-transparent" (click)="openReview(item)">Review</button>
+      }@else if (item.status=='PendingPayment') {
+      <button class="change-state mb-0  border-0 bg-transparent" (click)="paymentRequest(item.orderUuid)">Request payment</button>
       }
-      @if (item.status=='New' || item.status=='PendingPickup') {
+      @if (item.status=='New' || item.status=='PendingPickup' || item.status=='PendingPayment') {
       <button class="change-state mb-0 border-0 bg-transparent" (click)="cancelOrderItem($event,item.uuid)">Cancel
         Order</button>
       }@else if (item.status=='Delivered') {

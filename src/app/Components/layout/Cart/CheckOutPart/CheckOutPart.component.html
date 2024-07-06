@@ -31,7 +31,6 @@
 
     <!-- Main content -->
     <div class="row mt-5">
-
       <!-- Right Section -->
       <div class="col-lg-8 mb-5">
         <!-- Details  l-->
@@ -129,10 +128,8 @@
 
 
       </div>
-
       <!-- Left Section -->
       <div class="col-lg-4 mb-5">
-
         @switch (CurrentCase) {
         @case (CartCasesEnum.Default) {
         <app-DefaultCheckOut (nextStep)="goToNextCase()"></app-DefaultCheckOut>
@@ -146,14 +143,10 @@
         @case (CartCasesEnum.Confirm) {
         <app-ConfirmPayment (nextStep)="goToNextCase()"></app-ConfirmPayment>
         }
-        @case (CartCasesEnum.Success) {
-        <app-SuccessCart (nextStep)="goToNextCase()"></app-SuccessCart>
-        }
         @default {
         <h1>Something Wrong Please Refresh The Page ! </h1>
         }
         }
-
       </div>
 
     </div>

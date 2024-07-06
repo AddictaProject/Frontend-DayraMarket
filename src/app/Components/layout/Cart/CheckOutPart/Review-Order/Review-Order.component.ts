@@ -25,7 +25,6 @@ export class ReviewOrderComponent implements OnInit {
 
   ngOnInit() {
     this.userAddress = this.orderService.userAddress;
-
     this.settingService.getShippingAddress().subscribe({
       next: (data: any) => {
         this.settingService.shippingInfo = data;

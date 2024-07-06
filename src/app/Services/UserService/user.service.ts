@@ -44,6 +44,9 @@ export class UserService {
   deleteUserAddress(id:string){
     return this.httpClient.delete(this.URL+'users/my/addresses/'+id);
   }
+  getUserAddressById(id:string){
+    return this.httpClient.get(this.URL+'users/my/addresses/'+id);
+  }
   resetUserPassword(model:IResetPassword){
     return this.httpClient.post(this.URL+'users/reset-password', model);
   }
