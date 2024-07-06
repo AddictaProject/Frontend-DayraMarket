@@ -26,7 +26,6 @@ export class CommentsComponent implements OnInit {
 
   ratingCount: { [key: number]: number } = {};
   rating : number[]=[5,4,3,2,1]
-
   selectedRating: number | undefined;
 
   @ViewChild('commentSection', { static: true }) commentSection!: ElementRef;
@@ -40,47 +39,42 @@ export class CommentsComponent implements OnInit {
   ngOnInit() {
 
     this._ProductDetailsService.vendorReview$.subscribe(reviews => {
-
-      if (this.initialVendorReview.length === 0) {
-        this.initialVendorReview = reviews;
-      }
+      this.initialVendorReview = reviews;
       this.vendorReview = reviews;
-
-      this.remainNumOfComments =this.vendorReview.length-4;   
+      this.selectedRating=0;
+      this.remainNumOfComments =this.vendorReview.length-4;
       this.calculateRatings();
-    }); 
-    
+    });
+
   }
 
 
-  // For button 
+  // For button
   showMore() {
-    this.showRemainCategories = !this.showRemainCategories; 
+    this.showRemainCategories = !this.showRemainCategories;
   }
 
   // For Bar Color In filtration
   calculateRatings() {
-    
     this.ratingCount = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
-
     this.initialVendorReview.forEach(review => {
       if (this.ratingCount.hasOwnProperty(review.rate)) {
         this.ratingCount[review.rate]++;
       }
-    });    
+    });
   }
 
   getWidth(rating: number): string {
     return this.initialVendorReview.length > 0 ? (this.ratingCount[rating] / this.initialVendorReview.length  * 100) + '%' : '0%';
   }
 
-  // Action to review 
+  // Action to review
   filterReviews(rate: number): void {
-    this._ProductDetailsService.loadReviews(this._ProductDetailsService.product.uuid,this._ProductDetailsService.vendorId, rate);
+    this.vendorReview=this.initialVendorReview.filter(review => review.rate===rate);
     this.selectedRating = rate;
   }
 
-  
+
   reset(){
     this.vendorReview = this.initialVendorReview;
     this.selectedRating = undefined;
