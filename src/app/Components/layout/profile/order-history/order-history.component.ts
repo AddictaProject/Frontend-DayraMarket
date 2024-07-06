@@ -174,7 +174,6 @@ export class OrderHistoryComponent {
   }
 
   paymentRequest(id:string){
-    debugger
     this.orderService.paymentRequest(id).subscribe((res:any)=>{
       localStorage.setItem('orderPlaced','true');
       window.location.href=res.redirect_Url;
