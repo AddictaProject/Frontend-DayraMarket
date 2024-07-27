@@ -11,7 +11,7 @@
     <div class="product-section">
       <div class="header">
         <h2 class="title">{{level2.displayName}}</h2>
-        <a (click)="goToCategory(selectedCategory.uuid)" class="view-all">View All
+        <a data-bs-toggle="offcanvas" (click)="goToCategory(selectedCategory.uuid)" class="view-all">View All
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
             stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrowhead">
             <polyline points="12 5 19 12 12 19"></polyline>
@@ -20,7 +20,7 @@
       </div>
       <div class="product-list">
         @for (level3 of level2.children ; track $index) {
-        <a (click)="goToCategory(selectedCategory.uuid)" class="col-4">{{level3.displayName}}</a>
+        <a   data-bs-toggle="offcanvas" (click)="goToCategory(level3.uuid)" class="col-4">{{level3.displayName}}</a>
         }
       </div>
     </div>

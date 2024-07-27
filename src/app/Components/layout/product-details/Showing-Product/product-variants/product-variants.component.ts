@@ -35,7 +35,7 @@ export class ProductVariantsComponent implements OnInit {
   isOffCanvasVisible = false;
   responsiveOptions!: { breakpoint: string; numVisible: number; numScroll: number; }[];
   img!: never[];
-
+  VariantType=VariantType
   constructor(
     public productDetailsService: ProductDetailsService,
     private offCanvasOb: OffCanvasService
@@ -58,7 +58,6 @@ export class ProductVariantsComponent implements OnInit {
     });
     this.productDetailsService.allAttributes[this.productVariants.type] =
       this.values;
-
     // carousal
 
     this.img=[]

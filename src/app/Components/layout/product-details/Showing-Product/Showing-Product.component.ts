@@ -23,6 +23,7 @@ import { BehaviorSubject } from 'rxjs';
 import { IVariantValues } from '../../../../Models/Product/Prod-Details/IVariantValues';
 import { ProductPlaceholderComponent } from '../product-placeholder/product-placeholder.component';
 import { SkeletonModule } from 'primeng/skeleton';
+import { VariantType } from '../../../../Models/Product/Prod-Details/enum/variant-type';
 
 @Component({
   selector: 'app-Showing-Product',
@@ -76,7 +77,7 @@ export class ShowingProductComponent implements OnInit {
       numVisible: 1,
     },
   ];
-
+VariantType=VariantType
   @ViewChild('LearnMore') LearnMore!: ElementRef;
 
   constructor(
@@ -191,5 +192,5 @@ export class ShowingProductComponent implements OnInit {
   // Scrolling From More to Comments
   scrollToComments() {
     this.scrollToCommentEvent.emit();
-  } 
+  }
 }

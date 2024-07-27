@@ -69,24 +69,6 @@ export class Header2Component implements OnInit {
     this.offCanvasOb.toggleOffcanvas(state);
   }
 
-  smartTechList: string[] = [
-    'iPhone',
-    'MacBook',
-    'iPad',
-    'Apple Watch',
-    'AirPods',
-    'HomePod',
-    'AirPods',
-    'HomePod',
-    'AirPods',
-    'HomePod',
-    'AirPods',
-    'HomePod',
-    'AirPods',
-    'HomePod',
-    'AirPods',
-    'HomePod',
-  ];
 
   showOffCanvas(category: ICategory) {
     this.selectedCategory = category;
@@ -118,6 +100,8 @@ export class Header2Component implements OnInit {
     }
   }
   goToCategory(categoryId: string) {
+    document.querySelectorAll('.offcanvas').forEach(x=>x.classList.remove('show'))
+    this.renderer.removeClass(document.body, 'offcanvas-open');
     this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
       this.router.navigate([`/products`], { state: { categoryId } });
     });

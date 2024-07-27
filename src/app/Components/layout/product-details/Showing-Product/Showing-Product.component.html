@@ -372,9 +372,22 @@
             @if(_ProductDetailsService.variantsGroup.length>0)
             {
             <div>
-              <app-product-variants [productVariants]="_ProductDetailsService.variantsGroup[2]"></app-product-variants>
-              <app-product-variants [productVariants]="_ProductDetailsService.variantsGroup[1]"></app-product-variants>
-              <app-product-variants [productVariants]="_ProductDetailsService.variantsGroup[0]"></app-product-variants>
+              @for (item of _ProductDetailsService.variantsGroup; track $index) {
+                @if(item.type==VariantType.Condition){
+                  <app-product-variants [productVariants]="item"></app-product-variants>
+                }
+              }
+              @for (item of _ProductDetailsService.variantsGroup; track $index) {
+                @if(item.type==VariantType.Storage){
+                  <app-product-variants [productVariants]="item"></app-product-variants>
+                }
+              }
+              @for (item of _ProductDetailsService.variantsGroup; track $index) {
+                @if(item.type==VariantType.Color){
+                  <app-product-variants [productVariants]="item"></app-product-variants>
+                }
+              }
+
             </div>
             }
 
@@ -469,7 +482,7 @@
               }@else {
                 <span class="me-3">No Reviews Yet</span>
               }
-         
+
 
             </div>
 
@@ -478,7 +491,7 @@
               <a class="moreLink"  (click)="scrollToComments()"> more </a>
             }
             </div>
-        
+
           </div>
 
 
@@ -587,7 +600,7 @@
 
                 <!-- Description -->
                 <div class="textOfDescriptionTech">
-                  MacBook Air (2020) 13.3-inch - Apple M1 8-core and 7-core GPU - 8GB RAM - SSD 256GB
+                  {{_ProductDetailsService.product.description}}
                 </div>
 
                 <!-- Verified -->

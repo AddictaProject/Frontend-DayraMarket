@@ -16,6 +16,9 @@ export class SecondOffCanvasComponent  {
   constructor(private router:Router) { }
 
   goToCategory(categoryId: string) {
+    document.querySelectorAll('.offcanvas').forEach(x=>{
+      x.classList.remove('show');
+    })
     //skipLocationChange:true means dont update the url to / when navigating
     this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
       this.router.navigate([`/products`], { state: { categoryId } });
