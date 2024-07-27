@@ -9,7 +9,7 @@
       </div>
     </div>
   </div>
-
+  <iframe class="d-none" name="hiddenFrame" id="hiddenFrame"></iframe>
   <div class="container " style="margin-bottom: 100px;">
     <div class="row">
       <div class="col-12">
@@ -21,9 +21,9 @@
                 <div class="row align-items-lg-center h-100">
                   <div class="col-12">
 
-                    <form [formGroup]="contactUsForm" (submit)="onSubmit()"
-                    action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSdoxTXTtqCdQh05guqTEKvnUDumzbXQl4UwfK4sV41UNQGj2Q/formResponse" 
-                    method="post">
+                    <form [formGroup]="contactUsForm" (submit)="onSubmit($event)"
+                    action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSdoxTXTtqCdQh05guqTEKvnUDumzbXQl4UwfK4sV41UNQGj2Q/formResponse"
+                    method="post" target="hiddenFrame">
                       <div class="row gy-4 gy-xl-5 p-4 p-xl-5">
 
                         <div class="col-12 col-md-6">
@@ -61,7 +61,7 @@
                         <div class="col-12 col-md-6">
                           <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
                           <div class="input-group">
-                            <input type="email" class="form-control" id="email" name="entry.1249400585" value="" 
+                            <input type="email" class="form-control" id="email" name="entry.1249400585" value=""
                             required formControlName="email">
                           </div>
                           @if(contactUsForm.controls.email.hasError('required') && contactUsForm.controls.email.dirty &&
@@ -74,7 +74,7 @@
 
                         <div class="col-12 col-md-6">
                           <label for="topic" class="form-label">Select a Topic <span class="text-danger">*</span></label>
-                          <select class="form-select" id="topic" name="entry.1639120554" required formControlName="topic"> 
+                          <select class="form-select" id="topic" name="entry.1639120554" required formControlName="topic">
                             <option value="Order Status">Order Status</option>
                             <option value="Shipping and Delivery">Shipping and Delivery</option>
                             <option value="Returns and Refunds">Returns and Refunds</option>
@@ -97,7 +97,7 @@
 
                         <div class="col-12">
                           <label for="subject" class="form-label">Subject <span class="text-danger">*</span></label>
-                          <input type="text" class="form-control" id="subject" name="entry.691399399" value="" 
+                          <input type="text" class="form-control" id="subject" name="entry.691399399" value=""
                           required formControlName="subject">
                           @if(contactUsForm.controls.subject.hasError('required') && contactUsForm.controls.subject.dirty &&
                           contactUsForm.controls.subject.touched ){
@@ -122,7 +122,7 @@
 
               <div class="col-12 col-lg-6 bsb-overlay background-position-center infoCompSection"
                 style="--bsb-overlay-opacity: 0.7; background-image: url('./assets/images/contact us.png');">
-                
+
                 <div class="row align-items-lg-center justify-content-center h-100">
                   <div class="col-11 col-xl-10">
                     <div class="contact-info-wrapper py-4 py-xl-5">
@@ -140,8 +140,7 @@
                         </div>
                         <div>
                           <h4 class="mb-3 text-light overLayInAllInfo">Address</h4>
-                          <address class="mb-0 text-light opacity-75 overLayInAllInfo">8014 Edith Blvd NE, Albuquerque, New York, United
-                            States</address>
+                          <address class="mb-0 text-light opacity-75 overLayInAllInfo">Ground Floor, Building No. 5158, Fifth District, Al-Ma'araj City, Behind Carrefour Maadi</address>
                         </div>
                       </div>
                       <div class="row mb-4 mb-xxl-5">
@@ -157,8 +156,14 @@
                             <div>
                               <h4 class="mb-3 text-light overLayInAllInfo">Phone</h4>
                               <p class="mb-0 overLayInAllInfo">
+                                <span class="text-white">Landline : </span>
                                 <a class="link-light link-opacity-75 link-opacity-100-hover text-decoration-none"
-                                  href="tel:+15057922430 overLayInAllInfo">(505) 792-2430</a>
+                                  href="tel:+20223447841 overLayInAllInfo"> +20223447841</a>
+                              </p>
+                              <p class="mb-0 overLayInAllInfo">
+                                <span class="text-white">Mobile : </span>
+                                <a class="link-light link-opacity-75 link-opacity-100-hover text-decoration-none"
+                                  href="tel:+201012223305 overLayInAllInfo"> +201012223305</a>
                               </p>
                             </div>
                           </div>
@@ -178,7 +183,7 @@
                               <h4 class="mb-3 text-light overLayInAllInfo">E-Mail</h4>
                               <p class="mb-0 overLayInAllInfo">
                                 <a class="link-light link-opacity-75 link-opacity-100-hover text-decoration-none"
-                                  href="mailto:demo@yourdomain.com">demoyourdomain.com</a>
+                                  href="Support@dayramarket.com">Support&#64;dayramarket.com</a>
                               </p>
                             </div>
                           </div>
@@ -197,12 +202,7 @@
                         <div>
                           <h4 class="mb-3 text-light overLayInAllInfo">Opening Hours</h4>
                           <div class="d-flex mb-1 overLayInAllInfo">
-                            <p class="text-light fw-bold mb-0 me-5">Mon - Fri</p>
-                            <p class="text-light opacity-75 mb-0">9am - 5pm</p>
-                          </div>
-                          <div class="d-flex overLayInAllInfo">
-                            <p class="text-light fw-bold mb-0 me-5">Sat - Sun</p>
-                            <p class="text-light opacity-75 mb-0">9am - 2pm</p>
+                            <p class="text-light opacity-75 mb-0">9am - 6pm</p>
                           </div>
                         </div>
                       </div>
