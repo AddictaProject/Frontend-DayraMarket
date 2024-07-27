@@ -35,7 +35,7 @@
         </div>
 
 
-        @if (cartService.finalTotalPrice <= 30000) { <div class="form-check ">
+        <!-- @if (cartService.finalTotalPrice <= 30000) { <div class="form-check ">
           <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4" [value]="'cash'"
             (change)="onPaymentMethodChange(paymentMethodEnum.COD)"
             [checked]="selectedPaymentMethod === paymentMethodEnum.COD">
@@ -43,7 +43,7 @@
             Cash on Delivery
           </label>
       </div>
-      }
+      } -->
       <!-- Confirm -->
       <div class="d-flex justify-content-center  mt-4 ">
         <button class="btn btnAddToCart py-3" role="button" [disabled]="!isOrdered" (click)="next()">

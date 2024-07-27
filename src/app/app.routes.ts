@@ -18,6 +18,7 @@ import { CommentsComponent } from './Components/layout/product-details/Comments/
 import { NotFoundComponent } from './Components/layout/NotFound/NotFound.component';
 import { SuccessCartComponent } from './Components/layout/Cart/CheckOutPart/SuccessCart/SuccessCart.component';
 import { orderPlacedGuard } from './order-placed.guard';
+import { ContactUsComponent } from './Components/layout/ContactUs/ContactUs.component';
 
 export const routes: Routes = [
   {path:"", component: HomeComponent},
@@ -39,6 +40,7 @@ export const routes: Routes = [
         { path: 'update-address', component:AddUpdateAddressComponent }
       ]},
   ]},
+  { path: 'contactUs', component: ContactUsComponent , title:'Contact Us'},
   { path: 'not-found', component: NotFoundComponent , title:'Not Found'},
   { path: '**', redirectTo: 'not-found' },
 
