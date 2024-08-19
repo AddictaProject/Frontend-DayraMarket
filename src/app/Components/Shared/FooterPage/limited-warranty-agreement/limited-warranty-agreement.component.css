@@ -1,0 +1,27 @@
+
+.container {
+  line-height: 1.6;
+}
+h1, h2, h3 {
+  color: #333;
+}
+h1 {
+  text-align: center;
+}
+p {
+  margin: 1em 0;
+}
+.note {
+  color: #555;
+  font-style: italic;
+}
+.main-content
+{
+  text-decoration: none;
+  color: #333;
+  cursor: pointer;
+}
+
+.main-content:hover{
+  text-decoration: underline;
+}

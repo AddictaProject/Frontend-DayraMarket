@@ -6,6 +6,12 @@
       </div>
       <form class="d-flex flex-column gap-3 w-100" [formGroup]="signUpForm" (submit)="onSubmit()">
         <div>
+          <input formControlName="fullName" type="text" placeholder="fullName" class="w-100">
+          @if(signUpForm.controls.fullName.hasError('required') && signUpForm.controls.fullName.dirty && signUpForm.controls.fullName.touched ){
+          <div class="error mt-1">fullName is Required</div>
+          }
+        </div>
+        <div>
           <input formControlName="email" type="email" placeholder="Email" class="w-100">
           @if(signUpForm.controls.email.hasError('required') && signUpForm.controls.email.dirty && signUpForm.controls.email.touched ){
           <div class="error mt-1">Email is Required</div>

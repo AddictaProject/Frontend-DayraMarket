@@ -1,0 +1,8 @@
+.main-content
+{
+  cursor: pointer;
+}
+
+.main-content:hover{
+  text-decoration: underline;
+}

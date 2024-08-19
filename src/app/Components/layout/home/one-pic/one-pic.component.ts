@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-one-pic',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,RouterModule],
   templateUrl: './one-pic.component.html',
   styleUrl: './one-pic.component.css',
 })
@@ -15,6 +16,10 @@ export class OnePicComponent {
   @Input() title:string = 'Trading in your old tech is easier than a lot of things.';
   @Input() paragraph:string = 'Earn cash when you trade in your forgotten tech. It’s a simple way to help do more with what we already have.';
   @Input() buttonText:string = 'Get Started';
+  @Input() buttonLinkTo:string = 'how-it-works';
 
+  constructor() {
+
+  }
 
 }

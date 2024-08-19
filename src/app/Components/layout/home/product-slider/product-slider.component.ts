@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { DragScrollComponent, DragScrollItemDirective } from 'ngx-drag-scroll';
 import { CardComponent } from '../../../Shared/card/card.component';
 
@@ -17,6 +17,7 @@ import { RouterModule } from '@angular/router';
   imports: [DragScrollComponent, DragScrollItemDirective, CardComponent,CardPlaceholderComponent ,RouterModule],
 })
 export class ProductSliderComponent {
+  @Input() Title:string ="" ;
   isLoaded =false;
   products: IProduct[] = [];
   constructor(

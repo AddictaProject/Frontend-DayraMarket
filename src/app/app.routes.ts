@@ -19,6 +19,13 @@ import { NotFoundComponent } from './Components/layout/NotFound/NotFound.compone
 import { SuccessCartComponent } from './Components/layout/Cart/CheckOutPart/SuccessCart/SuccessCart.component';
 import { orderPlacedGuard } from './order-placed.guard';
 import { ContactUsComponent } from './Components/layout/ContactUs/ContactUs.component';
+import { HowItWorksPageComponent } from './Components/Shared/how-it-works-page/how-it-works-page.component';
+import { ShippingComponent } from './Components/Shared/FooterPage/shipping/shipping.component';
+import { ReturnsAndRefundsComponent } from './Components/Shared/FooterPage/returns-and-refunds/returns-and-refunds.component';
+import { TermsOfServiceComponent } from './Components/Shared/FooterPage/terms-of-service/terms-of-service.component';
+import { LimitedWarrantyAgreementComponent } from './Components/Shared/FooterPage/limited-warranty-agreement/limited-warranty-agreement.component';
+import { PrivacyComponent } from './Components/Shared/FooterPage/privacy/privacy.component';
+import { DayraCookiesComponent } from './Components/Shared/FooterPage/dayra-cookies/dayra-cookies.component';
 
 export const routes: Routes = [
   {path:"", component: HomeComponent},
@@ -31,7 +38,6 @@ export const routes: Routes = [
   { path: 'login', component:SignInComponent, title: 'Login' },
   { path: 'signup', component:SignUpComponent, title: 'SignUp' },
   { path: 'profile', component:ProfileComponent, title: 'Profile' ,canActivate: [userGuard],children:[
-
       { path: '', component:MyDataComponent },
       { path: 'order-history', component:OrderHistoryComponent },
       { path: 'my-addresses',children:[
@@ -41,6 +47,13 @@ export const routes: Routes = [
       ]},
   ]},
   { path: 'contactUs', component: ContactUsComponent , title:'Contact Us'},
+  { path: 'how-it-works', component: HowItWorksPageComponent , title:'How It Works'},
+  { path: 'shipping', component: ShippingComponent , title:'Shipping'},
+  { path: 'returns-and-refunds', component: ReturnsAndRefundsComponent , title:'Return & Refunds'},
+  { path: 'terms-of-service', component: TermsOfServiceComponent , title:'Terms Of Service'},
+  { path: 'limited-warranty-agreement', component: LimitedWarrantyAgreementComponent , title:'Limited Warranty Agreement'},
+  { path: 'cookies', component: DayraCookiesComponent },
+  { path: 'privacy', component: PrivacyComponent , title:' privacy'},
   { path: 'not-found', component: NotFoundComponent , title:'Not Found'},
   { path: '**', redirectTo: 'not-found' },
 

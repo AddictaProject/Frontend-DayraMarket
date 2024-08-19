@@ -1,8 +1,8 @@
 <footer>
   <div class="row justify-content-between gap-5">
-    <ul class=" row list d-flex justify-content-between col-lg-7 col-12 list-unstyled ">
-      <li class="col-md-4 col-6 mt-lg-0 mt-3">
-        <h5 class="mb-4">Brands</h5>
+    <ul class=" row list d-flex justify-content-between col-lg-8 col-12 list-unstyled ">
+      <li class="col-md-3 col-6 mt-lg-0 mt-3">
+        <h5 class="mb-4">Brand Lineup</h5>
         <ul class="list-unstyled">
           @for (brand of brands; track $index) {
           <li>
@@ -11,21 +11,33 @@
           }
         </ul>
       </li>
-      <li class="col-md-4 col-6 mt-lg-0 mt-3">
-        <h5 class="mb-4">Information</h5>
+      <li class="col-md-3 col-6 mt-lg-0 mt-3">
+        <h5 class="mb-4">Get to Know Us</h5>
         <ul class="list-unstyled">
-          <li>FAQ</li>
-          <li>Mission</li>
-          <li>Vision </li>
+          <li><a routerLink="about-us">About Us</a></li>
+          <li><a routerLink="how-it-works">How it Works</a></li>
+          <li><a routerLink="">Trade-In</a></li>
+          <li><a routerLink="contactUs">Help Center</a></li>
           <!-- <li>Be a vendor</li>
           <li>Vendor Panel</li> -->
         </ul>
       </li>
-      <li class="col-md-4 col-6 mt-lg-0 mt-3">
-        <h5 class="mb-4">Company</h5>
+      <li class="col-md-3 col-6 mt-lg-0 mt-3">
+        <h5 class="mb-4">Info Hub</h5>
         <ul class="list-unstyled">
-          <li>About us</li>
-          <li> <a routerLink="contactUs">Contact us </a></li>
+          <li><a routerLink="">Sellers: Resister to Sell</a></li>
+          <li><a routerLink="">Seller Panel</a></li>
+          <li><a routerLink="shipping">Shipping</a></li>
+          <li><a routerLink="returns-and-refunds">Returns And Refunds</a></li>
+        </ul>
+      </li>
+      <li class="col-md-3 col-6 mt-lg-0 mt-3">
+        <h5 class="mb-4">Our Policies</h5>
+        <ul class="list-unstyled">
+          <li><a routerLink="terms-of-service">Terms of Service</a></li>
+          <li><a routerLink="limited-warranty-agreement">Limited Warranty</a></li>
+          <li><a routerLink="privacy">Privacy</a></li>
+          <li><a routerLink="cookies">Cookies</a></li>
         </ul>
       </li>
     </ul>
@@ -38,8 +50,8 @@
             <span><i class="fa-solid fa-arrow-right"></i></span>
           </div>
         </form>
-        <p>Hello, we are Dayra Market . Our goal is to translate the positive effects from revolutionizing how companies
-          engage with their clients and their team.</p>
+        <p>Join our mailing list to be the first to know about the latest products and exclusive discounts. Don't miss out on special offers tailored just for you!
+        </p>
       </div>
     </div>
   </div>

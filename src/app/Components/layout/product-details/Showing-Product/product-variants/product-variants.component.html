@@ -1,6 +1,6 @@
 <div class="product-header d-flex justify-content-between align-items-center  mt-4 me-3">
 
-  <p>{{productVariants.attributeDisplayName }}</p>
+  <p class="text-capitalize">{{productVariants.attributeDisplayName }}</p>
   @if(productVariants.type ==3){
 
   <div>
@@ -75,14 +75,14 @@
         <div class="flex-wrap d-flex text-center pb-4">
 
           <div class="col-4 ">
-            <button class="btnOfOff col-11">Fair</button>
+            <button (click)="changeCondition($event,'Fair')" class="btnOfOff active col-11">Fair</button>
 
           </div>
           <div class="col-4">
-            <button class="btnOfOff col-11">Good</button>
+            <button (click)="changeCondition($event,'Good')" class="btnOfOff col-11">Good</button>
           </div>
           <div class="col-4">
-            <button class="btnOfOff col-11">Excellent</button>
+            <button (click)="changeCondition($event,'Excellent')" class="btnOfOff col-11">Excellent</button>
           </div>
 
 
@@ -91,20 +91,24 @@
         <div class="mt-4">
           <p class="txtOfPropMainOff">Screen :
             <span class="txtOfPropSubOff">
-              May have micro-scratches which could be slightly noticeable when the screen is turned on.
+             {{conditions[0].screen}}
             </span>
           </p>
         </div>
 
         <div class="mt-4">
-          <p class="txtOfPropMainOff">Screen :
+          <p class="txtOfPropMainOff">Body :
             <span class="txtOfPropSubOff">
-              May have micro-scratches which could be slightly noticeable when the screen is turned on.
+              {{conditions[0].body}}
             </span>
           </p>
         </div>
 
-
+        <div class="tech-condition mt-2">
+          <p><i class="fa-solid fa-shield my-4"></i> Technical conditions</p>
+          <p>Your device is 100% functional regardless of its condition</p>
+          <a routerLink="/how-it-works" class="tech-link mt-5"  >Read more</a>
+        </div>
 
       </div>
 

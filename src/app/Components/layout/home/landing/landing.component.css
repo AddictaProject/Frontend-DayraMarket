@@ -2,14 +2,14 @@
 .carousel-control-next {
   z-index: 99;
 }
-.carousel:has(.carousel-item:nth-of-type(1).active)
+/* .carousel:has(.carousel-item:nth-of-type(1).active)
 .carousel-control-prev{
   display: none;
 }
 .carousel:has(.carousel-item:nth-of-type(3).active)
 .carousel-control-next{
   display: none;
-}
+} */
 .carousel-item{
   height: calc(100vh - 80px - 42px) ;
   padding-inline: 300px;

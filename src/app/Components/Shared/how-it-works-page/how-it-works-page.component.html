@@ -1,0 +1,334 @@
+<section>
+  <div class="container ">
+    <div class="mt-5 text-center">
+      <h3>How Verified Refurbished Works:</h3>
+      <p class="mt-4">Verified Refurbished by Dayra Market means electronics that have been inspected and certified by
+        industry
+        professionals.</p>
+    </div>
+    <div class="row my-5 pt-5">
+      <div class="col-7">
+        <div>
+          <div>
+            <div class="d-flex  gap-5 mb-3 align-items-center">
+              <div class="prd-image"><img  (click)="navigateToSection('Mobile')" src="assets/images/How-it-works/Mobile1.png" alt=""></div>
+              <div class="prds-info">
+                <h5>Battery Health </h5>
+                <p>Guaranteed to have at least 85% battery health with full charge capacity. </p>
+              </div>
+            </div>
+            <div class="d-flex  gap-5 mb-3 align-items-center">
+              <div class="prd-image"><img (click)="navigateToSection('Laptop')" src="assets/images/How-it-works/Laptop1.png" alt=""></div>
+              <div class="prds-info">
+                <h5>Professional Inspection </h5>
+                <p>Fully tested and certified by industry experts, backed by a 1-year warranty and 14-day returns. </p>
+              </div>
+            </div>
+            <div class="d-flex  gap-5 mb-3 align-items-center">
+              <div class="prd-image"><img (click)="navigateToSection('Watch')" src="assets/images/How-it-works/Watch1.png" alt=""></div>
+              <div class="prds-info">
+                <h5>Secure Devices </h5>
+                <p>Not locked, stolen, or fraudulently sourced</p>
+              </div>
+            </div>
+            <div class="d-flex  gap-5 mb-3 align-items-center">
+              <div class="prd-image"><img (click)="navigateToSection('Tablet')" src="assets/images/How-it-works/Tablet1.png" alt=""></div>
+              <div class="prds-info">
+                <h5>Eco-Friendly</h5>
+                <p>Produces 92% less CO2 emissions compared to new devices.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-5">
+        <img class="img-fluid rounded-1" src="assets/images/How-it-works/Picture5.png" alt="">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="Mobile" class="py-5">
+  <div class="container ">
+    <div class="text-center">
+      <h3>What does it look like?</h3>
+      <p class="mt-4">Your device is 100% functional regardless of its condition</p>
+    </div>
+
+    <div class="btns-condition mt-4">
+      <button (click)="changeCondition($event,'Fair')">Fair</button>
+      <button class="active" (click)="changeCondition($event,'Good')">Good</button>
+      <button (click)="changeCondition($event,'Excellent')">Excellent</button>
+    </div>
+
+    <div class="row condition-container">
+      <div class="row  col-8">
+        <div class="col-6 mt-4">
+          <div class="condition-header align-items-center d-flex gap-3">
+            <div class="condition-img d-flex justify-content-center align-items-center">
+              <img src="assets/images/How-it-works/screen.png" alt="">
+            </div>
+            <h5>Screen</h5>
+          </div>
+          <div class="condition-info mt-3">
+            <p>{{Conditions[1].screen}}</p>
+          </div>
+        </div>
+        <div class="col-6 mt-4">
+          <div class="condition-header align-items-center d-flex gap-3">
+            <div class="condition-img d-flex justify-content-center align-items-center">
+              <img src="assets/images/How-it-works/body.png" alt="">
+            </div>
+            <h5>Body</h5>
+          </div>
+          <div class="condition-info mt-3">
+            <p>{{Conditions[1].body}}</p>
+          </div>
+        </div>
+        <div class="col-6 mt-4">
+          <div class="condition-header align-items-center d-flex gap-3">
+            <div class="condition-img d-flex justify-content-center align-items-center">
+              <img src="assets/images/How-it-works/hardware.png" alt="">
+            </div>
+            <h5>Hardware</h5>
+          </div>
+          <div class="condition-info mt-3">
+            <p>{{Conditions[1].Hardware}}</p>
+          </div>
+        </div>
+        <div class="col-6 mt-4">
+          <div class="condition-header align-items-center d-flex gap-3">
+            <div class="condition-img d-flex justify-content-center align-items-center">
+              <img src="assets/images/How-it-works/battery.png" alt="">
+            </div>
+            <h5>Battery</h5>
+          </div>
+          <div class="condition-info mt-3">
+            <p>{{Conditions[1].battery}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-4 product-image ">
+        <img class="img-fluid" src="assets/images/How-it-works/mobile2.png" alt="">
+        <img src="assets/images/How-it-works/image-holder.png" alt="">
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<section id="Laptop" class="py-5 bg-2">
+  <div class="container ">
+    <div class="text-center">
+      <h3>What does it look like?</h3>
+      <p class="mt-4">Your device is 100% functional regardless of its condition</p>
+    </div>
+
+    <div class="btns-condition mt-4">
+      <button (click)="changeCondition($event,'Fair')">Fair</button>
+      <button class="active" (click)="changeCondition($event,'Good')">Good</button>
+      <button (click)="changeCondition($event,'Excellent')">Excellent</button>
+    </div>
+
+    <div class="row condition-container">
+      <div class="row  col-8">
+        <div class="col-6 mt-4">
+          <div class="condition-header align-items-center d-flex gap-3">
+            <div class="condition-img d-flex justify-content-center align-items-center">
+              <img src="assets/images/How-it-works/screen.png" alt="">
+            </div>
+            <h5>Screen</h5>
+          </div>
+          <div class="condition-info mt-3">
+            <p>{{Conditions[1].screen}}</p>
+          </div>
+        </div>
+        <div class="col-6 mt-4">
+          <div class="condition-header align-items-center d-flex gap-3">
+            <div class="condition-img d-flex justify-content-center align-items-center">
+              <img src="assets/images/How-it-works/body.png" alt="">
+            </div>
+            <h5>Body</h5>
+          </div>
+          <div class="condition-info mt-3">
+            <p>{{Conditions[1].body}}</p>
+          </div>
+        </div>
+        <div class="col-6 mt-4">
+          <div class="condition-header align-items-center d-flex gap-3">
+            <div class="condition-img d-flex justify-content-center align-items-center">
+              <img src="assets/images/How-it-works/hardware.png" alt="">
+            </div>
+            <h5>Hardware</h5>
+          </div>
+          <div class="condition-info mt-3">
+            <p>{{Conditions[1].Hardware}}</p>
+          </div>
+        </div>
+        <div class="col-6 mt-4">
+          <div class="condition-header align-items-center d-flex gap-3">
+            <div class="condition-img d-flex justify-content-center align-items-center">
+              <img src="assets/images/How-it-works/battery.png" alt="">
+            </div>
+            <h5>Battery</h5>
+          </div>
+          <div class="condition-info mt-3">
+            <p>{{Conditions[1].battery}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-4 product-image ">
+        <img class="img-fluid" src="assets/images/How-it-works/laptop2.png" alt="">
+        <img src="assets/images/How-it-works/image-holder.png" alt="">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="Watch" class="py-5">
+  <div class="container ">
+    <div class="text-center">
+      <h3>What does it look like?</h3>
+      <p class="mt-4">Your device is 100% functional regardless of its condition</p>
+    </div>
+
+    <div class="btns-condition mt-4">
+      <button (click)="changeCondition($event,'Fair')">Fair</button>
+      <button class="active" (click)="changeCondition($event,'Good')">Good</button>
+      <button (click)="changeCondition($event,'Excellent')">Excellent</button>
+    </div>
+
+    <div class="row condition-container">
+      <div class="row  col-8">
+        <div class="col-6 mt-4">
+          <div class="condition-header align-items-center d-flex gap-3">
+            <div class="condition-img d-flex justify-content-center align-items-center">
+              <img src="assets/images/How-it-works/screen.png" alt="">
+            </div>
+            <h5>Screen</h5>
+          </div>
+          <div class="condition-info mt-3">
+            <p>{{Conditions[1].screen}}</p>
+          </div>
+        </div>
+        <div class="col-6 mt-4">
+          <div class="condition-header align-items-center d-flex gap-3">
+            <div class="condition-img d-flex justify-content-center align-items-center">
+              <img src="assets/images/How-it-works/body.png" alt="">
+            </div>
+            <h5>Body</h5>
+          </div>
+          <div class="condition-info mt-3">
+            <p>{{Conditions[1].body}}</p>
+          </div>
+        </div>
+        <div class="col-6 mt-4">
+          <div class="condition-header align-items-center d-flex gap-3">
+            <div class="condition-img d-flex justify-content-center align-items-center">
+              <img src="assets/images/How-it-works/hardware.png" alt="">
+            </div>
+            <h5>Hardware</h5>
+          </div>
+          <div class="condition-info mt-3">
+            <p>{{Conditions[1].Hardware}}</p>
+          </div>
+        </div>
+        <div class="col-6 mt-4">
+          <div class="condition-header align-items-center d-flex gap-3">
+            <div class="condition-img d-flex justify-content-center align-items-center">
+              <img src="assets/images/How-it-works/battery.png" alt="">
+            </div>
+            <h5>Battery</h5>
+          </div>
+          <div class="condition-info mt-3">
+            <p>{{Conditions[1].battery}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-4 product-image ">
+        <img class="img-fluid" src="assets/images/How-it-works/watch2.png" alt="">
+        <img src="assets/images/How-it-works/image-holder.png" alt="">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="Tablet" class="py-5 bg-2">
+  <div class="container ">
+    <div class="text-center">
+      <h3>What does it look like?</h3>
+      <p class="mt-4">Your device is 100% functional regardless of its condition</p>
+    </div>
+
+    <div class="btns-condition mt-4">
+      <button (click)="changeCondition($event,'Fair')">Fair</button>
+      <button class="active" (click)="changeCondition($event,'Good')">Good</button>
+      <button (click)="changeCondition($event,'Excellent')">Excellent</button>
+    </div>
+
+    <div class="row condition-container">
+      <div class="row  col-8">
+        <div class="col-6 mt-4">
+          <div class="condition-header align-items-center d-flex gap-3">
+            <div class="condition-img d-flex justify-content-center align-items-center">
+              <img src="assets/images/How-it-works/screen.png" alt="">
+            </div>
+            <h5>Screen</h5>
+          </div>
+          <div class="condition-info mt-3">
+            <p>{{Conditions[1].screen}}</p>
+          </div>
+        </div>
+        <div class="col-6 mt-4">
+          <div class="condition-header align-items-center d-flex gap-3">
+            <div class="condition-img d-flex justify-content-center align-items-center">
+              <img src="assets/images/How-it-works/body.png" alt="">
+            </div>
+            <h5>Body</h5>
+          </div>
+          <div class="condition-info mt-3">
+            <p>{{Conditions[1].body}}</p>
+          </div>
+        </div>
+        <div class="col-6 mt-4">
+          <div class="condition-header align-items-center d-flex gap-3">
+            <div class="condition-img d-flex justify-content-center align-items-center">
+              <img src="assets/images/How-it-works/hardware.png" alt="">
+            </div>
+            <h5>Hardware</h5>
+          </div>
+          <div class="condition-info mt-3">
+            <p>{{Conditions[1].Hardware}}</p>
+          </div>
+        </div>
+        <div class="col-6 mt-4">
+          <div class="condition-header align-items-center d-flex gap-3">
+            <div class="condition-img d-flex justify-content-center align-items-center">
+              <img src="assets/images/How-it-works/battery.png" alt="">
+            </div>
+            <h5>Battery</h5>
+          </div>
+          <div class="condition-info mt-3">
+            <p>{{Conditions[1].battery}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-4 product-image ">
+        <img class="img-fluid" src="assets/images/How-it-works/mobile2.png" alt="">
+        <img src="assets/images/How-it-works/image-holder.png" alt="">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-5">
+  <div class="container ">
+    <div class="text-center mb-5 pb-5">
+      <h3>Verfied Referbished by Dayra Market </h3>
+      <p class="mt-4">Where do you want to start?</p>
+    </div>
+
+    <app-product-slider></app-product-slider>
+
+  </div>
+</section>

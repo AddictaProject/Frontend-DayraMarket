@@ -26,7 +26,7 @@ import { filter } from 'rxjs';
     ShowingProductComponent, MightLikeComponent, ProductDetailsComponent, MobileFilterComponent, FilterComponent, FilterSecComponent, FHeaderComponent, VerifyComponent, SignUpComponent, SignInComponent]
 })
 export class AppComponent implements OnInit {
-  title = 'Addicta';
+  title = 'Dayra Market';
 
   isNotFound: boolean = false;
   constructor(private route: ActivatedRoute, private router: Router) { }

@@ -19,6 +19,7 @@ export class SignUpComponent {
   isShowingVerify: boolean = false;
   signUpForm= new FormGroup({
     email: new FormControl('',[Validators.required, Validators.email]),
+    fullName: new FormControl('',[Validators.required]),
     phoneNumber: new FormControl('',[Validators.required, Validators.maxLength(11), Validators.minLength(11)]),
     password: new FormControl('',[Validators.required, Validators.minLength(8),Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@.#$!%*?&])[A-Za-z\d@.#$!^%*?&]{8,15}$/)]),
     confirmPassword: new FormControl('',[Validators.required,confirmPasswordValidator('password')]),
@@ -42,6 +43,7 @@ export class SignUpComponent {
     }
     let user:ISignUp={
       email:this.signUpForm.get('email')?.value ?? '',
+      fullName:this.signUpForm.get('fullName')?.value ?? '',
       phoneNumber:this.signUpForm.get('phoneNumber')?.value ?? '',
       password:this.signUpForm.get('password')?.value ?? '',
       confirmPassword:this.signUpForm.get('confirmPassword')?.value ?? '',

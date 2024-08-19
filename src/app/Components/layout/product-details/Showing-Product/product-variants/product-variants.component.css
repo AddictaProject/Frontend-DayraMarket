@@ -7,7 +7,7 @@
     color: rgba(0, 0, 0, 0.4);
     margin-bottom: 0;
 }
-  
+
   .product-header a {
     text-align: Center;
     font-size: 14px;
@@ -19,12 +19,12 @@
       rgba(9, 118, 76, 0.64) 3.05%,
       rgba(89, 105, 99, 0.8) 103.66%
     );
-  
+
     background-clip: text;
     -webkit-text-fill-color: transparent;
     cursor: pointer;
   }
-  
+
 
   @keyframes dissolve {
     0% {
@@ -34,17 +34,17 @@
       opacity: 0;
     }
   }
-  
+
   .dissolveclass {
     animation-name: dissolve;
     animation-timing-function: ease-in-out;
     animation-duration: 100ms;
   }
-  
+
 
   /* === */
   /* Learn more */
-  
+
 .offcanvas {
   width: 431px;
   min-width: 18%;
@@ -135,7 +135,7 @@
   padding: 9px 0;
 }
 
-.btnOfOff:hover , .btnOfOff:active {
+.btnOfOff:hover , .btnOfOff:active, .btnOfOff.active {
   background-color: rgba(153, 153, 153, 1);
   color: white;
 }
@@ -191,7 +191,19 @@ list-style: none;
   /* ======== */
 /* Responsive */
 
+.tech-condition{
+  background-color: #D4E0FC;
+  padding:0 20px 10px;
+  border-radius: 6px;
+}
 
+.product-header .tech-condition a.tech-link {
+  text-decoration: underline !important;
+  color: #333;
+  background: initial;
+  background-clip: initial;
+    -webkit-text-fill-color: initial;
+}
 @media screen and (max-width: 342px) {
 
   .product-header a,
