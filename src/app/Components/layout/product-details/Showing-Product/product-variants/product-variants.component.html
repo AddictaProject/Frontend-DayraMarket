@@ -130,9 +130,9 @@
 
     @if (productVariants.type==VariantType.Condition) {
     <app-condition class="col-4" [value]="val" (variantClick)="ClickingAction($event)"></app-condition>
-    } @else if(productVariants.type==VariantType.Color){
-    <app-StorageVariant class="col-4" [value]="val" (variantClick)="ClickingAction($event)"></app-StorageVariant>
     } @else if(productVariants.type==VariantType.Storage){
+    <app-StorageVariant class="col-4" [value]="val" (variantClick)="ClickingAction($event)"></app-StorageVariant>
+    } @else if(productVariants.type==VariantType.Color){
     <app-Color class="col-4" [value]="val" (variantClick)="ClickingAction($event)"></app-Color>
     }
     }
