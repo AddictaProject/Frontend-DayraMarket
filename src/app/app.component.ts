@@ -16,6 +16,7 @@ import { VerifyComponent } from "./Components/layout/User/verify/verify.componen
 import { SignUpComponent } from "./Components/layout/User/sign-up/sign-up.component";
 import { SignInComponent } from "./Components/layout/User/sign-in/sign-in.component";
 import { filter } from 'rxjs';
+import { NavigationService } from './Services/NavigationService/navigation.service';
 
 @Component({
   selector: 'app-root',
@@ -29,7 +30,7 @@ export class AppComponent implements OnInit {
   title = 'Dayra Market';
 
   isNotFound: boolean = false;
-  constructor(private route: ActivatedRoute, private router: Router) { }
+  constructor(private navigation: NavigationService, private router: Router) { }
 
   ngOnInit(): void {
     this.router.events.pipe(

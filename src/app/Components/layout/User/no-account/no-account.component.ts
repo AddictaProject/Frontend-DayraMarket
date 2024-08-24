@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { UserService } from '../../../../Services/UserService/user.service';
+import { Location } from '@angular/common';
+import { NavigationService } from '../../../../Services/NavigationService/navigation.service';
 
 @Component({
   selector: 'app-no-account',
@@ -10,10 +12,10 @@ import { UserService } from '../../../../Services/UserService/user.service';
   styleUrl: './no-account.component.css'
 })
 export class NoAccountComponent {
-  constructor(private userService: UserService,private router: Router){
+  constructor(private userService: UserService,private navigation: NavigationService){
 
     if (userService.userState) {
-      this.router.navigate(['/']);
+      this.navigation.back();
     }
   }
 }

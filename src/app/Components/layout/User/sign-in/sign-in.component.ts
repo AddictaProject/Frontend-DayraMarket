@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { UserService } from '../../../../Services/UserService/user.service';
-import { Router, RouterModule } from '@angular/router';
+import {  NavigationEnd, Router, RouterModule } from '@angular/router';
 import { ILogin } from '../../../../Models/User/ILogin';
+import { filter } from 'rxjs';
+import { Location } from '@angular/common';
+import { NavigationService } from '../../../../Services/NavigationService/navigation.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -12,6 +15,7 @@ import { ILogin } from '../../../../Models/User/ILogin';
   styleUrl: './sign-in.component.css'
 })
 export class SignInComponent {
+  previousUrl: string='';
   serverError: boolean = false;
   signInForm= new FormGroup({
     email: new FormControl('',[Validators.required, Validators.email]),
@@ -19,10 +23,11 @@ export class SignInComponent {
 
   })
 
-  constructor(private userService: UserService,private router: Router){
+  constructor(private userService: UserService,private router: Router,private navigation: NavigationService){
 
     if (userService.userState) {
-      this.router.navigate(['/']);
+      this.router.navigate([this.navigation.returnPerviousUrl()]);
+      return;
     }
   }
 
@@ -45,7 +50,7 @@ export class SignInComponent {
           this.serverError=false;
           localStorage.setItem('accessToken', res.accessToken);
           localStorage.setItem('refreshToken', res.refreshToken);
-          this.router.navigate(['/']);
+          this.router.navigate([this.navigation.returnPerviousUrl()]);
         },
         error: (err) => {
           this.serverError=true
