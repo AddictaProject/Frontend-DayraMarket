@@ -27,6 +27,7 @@ import { LimitedWarrantyAgreementComponent } from './Components/Shared/FooterPag
 import { PrivacyComponent } from './Components/Shared/FooterPage/privacy/privacy.component';
 import { DayraCookiesComponent } from './Components/Shared/FooterPage/dayra-cookies/dayra-cookies.component';
 import { HelpCenterComponent } from './Components/Shared/FooterPage/help-center/help-center.component';
+import { AboutUsComponent } from './Components/Shared/AboutUs/AboutUs.component';
 
 export const routes: Routes = [
   {path:"", component: HomeComponent},
@@ -48,6 +49,7 @@ export const routes: Routes = [
       ]},
   ]},
   { path: 'contactUs', component: ContactUsComponent , title:'Contact Us'},
+  { path: 'aboutUs', component: AboutUsComponent , title:'About Us'},
   { path: 'how-it-works', component: HowItWorksPageComponent , title:'How It Works'},
   { path: 'shipping', component: ShippingComponent , title:'Shipping'},
   { path: 'returns-and-refunds', component: ReturnsAndRefundsComponent , title:'Return & Refunds'},
