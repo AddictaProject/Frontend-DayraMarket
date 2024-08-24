@@ -1,0 +1,51 @@
+ul{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.main-title:not(:last-child){
+  border-bottom: 1px solid #000;
+}
+.main-title{
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  cursor: pointer;
+  overflow: hidden;
+}
+.main-title:has(+ .main-title.active){
+  border-bottom: none;
+}
+.main-title:not(:first-of-type).active{
+  border-top: 1px solid #000;
+}
+.main-title.active{
+  border-radius: 6px 0 0 6px;
+}
+.main-title.active::before{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 100%;
+  background-color: #09764CCC;
+}
+.accordion-header{
+  cursor: pointer;
+}
+i{
+  color: #09764CCC;
+}
+.show{
+  border-top: 1px solid #dee2e6;
+}
+input[type="text"]{
+  margin-block: 24px;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  width: 400px;
+  outline: none;
+  padding: 10px 16px;
+}

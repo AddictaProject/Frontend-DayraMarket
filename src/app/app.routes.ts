@@ -26,6 +26,7 @@ import { TermsOfServiceComponent } from './Components/Shared/FooterPage/terms-of
 import { LimitedWarrantyAgreementComponent } from './Components/Shared/FooterPage/limited-warranty-agreement/limited-warranty-agreement.component';
 import { PrivacyComponent } from './Components/Shared/FooterPage/privacy/privacy.component';
 import { DayraCookiesComponent } from './Components/Shared/FooterPage/dayra-cookies/dayra-cookies.component';
+import { HelpCenterComponent } from './Components/Shared/FooterPage/help-center/help-center.component';
 import { AboutUsComponent } from './Components/Shared/AboutUs/AboutUs.component';
 
 export const routes: Routes = [
@@ -54,7 +55,8 @@ export const routes: Routes = [
   { path: 'returns-and-refunds', component: ReturnsAndRefundsComponent , title:'Return & Refunds'},
   { path: 'terms-of-service', component: TermsOfServiceComponent , title:'Terms Of Service'},
   { path: 'limited-warranty-agreement', component: LimitedWarrantyAgreementComponent , title:'Limited Warranty Agreement'},
-  { path: 'cookies', component: DayraCookiesComponent },
+  { path: 'cookies', component: DayraCookiesComponent , title:'Cookies'},
+  { path: 'help-center', component: HelpCenterComponent, title:'Help Center'},
   { path: 'privacy', component: PrivacyComponent , title:' privacy'},
   { path: 'not-found', component: NotFoundComponent , title:'Not Found'},
   { path: '**', redirectTo: 'not-found' },
