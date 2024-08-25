@@ -43,6 +43,7 @@ import { VariantType } from '../../../../Models/Product/Prod-Details/enum/varian
 })
 export class ShowingProductComponent implements OnInit {
   isDragScrollDisabled: boolean = false;
+  values: IVariantValues[] = [];
 
   @Output() scrollToCommentEvent = new EventEmitter<void>();
 
@@ -106,6 +107,27 @@ VariantType=VariantType
     // For getting the size of the screen
     this.checkScreenWidth(window.innerWidth);
     this.updateDragScrollStatus();
+
+    this._ProductDetailsService.variantsGroup.forEach( val => {
+      val.values.forEach((v) => {
+
+      this.values.push({
+        uuid: v.uuid,
+        displayName: v.value,
+        isClicked: this._ProductDetailsService.mostPopularAttributes.includes(
+          v.uuid
+        ),
+        isAvailable: this._ProductDetailsService.availableAttributes.includes(
+          v.uuid
+        ),
+        isLoading:false,
+        hexCode: v?.hexCode,
+      });
+    });
+  } );
+  
+
+    
   }
 
   // Animation For Learn more
