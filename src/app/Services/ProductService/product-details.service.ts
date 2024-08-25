@@ -36,7 +36,9 @@ export class ProductDetailsService {
     lowestPrice: 0,
     photos: [],
     reviewCount: 0,
-    averageRate: 0
+    averageRate: 0,
+    dateCreated:new Date(),
+    comesWith:[]
   };
   activeItem: any;
   mostPopularAttributes: string[] = [];

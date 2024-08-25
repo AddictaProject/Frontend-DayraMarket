@@ -34,6 +34,8 @@ export interface IProductInDetails {
     photos:string[];
     reviewCount:number;
     averageRate:number;
+    dateCreated:Date;
+    comesWith:IComesWith[];
 
 }
 
@@ -47,4 +49,11 @@ export interface Ivalues {
     uuid:string;
     value:string;
     hexCode?:string;
+}
+
+export interface IComesWith {
+
+    accessoryDisplayName:string;
+    accessoryIconPath:string;
+
 }

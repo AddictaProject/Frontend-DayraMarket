@@ -159,7 +159,7 @@
                             fill="#FF7E92" />
                         </svg>
 
-                        <p class="mt-3 txtOfMainOff">Post Popular</p>
+                        <p class="mt-3 txtOfMainOff">Most Popular</p>
 
                         <p class="mt-3 txtOfSubOff">This product is the most picked by our customers, offering the
                           perfect balance of features and value. Get the best-loved version from our selection, chosen
@@ -393,7 +393,7 @@
 
 
             <!-- Comes with -->
-            <!-- <div>
+            <div>
 
               <div class="product-header d-flex justify-content-between align-items-center mb-2 mt-4">
                 <p>Comes with</p>
@@ -402,15 +402,18 @@
               <div class="d-flex justify-content-between col">
 
 
+                @for (item of _ProductDetailsService.product.comesWith; track $index) {
                 <div class="d-flex cardOfFilter justify-content-center col me-4">
 
-                  <i class="fa-regular fa-heart me-2" style="color: #000000;"></i>
-                  <div class="txtOfFilterItem3">Good karma</div>
+                  <img [src]="item.accessoryIconPath" class="img-fluid" [alt]="item.accessoryDisplayName" />
+
+                  <div class="txtOfFilterItem3">{{item.accessoryDisplayName}}</div>
 
                 </div>
+              }
 
 
-                <div class="d-flex justify-content-center cardOfFilter col me-4">
+                <!-- <div class="d-flex justify-content-center cardOfFilter col me-4">
 
                   <svg class=" me-2" width="21" height="18" viewBox="0 0 21 18" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
@@ -421,15 +424,12 @@
 
                   <div class="txtOfFilterItem3"> span.body-2-light </div>
 
-                </div>
+                </div> -->
 
-                <div class="  col me-4">
-
-                </div>
-
+        
               </div>
 
-            </div> -->
+            </div>
 
 
           </div>
@@ -825,7 +825,8 @@
                   </div>
 
                   <div class="menu d-none">
-                    Yes, we ensure that all refurbished devices have a minimum of 80% battery health, providing reliable performance similar to new devices..
+                    Yes, we ensure that all refurbished devices have a minimum of 80% battery health, providing reliable
+                    performance similar to new devices..
                   </div>
 
 
@@ -890,8 +891,9 @@
 
               <!-- Text beside the avatar -->
               <div>
-                <p class="txtOfFirstRefurbished m-0">Refurbished and sold by Sprout</p>
-                <p class="txtOfLive m-0">Live on Back Market since 2021</p>
+                <p class="txtOfFirstRefurbished m-0">Refurbished and sold by </p>
+                <p class="txtOfLive m-0">Live on Back Market since
+                  <span>{{_ProductDetailsService.product.dateCreated.getFullYear()}}</span> </p>
               </div>
 
             </div>
