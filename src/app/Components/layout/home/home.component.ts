@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { LandingComponent } from "./landing/landing.component";
-import { ProductSliderComponent } from "./product-slider/product-slider.component";
 import { BrandSliderComponent } from "./brand-slider/brand-slider.component";
 import { DevicesComponent } from "./devices/devices.component";
 import { TestimonialComponent } from "./testimonial/testimonial.component";
 import { OnePicComponent } from "./one-pic/one-pic.component";
 import { TwoPicComponent } from "./two-pic/two-pic.component";
+import { ProductSliderComponent } from '../../Shared/product-slider/product-slider.component';
 
 @Component({
     selector: 'app-home',

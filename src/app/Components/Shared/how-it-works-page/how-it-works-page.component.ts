@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IProductCondition } from '../../../Models/IProductCondition';
-import { ProductSliderComponent } from '../../layout/home/product-slider/product-slider.component';
 import { ViewportScroller } from '@angular/common';
+import { ProductSliderComponent } from '../product-slider/product-slider.component';
 
 @Component({
   selector: 'app-how-it-works-page',

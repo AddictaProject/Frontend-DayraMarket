@@ -1,8 +1,7 @@
-
 <app-Showing-Product (scrollToCommentEvent)="scrollToCommentsSection()"></app-Showing-Product>
 
-<app-might-like  ></app-might-like>
+<app-might-like [productId]="productService.productUuid"></app-might-like>
 
 <!-- <app-pairs-well></app-pairs-well> -->
 
-<app-Comments ></app-Comments>
+<app-Comments></app-Comments>

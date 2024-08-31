@@ -4,6 +4,9 @@ import { ShowingProductComponent } from './Showing-Product/Showing-Product.compo
 import { MightLikeComponent } from './might-like/might-like.component';
 import { PairsWellComponent } from './pairs-well/pairs-well.component';
 import { CommentsComponent } from './Comments/Comments.component';
+import { ProductSliderComponent } from "../../Shared/product-slider/product-slider.component";
+import { ProductService } from '../../../Services/ProductService/product.service';
+import { ProductDetailsService } from '../../../Services/ProductService/product-details.service';
 
 @Component({
   selector: 'app-product-details',
@@ -16,17 +19,17 @@ import { CommentsComponent } from './Comments/Comments.component';
     MightLikeComponent,
     PairsWellComponent,
     CommentsComponent,
-  ],
+    ProductSliderComponent
+],
 })
-export class ProductDetailsComponent implements OnInit {
-
+export class ProductDetailsComponent   {
+  productId!: string;
   constructor(
-    private elementRef: ElementRef
-  ) { }
-
-  ngOnInit() {
-
+    private elementRef: ElementRef,
+    public productService: ProductDetailsService
+  ) {
   }
+
 
   @ViewChild(CommentsComponent, { static: true }) commentComponent: CommentsComponent | undefined;
 

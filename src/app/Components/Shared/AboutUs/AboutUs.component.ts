@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Block2Component } from "./block2/block2.component";
-import { ProductSliderComponent } from "../../layout/home/product-slider/product-slider.component";
 import { RouterModule } from '@angular/router';
+import { ProductSliderComponent } from '../product-slider/product-slider.component';
 
 @Component({
   selector: 'app-AboutUs',

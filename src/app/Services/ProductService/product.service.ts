@@ -3,6 +3,7 @@ import { ProductApiService } from './product-api.service';
 import { IProduct } from '../../Models/Product/All-Products/IProduct';
 import { IProductParams } from '../../Models/Product/All-Products/IProductParams';
 import { BehaviorSubject } from 'rxjs';
+import { Environment } from '../../../enviroment/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -45,7 +46,7 @@ export class ProductService {
     this.productApi.getProducts(params).subscribe((products) => {
       let prods = products.result;
       prods.forEach((p) => {
-        p.photos[0] = `https://dayra-market.addictaco.com${p.photos[0]}`;
+        p.photos[0] = `${Environment.serverURL}${p.photos[0]}`;
         let colors: any = [];
         p.groupedVariants[0]?.values?.forEach((v: any) =>
           colors.push(v?.hexCode)

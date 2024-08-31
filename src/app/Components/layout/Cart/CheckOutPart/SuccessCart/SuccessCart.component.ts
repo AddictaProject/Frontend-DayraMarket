@@ -9,6 +9,7 @@ import { SettingService } from '../../../../../Services/SettingService/setting.s
 import { UserService } from '../../../../../Services/UserService/user.service';
 import { IOrder } from '../../../../../Models/Order/IOrder';
 import Swal from 'sweetalert2';
+import { Environment } from '../../../../../../enviroment/environment';
 
 @Component({
   selector: 'app-SuccessCart',
@@ -23,6 +24,7 @@ export class SuccessCartComponent implements OnInit ,OnDestroy {
   order!: IOrder ;
   subTotalPrice:number=0;
   shippingCost=0;
+  url=Environment.serverURL;
   constructor(
     public orderService: OrderService,
     public cartService: CartService,

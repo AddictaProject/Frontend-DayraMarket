@@ -12,6 +12,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { IReview } from '../../../../Models/Order/IReview';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import Swal from 'sweetalert2';
+import { Environment } from '../../../../../enviroment/environment';
 
 @Component({
   selector: 'app-order-history',
@@ -30,6 +31,7 @@ export class OrderHistoryComponent {
     comment:new FormControl('',[Validators.required]),
   })
   // productOrderItem !:IProductOrderItem;
+  url=Environment.serverURL;
 
   constructor(
     public _productDetailsService: ProductDetailsService,

@@ -1,6 +1,6 @@
 <nav class="navbar py-3 navbar-light bg-light borderOfNav"
   [class.BehaviorWithOffcanvas]="currentOffcanvasState === 'offcanvasTechnical'">
-  <div class="container scrolling-wrapper">
+  <div class="container ">
     <div class="d-flex flex-nowrap gap-4 align-items-center">
 
       <div class="bars">
@@ -17,7 +17,7 @@
 
       </div>
       <!-- Categories  and brands-->
-      <div class="">
+      <div class="scrolling-wrapper">
         <div class="row flex-row flex-nowrap ">
           @if(isBrandLoaded && isCategoryLoaded){
 
@@ -63,7 +63,7 @@
           <li class="itemOffCanvas " (mouseover)="showOffCanvas(item)">
             <a class="categoryOffCanvas" data-bs-dismiss="offcanvas"  (click)="goToCategory(item.uuid);offcanvasRef.classList.remove('show')">
 
-              <img [src]="'https://dayra-market.addictaco.com'+item.iconPath" [width]="20" [height]="20" alt="">
+              <img [src]="url+item.iconPath" [width]="20" [height]="20" alt="">
 
               {{item.displayName.slice(0,15)}}
               {{ item.displayName.length > 15 ? "..." : "" }}

@@ -16,6 +16,7 @@ import { SecondOffCanvasComponent } from './secondOffCanvas/secondOffCanvas.comp
 import { IBrand } from '../../../../Models/Brand/IBrand';
 import { FilterApiService } from '../../../../Services/FilterServices/filter-api.service';
 import { SkeletonModule } from 'primeng/skeleton';
+import { Environment } from '../../../../../enviroment/environment';
 
 @Component({
   selector: 'app-Header2',
@@ -32,13 +33,13 @@ export class Header2Component implements OnInit {
   currentOffcanvasState: string | null = null;
   isBrandLoaded: boolean = false;
   isCategoryLoaded: boolean = false;
+  url=Environment.serverURL;
   constructor(
     private offCanvasOb: OffCanvasService,
     private renderer: Renderer2,
     private filterService: FilterApiService,
     private router: Router
   ) {}
-
   ngOnInit() {
     this.offCanvasOb.offcanvasState$.subscribe((state) => {
       this.currentOffcanvasState = state;

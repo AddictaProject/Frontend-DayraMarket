@@ -1,3 +1,4 @@
+@if (productService.relatedProducts.length >0 ) {
 <div class="py-5 bgClass mb-5">
 
   <div class="container">
@@ -5,21 +6,26 @@
     <div class="might-header  mb-4">
       <h4>You might also like</h4>
     </div>
-  
-  
-  <drag-scroll [scrollbar-hidden]="true" [drag-scroll-y-disabled]="true" >
+
+
+    <!-- <drag-scroll [scrollbar-hidden]="true" [drag-scroll-y-disabled]="true" >
 
       <app-card-product-details class="me-3 pe-0" ></app-card-product-details>
       <app-card-product-details class="me-3"></app-card-product-details>
       <app-card-product-details class="me-3"></app-card-product-details>
       <app-card-product-details class="me-3"></app-card-product-details>
       <app-card-product-details class="me-3"></app-card-product-details>
-  
-
-  </drag-scroll>
 
 
+  </drag-scroll> -->
+
+    <drag-scroll [scrollbar-hidden]="true">
+      @for (prd of productService.relatedProducts; track $index) {
+      <app-card [product]="prd" [isSlider]="true" class="me-4" drag-scroll-item></app-card>
+      }
+    </drag-scroll>
   </div>
 
 
 </div>
+}

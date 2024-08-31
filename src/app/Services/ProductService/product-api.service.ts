@@ -7,6 +7,7 @@ import { IProductDetailsParams } from '../../Models/Product/Prod-Details/IProduc
 import { IProductDetails } from '../../Models/Product/Prod-Details/IProductDetails';
 import { Environment } from '../../../enviroment/environment';
 import { IVendorReview, IVendorReviewParam } from '../../Models/Product/Prod-Details/ivendor-review';
+import { IProduct } from '../../Models/Product/All-Products/IProduct';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,11 @@ export class ProductApiService {
     return this.httpClient.get<IProductPagination>(`${this.URL}/products`, {
       params: { ...productParams }
     });
+  }
+  getRelatedProducts(productId: string): Observable<IProduct[]> {
+    return this.httpClient.get<IProduct[]>(
+      `${this.URL}/products/${productId}/related`
+    );
   }
 
   getProductDetails(productParams: IProductDetailsParams): Observable<IProductDetails> {

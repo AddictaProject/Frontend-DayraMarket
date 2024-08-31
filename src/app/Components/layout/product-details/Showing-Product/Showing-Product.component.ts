@@ -1,4 +1,5 @@
 import {
+  AfterViewInit,
   ChangeDetectorRef,
   Component,
   ElementRef,
@@ -24,6 +25,7 @@ import { IVariantValues } from '../../../../Models/Product/Prod-Details/IVariant
 import { ProductPlaceholderComponent } from '../product-placeholder/product-placeholder.component';
 import { SkeletonModule } from 'primeng/skeleton';
 import { VariantType } from '../../../../Models/Product/Prod-Details/enum/variant-type';
+import { Environment } from '../../../../../enviroment/environment';
 
 @Component({
   selector: 'app-Showing-Product',
@@ -39,12 +41,16 @@ import { VariantType } from '../../../../Models/Product/Prod-Details/enum/varian
     ProductVariantsComponent,
     ProductPlaceholderComponent,
     SkeletonModule,
+
   ],
 })
-export class ShowingProductComponent implements OnInit {
+export class ShowingProductComponent implements OnInit ,AfterViewInit {
   isDragScrollDisabled: boolean = false;
-  values: IVariantValues[] = [];
+  private imgUrl!: string;
+   Url!: string;
 
+   @ViewChild('stickyHeaderRef') stickyHeader!: ElementRef;
+   isVisible = false;
   @Output() scrollToCommentEvent = new EventEmitter<void>();
 
 
@@ -78,7 +84,7 @@ export class ShowingProductComponent implements OnInit {
       numVisible: 1,
     },
   ];
-VariantType=VariantType
+  VariantType = VariantType
   @ViewChild('LearnMore') LearnMore!: ElementRef;
 
   constructor(
@@ -87,7 +93,14 @@ VariantType=VariantType
     public offCanvasOb: OffCanvasService,
     private cartService: CartService,
     private router: Router
-  ) {}
+  ) {
+    this.imgUrl = Environment.serverURL + this._ProductDetailsService.product.photos[0];
+    this.Url = Environment.serverURL ;
+
+  }
+  ngAfterViewInit(): void {
+    this.setupIntersectionObserver();
+  }
 
   url!: string;
 
@@ -96,38 +109,20 @@ VariantType=VariantType
     if (history.state?.id) id = history.state.id;
     else this.router.navigate(['/']);
 
-    let stockId='';
+    let stockId = '';
     if (history.state?.stockId)
-      stockId=history.state.stockId;
+      stockId = history.state.stockId;
 
     // Calling data From ProductDetails Service
 
     this._ProductDetailsService.productUuid = id;
-    this._ProductDetailsService.loadProductVariant(id,false,stockId);
+    this._ProductDetailsService.loadProductVariant(id, false, stockId);
     // For getting the size of the screen
     this.checkScreenWidth(window.innerWidth);
     this.updateDragScrollStatus();
 
-    this._ProductDetailsService.variantsGroup.forEach( val => {
-      val.values.forEach((v) => {
 
-      this.values.push({
-        uuid: v.uuid,
-        displayName: v.value,
-        isClicked: this._ProductDetailsService.mostPopularAttributes.includes(
-          v.uuid
-        ),
-        isAvailable: this._ProductDetailsService.availableAttributes.includes(
-          v.uuid
-        ),
-        isLoading:false,
-        hexCode: v?.hexCode,
-      });
-    });
-  } );
-  
 
-    
   }
 
   // Animation For Learn more
@@ -204,7 +199,7 @@ VariantType=VariantType
       condition: this._ProductDetailsService.condition,
       color: this._ProductDetailsService.color,
       price: this._ProductDetailsService.price,
-      image: `https://dayra-market.addictaco.com${this._ProductDetailsService.product.photos[0]}`,
+      image: this._ProductDetailsService.images[0].thumbnail,
       productId: this._ProductDetailsService.productUuid,
     };
     this.cartService.addToCart(item);
@@ -214,5 +209,23 @@ VariantType=VariantType
   // Scrolling From More to Comments
   scrollToComments() {
     this.scrollToCommentEvent.emit();
+  }
+
+  setupIntersectionObserver() {
+    const options = {
+      root: null, // Use the viewport as the container
+      threshold: .1 // Trigger when 10% of the target is visible
+    };
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) {
+          this.isVisible = true; // Show div when the marker is out of view
+        } else {
+          this.isVisible = false; // Hide div when the marker is in view
+        }
+      });
+    }, options);
+
+    observer.observe(this.stickyHeader.nativeElement);
   }
 }

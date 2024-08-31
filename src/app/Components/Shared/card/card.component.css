@@ -1,5 +1,5 @@
 .prd-card {
-  min-width: 292px;
+  width: 292px;
   border-radius: 6px;
   box-shadow: 0px 4px 11px 0px #00000014;
   -webkit-user-select: none;
@@ -12,12 +12,15 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  background-color: #fff;
 }
-.slider{
-  max-width: 235px;
-  min-width: 235px;
-  padding-bottom:20px ;
+
+.slider {
+  max-width: 240px;
+  min-width: 240px;
+  padding-bottom: 20px;
 }
+
 .prd-image {
   height: 180px;
   width: 180px;
@@ -37,11 +40,17 @@
 .prd-info {
   color: #858585;
   margin-bottom: 8px;
+  font-size: 14px;
 }
 
 .card-body {
   width: 100%;
   padding-inline: 16px;
+}
+
+.card-body h5 {
+  font-size: 16px;
+  text-wrap: wrap
 }
 
 .colors span {
@@ -53,8 +62,15 @@
   border: .3px rgb(227, 223, 223) solid;
 }
 
-.prd-price {
+.prd-price h5 {
   color: #09764CCC;
+  font-size: 14px;
+}
+
+@media (min-width:767.5px) {
+  .prd-card {
+    height: 320px;
+  }
 }
 
 @media (max-width:767.5px) {
@@ -71,10 +87,12 @@
   .products-page .prd-info {
     font-size: 14px !important;
   }
-  .products-page .title h5{
+
+  .products-page .title h5 {
     font-weight: 600;
     font-size: 18px;
   }
+
   .products-page .prd-price h5 {
     font-size: 16px;
   }

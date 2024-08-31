@@ -1,8 +1,8 @@
-<div class="prd-card pb-3"  draggable="false" [ngClass]="{'products-page': isProductPage,'slider':isSlider}" [routerLink]="['/product/'+product.displayName]" [state]="{id:product.uuid}" >
+<div class="prd-card pb-3"  draggable="false" [ngClass]="{'products-page': isProductPage,'slider':isSlider}" (click)="reloadComponent(false,'product/'+product.displayName)" >
   <div class="prd-image">
     <img  draggable="false" class="w-100" [src]="product.photos[0]" alt="">
   </div>
-  <div class="card-body">
+  <div class="card-body d-flex flex-column justify-content-between">
     <div class="d-flex justify-content-between mb-2 mb-md-2 title">
       <h5 class="m-0">{{product.displayName}}</h5>
       <!-- <div class="prd-rate"><span>4.8</span><i class="fa-solid fa-star"></i></div> -->

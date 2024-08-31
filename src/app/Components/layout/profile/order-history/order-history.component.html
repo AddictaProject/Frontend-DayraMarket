@@ -6,7 +6,7 @@
   <div class="item d-flex flex-column flex-md-row justify-content-between text-center text-md-start">
     <div class="d-flex gap-3 d-flex flex-column flex-md-row align-items-center">
       <div class="image mx-auto">
-        <img [src]="'https://dayra-market.addictaco.com'+item.photoPaths[0]" alt="">
+        <img [src]="url+item.photoPaths[0]" alt="">
       </div>
       <div class="item-info  ">
         <h5>{{item.productDisplayName}}</h5>
@@ -49,7 +49,7 @@
     <div class="modal-content">
       <div class="d-flex gap-4">
         <div class="image">
-          <img [src]="'https://dayra-market.addictaco.com'+reviewItem.photoPaths[0]" alt="">
+          <img [src]="url+reviewItem.photoPaths[0]" alt="">
         </div>
         <div>
           <h5>{{reviewItem.productDisplayName}}</h5>

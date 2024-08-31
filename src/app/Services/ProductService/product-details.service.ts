@@ -6,12 +6,18 @@ import {
   Ivalues,
   IselectedStock,
   IProductInDetails,
+  IProductDetails,
 } from '../../Models/Product/Prod-Details/IProductDetails';
 import { VariantType } from '../../Models/Product/Prod-Details/enum/variant-type';
 import { IProductDetailsParams } from '../../Models/Product/Prod-Details/IProductDetailsParams';
 import { IVariantValues } from '../../Models/Product/Prod-Details/IVariantValues';
 import { BehaviorSubject, Observable, map, tap } from 'rxjs';
-import { IVendorReview, IVendorReviewParam } from '../../Models/Product/Prod-Details/ivendor-review';
+import {
+  IVendorReview,
+  IVendorReviewParam,
+} from '../../Models/Product/Prod-Details/ivendor-review';
+import { Environment } from '../../../enviroment/environment';
+import { IProduct } from '../../Models/Product/All-Products/IProduct';
 
 @Injectable({
   providedIn: 'root',
@@ -22,10 +28,13 @@ export class ProductDetailsService {
   attributesValues!: Ivalues[];
   previousStockUuid: string = '';
   productUuid: string = '';
+  description: string = '';
+  displayName: string = '';
   mostPopularPrice: number = 0;
   lowestPrice: number = 0;
   price!: number;
   images: any[] = [];
+  selectedStock!: IselectedStock;
   product: IProductInDetails = {
     uuid: '',
     brandDisplayName: '',
@@ -37,8 +46,8 @@ export class ProductDetailsService {
     photos: [],
     reviewCount: 0,
     averageRate: 0,
-    dateCreated:new Date(),
-    comesWith:[]
+    dateCreated: new Date(),
+    comesWith: [],
   };
   activeItem: any;
   mostPopularAttributes: string[] = [];
@@ -50,16 +59,20 @@ export class ProductDetailsService {
   isActiveMostPopular: boolean = true;
   isLoading: boolean = false;
   isPageLoading: boolean = false;
-
-  vendorId !: string;
+  relatedProducts:IProduct[] = [];
+  url = Environment.serverURL;
+  vendorId!: string;
 
   private vendorReviewSubject = new BehaviorSubject<IVendorReview[]>([]);
   vendorReview$ = this.vendorReviewSubject.asObservable();
 
+  constructor(private productApi: ProductApiService) {}
 
-  constructor(private productApi: ProductApiService) { }
-
-  loadProductVariant(id: string, lowestPrice: boolean = false, stockId: string = '') {
+  loadProductVariant(
+    id: string,
+    lowestPrice: boolean = false,
+    stockId: string = ''
+  ) {
     this.rest();
     this.isPageLoading = true;
     this.productApi
@@ -71,7 +84,9 @@ export class ProductDetailsService {
       })
       .subscribe((data) => {
         this.variantsGroup = data.product.groupedVariants;
-
+        this.selectedStock = data.selectedStock;
+        this.description = data.product.description;
+        this.displayName = data.product.displayName;
         this.variantsGroup.forEach((variant) => {
           variant.type = this.getVariantType(
             variant.attributeDisplayName.toLowerCase()
@@ -90,8 +105,8 @@ export class ProductDetailsService {
         // For gallery:
         if (data && data.photoPaths) {
           this.images = this.images.map((photo) => ({
-            source: `https://dayra-market.addictaco.com${photo}`,
-            thumbnail: `https://dayra-market.addictaco.com${photo}`,
+            source: `${this.url}${photo}`,
+            thumbnail: `${this.url}${photo}`,
           }));
         } else {
           console.log('Error in ProductDetails or photoPaths are missing');
@@ -108,12 +123,12 @@ export class ProductDetailsService {
         this.isPageLoading = false;
 
         this.vendorId = data.selectedStock.vendorUuid;
-        if(this.product.reviewCount>0){
+        if (this.product.reviewCount > 0) {
           this.loadReviews();
         }
 
+        this.loadRelatedProducts(this.productUuid);
       });
-
   }
 
   getVariantType(name: string) {
@@ -141,6 +156,9 @@ export class ProductDetailsService {
   getSelectedStock(val: IVariantValues, lowestPrice: boolean = false) {
     val.isLoading = true;
     this.loadSelectedStock(val.uuid, lowestPrice).subscribe((data) => {
+      this.selectedStock = data.selectedStock;
+      this.description = data.product.description;
+      this.displayName = data.product.displayName;
       this.price = data.selectedStock.price;
       this.previousStockUuid = data.selectedStock.uuid;
       let stockAttributes: string[] = [];
@@ -155,8 +173,8 @@ export class ProductDetailsService {
       this.images =
         data.photoPaths.length > 0 ? data.photoPaths : data.product.photos;
       this.images = this.images.map((photo) => ({
-        source: `https://dayra-market.addictaco.com${photo}`,
-        thumbnail: `https://dayra-market.addictaco.com${photo}`,
+        source: `${this.url}${photo}`,
+        thumbnail: `${this.url}${photo}`,
       }));
       this.allAttributes.forEach((variables) => {
         variables.forEach((variable) => {
@@ -166,8 +184,7 @@ export class ProductDetailsService {
         });
       });
 
-      if (this.price == this.lowestPrice)
-        this.isActiveLowestPrice = true;
+      if (this.price == this.lowestPrice) this.isActiveLowestPrice = true;
       else this.isActiveLowestPrice = false;
 
       if (this.previousStockUuid == this.mostPopularId)
@@ -176,9 +193,9 @@ export class ProductDetailsService {
 
       val.isLoading = false;
       this.vendorId = data.selectedStock.vendorUuid;
-        if(this.product.reviewCount>0){
-          this.loadReviews();
-        }
+      if (this.product.reviewCount > 0) {
+        this.loadReviews();
+      }
     });
   }
 
@@ -206,22 +223,35 @@ export class ProductDetailsService {
     this.isActiveMostPopular = true;
   }
 
-  loadReviews(prodId :string = this.product.uuid ,Vendid: string = this.vendorId, rate?: number) {
-
-    const reviewParams: IVendorReviewParam  = { vendorUuid: Vendid ,productUuid:prodId};
+  loadReviews(
+    prodId: string = this.product.uuid,
+    Vendid: string = this.vendorId,
+    rate?: number
+  ) {
+    const reviewParams: IVendorReviewParam = {
+      vendorUuid: Vendid,
+      productUuid: prodId,
+    };
     if (rate !== undefined) {
       reviewParams.rateFilter = rate;
     }
-    
+
     this.productApi
       .getVendorReview(reviewParams)
       .subscribe((data: IVendorReview[]) => {
         this.vendorReviewSubject.next(data);
-        
-      })
+      });
   }
 
-
-
-
+  loadRelatedProducts(productId: string){
+    this.productApi.getRelatedProducts(productId).subscribe((products) => {
+      this.relatedProducts = products;
+      this.relatedProducts.forEach((p) => {
+        p.photos[0] = `${Environment.serverURL}${p.photos[0]}`;
+        let colors:any = [];
+        p.groupedVariants[0]?.values?.forEach((v:any) => colors.push(v?.value));
+        p.groupedVariants=colors;
+      });
+    });
+  }
 }

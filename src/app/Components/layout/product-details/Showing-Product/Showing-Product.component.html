@@ -1,7 +1,8 @@
-<div class="container ">
+<div class="container position-relative">
+
 
   <!-- breadcrumb -->
-  <div>
+  <div [hidden]="isVisible">
     <nav class="breadcrumb mt-4">
       <ol class="list-unstyled d-flex">
         <li>
@@ -12,11 +13,28 @@
           <a [routerLink]="['/products']">{{_ProductDetailsService.product.categoryDisplayName}}</a>
           <i class="fa-solid fa-angle-right mx-3"></i>
         </li>
-        <li>{{_ProductDetailsService.product.displayName}} </li>
+        <li>{{_ProductDetailsService.displayName}} </li>
       </ol>
     </nav>
   </div>
 
+
+  <div [hidden]="!isVisible" class="  sticky-header row justify-content-between align-items-center">
+    <div class="d-flex col-12 col-md-6 gap-4 align-items-center">
+      <div class="header-img">
+        <img [src]="_ProductDetailsService.images[0].thumbnail" alt="">
+      </div>
+      <p  class="m-0 fw-semibold">{{_ProductDetailsService.displayName}}</p>
+    </div>
+    <div class="d-flex col-12 col-md-6 gap-5 align-items-center justify-content-between mt-4 mt-md-0 justify-content-md-end" >
+      <p class="m-0 fw-semibold">{{_ProductDetailsService.price | number: '3.0-0'}} L.E</p>
+      <div class="">
+        <a class="btn btnAddToCart py-3" role="button" (click)="addItem()">
+          Add to Cart </a>
+      </div>
+    </div>
+
+  </div>
 
   <!-- product -->
   <div>
@@ -26,15 +44,17 @@
       <div class="col-lg-6 col-md-12 col-sm-12 col-12">
         <!-- Product Name -->
         @if(!_ProductDetailsService.isPageLoading){
-        <div class="d-flex justify-content-between txtOfProdName" id="hiddenDiv">
+          <div >
+        <div class="d-flex justify-content-between txtOfProdName " id="hiddenDiv">
           <p>
-            {{_ProductDetailsService.product.displayName }}
+            {{_ProductDetailsService.displayName }}
           </p>
           <p>
             {{_ProductDetailsService.price | number: '3.0-0'}} L.E
           </p>
 
         </div>
+      </div>
         <div class="product-image " id="galleriaSection">
           <div id="myCarousel-2" class="carousel slide">
             <div class="carousel-inner">
@@ -67,27 +87,32 @@
 
       </div>
       <div class="col-lg-6 col-md-12  col-sm-12 col-xs-12 besideSection">
+
         <div id="scrollHeight">
           @if(!_ProductDetailsService.isPageLoading){
-          <!-- Product Name -->
-          <div class="d-flex justify-content-between txtOfProdName" id="proHeaderid">
-            <p>
-              {{_ProductDetailsService.product.displayName}}
-            </p>
-            <p>
-              {{_ProductDetailsService.price | number: '3.0-0'}} L.E
-            </p>
-          </div>
-          <!-- Product Description -->
-          <div class="txtOfProdDesc ">
-            <span>
-              <!-- There is not description yet ! -->
-              {{_ProductDetailsService.product.description}}
-            </span>
-          </div>
-          <!-- Product filters -->
-          <div class="prodFilters mb-2">
+            <!-- Product Name -->
+            <div class="prd-info">
 
+              <div class="d-flex justify-content-between txtOfProdName " id="proHeaderid">
+                <p>
+                  {{_ProductDetailsService.displayName}}
+                </p>
+                <p>
+                  {{_ProductDetailsService.price | number: '3.0-0'}} L.E
+                </p>
+              </div>
+              <div class="txtOfProdDesc ">
+                <span>
+                  <!-- There is not description yet ! -->
+                  {{_ProductDetailsService.description}}
+                </span>
+              </div>
+            </div>
+          <!-- Product Description -->
+
+          <!-- Product filters -->
+          <div class=" mb-2">
+          <div #stickyHeaderRef></div>
             <!-- Best pics -->
             <div>
 
@@ -393,19 +418,21 @@
 
 
             <!-- Comes with -->
+            @if (_ProductDetailsService.product.comesWith.length >0) {
             <div>
 
               <div class="product-header d-flex justify-content-between align-items-center mb-2 mt-4">
                 <p>Comes with</p>
               </div>
 
-              <div class="d-flex justify-content-between col">
+              <div class="d-flex justify-content-between">
 
 
                 @for (item of _ProductDetailsService.product.comesWith; track $index) {
-                <div class="d-flex cardOfFilter justify-content-center col me-4">
+                <div class="d-flex gap-3 comesWith justify-content-center me-4">
 
-                  <img [src]="item.accessoryIconPath" class="img-fluid" [alt]="item.accessoryDisplayName" />
+                  <img [src]="Url+item.accessoryIconPath" class="comesWith-img img-fluid"
+                    [alt]="item.accessoryDisplayName" />
 
                   <div class="txtOfFilterItem3">{{item.accessoryDisplayName}}</div>
 
@@ -431,12 +458,11 @@
 
             </div>
 
-
+            }
           </div>
           }@else {
           <app-product-placeholder></app-product-placeholder>
           }
-
 
           <!-- Adding To Cart -->
 
@@ -599,7 +625,7 @@
 
                 <!-- Description -->
                 <div class="textOfDescriptionTech">
-                  {{_ProductDetailsService.product.description}}
+                  {{_ProductDetailsService.description}}
                 </div>
 
                 <!-- Verified -->
@@ -629,46 +655,18 @@
                   <div class="col-3 txtOfMGN63LLOff">MGN63LL/A</div>
                 </div> -->
 
-                @if(_ProductDetailsService.variantsGroup.length>0)
+                @if(_ProductDetailsService.selectedStock)
                 {
                 <div>
-                  @for (item of _ProductDetailsService.variantsGroup; track $index) {
-                  @if(item.type==VariantType.Condition){
+                  @for (item of _ProductDetailsService.selectedStock.attributes; track $index) {
                   <div class="justify-content-between d-flex mt-4 pb-4 ManufacturingOff">
                     <div class="col-6 txtOfManufacturingOff">{{item.attributeDisplayName}}</div>
-                    @for (val of values; track $index) {
-                    @if (val.isClicked) {
-                    <div class="col-3 txtOfMGN63LLOff">{{val.displayName}}</div>
-                    }
-                    }
+                    <div class="col-3 txtOfMGN63LLOff">{{item.attributeValue}}</div>
                   </div>
                   }
-                  }
-                  @for (item of _ProductDetailsService.variantsGroup; track $index) {
-                  @if(item.type==VariantType.Storage){
-                  <div class="justify-content-between d-flex mt-4 pb-4 ManufacturingOff">
-                    <div class="col-6 txtOfManufacturingOff">{{item.attributeDisplayName}}</div>
-                    @for (val of values; track $index) {
-                    @if (val.isClicked) {
-                    <div class="col-3 txtOfMGN63LLOff">{{val.displayName}}</div>
-                    }
-                    }
-                  </div> }
-                  }
-                  @for (item of _ProductDetailsService.variantsGroup; track $index) {
-                  @if(item.type==VariantType.Color){
-                  <div class="justify-content-between d-flex mt-4 pb-4 ManufacturingOff">
-                    <div class="col-6 txtOfManufacturingOff">{{item.attributeDisplayName}}</div>
-                    @for (val of values; track $index) {
-                    @if (val.isClicked) {
-                    <div class="col-3 txtOfMGN63LLOff">{{val.displayName}}</div>
-                    }
-                    }
-                  </div> }
-                  }
-
                 </div>
                 }
+
 
               </div>
 
@@ -931,8 +929,8 @@
               <!-- Text beside the avatar -->
               <div>
                 <p class="txtOfFirstRefurbished m-0">Refurbished and sold by </p>
-                <p class="txtOfLive m-0">Live on Back Market since
-                  <span>{{_ProductDetailsService.product.dateCreated.getFullYear()}}</span>
+                <p class="txtOfLive m-0">Live on Dayra Market since
+                  <span>{{_ProductDetailsService.product.dateCreated | date: 'yyyy'}}</span>
                 </p>
               </div>
 
@@ -1032,7 +1030,19 @@
 
   </div>
 
+  <div class="d-flex d-lg-none gap-4 sticky-footer justify-content-between align-items-center">
+    <div >
+      <p  class="m-0 fw-semibold">{{_ProductDetailsService.displayName}}</p>
+      <p class="m-0 fw-semibold">{{_ProductDetailsService.price | number: '3.0-0'}} L.E</p>
+    </div>
+    <div class="d-flex  gap-5 align-items-center justify-content-between mt-4 mt-md-0 justify-content-md-end" >
+      <div class="">
+        <a class="btn btnAddToCart py-3" role="button" (click)="addItem()">
+          Add to Cart </a>
+      </div>
+    </div>
 
+  </div>
 
   <!-- end product -->
 </div>
