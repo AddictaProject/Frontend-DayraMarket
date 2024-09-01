@@ -879,12 +879,13 @@ input:-moz-placeholder {
   position: fixed;
   bottom: 0;
   left: 0;
-  width: 100%;
+  right: 0;
   background-color: #fff;
   padding: 20px;
   border-top: 1px solid rgba(0, 0, 0, 0.15);
   box-shadow: 0px -4px 11px 0px #00000000;
   z-index: 999;
+  font-size: 14px;
 }
 .sticky-header img {
   width: 70px;
@@ -904,5 +905,7 @@ input:-moz-placeholder {
   .sticky-header{
     display: none;
   }
-
+  .breadcrumb-container{
+    display: flex;
+  }
 }

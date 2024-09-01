@@ -1,8 +1,8 @@
-<div class="container position-relative">
+<div class="container ">
 
 
   <!-- breadcrumb -->
-  <div [hidden]="isVisible">
+  <div [hidden]="stickyHeader.hidden" class="breadcrumb-container">
     <nav class="breadcrumb mt-4">
       <ol class="list-unstyled d-flex">
         <li>
@@ -19,14 +19,15 @@
   </div>
 
 
-  <div [hidden]="!isVisible" class="  sticky-header row justify-content-between align-items-center">
+  <div #stickyHeader [hidden]="!isVisible" class="  sticky-header row justify-content-between align-items-center">
     <div class="d-flex col-12 col-md-6 gap-4 align-items-center">
       <div class="header-img">
         <img [src]="_ProductDetailsService.images[0].thumbnail" alt="">
       </div>
-      <p  class="m-0 fw-semibold">{{_ProductDetailsService.displayName}}</p>
+      <p class="m-0 fw-semibold">{{_ProductDetailsService.displayName}}</p>
     </div>
-    <div class="d-flex col-12 col-md-6 gap-5 align-items-center justify-content-between mt-4 mt-md-0 justify-content-md-end" >
+    <div
+      class="d-flex col-12 col-md-6 gap-5 align-items-center justify-content-between mt-4 mt-md-0 justify-content-md-end">
       <p class="m-0 fw-semibold">{{_ProductDetailsService.price | number: '3.0-0'}} L.E</p>
       <div class="">
         <a class="btn btnAddToCart py-3" role="button" (click)="addItem()">
@@ -44,17 +45,17 @@
       <div class="col-lg-6 col-md-12 col-sm-12 col-12">
         <!-- Product Name -->
         @if(!_ProductDetailsService.isPageLoading){
-          <div >
-        <div class="d-flex justify-content-between txtOfProdName " id="hiddenDiv">
-          <p>
-            {{_ProductDetailsService.displayName }}
-          </p>
-          <p>
-            {{_ProductDetailsService.price | number: '3.0-0'}} L.E
-          </p>
+        <div>
+          <div class="d-flex justify-content-between txtOfProdName " id="hiddenDiv">
+            <p>
+              {{_ProductDetailsService.displayName }}
+            </p>
+            <p>
+              {{_ProductDetailsService.price | number: '3.0-0'}} L.E
+            </p>
 
+          </div>
         </div>
-      </div>
         <div class="product-image " id="galleriaSection">
           <div id="myCarousel-2" class="carousel slide">
             <div class="carousel-inner">
@@ -90,29 +91,29 @@
 
         <div id="scrollHeight">
           @if(!_ProductDetailsService.isPageLoading){
-            <!-- Product Name -->
-            <div class="prd-info">
+          <!-- Product Name -->
+          <div class="prd-info">
 
-              <div class="d-flex justify-content-between txtOfProdName " id="proHeaderid">
-                <p>
-                  {{_ProductDetailsService.displayName}}
-                </p>
-                <p>
-                  {{_ProductDetailsService.price | number: '3.0-0'}} L.E
-                </p>
-              </div>
-              <div class="txtOfProdDesc ">
-                <span>
-                  <!-- There is not description yet ! -->
-                  {{_ProductDetailsService.description}}
-                </span>
-              </div>
+            <div class="d-flex justify-content-between txtOfProdName " id="proHeaderid">
+              <p>
+                {{_ProductDetailsService.displayName}}
+              </p>
+              <p>
+                {{_ProductDetailsService.price | number: '3.0-0'}} L.E
+              </p>
             </div>
+            <div class="txtOfProdDesc ">
+              <span>
+                <!-- There is not description yet ! -->
+                {{_ProductDetailsService.description}}
+              </span>
+            </div>
+          </div>
           <!-- Product Description -->
 
           <!-- Product filters -->
           <div class=" mb-2">
-          <div #stickyHeaderRef></div>
+            <div #stickyHeaderRef></div>
             <!-- Best pics -->
             <div>
 
@@ -1030,18 +1031,19 @@
 
   </div>
 
-  <div class="d-flex d-lg-none gap-4 sticky-footer justify-content-between align-items-center">
-    <div >
-      <p  class="m-0 fw-semibold">{{_ProductDetailsService.displayName}}</p>
-      <p class="m-0 fw-semibold">{{_ProductDetailsService.price | number: '3.0-0'}} L.E</p>
-    </div>
-    <div class="d-flex  gap-5 align-items-center justify-content-between mt-4 mt-md-0 justify-content-md-end" >
-      <div class="">
-        <a class="btn btnAddToCart py-3" role="button" (click)="addItem()">
-          Add to Cart </a>
+  <div class=" gap-4 sticky-footer justify-content-between align-items-center">
+    <div class="d-flex d-lg-none justify-content-between align-items-end">
+      <div>
+        <p class="m-0 fw-semibold">{{_ProductDetailsService.displayName}}</p>
+        <p class="m-0 fw-semibold">{{_ProductDetailsService.price | number: '3.0-0'}} L.E</p>
+      </div>
+      <div class="d-flex  gap-5 align-items-center justify-content-between justify-content-md-end">
+        <div class="">
+          <a class="btn btnAddToCart py-3" role="button" (click)="addItem()">
+            Add to Cart </a>
+        </div>
       </div>
     </div>
-
   </div>
 
   <!-- end product -->
