@@ -10,9 +10,10 @@
         signInForm.controls.email.touched ){
         <div class="error mt-1">Email is Required</div>
         }
-        @else if (signInForm.controls.email.invalid && signInForm.controls.email.dirty && signInForm.controls.email.touched) {
-          <div class="error mt-1">Email is Invalid</div>
-          }
+        @else if (signInForm.controls.email.invalid && signInForm.controls.email.dirty &&
+        signInForm.controls.email.touched) {
+        <div class="error mt-1">Email is Invalid</div>
+        }
       </div>
       <div>
         <input class="w-100" formControlName="password" type="password" placeholder="Password">
@@ -24,7 +25,7 @@
       @if(serverError){
       <div class="error">Invalid email or password</div>
       }
-    <div><a routerLink="/forget-password" class="sign-up">Forget your Password</a> </div>
+      <div><a routerLink="/forget-password" class="sign-up">Forget your Password</a> </div>
       <button class="sign-in-btn" type="submit">sign in</button>
     </form>
     <div class="or d-flex align-items-center">
@@ -36,6 +37,13 @@
       <i class="fa-brands fa-facebook-f"></i>
       <i class="fa-brands fa-instagram"></i>
       <i class="fa-brands fa-google"></i>
+    </div>
+    <div id="g_id_onload" data-client_id="651078340861-fk4qg6qcnmk1r10kbr86ecrgp6gpfuse.apps.googleusercontent.com"
+      data-context="signin" data-ux_mode="popup" data-login_uri="test()" data-auto_prompt="false">
+    </div>
+
+    <div class="g_id_signin" data-type="standard" data-shape="rectangular" data-theme="outline" data-text="signin_with"
+      data-size="large" data-logo_alignment="left">
     </div>
     <div>Don’t have an account ? <a routerLink="/signup" class="sign-up">SIGN UP</a> </div>
   </div>
