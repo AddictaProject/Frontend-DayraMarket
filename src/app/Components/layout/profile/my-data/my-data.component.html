@@ -1,6 +1,9 @@
 <div class="col-lg-9 col-12 px-3">
   <form class="d-flex mb-5 flex-column gap-sm-4  w-100" [formGroup]="myDataForm" (submit)="onSubmit()">
-
+    <div >
+      <label for="fullName">Full Name</label>
+      <input formControlName="fullName" type="text" placeholder="Full Name" class="w-100" readonly>
+    </div>
       <div >
         <label for="email">Email</label>
         <input formControlName="email" type="email" placeholder="Email" class="w-100" readonly>

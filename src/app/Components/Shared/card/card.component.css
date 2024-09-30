@@ -13,11 +13,11 @@
   align-items: center;
   cursor: pointer;
   background-color: #fff;
+  height: 380px;
 }
 
 .slider {
-  max-width: 240px;
-  min-width: 240px;
+  width: 240px;
   padding-bottom: 20px;
 }
 
@@ -39,8 +39,10 @@
 
 .prd-info {
   color: #858585;
-  margin-bottom: 8px;
   font-size: 14px;
+  white-space: normal;
+
+
 }
 
 .card-body {
@@ -49,13 +51,19 @@
 }
 
 .card-body h5 {
+  height: 3em; /* Two lines of text */
+  line-height: 1.5em; /* Adjust line height */
   font-size: 16px;
-  text-wrap: wrap
+  overflow: hidden;
+  white-space: normal;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Limit to two lines */
+  -webkit-box-orient: vertical;
+  position: relative;
 }
-
 .colors span {
   border-radius: 50%;
-  background-color: #858585;
   width: 12px;
   height: 12px;
   box-shadow: 0px 4px 11px 0px #00000014;
@@ -67,9 +75,10 @@
   font-size: 14px;
 }
 
-@media (min-width:767.5px) {
+
+@media (max-width:767.5px) {
   .prd-card {
-    height: 320px;
+    height: fit-content;
   }
 }
 

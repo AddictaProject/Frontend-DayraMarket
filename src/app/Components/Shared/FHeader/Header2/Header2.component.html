@@ -89,7 +89,7 @@
             <a class="categoryOffCanvas" data-bs-toggle="additionalOffCanvas" data-bs-target="#additionalOffCanvas"
               aria-controls="additionalOffCanvas">
 
-              <img [src]="'https://dayra-market.addictaco.com'+item.iconPath" [width]="20" [height]="20" alt="">
+              <img [src]="url+item.iconPath" [width]="20" [height]="20" alt="">
 
               {{item.displayName.slice(0,15)}}
               {{ item.displayName.length > 15 ? "..." : "" }}

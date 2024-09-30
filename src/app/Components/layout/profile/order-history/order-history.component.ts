@@ -13,6 +13,7 @@ import { IReview } from '../../../../Models/Order/IReview';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import Swal from 'sweetalert2';
 import { Environment } from '../../../../../enviroment/environment';
+import { PaymentMethod } from '../../../../Models/Cart/PaymentMethod';
 
 @Component({
   selector: 'app-order-history',
@@ -24,7 +25,8 @@ import { Environment } from '../../../../../enviroment/environment';
 export class OrderHistoryComponent {
   orders: IOrder[] = [];
   totalPrice: number = 0;
-  reviewVisible = false;
+  isReviewVisible = false;
+  isPaymentMethodVisible = false;
   reviewItem: IOrderItem|null = null;
   rate: number = 0;
   form:FormGroup=new FormGroup({
@@ -32,6 +34,10 @@ export class OrderHistoryComponent {
   })
   // productOrderItem !:IProductOrderItem;
   url=Environment.serverURL;
+
+  selectedPaymentMethod: PaymentMethod =PaymentMethod.CreditCard;
+
+  paymentMethodEnum =PaymentMethod;
 
   constructor(
     public _productDetailsService: ProductDetailsService,
@@ -51,9 +57,13 @@ export class OrderHistoryComponent {
 
   openReview(item: IOrderItem) {
     this.reviewItem = item;
-    this.reviewVisible = !this.reviewVisible;
+    this.isReviewVisible = !this.isReviewVisible;
   }
 
+  openPaymentRequest(item: IOrderItem) {
+    this.reviewItem = item;
+    this.isPaymentMethodVisible = !this.isPaymentMethodVisible;
+  }
   onClick(event: Event, rateValue: number) {
     let currentElem = event.srcElement as HTMLElement;
     const allElem = Array.from(currentElem.parentElement?.children ?? []);
@@ -84,7 +94,7 @@ export class OrderHistoryComponent {
         this.rate=0;
         this.form.reset();
         this.reviewItem=null;
-        this.reviewVisible=false;
+        this.isReviewVisible=false;
       },
       error:(err:any)=>{
         console.log(err);
@@ -174,11 +184,14 @@ export class OrderHistoryComponent {
       }
       });
   }
-
-  paymentRequest(id:string){
-    this.orderService.paymentRequest(id).subscribe((res:any)=>{
+  onPaymentMethodChange(method:PaymentMethod ) {
+    this.selectedPaymentMethod = method;
+  }
+  paymentRequest(){
+    this.orderService.paymentRequest(this.reviewItem?.orderUuid ?? '',this.selectedPaymentMethod.toString()).subscribe((res:any)=>{
       localStorage.setItem('orderPlaced','true');
       window.location.href=res.redirect_Url
     })
   }
+
 }

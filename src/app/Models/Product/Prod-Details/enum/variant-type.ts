@@ -1,5 +1,5 @@
 export enum VariantType {
-  None,
+  Other,
   Color,
   Storage,
   Condition,

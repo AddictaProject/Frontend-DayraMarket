@@ -26,7 +26,7 @@ export class CardComponent {
   };
   descriptions:string[]=[];
   ngOnInit(): void {
-    this.descriptions= this.product.description.split('-');
+    // this.descriptions= this.product.description.split('-');
   }
   constructor(
     private router: Router
@@ -34,7 +34,7 @@ export class CardComponent {
 
   reloadComponent(self: boolean, urlToNavigateTo?: string) {
     //skipLocationChange:true means dont update the url to / when navigating
-    const url = self ? this.router.url : urlToNavigateTo;
+    const url = self ? this.router.url : urlToNavigateTo?.replaceAll('(','').replaceAll(')','');
     this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
       this.router.navigateByUrl(`/${url}`,{state:{ id:this.product.uuid}} )
 

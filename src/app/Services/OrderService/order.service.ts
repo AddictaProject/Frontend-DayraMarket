@@ -34,8 +34,8 @@ export class OrderService {
     return this.httpClient.put(this.URL+`orders/items/${itemId}/return`,'');
   }
 
-  paymentRequest(orderId:string){
-    return this.httpClient.post(this.URL+`orders/${orderId}/payment-request`,'');
+  paymentRequest(orderId:string,paymentMethod:string){
+    return this.httpClient.post(this.URL+`orders/${orderId}/payment-request?paymentMethod=${paymentMethod}`,'');
   }
 
 

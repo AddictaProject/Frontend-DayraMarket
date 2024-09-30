@@ -23,7 +23,7 @@
       <div class="offcanvas-body ">
 
         <!-- Header -->
-        <div class="HeaderSideOffCanvas">
+        <div class="HeaderSideOffCanvas mb-4">
 
           <svg class="svgOff" width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg"
             data-bs-dismiss="offcanvas" style="cursor: pointer;">
@@ -36,25 +36,26 @@
         </div>
 
         <!-- Slider -->
-
+        @if(productDetailsService.conditionPhoto.length>0)
+        {
         <div class="container-fluid mb-5 mt-5">
           <div class="row">
             <div class="col-md-12">
-              <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+              <div id="carouselExampleIndicators" class="carousel slide">
                 <ol class="carousel-indicators">
-                  <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"></li>
+                  <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"  class="active"></li>
                   <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></li>
-                  <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" class="active"></li>
+                  <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></li>
                 </ol>
                 <div class="carousel-inner">
                   <div class="carousel-item">
-                    <img class="d-block w-100" src="https://i.imgur.com/K7A78We.jpg" alt="Carousel Bootstrap First" />
+                    <img class="d-block w-100" [src]="url + productDetailsService.conditionPhoto[0].photoPath" alt="Carousel Bootstrap " />
                   </div>
                   <div class="carousel-item">
-                    <img class="d-block w-100" src="https://i.imgur.com/c8952Iz.jpg" alt="Carousel Bootstrap Second" />
+                    <img class="d-block w-100" [src]="url + productDetailsService.conditionPhoto[1].photoPath" alt="Carousel Bootstrap " />
                   </div>
                   <div class="carousel-item active">
-                    <img class="d-block w-100" src="https://i.imgur.com/K7A78We.jpg" alt="Carousel Bootstrap Third" />
+                    <img class="d-block w-100" [src]="url + productDetailsService.conditionPhoto[2].photoPath" alt="Carousel Bootstrap " />
                   </div>
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
@@ -69,14 +70,12 @@
             </div>
           </div>
         </div>
-
+        }
 
         <!-- Buttons -->
         <div class="flex-wrap d-flex text-center pb-4">
-
           <div class="col-4 ">
-            <button (click)="changeCondition($event,'Fair')" class="btnOfOff active col-11">Fair</button>
-
+            <button (click)="changeCondition($event,'Fair')"  class="btnOfOff active col-11">Fair</button>
           </div>
           <div class="col-4">
             <button (click)="changeCondition($event,'Good')" class="btnOfOff col-11">Good</button>
@@ -84,14 +83,12 @@
           <div class="col-4">
             <button (click)="changeCondition($event,'Excellent')" class="btnOfOff col-11">Excellent</button>
           </div>
-
-
         </div>
 
         <div class="mt-4">
           <p class="txtOfPropMainOff">Screen :
             <span class="txtOfPropSubOff">
-             {{conditions[0].screen}}
+              {{conditions[0].screen}}
             </span>
           </p>
         </div>
@@ -107,7 +104,7 @@
         <div class="tech-condition mt-2">
           <p><i class="fa-solid fa-shield my-4"></i> Technical conditions</p>
           <p>Your device is 100% functional regardless of its condition</p>
-          <a routerLink="/how-it-works" class="tech-link mt-5"  data-bs-dismiss="offcanvas" >Read more</a>
+          <a routerLink="/how-it-works" class="tech-link mt-5" data-bs-dismiss="offcanvas">Read more</a>
         </div>
 
       </div>
@@ -130,8 +127,8 @@
 
     @if (productVariants.type==VariantType.Condition) {
     <app-condition class="col-4" [value]="val" (variantClick)="ClickingAction($event)"></app-condition>
-    } @else if(productVariants.type==VariantType.Storage){
-    <app-StorageVariant class="col-4" [value]="val" (variantClick)="ClickingAction($event)"></app-StorageVariant>
+    } @else if(productVariants.type==VariantType.Storage || productVariants.type==VariantType.Other){
+    <app-OtherVariant class="col-4" [value]="val" (variantClick)="ClickingAction($event)"></app-OtherVariant>
     } @else if(productVariants.type==VariantType.Color){
     <app-Color class="col-4" [value]="val" (variantClick)="ClickingAction($event)"></app-Color>
     }

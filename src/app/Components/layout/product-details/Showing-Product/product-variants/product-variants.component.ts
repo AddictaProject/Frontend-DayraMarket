@@ -13,20 +13,21 @@ import { VariantType } from '../../../../../Models/Product/Prod-Details/enum/var
 import { IVariantValues } from '../../../../../Models/Product/Prod-Details/IVariantValues';
 import { ProductDetailsService } from '../../../../../Services/ProductService/product-details.service';
 import { ConditionComponent } from './condition/condition.component';
-import { StorageVariantComponent } from './Storage/StorageVariant/StorageVariant.component';
-import { ColorComponent } from './Color/Color/Color.component';
 import { OffCanvasService } from '../../../../../Services/ProductService/offCanvas.service';
 import { CarouselModule } from 'primeng/carousel';
 import { BehaviorSubject } from 'rxjs';
 import { IProductCondition } from '../../../../../Models/IProductCondition';
 import { RouterModule } from '@angular/router';
+import { ColorComponent } from './Color/Color.component';
+import { OtherVariantComponent } from './OtherVariant/OtherVariant.component';
+import { Environment } from '../../../../../../enviroment/environment';
 
 @Component({
   selector: 'app-product-variants',
   standalone: true,
   templateUrl: './product-variants.component.html',
   styleUrl: './product-variants.component.css',
-  imports: [ConditionComponent, StorageVariantComponent, ColorComponent,CarouselModule,RouterModule],
+  imports: [ConditionComponent, OtherVariantComponent, ColorComponent,CarouselModule,RouterModule],
 })
 export class ProductVariantsComponent implements OnInit {
   @ViewChild('LearnMore') LearnMore!: ElementRef;
@@ -68,6 +69,9 @@ export class ProductVariantsComponent implements OnInit {
     },
   ];
   img!: never[];
+
+  url: string= Environment.serverURL;
+
   VariantType=VariantType
   constructor(
     public productDetailsService: ProductDetailsService,
@@ -121,8 +125,11 @@ export class ProductVariantsComponent implements OnInit {
   }
 
   animateLearnMore() {
-    const element = this.LearnMore.nativeElement;
+    setTimeout(()=>{                           // <<<---using ()=> syntax
+      const element = this.LearnMore.nativeElement;
     element.classList.add('dissolveclass');
+  }, 1000);
+
   }
 
   toggleOffCanvas(state: string | null) {
@@ -133,7 +140,6 @@ export class ProductVariantsComponent implements OnInit {
     const btns = (e.target as HTMLElement).parentElement?.parentElement
       ?.querySelectorAll('button')
       .forEach((b) => b.classList.remove('active'));
-      console.log(btns);
     (e.target as HTMLElement).classList.add('active');
 
     const conditionInfo =
@@ -146,5 +152,6 @@ export class ProductVariantsComponent implements OnInit {
 
     conditionInfo[0].innerHTML = selectedCondition?.screen ?? ' ';
     conditionInfo[1].innerHTML = selectedCondition?.body ?? ' ';
+
   }
 }

@@ -1,4 +1,5 @@
 import {
+  AfterViewChecked,
   AfterViewInit,
   ChangeDetectorRef,
   Component,
@@ -41,19 +42,21 @@ import { Environment } from '../../../../../enviroment/environment';
     ProductVariantsComponent,
     ProductPlaceholderComponent,
     SkeletonModule,
-
   ],
 })
-export class ShowingProductComponent implements OnInit ,AfterViewInit {
+export class ShowingProductComponent implements OnInit, AfterViewInit {
   isDragScrollDisabled: boolean = false;
   private imgUrl!: string;
-   Url!: string;
+  Url!: string;
 
-   @ViewChild('stickyHeaderRef') stickyHeader!: ElementRef;
-   isVisible = false;
+
+  @ViewChild('stickyHeaderShowingPointRef')
+  stickyHeaderShowingPointRef!: ElementRef;
+
+  isStickyHeader:boolean = false;
+
+  isVisible = false;
   @Output() scrollToCommentEvent = new EventEmitter<void>();
-
-
 
   mostPriceValue: IVariantValues = {
     uuid: '',
@@ -84,7 +87,7 @@ export class ShowingProductComponent implements OnInit ,AfterViewInit {
       numVisible: 1,
     },
   ];
-  VariantType = VariantType
+  VariantType = VariantType;
   @ViewChild('LearnMore') LearnMore!: ElementRef;
 
   constructor(
@@ -94,12 +97,18 @@ export class ShowingProductComponent implements OnInit ,AfterViewInit {
     private cartService: CartService,
     private router: Router
   ) {
-    this.imgUrl = Environment.serverURL + this._ProductDetailsService.product.photos[0];
-    this.Url = Environment.serverURL ;
-
+    this.imgUrl =
+      Environment.serverURL + this._ProductDetailsService.product.photos[0];
+    this.Url = Environment.serverURL;
   }
   ngAfterViewInit(): void {
-    this.setupIntersectionObserver();
+    this._ProductDetailsService.isPageLoadingSubject.subscribe(x=>{
+      setTimeout(()=>{
+        if (this.stickyHeaderShowingPointRef != undefined) {
+          this.setupIntersectionObserver();
+        }
+    }, 1000);
+    })
   }
 
   url!: string;
@@ -110,19 +119,15 @@ export class ShowingProductComponent implements OnInit ,AfterViewInit {
     else this.router.navigate(['/']);
 
     let stockId = '';
-    if (history.state?.stockId)
-      stockId = history.state.stockId;
+    if (history.state?.stockId) stockId = history.state.stockId;
 
     // Calling data From ProductDetails Service
 
-    this._ProductDetailsService.productUuid = id;
+    this._ProductDetailsService.product.uuid = id;
     this._ProductDetailsService.loadProductVariant(id, false, stockId);
     // For getting the size of the screen
     this.checkScreenWidth(window.innerWidth);
     this.updateDragScrollStatus();
-
-
-
   }
 
   // Animation For Learn more
@@ -200,7 +205,7 @@ export class ShowingProductComponent implements OnInit ,AfterViewInit {
       color: this._ProductDetailsService.color,
       price: this._ProductDetailsService.price,
       image: this._ProductDetailsService.images[0].thumbnail,
-      productId: this._ProductDetailsService.productUuid,
+      productId: this._ProductDetailsService.product.uuid,
     };
     this.cartService.addToCart(item);
     this.router.navigate(['/cart']);
@@ -214,10 +219,10 @@ export class ShowingProductComponent implements OnInit ,AfterViewInit {
   setupIntersectionObserver() {
     const options = {
       root: null, // Use the viewport as the container
-      threshold: .1 // Trigger when 10% of the target is visible
+      threshold: 0.1, // Trigger when 10% of the target is visible
     };
     const observer = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
+      entries.forEach((entry) => {
         if (!entry.isIntersecting) {
           this.isVisible = true; // Show div when the marker is out of view
         } else {
@@ -226,6 +231,6 @@ export class ShowingProductComponent implements OnInit ,AfterViewInit {
       });
     }, options);
 
-    observer.observe(this.stickyHeader.nativeElement);
+    observer.observe(this.stickyHeaderShowingPointRef.nativeElement);
   }
 }

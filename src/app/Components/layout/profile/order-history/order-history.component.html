@@ -30,7 +30,7 @@
       @if (item.status=='Delivered' ) {
       <button class="change-state mb-0  border-0 bg-transparent" (click)="openReview(item)">Review</button>
       }@else if (item.status=='PendingPayment') {
-      <button class="change-state mb-0  border-0 bg-transparent" (click)="paymentRequest(item.orderUuid)">Request payment</button>
+      <button class="change-state mb-0  border-0 bg-transparent" (click)="openPaymentRequest(item)">Request payment</button>
       }
       @if (item.status=='New' || item.status=='PendingPickup' || item.status=='PendingPayment') {
       <button class="change-state mb-0 border-0 bg-transparent" (click)="cancelOrderItem($event,item.uuid)">Cancel
@@ -43,9 +43,9 @@
   </div>
   }
   }
-  @if (reviewItem) {
+  @if (isReviewVisible && reviewItem) {
 
-  <div class="review show test" [ngClass]="{'show':reviewVisible}">
+  <div class="review show test" [ngClass]="{'show':isReviewVisible}">
     <div class="modal-content">
       <div class="d-flex gap-4">
         <div class="image">
@@ -83,10 +83,90 @@
             maxlength="1000"></textarea>
         </div>
         <div class="btns d-flex justify-content-end gap-3 mt-4 ">
-          <button type="reset" class="btn btn-secondary" (click)="reviewVisible=false">Cancel</button>
+          <button type="reset" class="btn btn-secondary" (click)="isReviewVisible=false">Cancel</button>
           <button class="btn btn-submit" type="submit" [disabled]="reviewItem.review" [disabled]="!rate || form.invalid">Submit</button>
         </div>
       </form>
     </div>
   </div>
   }
+
+
+  @if (isPaymentMethodVisible) {
+
+    <div class="review show test" [ngClass]="{'show':isPaymentMethodVisible}">
+      <div class="modal-content">
+
+      <div class="py-2 px-2 payment-method">
+        <h3 class="headerOfSelectPayment mb-4">Select Payment Method</h3>
+
+        <div class="form-check pb-2 ">
+
+          <input class="form-check-input" type="radio" name="paymentMethod" id="flexRadioDefault3" [value]="'credit'"
+            (change)="onPaymentMethodChange(paymentMethodEnum.CreditCard)" checked>
+          <div class="d-inline-flex gap-2 me-2 align-items-center">
+            <img src="assets/images/payment/MasterCard.png" alt="MasterCard">
+            <img src="assets/images/payment/visa.png" alt="Visa">
+            <label class="form-check-label lblOfPayment" for="flexRadioDefault3">
+              Credit Card
+            </label>
+          </div>
+
+        </div>
+        <div class="form-check pb-2">
+          <input class="form-check-input" type="radio" name="paymentMethod" id="Valu" [value]="'Valu'"
+            (change)="onPaymentMethodChange(paymentMethodEnum.Valu)">
+          <div class="d-inline-flex gap-2 me-2 align-items-center">
+            <img src="assets/images/payment/valu.jpg" alt="Valu">
+            <label class="form-check-label lblOfPayment" for="Valu">
+              Valu
+            </label>
+          </div>
+        </div>
+
+        <div class="form-check pb-2">
+          <input class="form-check-input" type="radio" name="paymentMethod" id="MeezaQR" [value]="'MeezaQR'"
+            (change)="onPaymentMethodChange(paymentMethodEnum.MeezaQR)">
+          <div class="d-inline-flex gap-2 me-2 align-items-center">
+            <img src="assets/images/payment/wallet.png" alt="wallet">
+
+            <label class="form-check-label lblOfPayment" for="MeezaQR">
+              Mobile Wallet
+            </label>
+          </div>
+        </div>
+
+        <div class="form-check pb-2">
+          <input class="form-check-input" type="radio" name="paymentMethod" id="Aman" [value]="'Aman'"
+            (change)="onPaymentMethodChange(paymentMethodEnum.Aman)">
+          <div class="d-inline-flex gap-2 me-2 aman align-items-center">
+            <img src="assets/images/payment/aman.jpg" alt="Aman">
+            <label class="form-check-label lblOfPayment" for="Aman">
+              Aman
+            </label>
+          </div>
+        </div>
+
+
+        <div class="form-check pb-2">
+          <input class="form-check-input" type="radio" name="paymentMethod" id="Forsa" [value]="'Forsa'"
+            (change)="onPaymentMethodChange(paymentMethodEnum.Forsa)">
+          <div class="d-inline-flex gap-2 me-2 forsa align-items-center">
+            <img src="assets/images/payment/forsa.png" alt="Forsa">
+            <label class="form-check-label lblOfPayment" for="Forsa">
+              Forsa
+            </label>
+          </div>
+        </div>
+
+
+      </div>
+
+          <div class="btns d-flex justify-content-end gap-3 mt-4 ">
+            <button type="reset" class="btn btn-secondary" (click)="isPaymentMethodVisible=false">Cancel</button>
+            <button class="btn btn-submit" type="submit"  (click)="paymentRequest()" >Submit</button>
+          </div>
+
+      </div>
+    </div>
+    }

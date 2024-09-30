@@ -15,52 +15,46 @@ export class TestimonialComponent implements AfterViewInit {
 
   testimonials: TestimonialCard[]= [
     {
-      name: "Jane Smith",
+      name: "Mostafa Saed",
       rate: 5,
       imageUrl: "assets/images/testimonial-1.png",
-      description: "Lorem ipsum dolor sit amet consectetuTellus consectetur integsectetuTellusconsecteturntegeratinteger pelleesque "
+      description: "Amazing price for such a great phone! The phone arrived in secure packaging, and it is in better condition than advertised! I recommend Dayra Market to anyone who wants to buy a refurbished phone!"
     },
     {
-      name: "Tom Williams",
-      rate: 3,
+      name: "Yara Ahmed",
+      rate: 5,
       imageUrl: "assets/images/testimonial-2.png",
-      description: "Lorem ipsum dolor sit amet consectetur. Tellus co donec leo rutrum id in egestas Cras donec."
+      description: "I had never purchased a refurbished phone before, so at the beginning I was a bit worried if the iPhone 13 that I ordered would be in a condition as described on the website. I received the phone yesterday and it looks and works perfectly. Also, I was surprised how smooth the transaction and delivery process worked so kudos to Dayra Market! I’m sure I will use Dayra again in the future!"
     },
     {
-      name: "Jane Smith",
-      rate: 2,
+      name: "Nour Abdel Rahman",
+      rate: 4,
       imageUrl: "assets/images/testimonial-1.png",
-      description: "Lorem ipsum dolor sit amet consectetuTellus consectetur integsectetuTellusconsecteturntegeratinteger pelleesque "
+      description: "I bought multiple refurbished electronics (mostly laptops and phones) in the past, but it was my first transaction at Dayra Market. The transaction went very smoothly, and I got the laptop that I ordered in just 2 days. The condition of the laptop was exactly as described! I’m super happy with my purchase!"
     },
     {
-      name: "Tom Williams",
+      name: "Tarek Mahmoud",
       rate: 4,
       imageUrl: "assets/images/testimonial-2.png",
-      description: "Lorem ipsum dolor sit amet consectetur. Tellus co donec leo rutrum id in egestas Cras donec."
+      description: "The iPad that I ordered was exactly in the condition described on the website, it arrived very fast and was nicely and securely packaged. I can recommend Dayra Market to everyone!."
     },
     {
-      name: "Jane Smith",
+      name: "Taylor Ismail",
       rate: 5,
       imageUrl: "assets/images/testimonial-1.png",
-      description: "Lorem ipsum dolor sit amet consectetuTellus consectetur integsectetuTellusconsecteturntegeratinteger pelleesque "
+      description: "The refurbished iPhone 14 that I got is indistinguishable from a brand-new one. Also, the way it was packaged made it feel like I got a new phone."
     },
     {
-      name: "Tom Williams",
-      rate: 3,
-      imageUrl: "assets/images/testimonial-2.png",
-      description: "Lorem ipsum dolor sit amet consectetur. Tellus co donec leo rutrum id in egestas Cras donec."
-    },
-    {
-      name: "Jane Smith",
-      rate: 2,
-      imageUrl: "assets/images/testimonial-1.png",
-      description: "Lorem ipsum dolor sit amet consectetuTellus consectetur integsectetuTellusconsecteturntegeratinteger pelleesque "
-    },
-    {
-      name: "Tom Williams",
+      name: "Sarah Abdel Rahim",
       rate: 4,
       imageUrl: "assets/images/testimonial-2.png",
-      description: "Lorem ipsum dolor sit amet consectetur. Tellus co donec leo rutrum id in egestas Cras donec."
+      description: "Easy transaction process, fast delivery, and the laptop exactly matching the description. I’m sure I will buy more things from Dayra Market in the future."
+    },
+    {
+      name: "Rania Sadek",
+      rate: 5,
+      imageUrl: "assets/images/testimonial-1.png",
+      description: "Last week I bought a phone from my mom, and I can recommend Dayra Market to all my friends and family. The phone looks like new; the delivery was very fast and the packaging looked very professional. Great job Dayra Market! "
     }
   ];
   ngAfterViewInit(): void {

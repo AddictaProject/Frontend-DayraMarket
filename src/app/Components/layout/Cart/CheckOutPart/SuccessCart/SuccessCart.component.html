@@ -55,7 +55,7 @@
             </div>
             <div class="justify-content-between d-flex mt-4">
               <p class="txtOfCount">Subtotal</p>
-              <p class="txtOfCount">{{subTotalPrice}} L.E</p>
+              <p class="txtOfCount">{{subTotalPrice | number: '3.0-0'}} L.E</p>
             </div>
             <!-- @if(cartService.subTotalPrice>= settingService.shippingInfo.freeShippingAfter){
       <div class="justify-content-between d-flex ">
@@ -72,7 +72,7 @@
 
             <div class="justify-content-between d-flex totalPrice py-4 ">
               <p class="txtOfCountFinal mb-0">Total </p>
-              <p class="txtOfCountFinal mb-0">{{subTotalPrice- shippingCost}} L.E</p>
+              <p class="txtOfCountFinal mb-0">{{subTotalPrice- shippingCost | number: '3.0-0'}} L.E</p>
             </div>
           </div>
         </div>

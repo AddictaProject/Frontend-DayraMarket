@@ -30,7 +30,7 @@ footer >div:first-of-type{
   margin-bottom: 12px;
   opacity: 75%;
 }
-.row ul ul li a{
+.row ul li a{
   color: #fff;
   text-decoration: none;
   cursor: pointer;
@@ -85,5 +85,10 @@ div:last-of-type ul:first-of-type li:hover{
 div:last-of-type ul:last-of-type li{
   width: 40px;
   height: 40px;
+  cursor: pointer;
+}
+.social a{
+  color: #fff;
+  text-decoration: none;
   cursor: pointer;
 }

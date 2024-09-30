@@ -11,7 +11,7 @@
   user-select: none;
   position: relative;
  overflow: hidden;
- min-height: 308px;
+ height: 380px;
  cursor: pointer;
 }
 h5{
@@ -30,18 +30,23 @@ h5{
 
 .colors span{
   border-radius:50% ;
-  background-color: #858585;
   width: 14px;
   height: 14px;
   box-shadow: 0px 4px 11px 0px #00000014;
   border: .3px rgb(227, 223, 223) solid;
 }
-.colors span:nth-of-type(1){
-  background: #E7DFEE;
-}
 
-.colors span:nth-of-type(3){
-  background: #21325B9C;
+.prd-title{
+  height: 4.5em;
+  line-height: 1.5em;
+  font-size: 16px;
+  overflow: hidden;
+  white-space: normal;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  position: relative;
 }
 .prd-price{
   color: #09764CCC;
@@ -69,6 +74,7 @@ h5{
   .offer-card{
     width: 100%;
     flex-direction: column;
+    height: fit-content ;
   }
 
 

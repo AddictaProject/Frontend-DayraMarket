@@ -103,3 +103,14 @@ textarea {
   background-color: #09764CCC;
   color: #fff;
 }
+.lblOfPayment{
+ text-wrap: nowrap;
+ height: fit-content;
+}
+.payment-method .aman img ,
+  .payment-method .forsa img {
+    height:  35px;
+  }
+  .payment-method  img {
+    height:  20px;
+  }

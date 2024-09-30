@@ -22,10 +22,11 @@ export class ProductService {
   highestPrice: number = 10000;
   brandsParams: string[] = [];
   categoriesPrams: string[] = [];
+  searchResult: string = '';
   maxPrice: number | null = null;
   constructor(private productApi: ProductApiService) {}
 
-  loadProducts(pageNum: number=1) {
+  loadProducts(pageNum: number = 1) {
     this.isLoaded = false;
     this.pageNumber = pageNum;
     const tempNum =
@@ -43,14 +44,16 @@ export class ProductService {
 
     if (this.maxPrice) params.maxPrice = this.maxPrice;
 
+    if (this.searchResult) params.keyword = this.searchResult;
+
     this.productApi.getProducts(params).subscribe((products) => {
       let prods = products.result;
       prods.forEach((p) => {
         p.photos[0] = `${Environment.serverURL}${p.photos[0]}`;
         let colors: any = [];
-        p.groupedVariants[0]?.values?.forEach((v: any) =>
-          colors.push(v?.hexCode)
-        );
+        p.groupedVariants
+          ?.find((x) => x.attributeDisplayName == 'Color')
+          ?.values?.forEach((v: any) => colors.push(v?.hexCode));
         p.groupedVariants = colors;
       });
       if (this.pageNumber == 1) {
@@ -64,7 +67,9 @@ export class ProductService {
       this.maxPageNum = Math.ceil(products.totalCount / this.numOfProducts);
 
       if (this.maxPageNum <= 3)
-        document.querySelector('.p-paginator .p-paginator-last')?.classList.add('d-none');
+        document
+          .querySelector('.p-paginator .p-paginator-last')
+          ?.classList.add('d-none');
       this.isLoaded = true;
     });
   }
@@ -80,5 +85,6 @@ export class ProductService {
     this.totalCount = 6;
     this.lowestPrice = 1000;
     this.highestPrice = 10000;
+    this.searchResult='';
   }
 }

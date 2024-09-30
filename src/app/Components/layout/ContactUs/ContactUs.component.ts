@@ -1,3 +1,4 @@
+import { UserService } from './../../../Services/UserService/user.service';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import {
@@ -7,6 +8,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
+import { IContactUs } from '../../../Models/IContactUs';
 
 @Component({
   selector: 'app-ContactUs',
@@ -16,10 +18,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./ContactUs.component.css'],
 })
 export class ContactUsComponent implements OnInit {
-  private googleFormsUrl =
-    'https://docs.google.com/forms/u/0/d/e/1FAIpQLSdoxTXTtqCdQh05guqTEKvnUDumzbXQl4UwfK4sV41UNQGj2Q/formResponse';
-
-  constructor(private http: HttpClient,private router:Router) {}
+  constructor(private _userService: UserService, private router: Router) {}
 
   ngOnInit() {}
 
@@ -34,6 +33,7 @@ export class ContactUsComponent implements OnInit {
     email: new FormControl('', [Validators.required, Validators.email]),
     topic: new FormControl('', [Validators.required]),
     subject: new FormControl('', [Validators.required]),
+    orderNumber: new FormControl(''),
   });
 
   onSubmit(e: Event): void {
@@ -44,45 +44,16 @@ export class ContactUsComponent implements OnInit {
       }
       return;
     }
+    const contactUs: IContactUs = {
+      firstName: this.contactUsForm.get('firstName')?.value ?? '',
+      lastName: this.contactUsForm.get('lastName')?.value ?? '',
+      phone: this.contactUsForm.get('phone')?.value ?? '',
+      email: this.contactUsForm.get('email')?.value ?? '',
+      topic: this.contactUsForm.get('topic')?.value ?? '',
+      subject: this.contactUsForm.get('subject')?.value ?? '',
+      orderNumber: this.contactUsForm.get('orderNumber')?.value ?? '',
+    };
 
-    e.preventDefault();
-    (e.target as HTMLFormElement).submit()
-    this.router.navigateByUrl('');
-
-    // const formData = new FormData();
-    // formData.append(
-    //   'entry.539873782',
-    //   this.contactUsForm.get('firstName')?.value || ''
-    // );
-    // formData.append(
-    //   'entry.2142531620',
-    //   this.contactUsForm.get('lastName')?.value || ''
-    // );
-    // formData.append(
-    //   'entry.150329',
-    //   this.contactUsForm.get('phone')?.value || ''
-    // );
-    // formData.append(
-    //   'entry.1249400585',
-    //   this.contactUsForm.get('email')?.value || ''
-    // );
-    // formData.append(
-    //   'entry.1639120554',
-    //   this.contactUsForm.get('topic')?.value || ''
-    // );
-    // formData.append(
-    //   'entry.483276092',
-    //   this.contactUsForm.get('orderNumber')?.value || ''
-    // );
-    // formData.append(
-    //   'entry.691399399',
-    //   this.contactUsForm.get('subject')?.value || ''
-    // );
-
-    // this.http.post(this.googleFormsUrl, formData).subscribe(response => {
-    //   console.log('Form submitted successfully', response);
-    // }, error => {
-    //   console.error('Form submission error', error);
-    // });
+    this._userService.contactUs(contactUs).subscribe();
   }
 }

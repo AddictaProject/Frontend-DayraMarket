@@ -23,6 +23,7 @@ export class MyDataComponent implements OnInit, OnDestroy {
   constructor(private userService: UserService) {}
   myDataForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
+    fullName: new FormControl('', [Validators.required,]),
     phoneNumber: new FormControl('', [
       Validators.required,
       Validators.maxLength(11),
@@ -47,6 +48,7 @@ export class MyDataComponent implements OnInit, OnDestroy {
         this.myDataForm.patchValue({
           email: data.email,
           phoneNumber: data.phoneNumber,
+          fullName: data.fullName,
         });
       },
       error: (err) => {

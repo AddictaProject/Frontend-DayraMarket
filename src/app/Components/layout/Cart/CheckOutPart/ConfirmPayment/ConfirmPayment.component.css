@@ -20,6 +20,8 @@
   }
 
   .lblOfPayment {
+    display: flex;
+    align-items: center;
     color: rgba(92, 92, 92, 1);
     font-size: 16px;
     font-weight: 400;
@@ -55,6 +57,13 @@
     box-shadow: none;
   }
 
+  .payment-method .aman img ,
+  .payment-method .forsa img {
+    height:  35px;
+  }
+  .payment-method  img {
+    height:  20px;
+  }
   /* ==== */
   /* third one */
 
@@ -137,6 +146,7 @@
     border-color: #FFF #FFF transparent transparent;
     animation: rotation 3s linear infinite;
   }
+
 
   @keyframes rotation {
     0% {

@@ -4,4 +4,5 @@ export interface IProductCondition {
   body:string;
   Hardware:string;
   battery:string;
+  imageUrl?:string;
 }

@@ -8,6 +8,7 @@ import { IProductDetails } from '../../Models/Product/Prod-Details/IProductDetai
 import { Environment } from '../../../enviroment/environment';
 import { IVendorReview, IVendorReviewParam } from '../../Models/Product/Prod-Details/ivendor-review';
 import { IProduct } from '../../Models/Product/All-Products/IProduct';
+import { IConditionPhoto } from '../../Models/Category/IConditionPhoto';
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +30,12 @@ export class ProductApiService {
       `${this.URL}/products/${productId}/related`
     );
   }
+  getConditionPhotos(categoryUuid : string): Observable<IConditionPhoto[]> {
+
+    return this.httpClient.get<IConditionPhoto[]>(
+      `${this.URL}/categories/${'4101fe61-d402-4709-ad86-aa7074fbf590' }/condition-photos`
+    );
+  }
 
   getProductDetails(productParams: IProductDetailsParams): Observable<IProductDetails> {
     return this.httpClient.get<IProductDetails>(`${this.URL}/products/${productParams.productUuid}`, {
@@ -40,5 +47,7 @@ export class ProductApiService {
     return this.httpClient.get<IVendorReview[]>(`${this.URL}/reviews`, {
       params: { ...reviewParams }
     });
+
+
   }
 }

@@ -69,6 +69,11 @@
  color:  #00B770;
  cursor: pointer;
  text-decoration: none;
+ font-size: 12px;
+}
+.sign-up:hover{
+ text-decoration: underline;
+
 }
 .error{
   font-size: 12px;

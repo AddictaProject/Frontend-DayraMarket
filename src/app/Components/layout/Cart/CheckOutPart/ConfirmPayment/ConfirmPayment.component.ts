@@ -5,11 +5,12 @@ import { OrderService } from '../../../../../Services/OrderService/order.service
 import { ICreateOrder, productStockUuid } from '../../../../../Models/Order/ICreateOrder';
 import { PaymentMethod } from '../../../../../Models/Cart/PaymentMethod';
 import { IOrder } from '../../../../../Models/Order/IOrder';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-ConfirmPayment',
   standalone: true,
-  imports: [RouterModule],
+  imports: [RouterModule,CommonModule],
   templateUrl: './ConfirmPayment.component.html',
   styleUrls: ['./ConfirmPayment.component.css']
 })

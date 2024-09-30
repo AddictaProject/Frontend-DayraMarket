@@ -2,11 +2,12 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Route, Router, RouterModule } from '@angular/router';
 import { CartService } from '../../../../../Services/CartService/cart.service';
 import { UserService } from '../../../../../Services/UserService/user.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-DefaultCheckOut',
   standalone: true,
-  imports: [RouterModule],
+  imports: [RouterModule,CommonModule],
   templateUrl: './DefaultCheckOut.component.html',
   styleUrls: ['./DefaultCheckOut.component.css']
 })

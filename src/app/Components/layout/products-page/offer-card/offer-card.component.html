@@ -5,12 +5,14 @@
       <img  draggable="false" class="w-100 h-100" [src]="product.photos[0]" alt="">
     </div>
     <div class="colors d-flex gap-1 mt-2">
-      <span></span><span></span><span></span>
+      @for (color of product.groupedVariants; track $index) {
+        <span [style]="'background-color:'+ color +';'"></span>
+      }
     </div>
   </div>
   <div class="info text-center d-flex flex-column  align-items-center gap-3">
     <h5 class="m-0" >OUR LATEST OFFER BEST PICKS</h5>
-    <h6 class="m-0" >{{product.displayName}} - {{descriptions[1]}} - {{descriptions[0]}}</h6>
+    <h6 class="m-0 prd-title" >{{product.displayName}} - {{product.description}}</h6>
     <p class="prd-price">Starts {{product.lowestPrice | number:'3.0-0'}} L.E</p>
     <div class="stars d-flex ">
       <i class="fa-solid fa-star"></i>

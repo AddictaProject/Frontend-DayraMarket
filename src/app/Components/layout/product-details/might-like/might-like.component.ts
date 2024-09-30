@@ -18,9 +18,6 @@ import { ProductDetailsService } from '../../../../Services/ProductService/produ
   styleUrls: ['./might-like.component.css']
 })
 export class MightLikeComponent implements OnInit  {
-  @Input () productId!: string;
-  isLoaded =false;
-  products: IProduct[] = [];
   constructor(
     public productService: ProductDetailsService
   ) {

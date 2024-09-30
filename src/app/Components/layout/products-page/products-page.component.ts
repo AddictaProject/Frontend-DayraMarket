@@ -39,13 +39,19 @@ export class ProductsPageComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('paginationRef') paginationRef!: ElementRef;
   constructor(
     public productService: ProductService,
-    private filterService: FilterService
+    private filterService: FilterService,
+    private router: Router
   ) {
-    if (history.state?.brandId)
-      productService.brandsParams.push(history.state.brandId);
+    if (this.router.url.includes('search')) {
+      productService.searchResult = history.state?.searchResult ?? '';
+    } else {
+      if (history.state?.brandId)
+        productService.brandsParams.push(history.state.brandId);
 
-    if (history.state?.categoryId)
-      productService.categoriesPrams.push(history.state.categoryId);
+      if (history.state?.categoryId)
+        productService.categoriesPrams.push(history.state.categoryId);
+
+    }
 
     filterService.loadBrands();
     filterService.loadCategories();

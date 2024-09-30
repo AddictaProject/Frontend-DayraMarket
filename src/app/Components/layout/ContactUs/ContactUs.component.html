@@ -21,16 +21,15 @@
                 <div class="row align-items-lg-center h-100">
                   <div class="col-12">
 
-                    <form [formGroup]="contactUsForm" (submit)="onSubmit($event)"
-                    action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSdoxTXTtqCdQh05guqTEKvnUDumzbXQl4UwfK4sV41UNQGj2Q/formResponse"
-                    method="post" target="hiddenFrame">
+                    <form [formGroup]="contactUsForm" (submit)="onSubmit($event)">
                       <div class="row gy-4 gy-xl-5 p-4 p-xl-5">
 
                         <div class="col-12 col-md-6">
-                          <label for="firstname" class="form-label">First Name <span class="text-danger">*</span></label>
-                          <input type="text" class="form-control" id="firstname" formControlName="firstName"
-                          name="entry.539873782" value="" required>
-                          @if(contactUsForm.controls.firstName.hasError('required') && contactUsForm.controls.firstName.dirty &&
+                          <label for="firstname" class="form-label">First Name <span
+                              class="text-danger">*</span></label>
+                          <input type="text" class="form-control" id="firstname" formControlName="firstName" required>
+                          @if(contactUsForm.controls.firstName.hasError('required') &&
+                          contactUsForm.controls.firstName.dirty &&
                           contactUsForm.controls.firstName.touched ){
                           <div class="text-danger mt-2">First Name is Required</div>
                           }
@@ -38,9 +37,9 @@
 
                         <div class="col-12 col-md-6">
                           <label for="lastname" class="form-label">Last Name <span class="text-danger">*</span></label>
-                          <input type="text" class="form-control" id="lastname" name="entry.2142531620" value="" required
-                          formControlName="lastName">
-                          @if(contactUsForm.controls.lastName.hasError('required') && contactUsForm.controls.lastName.dirty &&
+                          <input type="text" class="form-control" id="lastname" required formControlName="lastName">
+                          @if(contactUsForm.controls.lastName.hasError('required') &&
+                          contactUsForm.controls.lastName.dirty &&
                           contactUsForm.controls.lastName.touched ){
                           <div class="text-danger mt-2">Last Name is Required</div>
                           }
@@ -49,8 +48,7 @@
                         <div class="col-12 col-md-6">
                           <label for="phone" class="form-label">Phone <span class="text-danger">*</span></label>
                           <div class="input-group">
-                            <input type="tel" class="form-control" id="phone" name="entry.150329" value=""
-                            formControlName="phone">
+                            <input type="tel" class="form-control" id="phone" formControlName="phone">
                           </div>
                           @if(contactUsForm.controls.phone.hasError('required') && contactUsForm.controls.phone.dirty &&
                           contactUsForm.controls.phone.touched ){
@@ -61,20 +59,20 @@
                         <div class="col-12 col-md-6">
                           <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
                           <div class="input-group">
-                            <input type="email" class="form-control" id="email" name="entry.1249400585" value=""
-                            required formControlName="email">
+                            <input type="email" class="form-control" id="email" required formControlName="email">
                           </div>
                           @if(contactUsForm.controls.email.hasError('required') && contactUsForm.controls.email.dirty &&
                           contactUsForm.controls.email.touched ){
                           <div class="text-danger mt-2">Email is Required</div>
                           }@else if(contactUsForm.controls.email.hasError('email')){
-                            <div class="text-danger mt-2">Email is not correct</div>
+                          <div class="text-danger mt-2">Email is not correct</div>
                           }
                         </div>
 
                         <div class="col-12 col-md-6">
-                          <label for="topic" class="form-label">Select a Topic <span class="text-danger">*</span></label>
-                          <select class="form-select" id="topic" name="entry.1639120554" required formControlName="topic">
+                          <label for="topic" class="form-label">Select a Topic <span
+                              class="text-danger">*</span></label>
+                          <select class="form-select" id="topic" required formControlName="topic">
                             <option value="Order Status">Order Status</option>
                             <option value="Shipping and Delivery">Shipping and Delivery</option>
                             <option value="Returns and Refunds">Returns and Refunds</option>
@@ -92,14 +90,14 @@
 
                         <div class="col-12 col-md-6">
                           <label for="OrderNumber" class="form-label">Order Number</label>
-                          <input type="text" class="form-control" id="OrderNumber" name="entry.483276092" value="" >
+                          <input type="text" formControlName="orderNumber" class="form-control" id="OrderNumber">
                         </div>
 
                         <div class="col-12">
                           <label for="subject" class="form-label">Subject <span class="text-danger">*</span></label>
-                          <input type="text" class="form-control" id="subject" name="entry.691399399" value=""
-                          required formControlName="subject">
-                          @if(contactUsForm.controls.subject.hasError('required') && contactUsForm.controls.subject.dirty &&
+                          <input type="text" class="form-control" id="subject" required formControlName="subject">
+                          @if(contactUsForm.controls.subject.hasError('required') &&
+                          contactUsForm.controls.subject.dirty &&
                           contactUsForm.controls.subject.touched ){
                           <div class="text-danger mt-2">Subject is Required</div>
                           }
@@ -108,7 +106,7 @@
 
                         <div class="col-12">
                           <div class="">
-                            <button class="btn btnContactUs"  type="submit">Send Message
+                            <button class="btn btnContactUs" type="submit">Send Message
                               <i class="fa-solid fa-arrow-right" style="color: white;"></i>
                             </button>
                           </div>
@@ -127,7 +125,8 @@
                   <div class="col-11 col-xl-10">
                     <div class="contact-info-wrapper py-4 py-xl-5">
                       <h2 class="h1 mb-3 text-light overLayInAllInfo">Get in touch</h2>
-                      <p class="lead fs-4 text-light opacity-75 mb-4 mb-xxl-5 overLayInAllInfo">We're always on the lookout to work with
+                      <p class="lead fs-4 text-light opacity-75 mb-4 mb-xxl-5 overLayInAllInfo">We're always on the
+                        lookout to work with
                         new clients. If you're interested in working with us, please get in touch in one of the
                         following ways.</p>
                       <div class="d-flex mb-4 mb-xxl-5">
@@ -140,7 +139,8 @@
                         </div>
                         <div>
                           <h4 class="mb-3 text-light overLayInAllInfo">Address</h4>
-                          <address class="mb-0 text-light opacity-75 overLayInAllInfo">Ground Floor, Building No. 5158, Fifth District, Al-Ma'araj City, Behind Carrefour Maadi</address>
+                          <address class="mb-0 text-light opacity-75 overLayInAllInfo">Ground Floor, Building No. 5158,
+                            Fifth District, Al-Ma'araj City, Behind Carrefour Maadi</address>
                         </div>
                       </div>
                       <div class="row mb-4 mb-xxl-5">

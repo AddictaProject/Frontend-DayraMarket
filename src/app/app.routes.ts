@@ -28,16 +28,19 @@ import { PrivacyComponent } from './Components/Shared/FooterPage/privacy/privacy
 import { DayraCookiesComponent } from './Components/Shared/FooterPage/dayra-cookies/dayra-cookies.component';
 import { HelpCenterComponent } from './Components/Shared/FooterPage/help-center/help-center.component';
 import { AboutUsComponent } from './Components/Shared/AboutUs/AboutUs.component';
+import { ForgetPasswordComponent } from './Components/layout/User/forget-password/forget-password.component';
 
 export const routes: Routes = [
-  {path:"", component: HomeComponent},
-  { path: 'Home', component: HomeComponent, title: 'Home' },
+  {path:"", redirectTo: 'home',pathMatch:'full'},
+  { path: 'home', component: HomeComponent, title: 'Home' },
   { path: 'products', component: ProductsPageComponent, title: 'Products' },
+  { path: 'search', component: ProductsPageComponent , title: 'Products'},
   { path: 'product/:id', component: ProductDetailsComponent, title: 'Product Details' },
   { path: 'cart', component:CartComponent, title: 'Cart' },
   { path:'order-placed',component:SuccessCartComponent ,canActivate:[orderPlacedGuard]},
   { path: 'no-account', component:NoAccountComponent, title: 'No Account' },
   { path: 'login', component:SignInComponent, title: 'Login' },
+  { path: 'forget-password', component:ForgetPasswordComponent, title: 'Forget Password' },
   { path: 'signup', component:SignUpComponent, title: 'SignUp' },
   { path: 'profile', component:ProfileComponent, title: 'Profile' ,canActivate: [userGuard],children:[
       { path: '', component:MyDataComponent },

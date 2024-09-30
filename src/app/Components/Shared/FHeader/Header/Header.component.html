@@ -6,7 +6,7 @@
     <div class="d-flex">
       <!-- Brand -->
 
-      <a routerLink="Home" class="navbar-brand me-4 ms-lg-0 ms-5 ps-3 ps-lg-0  mb-1 d-flex align-items-center" id="brandHeader">
+      <a routerLink="/" class="navbar-brand me-4 ms-lg-0 ms-5 ps-3 ps-lg-0  mb-1 d-flex align-items-center" id="brandHeader">
         <div class="logo me-1 mb-1">
 
           <svg width="24" height="24" viewBox="0 0 70 61" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -43,9 +43,9 @@
 
     <!-- Middle -->
     <!-- Search -->
-    <form class="order-lg-0 order-3 me-2">
-      <input type="search" class="form-control removeFocus" placeholder="Search..." aria-label="Search">
-    </form>
+    <div class="order-lg-0 order-3 me-2 search-container">
+      <input #searchRef type="text" class="form-control removeFocus" placeholder="Search..."  (keyup.enter)="search(searchRef.value)">
+    </div>
     <!-- Middle -->
 
 

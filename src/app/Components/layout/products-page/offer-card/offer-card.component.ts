@@ -20,9 +20,7 @@ export class OfferCardComponent implements OnInit  {
     groupedVariants:[],
     averageRate:5
   }
-
-  descriptions:string[]=[];
   ngOnInit(): void {
-    this.descriptions= this.product.description.split('-');
+    
   }
 }

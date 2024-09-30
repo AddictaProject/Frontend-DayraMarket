@@ -20,6 +20,7 @@ import { AddUpdateAddressComponent } from '../../../profile/my-addresses/add-upd
 import { DefaultAddressComponent } from './default-address/default-address.component';
 import { ShowAddressesComponent } from '../../../profile/my-addresses/show-addresses/show-addresses.component';
 import { AddressSteps } from '../../../../../Models/Cart/AddressStep';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-address',
@@ -31,6 +32,7 @@ import { AddressSteps } from '../../../../../Models/Cart/AddressStep';
     ReactiveFormsModule,
     DefaultAddressComponent,
     ShowAddressesComponent,
+    CommonModule
   ],
 })
 export class AddressComponent implements OnInit, OnDestroy {

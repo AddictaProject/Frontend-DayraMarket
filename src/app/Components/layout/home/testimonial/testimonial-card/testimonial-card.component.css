@@ -10,7 +10,7 @@
  flex-direction: column;
  gap: 16px;
  color: #FFF;
-
+height: 450px;;
 }
 .rate{
   display: flex;
@@ -27,4 +27,5 @@ img{
 }
 q{
   white-space:wrap;
+  font-size: 14px;
 }

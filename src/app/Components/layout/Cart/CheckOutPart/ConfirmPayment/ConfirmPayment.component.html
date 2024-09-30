@@ -7,7 +7,7 @@
 
       <div class="justify-content-between d-flex totalPrice py-2 px-2  " style="border-top: none;">
         <p class="txtOfCountFinal mb-0">Total </p>
-        <p class="txtOfCountFinal mb-0">{{cartService.finalTotalPrice}} L.E</p>
+        <p class="txtOfCountFinal mb-0">{{cartService.finalTotalPrice | number: '3.0-0'}} L.E</p>
       </div>
 
     </div>
@@ -22,18 +22,73 @@
 
     <div class="card-body ">
 
-      <div class="py-2 px-2">
+      <div class="py-2 px-2 payment-method">
         <p class="headerOfSelectPayment mb-4">Select Payment Method</p>
 
-        <div class="form-check pb-2">
-          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" [value]="'credit'"
+        <div class="form-check pb-2 ">
+
+          <input class="form-check-input" type="radio" name="paymentMethod" id="flexRadioDefault3" [value]="'credit'"
             (change)="onPaymentMethodChange(paymentMethodEnum.CreditCard)"
-            [checked]="selectedPaymentMethod === paymentMethodEnum.CreditCard">
-          <label class="form-check-label lblOfPayment" for="flexRadioDefault3">
+            checked
+            >
+            <div class="d-inline-flex gap-2 me-2">
+              <img src="assets/images/payment/MasterCard.png" alt="MasterCard">
+              <img src="assets/images/payment/visa.png" alt="Visa">
+             <label class="form-check-label lblOfPayment" for="flexRadioDefault3">
             Credit Card
           </label>
         </div>
 
+        </div>
+        <div class="form-check pb-2">
+          <input class="form-check-input" type="radio" name="paymentMethod" id="Valu" [value]="'Valu'"
+            (change)="onPaymentMethodChange(paymentMethodEnum.Valu)"
+            >
+            <div class="d-inline-flex gap-2 me-2">
+              <img src="assets/images/payment/valu.jpg" alt="Valu">
+              <label class="form-check-label lblOfPayment" for="Valu">
+                Valu
+              </label>
+            </div>
+        </div>
+
+        <div class="form-check pb-2">
+          <input class="form-check-input" type="radio" name="paymentMethod" id="MeezaQR" [value]="'MeezaQR'"
+            (change)="onPaymentMethodChange(paymentMethodEnum.MeezaQR)"
+            >
+            <div class="d-inline-flex gap-2 me-2">
+              <img src="assets/images/payment/wallet.png" alt="wallet">
+
+              <label class="form-check-label lblOfPayment" for="MeezaQR">
+                Mobile Wallet
+              </label>
+            </div>
+        </div>
+
+        <div class="form-check pb-2">
+          <input class="form-check-input" type="radio" name="paymentMethod" id="Aman" [value]="'Aman'"
+            (change)="onPaymentMethodChange(paymentMethodEnum.Aman)"
+            >
+            <div class="d-inline-flex gap-2 me-2 aman">
+              <img src="assets/images/payment/aman.jpg" alt="Aman">
+              <label class="form-check-label lblOfPayment" for="Aman">
+                Aman
+              </label>
+            </div>
+        </div>
+
+
+        <div class="form-check pb-2">
+          <input class="form-check-input" type="radio" name="paymentMethod" id="Forsa" [value]="'Forsa'"
+            (change)="onPaymentMethodChange(paymentMethodEnum.Forsa)"
+            >
+            <div class="d-inline-flex gap-2 me-2 forsa">
+              <img src="assets/images/payment/forsa.png" alt="Forsa">
+              <label class="form-check-label lblOfPayment" for="Forsa">
+                Forsa
+              </label>
+            </div>
+        </div>
 
         <!-- @if (cartService.finalTotalPrice <= 30000) { <div class="form-check ">
           <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4" [value]="'cash'"

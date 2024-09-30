@@ -30,8 +30,14 @@ export class HeaderComponent implements OnInit {
     //skipLocationChange:true means dont update the url to / when navigating
     const url = self ? this.router.url : urlToNavigateTo;
     this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-      this.router.navigate([`/${url}`])
+      this.router.navigate([`/${url}`]);
     });
   }
-
+  search(searchResult: string) {
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigateByUrl('/search', {
+        state: { searchResult: searchResult },
+      });
+    });
+  }
 }

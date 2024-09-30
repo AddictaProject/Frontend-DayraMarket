@@ -11,5 +11,7 @@
   -webkit-text-fill-color: transparent;
 }
 drag-scroll {
-  height: 350px;
+  display: flex !important;
+  height: 400px;
+  align-items: stretch;
 }

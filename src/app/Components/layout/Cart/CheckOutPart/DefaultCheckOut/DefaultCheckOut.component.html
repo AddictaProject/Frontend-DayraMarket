@@ -10,7 +10,7 @@
 
       <div class="justify-content-between d-flex mt-3  pb-2">
         <p class="txtOfCount">Subtotal</p>
-        <p class="txtOfCount">{{totalPrice}} L.E</p>
+        <p class="txtOfCount">{{totalPrice | number: '3.0-0'}} L.E</p>
       </div>
 
       <!-- There is no promo code for now !.. -->
@@ -23,7 +23,7 @@
 
       <div class="justify-content-between d-flex totalPrice py-3">
         <p class="txtOfCountFinal mb-0">Total </p>
-        <p class="txtOfCountFinal mb-0">{{totalPrice}} L.E</p>
+        <p class="txtOfCountFinal mb-0">{{totalPrice | number: '3.0-0'}} L.E</p>
       </div>
 
       <div class="d-flex justify-content-center mb-3 ">

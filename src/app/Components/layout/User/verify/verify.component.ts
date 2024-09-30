@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { InputNavigationDirective } from '../input-navigation.directive';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { UserService } from '../../../../Services/UserService/user.service';
@@ -14,6 +14,9 @@ import { Router } from '@angular/router';
 })
 export class VerifyComponent implements OnInit  {
   @Input() phoneNumber!: string;
+  @Input() isFromForgetPassword: boolean=false;
+  @Output() resetPasswordForm=new EventEmitter<boolean>();
+
   num:number = 60;
 
   verifyForm= new FormGroup({
@@ -34,7 +37,13 @@ export class VerifyComponent implements OnInit  {
       otp: otp
     }
     this.userService.verifyPhoneNumber(model).subscribe(res=>{
-      this.router.navigate(['/login']);
+      if (this.isFromForgetPassword) {
+        this.resetPasswordForm.emit(true);
+      }
+      else {
+        this.router.navigate(['/login']);
+
+      }
     })
   }
 
@@ -47,5 +56,12 @@ export class VerifyComponent implements OnInit  {
         clearInterval(id);
     },1000)
 
+  }
+
+  onResend(): void {
+    this.userService.resendOtp(this.phoneNumber).subscribe((res:any) => {
+      console.log(res?.tempOTP);
+      this.num = 60;
+    });
   }
 }

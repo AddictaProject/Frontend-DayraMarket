@@ -25,7 +25,8 @@
       </div>
     </div>
     <p>Resend code after  00:{{num <10 ?'0'+num:num }}</p>
-    <button class="verify-btn w-100">Verify</button>
+    <button class="verify-btn mb-3 w-100">Verify</button>
+    <button class="resend-btn mt-0 w-100" (click)="onResend()" [disabled]="num!=0" >Resend</button>
     </form>
   </div>
 </div>

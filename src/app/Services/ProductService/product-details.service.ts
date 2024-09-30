@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { ProductApiService } from './product-api.service';
 import {
   IgroupedVariants,
-  IselectedStock as SelectedStock,
+  ISelectedStock as SelectedStock,
   Ivalues,
-  IselectedStock,
+  ISelectedStock,
   IProductInDetails,
   IProductDetails,
 } from '../../Models/Product/Prod-Details/IProductDetails';
@@ -18,23 +18,14 @@ import {
 } from '../../Models/Product/Prod-Details/ivendor-review';
 import { Environment } from '../../../enviroment/environment';
 import { IProduct } from '../../Models/Product/All-Products/IProduct';
+import { IConditionPhoto } from '../../Models/Category/IConditionPhoto';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductDetailsService {
+  url = Environment.serverURL;
   availableAttributes: string[] = [];
-  variantsGroup: IgroupedVariants[] = [];
-  attributesValues!: Ivalues[];
-  previousStockUuid: string = '';
-  productUuid: string = '';
-  description: string = '';
-  displayName: string = '';
-  mostPopularPrice: number = 0;
-  lowestPrice: number = 0;
-  price!: number;
-  images: any[] = [];
-  selectedStock!: IselectedStock;
   product: IProductInDetails = {
     uuid: '',
     brandDisplayName: '',
@@ -48,7 +39,14 @@ export class ProductDetailsService {
     averageRate: 0,
     dateCreated: new Date(),
     comesWith: [],
+    aspects: [],
   };
+  previousStockUuid: string = '';
+  mostPopularPrice: number = 0;
+  lowestPrice: number = 0;
+  price!: number;
+  images: any[] = [];
+  selectedStock!: ISelectedStock;
   activeItem: any;
   mostPopularAttributes: string[] = [];
   allAttributes: IVariantValues[][] = [];
@@ -57,15 +55,14 @@ export class ProductDetailsService {
   mostPopularId: string = '';
   isActiveLowestPrice: boolean = false;
   isActiveMostPopular: boolean = true;
-  isLoading: boolean = false;
-  isPageLoading: boolean = false;
+  isPageLoading: boolean = true;
   relatedProducts:IProduct[] = [];
-  url = Environment.serverURL;
   vendorId!: string;
-
+  vendorDisplayName!: string;
+  conditionPhoto:IConditionPhoto[]=[]
   private vendorReviewSubject = new BehaviorSubject<IVendorReview[]>([]);
   vendorReview$ = this.vendorReviewSubject.asObservable();
-
+  isPageLoadingSubject = new BehaviorSubject<boolean>(true);
   constructor(private productApi: ProductApiService) {}
 
   loadProductVariant(
@@ -83,11 +80,9 @@ export class ProductDetailsService {
         previousStockUuid: stockId,
       })
       .subscribe((data) => {
-        this.variantsGroup = data.product.groupedVariants;
+        this.product = data.product;
         this.selectedStock = data.selectedStock;
-        this.description = data.product.description;
-        this.displayName = data.product.displayName;
-        this.variantsGroup.forEach((variant) => {
+        this.product.groupedVariants.forEach((variant) => {
           variant.type = this.getVariantType(
             variant.attributeDisplayName.toLowerCase()
           );
@@ -114,20 +109,22 @@ export class ProductDetailsService {
 
         this.availableAttributes = data.availableAttributes;
         this.previousStockUuid = data.selectedStock.uuid;
-        this.productUuid = data.product.uuid;
-        this.product = data.product;
         this.mostPopularPrice = data.selectedStock.price;
         this.mostPopularId = data.selectedStock.uuid;
         this.lowestPrice = data.product.lowestPrice;
         this.price = this.mostPopularPrice;
         this.isPageLoading = false;
-
+        this.isPageLoadingSubject.next(false);
         this.vendorId = data.selectedStock.vendorUuid;
+        this.vendorDisplayName = data.selectedStock.vendorDisplayName ?? '';
+
+        this.loadConditionPhoto(this.product.uuid);
+
         if (this.product.reviewCount > 0) {
           this.loadReviews();
         }
 
-        this.loadRelatedProducts(this.productUuid);
+        this.loadRelatedProducts(this.product.uuid);
       });
   }
 
@@ -140,13 +137,13 @@ export class ProductDetailsService {
       case 'storage':
         return VariantType.Storage;
       default:
-        return VariantType.None;
+        return VariantType.Other;
     }
   }
 
   loadSelectedStock(attributeValueId: string, lowestPrice: boolean = false) {
     return this.productApi.getProductDetails({
-      productUuid: this.productUuid,
+      productUuid: this.product.uuid,
       lowestPrice: lowestPrice,
       attributeValueUuid: attributeValueId,
       previousStockUuid: this.previousStockUuid,
@@ -156,9 +153,13 @@ export class ProductDetailsService {
   getSelectedStock(val: IVariantValues, lowestPrice: boolean = false) {
     val.isLoading = true;
     this.loadSelectedStock(val.uuid, lowestPrice).subscribe((data) => {
+      this.product = data.product;
+      this.product.groupedVariants.forEach((variant) => {
+        variant.type = this.getVariantType(
+          variant.attributeDisplayName.toLowerCase()
+        );
+      });
       this.selectedStock = data.selectedStock;
-      this.description = data.product.description;
-      this.displayName = data.product.displayName;
       this.price = data.selectedStock.price;
       this.previousStockUuid = data.selectedStock.uuid;
       let stockAttributes: string[] = [];
@@ -193,6 +194,7 @@ export class ProductDetailsService {
 
       val.isLoading = false;
       this.vendorId = data.selectedStock.vendorUuid;
+      this.vendorDisplayName = data.selectedStock.vendorDisplayName ?? '';
       if (this.product.reviewCount > 0) {
         this.loadReviews();
       }
@@ -205,10 +207,7 @@ export class ProductDetailsService {
   }
   rest() {
     this.availableAttributes = [];
-    this.variantsGroup = [];
-    this.attributesValues = [];
     this.previousStockUuid = '';
-    this.productUuid = '';
     this.mostPopularPrice = 0;
     this.lowestPrice = 0;
     this.price = 0;
@@ -221,6 +220,7 @@ export class ProductDetailsService {
     this.mostPopularId = '';
     this.isActiveLowestPrice = false;
     this.isActiveMostPopular = true;
+    this.relatedProducts=[];
   }
 
   loadReviews(
@@ -249,9 +249,17 @@ export class ProductDetailsService {
       this.relatedProducts.forEach((p) => {
         p.photos[0] = `${Environment.serverURL}${p.photos[0]}`;
         let colors:any = [];
-        p.groupedVariants[0]?.values?.forEach((v:any) => colors.push(v?.value));
-        p.groupedVariants=colors;
+        p.groupedVariants?.find(x=>x.attributeDisplayName == 'Color')?.values?.forEach((v: any) =>
+          colors.push(v?.hexCode)
+        );
+        p.groupedVariants = colors;
       });
     });
+  }
+
+  loadConditionPhoto(categoryId:string){
+    this.productApi.getConditionPhotos(categoryId).subscribe(data=>{
+      this.conditionPhoto = data;
+    })
   }
 }

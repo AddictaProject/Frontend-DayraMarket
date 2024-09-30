@@ -6,11 +6,12 @@ import { SettingService } from '../../../../../Services/SettingService/setting.s
 import { IUserAddress } from '../../../../../Models/Cart/IUserAddress';
 import { OrderService } from '../../../../../Services/OrderService/order.service';
 import { CartService } from '../../../../../Services/CartService/cart.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-Address-Adding',
   standalone: true,
-  imports: [RouterModule,ReactiveFormsModule],
+  imports: [RouterModule,ReactiveFormsModule,CommonModule],
   templateUrl: './Address-Adding.component.html',
   styleUrls: ['./Address-Adding.component.css']
 })

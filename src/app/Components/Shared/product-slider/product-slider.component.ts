@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { DragScrollComponent, DragScrollItemDirective } from 'ngx-drag-scroll';
 import { CardComponent } from '../../Shared/card/card.component';
 
@@ -17,28 +17,37 @@ import { Environment } from '../../../../enviroment/environment';
   styleUrl: './product-slider.component.css',
   imports: [DragScrollComponent, DragScrollItemDirective, CardComponent,CardPlaceholderComponent ,RouterModule],
 })
-export class ProductSliderComponent {
+export class ProductSliderComponent implements OnInit {
   @Input() Title:string ="" ;
+  @Input() categoryId!:string ;
   isLoaded =false;
   products: IProduct[] = [];
   constructor(
     private productService: ProductApiService,
     private httpClient: HttpClient
   ) {
+
+
+  }
+  ngOnInit(): void {
     const productParams: IProductParams = {
       pageNo: 1,
       rowCount: 8,
     };
-    productService.getProducts(productParams).subscribe((products) => {
+    if(this.categoryId) {
+      productParams.categoryUuids = [this.categoryId];
+    }
+    this.productService.getProducts(productParams).subscribe((products) => {
       this.products = products.result;
       this.products.forEach((p) => {
         p.photos[0] = `${Environment.serverURL}${p.photos[0]}`;
         let colors:any = [];
-        p.groupedVariants[0]?.values?.forEach((v:any) => colors.push(v?.value));
-        p.groupedVariants=colors;
+        p.groupedVariants?.find(x=>x.attributeDisplayName == 'Color')?.values?.forEach((v: any) =>
+          colors.push(v?.hexCode)
+        );
+        p.groupedVariants = colors;
       });
       this.isLoaded=true;
     });
-
   }
 }

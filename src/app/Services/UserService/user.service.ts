@@ -6,6 +6,8 @@ import { IVerifyPhoneNumber } from '../../Models/User/IVerifyPhoneNumber';
 import { IUserAddress } from '../../Models/Cart/IUserAddress';
 import { ILogin } from '../../Models/User/ILogin';
 import { IResetPassword } from '../../Models/User/IResetPassword';
+import { IContactUs } from '../../Models/IContactUs';
+import { IExternalLogin } from '../../Models/User/IExternalLogin';
 
 @Injectable({
   providedIn: 'root'
@@ -50,7 +52,23 @@ export class UserService {
   resetUserPassword(model:IResetPassword){
     return this.httpClient.post(this.URL+'users/reset-password', model);
   }
+  resendOtp(phoneNumber:string){
+    return this.httpClient.post(this.URL+`users/resend-otp?phoneNumber=${phoneNumber}`,{});
+  }
   logout(){
     return this.httpClient.post(this.URL+'auth/logout','');
+  }
+  contactUs(contactForm:IContactUs){
+    return this.httpClient.post(this.URL+'public/contact-us',contactForm);
+  }
+  forgetPassword(phoneNumber:string){
+    return this.httpClient.post(this.URL+`users/forgot-password?phoneNumber=${phoneNumber}`,{});
+  }
+  forgotPasswordReset(model:IResetPassword){
+    return this.httpClient.post(this.URL+'users/forgot-password-reset', model);
+  }
+
+  externalLogin(externalLogin:IExternalLogin){
+    return this.httpClient.post(this.URL+'auth/authenticate/external',externalLogin);
   }
 }
