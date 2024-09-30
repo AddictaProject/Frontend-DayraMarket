@@ -8,7 +8,12 @@ import { IProductOrderItem } from '../../../../Models/Order/IProductOrderItem';
 import { CommonModule } from '@angular/common';
 import { IOrderItem } from '../../../../Models/Order/IOrderItem';
 import { StarHoverDirective } from '../../../../Directives/star-hover.directive';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { IReview } from '../../../../Models/Order/IReview';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import Swal from 'sweetalert2';
@@ -18,7 +23,12 @@ import { PaymentMethod } from '../../../../Models/Cart/PaymentMethod';
 @Component({
   selector: 'app-order-history',
   standalone: true,
-  imports: [CommonModule, StarHoverDirective,ReactiveFormsModule,SweetAlert2Module  ],
+  imports: [
+    CommonModule,
+    StarHoverDirective,
+    ReactiveFormsModule,
+    SweetAlert2Module,
+  ],
   templateUrl: './order-history.component.html',
   styleUrl: './order-history.component.css',
 })
@@ -26,18 +36,19 @@ export class OrderHistoryComponent {
   orders: IOrder[] = [];
   totalPrice: number = 0;
   isReviewVisible = false;
+  isPaymentFailed = false;
   isPaymentMethodVisible = false;
-  reviewItem: IOrderItem|null = null;
+  reviewItem: IOrderItem | null = null;
   rate: number = 0;
-  form:FormGroup=new FormGroup({
-    comment:new FormControl('',[Validators.required]),
-  })
+  form: FormGroup = new FormGroup({
+    comment: new FormControl('', [Validators.required]),
+  });
   // productOrderItem !:IProductOrderItem;
-  url=Environment.serverURL;
+  url = Environment.serverURL;
 
-  selectedPaymentMethod: PaymentMethod =PaymentMethod.CreditCard;
+  selectedPaymentMethod: PaymentMethod = PaymentMethod.CreditCard;
 
-  paymentMethodEnum =PaymentMethod;
+  paymentMethodEnum = PaymentMethod;
 
   constructor(
     public _productDetailsService: ProductDetailsService,
@@ -80,118 +91,127 @@ export class OrderHistoryComponent {
       this.rate = rateValue;
     }
   }
-  onSubmit(){
-    if (!this.reviewItem)
-      return
+  onSubmit() {
+    if (!this.reviewItem) return;
 
-    let review:IReview={
-      rate:this.rate,
-      comment:this.form.get('comment')?.value??'',
-    }
-    this.orderService.reviewOrderItem(this.reviewItem.uuid,review).subscribe({
-      next:(res:any)=>{
+    let review: IReview = {
+      rate: this.rate,
+      comment: this.form.get('comment')?.value ?? '',
+    };
+    this.orderService.reviewOrderItem(this.reviewItem.uuid, review).subscribe({
+      next: (res: any) => {
         console.log(res);
-        this.rate=0;
+        this.rate = 0;
         this.form.reset();
-        this.reviewItem=null;
-        this.isReviewVisible=false;
+        this.reviewItem = null;
+        this.isReviewVisible = false;
       },
-      error:(err:any)=>{
+      error: (err: any) => {
         console.log(err);
-      }
-    })
+      },
+    });
   }
-  cancelOrderItem(e:Event,id:string) {
+  cancelOrderItem(e: Event, id: string) {
     Swal.fire({
-      title: "Are you sure?",
+      title: 'Are you sure?',
       text: "You won't be able to revert this!",
-      icon: "warning",
+      icon: 'warning',
 
       showCancelButton: true,
-      confirmButtonText: "Yes, cancel it!",
+      confirmButtonText: 'Yes, cancel it!',
       buttonsStyling: false,
       customClass: {
-          confirmButton: 'btn btn-danger px-4',
-          cancelButton: 'btn border border-1 border-danger text-danger  ms-2 px-4',
-          },
-      }).then((result) =>{
+        confirmButton: 'btn btn-danger px-4',
+        cancelButton:
+          'btn border border-1 border-danger text-danger  ms-2 px-4',
+      },
+    }).then((result) => {
       if (result.value) {
         this.orderService.cancelOrderItem(id).subscribe({
-          next:(res:any)=>{
-            let elem=(e.target as HTMLElement);
+          next: (res: any) => {
+            let elem = e.target as HTMLElement;
             elem.classList.add('d-none');
-            elem.closest('div')!.querySelector('.status')!.textContent="Cancelled";
+            elem.closest('div')!.querySelector('.status')!.textContent =
+              'Cancelled';
             Swal.fire({
               title: 'Canceled!',
               text: 'Your order has been canceled.',
-              icon: 'success'
-              })
-          },
-          error:(err:any)=>{
-            Swal.fire({
-              icon: "error",
-              title: "Oops...",
-              text: "Something went wrong!",
-              buttonsStyling:true,
-              iconColor:"#09764CCC"
+              icon: 'success',
             });
-          }
-        })
-
+          },
+          error: (err: any) => {
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Something went wrong!',
+              buttonsStyling: true,
+              iconColor: '#09764CCC',
+            });
+          },
+        });
       }
-      });
-
-
+    });
   }
 
-  returnOrderItem(e:Event,id:string) {
+  returnOrderItem(e: Event, id: string) {
     Swal.fire({
-      title: "Are you sure?",
+      title: 'Are you sure?',
       text: "You won't be able to revert this!",
-      icon: "warning",
+      icon: 'warning',
 
       showCancelButton: true,
-      confirmButtonText: "Yes, return it!",
+      confirmButtonText: 'Yes, return it!',
       buttonsStyling: false,
       customClass: {
-          confirmButton: 'btn btn-danger px-4',
-          cancelButton: 'btn border border-1 border-danger text-danger  ms-2 px-4',
-          },
-      }).then((result) =>{
+        confirmButton: 'btn btn-danger px-4',
+        cancelButton:
+          'btn border border-1 border-danger text-danger  ms-2 px-4',
+      },
+    }).then((result) => {
       if (result.value) {
         this.orderService.returnOrderItem(id).subscribe({
-          next:(res:any)=>{
-            let elem=(e.target as HTMLElement);
+          next: (res: any) => {
+            let elem = e.target as HTMLElement;
             elem.classList.add('d-none');
-            elem.closest('div')!.querySelector('.status')!.textContent="ReturnRequested";
+            elem.closest('div')!.querySelector('.status')!.textContent =
+              'ReturnRequested';
             Swal.fire({
               title: 'ReturnRequested!',
               text: 'Your order has been requested to return.',
-              icon: 'success'
-              })
-          },
-          error:(err:any)=>{
-            Swal.fire({
-              icon: "error",
-              title: "Oops...",
-              text: "Something went wrong!",
-              buttonsStyling:true,
-              iconColor:"#09764CCC"
+              icon: 'success',
             });
-          }
-        })
-
+          },
+          error: (err: any) => {
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Something went wrong!',
+              buttonsStyling: true,
+              iconColor: '#09764CCC',
+            });
+          },
+        });
       }
-      });
+    });
   }
-  onPaymentMethodChange(method:PaymentMethod ) {
+  onPaymentMethodChange(method: PaymentMethod) {
     this.selectedPaymentMethod = method;
   }
-  paymentRequest(){
-    this.orderService.paymentRequest(this.reviewItem?.orderUuid ?? '',this.selectedPaymentMethod.toString()).subscribe((res:any)=>{
-      localStorage.setItem('orderPlaced','true');
-      window.location.href=res.redirect_Url
-    })
+  paymentRequest() {
+    this.isPaymentFailed=false;
+    this.orderService
+      .paymentRequest(
+        this.reviewItem?.orderUuid ?? '',
+        this.selectedPaymentMethod.toString()
+      )
+      .subscribe(
+        (res: any) => {
+          localStorage.setItem('orderPlaced', 'true');
+          window.location.href = res.redirect_Url;
+        },
+        (err: any) => {
+          this.isPaymentFailed = true;
+        }
+      );
   }
-
 }
