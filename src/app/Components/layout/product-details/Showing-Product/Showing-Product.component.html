@@ -655,7 +655,7 @@
 
                 <!-- Search Tech -->
                 <div class="searchOffTech ">
-                  <input type="text" placeholder="Search by Specification">
+                  <input type="text" placeholder="Search by Specification" (keyup)="_ProductDetailsService.aspectSearchHandler($event)">
                 </div>
 
 
@@ -669,7 +669,7 @@
                 @if(_ProductDetailsService.product)
                 {
                 <div>
-                  @for (item of _ProductDetailsService.product.aspects; track $index) {
+                  @for (item of _ProductDetailsService.productAspects; track $index) {
                   <div class="justify-content-between d-flex mt-4 pb-4 ManufacturingOff">
                     <div class="col-6 txtOfManufacturingOff">{{item.aspectDisplayName}}</div>
                     <div class="col-3 txtOfMGN63LLOff">{{item.value}}</div>
@@ -677,19 +677,6 @@
                   }
                 </div>
                 }
-
-                @if(_ProductDetailsService.selectedStock)
-                {
-                <div>
-                  @for (item of _ProductDetailsService.selectedStock.attributes; track $index) {
-                  <div class="justify-content-between d-flex mt-4 pb-4 ManufacturingOff">
-                    <div class="col-6 txtOfManufacturingOff">{{item.attributeDisplayName}}</div>
-                    <div class="col-3 txtOfMGN63LLOff">{{item.attributeValue}}</div>
-                  </div>
-                  }
-                </div>
-                }
-
 
               </div>
 

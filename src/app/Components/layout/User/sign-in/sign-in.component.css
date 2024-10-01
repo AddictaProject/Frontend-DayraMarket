@@ -79,3 +79,6 @@
   font-size: 12px;
   color: hsla(358, 84%, 36%, 1);;
 }
+#google-button {
+  display: none;
+}

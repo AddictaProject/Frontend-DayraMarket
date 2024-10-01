@@ -59,7 +59,11 @@
         <div class="error mt-1">Password don't match</div>
         }
       </div>
-
+      @if(serverError){
+        <div class="error">
+          <span>{{serverError}}</span>
+        </div>
+      }
     <div class="d-flex justify-content-md-end justify-content-center mt-4">
       <button type="submit" class="data-btn">Save Password</button>
     </div>

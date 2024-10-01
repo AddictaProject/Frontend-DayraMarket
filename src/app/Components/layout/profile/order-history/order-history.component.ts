@@ -137,6 +137,8 @@ export class OrderHistoryComponent {
               title: 'Canceled!',
               text: 'Your order has been canceled.',
               icon: 'success',
+              buttonsStyling:true,
+              confirmButtonColor:"#09764CCC",
             });
           },
           error: (err: any) => {

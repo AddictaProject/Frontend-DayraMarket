@@ -7,6 +7,7 @@ import {
   ISelectedStock,
   IProductInDetails,
   IProductDetails,
+  IAspects,
 } from '../../Models/Product/Prod-Details/IProductDetails';
 import { VariantType } from '../../Models/Product/Prod-Details/enum/variant-type';
 import { IProductDetailsParams } from '../../Models/Product/Prod-Details/IProductDetailsParams';
@@ -41,6 +42,7 @@ export class ProductDetailsService {
     comesWith: [],
     aspects: [],
   };
+  productAspects:IAspects[]=[];
   previousStockUuid: string = '';
   mostPopularPrice: number = 0;
   lowestPrice: number = 0;
@@ -81,6 +83,7 @@ export class ProductDetailsService {
       })
       .subscribe((data) => {
         this.product = data.product;
+        this.productAspects= data.product.aspects;
         this.selectedStock = data.selectedStock;
         this.product.groupedVariants.forEach((variant) => {
           variant.type = this.getVariantType(
@@ -154,6 +157,7 @@ export class ProductDetailsService {
     val.isLoading = true;
     this.loadSelectedStock(val.uuid, lowestPrice).subscribe((data) => {
       this.product = data.product;
+      this.productAspects= data.product.aspects;
       this.product.groupedVariants.forEach((variant) => {
         variant.type = this.getVariantType(
           variant.attributeDisplayName.toLowerCase()
@@ -256,7 +260,13 @@ export class ProductDetailsService {
       });
     });
   }
+  aspectSearchHandler(event: Event) {
+    const result = (event.target as HTMLInputElement).value.trim();
 
+    this.productAspects = this.product.aspects.filter((a) =>
+      a.aspectDisplayName.toLowerCase().includes(result) || a.value.toLowerCase().includes(result)
+    );
+  }
   loadConditionPhoto(categoryId:string){
     this.productApi.getConditionPhotos(categoryId).subscribe(data=>{
       this.conditionPhoto = data;

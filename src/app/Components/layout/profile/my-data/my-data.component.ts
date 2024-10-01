@@ -11,6 +11,7 @@ import {
 import { UserService } from '../../../../Services/UserService/user.service';
 import { IResetPassword } from '../../../../Models/User/IResetPassword';
 import { Subscription } from 'rxjs';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-my-data',
@@ -20,10 +21,11 @@ import { Subscription } from 'rxjs';
   styleUrl: './my-data.component.css',
 })
 export class MyDataComponent implements OnInit, OnDestroy {
+  serverError: string = '';
   constructor(private userService: UserService) {}
   myDataForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
-    fullName: new FormControl('', [Validators.required,]),
+    fullName: new FormControl('', [Validators.required]),
     phoneNumber: new FormControl('', [
       Validators.required,
       Validators.maxLength(11),
@@ -68,7 +70,29 @@ export class MyDataComponent implements OnInit, OnDestroy {
       newPassword: this.myDataForm.get('password')?.value || '',
       confirmNewPassword: this.myDataForm.get('confirmPassword')?.value || '',
     };
-    this.userService.resetUserPassword(newPassword).subscribe();
+    this.userService.resetUserPassword(newPassword).subscribe(
+      (res) => {
+        Swal.fire({
+          title: 'Change Password!',
+          text: 'Your password has been changed.',
+          icon: 'success',
+          buttonsStyling:true,
+          confirmButtonColor:"#09764CCC",
+        });
+        this.myDataForm.get('password')?.reset();
+        this.myDataForm.get('confirmPassword')?.reset();
+      },
+      (err) => {
+        this.serverError = err?.error?.detail;
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong!',
+          buttonsStyling:true,
+      confirmButtonColor:"#09764CCC",
+        });
+      }
+    );
   }
   ngOnDestroy(): void {
     this.sub?.unsubscribe();

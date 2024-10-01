@@ -1,3 +1,7 @@
+@if (externalData) {
+  <app-external-sign-up [externalData]="externalData"></app-external-sign-up>
+}
+@else{
 <div class="d-flex justify-content-center">
   <div class="sign-in">
     <div class="title">
@@ -36,15 +40,11 @@
     <div class="icons d-flex gap-4 my-4 pb-3">
       <i class="fa-brands fa-facebook-f"></i>
       <i class="fa-brands fa-instagram"></i>
-      <i class="fa-brands fa-google"></i>
+      <i class="fa-brands fa-google" (click)="triggerGoogleLogin()" ></i>
     </div>
-    <div id="g_id_onload" data-client_id="651078340861-fk4qg6qcnmk1r10kbr86ecrgp6gpfuse.apps.googleusercontent.com"
-      data-context="signin" data-ux_mode="popup" data-login_uri="test()" data-auto_prompt="false">
-    </div>
-
-    <div class="g_id_signin" data-type="standard" data-shape="rectangular" data-theme="outline" data-text="signin_with"
-      data-size="large" data-logo_alignment="left">
-    </div>
-    <div>Don’t have an account ? <a routerLink="/signup" class="sign-up">SIGN UP</a> </div>
+    <div>Don’t have an account ? <a routerLink="/signup" (click)="click.click()" class="sign-up">SIGN UP</a> </div>
   </div>
 </div>
+}
+<div id="google-button"></div>
+<div class="d-none" #click></div>

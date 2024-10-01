@@ -41,7 +41,10 @@ export class VerifyComponent implements OnInit  {
         this.resetPasswordForm.emit(true);
       }
       else {
-        this.router.navigate(['/login']);
+        this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+          this.router.navigate(['/login']);
+        });
+
 
       }
     })

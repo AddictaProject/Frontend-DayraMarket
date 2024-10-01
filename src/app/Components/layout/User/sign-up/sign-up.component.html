@@ -1,4 +1,7 @@
-@if(!isShowingVerify) {
+@if (externalData) {
+  <app-external-sign-up [externalData]="externalData"></app-external-sign-up>
+}
+@else if(!isShowingVerify) {
   <div class="d-flex justify-content-center">
     <div class="sign-up">
       <div class="title">
@@ -88,13 +91,16 @@
       <div class="icons d-flex gap-4 my-4 pb-3">
         <i class="fa-brands fa-facebook-f"></i>
         <i class="fa-brands fa-instagram"></i>
-        <i class="fa-brands fa-google"></i>
+        <i class="fa-brands fa-google" (click)="triggerGoogleLogin()" ></i>
       </div>
-      <div>Already have an account ? <a routerLink="/login" class="sign-in">SIGN IN</a> </div>
+      <div>Already have an account ? <a routerLink="/login"  (click)="click.click()"  class="sign-in">SIGN IN</a> </div>
     </div>
   </div>
 }
+
 @else {
   <app-verify [phoneNumber]="this.signUpForm.get('phoneNumber')?.value ??''"></app-verify>
 }
 
+<div id="google-button"></div>
+<div class="d-none" #click></div>

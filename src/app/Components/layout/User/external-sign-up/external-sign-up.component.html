@@ -1,0 +1,55 @@
+@if(!isShowingVerify) {
+  <div class="d-flex justify-content-center">
+    <div class="sign-up">
+      <div class="title">
+        <h4>Create an account</h4>
+      </div>
+      <form class="d-flex flex-column gap-3 w-100" [formGroup]="signUpForm" (submit)="onSubmit()">
+        <div>
+          <input formControlName="fullName" type="text" placeholder="fullName" class="w-100" [readOnly]="true">
+          @if(signUpForm.controls.fullName.hasError('required') && signUpForm.controls.fullName.dirty && signUpForm.controls.fullName.touched ){
+          <div class="error mt-1">fullName is Required</div>
+          }
+        </div>
+        <div>
+          <input formControlName="email" type="email" placeholder="Email" class="w-100" [readOnly]="externalData.email">
+          @if(signUpForm.controls.email.hasError('required') && signUpForm.controls.email.dirty && signUpForm.controls.email.touched ){
+          <div class="error mt-1">Email is Required</div>
+          }
+          @else if (signUpForm.controls.email.invalid && signUpForm.controls.email.dirty && signUpForm.controls.email.touched) {
+          <div class="error mt-1">Email is Invalid</div>
+          }
+        </div>
+        <div>
+          <input class="w-100" formControlName="phoneNumber" type="text" placeholder="Phone number" appNumberOnly [readOnly]="externalData.phoneNumber">
+          @if(signUpForm.controls.phoneNumber.hasError('required') && signUpForm.controls.phoneNumber.dirty && signUpForm.controls.phoneNumber.touched ){
+          <div class="error mt-1">Phone Number is Required</div>
+          }
+          @else if (signUpForm.controls.phoneNumber.invalid && signUpForm.controls.phoneNumber.dirty && signUpForm.controls.phoneNumber.touched) {
+          <div class="error mt-1">Phone Number is Invalid</div>
+          }
+        </div>
+        <div>
+          <div class="d-flex align-items-center gap-3 ">
+            <input type="checkbox" id="policy" formControlName="policy">
+            <label for="policy">Accept Privacy & Policy</label>
+          </div>
+          @if(signUpForm.controls.policy.hasError('required') && signUpForm.controls.policy.dirty && signUpForm.controls.policy.touched ){
+            <div class="error mt-1">Privacy & Policy is Required</div>
+            }
+        </div>
+        @if(serverError){
+          <div class="error">
+            <span>{{serverError}}</span>
+          </div>
+        }
+        <button type="submit" class="sign-up-btn">sign up</button>
+      </form>
+
+    </div>
+  </div>
+}
+@else {
+  <app-verify [phoneNumber]="this.signUpForm.get('phoneNumber')?.value ??''"></app-verify>
+}
+

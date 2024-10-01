@@ -8,6 +8,7 @@ import { ILogin } from '../../Models/User/ILogin';
 import { IResetPassword } from '../../Models/User/IResetPassword';
 import { IContactUs } from '../../Models/IContactUs';
 import { IExternalLogin } from '../../Models/User/IExternalLogin';
+import { IExternalSignUp } from '../../Models/User/IExternalSignUp';
 
 @Injectable({
   providedIn: 'root'
@@ -71,4 +72,9 @@ export class UserService {
   externalLogin(externalLogin:IExternalLogin){
     return this.httpClient.post(this.URL+'auth/authenticate/external',externalLogin);
   }
+
+  externalRegister(model:IExternalSignUp){
+    return this.httpClient.post(this.URL+'users/external', model);
+  }
+
 }
