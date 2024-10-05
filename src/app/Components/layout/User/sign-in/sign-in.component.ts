@@ -14,6 +14,7 @@ import { NavigationService } from '../../../../Services/NavigationService/naviga
 import { IExternalLogin } from '../../../../Models/User/IExternalLogin';
 import { IExternalSignUp } from '../../../../Models/User/IExternalSignUp';
 import { ExternalSignUpComponent } from '../external-sign-up/external-sign-up.component';
+import { FacebookLoginService } from '../../../../Services/UserService/facebook-login.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -34,7 +35,8 @@ export class SignInComponent implements OnInit {
   constructor(
     private userService: UserService,
     private router: Router,
-    private navigation: NavigationService
+    private navigation: NavigationService,
+    private facebookLoginService : FacebookLoginService
   ) {
     if (userService.userState) {
       this.router.navigate([this.navigation.returnPerviousUrl()]);
@@ -103,5 +105,15 @@ export class SignInComponent implements OnInit {
     });
   }
 
+  login() {
+    this.facebookLoginService.loginWithFacebook()
+      .then(response => {
+        console.log('User info:', response.userInfo);
+        console.log('Auth response:', response.authResponse);
+      })
+      .catch(error => {
+        console.error('Error during login:', error);
+      });
+  }
 
 }
