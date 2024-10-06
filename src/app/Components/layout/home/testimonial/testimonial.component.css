@@ -5,9 +5,17 @@
   height:600px;
   margin-block:130px ;
 }
+.testimonial.rtl{
+  padding-inline: 100px 0px;
+
+}
 @media (max-width: 768px) {
 .testimonial {
   padding-left: 50px;
+}
+.testimonial.rtl{
+  padding-inline: 50px 0px;
+
 }
 }
 .title h4 {

@@ -35,11 +35,11 @@ img{
     var(--_animation-direction, forwards) linear infinite ;
 }
 
-.scroller[data-direction="right"] {
+.scroller.right {
   --_animation-direction: reverse;
 }
 
-.scroller[data-direction="left"] {
+.scroller.left {
   --_animation-direction: forwards;
 }
 

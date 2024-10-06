@@ -1,127 +1,133 @@
-
 /* ============================= */
 
 
-  /* === */
-  /* OffCanvas */
+/* === */
+/* OffCanvas */
 
-  .offcanvas {
-    overflow-y: auto;
-    width: 265px;
-    min-width: 18%;
-  }
+.sidebar {
+  overflow-y: auto;
+  width: 265px;
+  min-width: 18%;
+}
 
-  .offcanvas .btn-close {
-      visibility: hidden;
-    }
-
-
-    .categoryOffCanvas{
-      color: rgba(85, 85, 85, 1);
-      text-decoration: none;
-      font-weight: 400;
-      font-family: "Montserrat", sans-serif;
-      font-size: 18px;
-      text-align: Center;
-    }
-
-    .itemOffCanvas{
-      height: 43px;
-      width: 100%;
-      padding: 10px 28px 0px 28px;
-      margin: 5px 0px 10px 0px;
-    }
+.sidebar .btn-close {
+  visibility: hidden;
+}
 
 
+.categoryOffCanvas {
+  color: rgba(85, 85, 85, 1);
+  text-decoration: none;
+  font-weight: 400;
+  font-family: "Montserrat", sans-serif;
+  font-size: 18px;
+  text-align: Center;
+}
 
-    /* === */
-    /* Border Nav */
-    .borderOfNav{
-      /* border: 0px 0px 1px 0px; */
-      border-color:rgba(212, 212, 212, 1) ;
-    }
-
-
-    .offcanvas-start {
-      position: fixed;
-      width: 472px;
-      height: auto;
-      top: 135px;
-      border-width: 1px;
-      border-style: solid;
-      border-color: #D4D4D4;
-      transform: translate(0);
-      opacity:0;
-      transition: opacity .2s ;
-
-    }
-
-    .offcanvas-start.show {
-      opacity: 1;
-      left: 300px;
-    }
-
-  .product-section
-  {
-    margin: 40px 20px;
-  }
-
-
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #D7D7D780;
-    padding-bottom: 10px;
-    margin-bottom: 10px;
-  }
-
-  .title {
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 18px;
-    letter-spacing: 0.02em;
-    text-align: center;
-    color: #316047CC;
-  }
-
-  .view-all {
-    color: #009058;
-    text-decoration: none;
-    font-size: 12px;
-    font-weight: 400;
-    line-height: 18px;
-    letter-spacing: 0.02em;
-    text-align: center;
-  }
-
-  .view-all:hover {
-    text-decoration: underline;
-  }
+.itemOffCanvas {
+  height: 43px;
+  width: 100%;
+  padding: 10px 28px 0px 28px;
+  margin: 5px 0px 10px 0px;
+}
 
 
 
-  .product-list {
-    display: flex;
-    flex-wrap: wrap;
-    /* gap:20px; */
-    text-decoration: none;
-  }
+/* === */
+/* Border Nav */
+.borderOfNav {
+  /* border: 0px 0px 1px 0px; */
+  border-color: rgba(212, 212, 212, 1);
+}
 
-  .product-list a {
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 18px;
-    letter-spacing: 0.02em;
-    margin-bottom: 10px;
-    color: #888888;
-    text-decoration: none;
-  }
+.sidebar {
+  position: fixed;
+  width: 472px;
+  bottom: 0;
+  top: 135px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #D4D4D4;
+  transform: translate(0);
+  opacity: 0;
+  transition: opacity .2s;
+  background-color: #fff;
+  display: none;
+
+}
+
+.sidebar-end.show {
+  right: 300px;
+  opacity: 1;
+  display: block;
+}
+
+.sidebar-start.show {
+  left: 300px;
+  opacity: 1;
+  display: block;
+}
+
+.product-section {
+  margin: 40px 20px;
+}
 
 
-  .product-list a:hover {
-    text-decoration: underline;
-  }
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #D7D7D780;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 18px;
+  letter-spacing: 0.02em;
+  text-align: center;
+  color: #316047CC;
+}
+
+.view-all {
+  color: #009058;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0.02em;
+  text-align: center;
+}
+
+.view-all:hover {
+  text-decoration: underline;
+}
+
+
+
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  /* gap:20px; */
+  text-decoration: none;
+}
+
+.product-list a {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0.02em;
+  margin-bottom: 10px;
+  color: #888888;
+  text-decoration: none;
+}
+
+
+.product-list a:hover {
+  text-decoration: underline;
+}
 
 
 
@@ -136,11 +142,12 @@
   display: none;
 } */
 a,
-.close  i{
+.close i {
   cursor: pointer;
 }
+
 @media (max-width: 992px) {
-  .offcanvas{
+  .offcanvas {
     position: fixed;
     top: 0;
     bottom: 0;

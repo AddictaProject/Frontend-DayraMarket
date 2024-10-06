@@ -4,7 +4,7 @@
     <div class="main-nav d-flex flex-nowrap gap-4 align-items-center">
 
       <div class="bars">
-        <a class="btn p-0 border-0" data-bs-toggle="offcanvas" role="button" data-bs-target="#offcanvasExample"
+        <a #barsRef class="btn p-0 border-0" data-bs-toggle="offcanvas" role="button" data-bs-target="#offcanvasExample"
           aria-controls="offcanvasExample" (click)="toggleOffCanvas('navOfHeader')">
 
           <svg width="23" height="17" viewBox="0 0 23 17" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -52,7 +52,7 @@
 <!-- OffCanvas -->
 <div>
 
-  <div #offcanvasRef class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasExample"
+  <div #offcanvasRef class="offcanvas" [ngClass]="isArabic? 'offcanvas-end': 'offcanvas-start'" data-bs-scroll="true" tabindex="-1" id="offcanvasExample"
     aria-labelledby="offcanvasExampleLabel">
     <div class="offcanvas-body">
       <div class=" d-lg-block d-none mt-4">
@@ -101,9 +101,11 @@
         </ul>
       </div>
     </div>
+     <!-- Additional OffCanvas -->
+  <app-secondOffCanvas [selectedCategory]="selectedCategory" ></app-secondOffCanvas>
+
   </div>
 
-  <!-- Additional OffCanvas -->
-  <app-secondOffCanvas [hidden]="!offcanvasRef.classList.contains('show')"  [selectedCategory]="selectedCategory" (close)="closeAdditionalOffCanvas()"></app-secondOffCanvas>
+
 
 </div>

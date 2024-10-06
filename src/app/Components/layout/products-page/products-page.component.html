@@ -1,16 +1,16 @@
-<section class="container">
+<section class="container" [ngClass]="{'rtl' : isArabic}">
   <header class="my-4 py-2">
     <div class="overlay"></div>
-    <h4 class="fw-semibold">PRODUCTS</h4>
+    <h4 class="fw-semibold">{{'products.title' | translate}}</h4>
   </header>
   <div>
     <nav class="breadcrumb">
       <ol class="list-unstyled d-flex">
         <li>
-          <a [routerLink]="['']">Home</a>
-          <i class="fa-solid fa-angle-right mx-3"></i>
+          <a [routerLink]="['']">{{'products.home' | translate}}</a>
+          <i [ngClass]="isArabic? 'fa-angle-left': 'fa-angle-right'" class="fa-solid fa-angle-right mx-3"></i>
         </li>
-        <li>Products</li>
+        <li>{{'products.products' | translate}}</li>
       </ol>
     </nav>
   </div>

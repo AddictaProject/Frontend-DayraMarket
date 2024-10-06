@@ -1,26 +1,23 @@
-<div #offcanvasRef class="offcanvas offcanvas-start" id="additionalOffCanvas" tabindex="-1"
-  aria-labelledby="additionalOffCanvasLabel">
-  <div class="offcanvas-body">
+<div #sidebarRef class="sidebar" [ngClass]="isArabic? 'sidebar-end': 'sidebar-start'"   id="additionalSidebar">
+  <div class="sidebar-body">
     @if (selectedCategory) {
 
     <div class="d-flex justify-content-between py-3 px-2 d-block d-lg-none ">
       <h5>{{selectedCategory.displayName}}</h5>
-      <span class="close" (click)="offcanvasRef.classList.remove('show')"><i  class="fa-solid fa-x fw-lighter fa-xl"></i></span>
+      <span class="close" (click)="sidebarRef.classList.remove('show')"><i
+          class="fa-solid fa-x fw-lighter fa-xl"></i></span>
     </div>
     @for (level2 of selectedCategory.children ; track $index) {
     <div class="product-section">
       <div class="header">
         <h2 class="title">{{level2.displayName}}</h2>
-        <a data-bs-toggle="offcanvas" (click)="goToCategory(selectedCategory.uuid)" class="view-all">View All
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrowhead">
-            <polyline points="12 5 19 12 12 19"></polyline>
-          </svg>
+        <a data-bs-toggle="offcanvas" (click)="goToCategory(selectedCategory.uuid)" class="view-all">{{'header.viewAll' | translate}}
+          <i [ngClass]="isArabic? 'fa-angle-left': 'fa-angle-right'" class="fa-solid fa-angle-right mx-1"></i>
         </a>
       </div>
       <div class="product-list">
         @for (level3 of level2.children ; track $index) {
-        <a   data-bs-toggle="offcanvas" (click)="goToCategory(level3.uuid)" class="col-4">{{level3.displayName}}</a>
+        <a data-bs-toggle="offcanvas" (click)="goToCategory(level3.uuid)" class="col-4">{{level3.displayName}}</a>
         }
       </div>
     </div>

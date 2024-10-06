@@ -22,12 +22,15 @@ import { ProductDetailsService } from '../../../Services/ProductService/product-
     ProductSliderComponent
 ],
 })
-export class ProductDetailsComponent   {
+export class ProductDetailsComponent implements OnDestroy   {
   productId!: string;
   constructor(
     private elementRef: ElementRef,
     public productService: ProductDetailsService
   ) {
+  }
+  ngOnDestroy(): void {
+    document.body.style.cssText = '';
   }
 
 

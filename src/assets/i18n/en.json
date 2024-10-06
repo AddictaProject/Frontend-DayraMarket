@@ -1,0 +1,88 @@
+{
+  "DayraMarket":"DayraMarket",
+  "header": {
+    "aboutUs": "About Us",
+    "contactUs": "Contact Us",
+    "search":"Search...",
+    "viewAll":"View All"
+  },
+  "home":{
+    "more":"More",
+    "testimonial":"Testimonial"
+  },
+  "footer":{
+    "brandLineup":"Brand Lineup",
+    "getToKnowUs": "Get to Know Us",
+    "infoHub": "Info Hub",
+    "ourPolicies":"Our Policies",
+    "aboutUs": "About Us",
+    "contactUs": "Contact Us",
+    "howItWorks": "How It Works",
+    "tradeIn": "Trade-In",
+    "helpCenter": "Help Center",
+    "Shipping": "Shipping",
+    "returnsAndRefunds": "Returns and Refunds",
+    "sellersRegisterToSell":"Sellers: Register to Sell",
+    "Seller Panel":"Seller Panel",
+    "termsOfService":"Terms of Service",
+    "limitedWarranty":"Limited Warranty",
+    "Privacy":"Privacy",
+    "Cookies":"Cookies",
+    "subscribe":"Subscribe",
+    "subscribeText":"Join our mailing list to be the first to know about the latest products and exclusive discounts. Don't miss out on special offers tailored just for you!",
+    "emailAddress":"Email address"
+  },
+  "products":{
+    "title":"PRODUCTS",
+    "home":"Home",
+    "products":"Products",
+    "filters":"Filters",
+    "reset":"Reset",
+    "categories":"Categories",
+    "brands":"Brands",
+    "price":"Price",
+    "offer":"Offer",
+    "offerDesc":"OUR LATEST OFFER BEST PICKS",
+    "starts":"Starts",
+    "brandSearch":"Search for brand",
+    "le":"L.E"
+
+  },
+  "productDetails":{
+    "addToCart":"Add to Cart",
+    "bestPicks":"Best Picks",
+    "learnMore":"Learn More",
+    "mostPopular":"Most Popular",
+    "mostPopularDesc":"This product is the most picked by our customers, offering the perfect balance of features and value. Get the best-loved version from our selection, chosen for its quality and performance.",
+    "lowestPrice":"Lowest Price",
+    "lowestPriceDesc":"Choose this option for the most affordable price in our inventory. It's the best deal if you're looking to save while still enjoying great features and reliability.",
+    "comesWith":"Comes With",
+    "reviews":"Reviews",
+    "noReviewsYet":"No Reviews Yet",
+    "more":"More",
+    "verifiedRefurbished":"Verified Refurbished",
+    "verifiedTxt":"Free 14 day returns, 1-year Limited warranty",
+    "freeDelivery":"Free Delivery",
+    "technicalSpecifications":"Technical Specifications",
+    "rebornTxt":"Refurbished products are not the same as used or second-hand items. Our partner sellers adhere to strict quality standards to ensure every product functions like new. The refurbishment process involves thorough cleaning, testing, and evaluation of each item. We ensure that every product is 100% functional before it goes out for delivery. You get what it says on the box, or your money back",
+    "specificationSearch":"Search by Specification",
+    "perksAndBenefitsInCluded":"Perks & benefits included",
+    "perksAndBenefits":"Perks & Benefits",
+    "oneYearWarranty":"1-year warranty",
+    "oneYearWarrantyTxt":"If your item has a technical defect within the first year, we'll repair or replace it.",
+    "changeYourMind":"14 days to change your mind",
+    "changeYourMindTxt":"Return your item for any reason within 14 days of receiving it. Simple as that!",
+    "frequentlyAskedQuestions":"Frequently asked questions",
+    "refurbishedSold":"Refurbished and sold by",
+    "liveOnDayra":"Live on Dayra Market since",
+    "accepts":"Accepts",
+    "technicalConditions":" Technical Conditions",
+    "technicalConditionsTxt":"Your device is 100% functional regardless of its condition",
+    "readMore":"Read More"
+  },
+  "cart":{
+    "empty":"Your Cart is empty",
+    "continue":"Please continue shopping",
+    "shop":"Shop Now"
+  }
+}

@@ -1,13 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { OffCanvasService } from '../../../../Services/ProductService/offCanvas.service';
 import { CommonModule } from '@angular/common';
 import { UserService } from '../../../../Services/UserService/user.service';
+import { LocalizationService } from '../../../../Services/localiztionService/localization.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-Header',
   standalone: true,
-  imports: [RouterModule, CommonModule],
+  imports: [RouterModule, CommonModule,TranslateModule],
   templateUrl: './Header.component.html',
   styleUrls: ['./Header.component.css'],
 })
@@ -17,7 +19,9 @@ export class HeaderComponent implements OnInit {
   constructor(
     private offCanvasOb: OffCanvasService,
     public userService: UserService,
-    private router: Router
+    private router: Router,
+    private localizationService: LocalizationService,
+    private cdRef: ChangeDetectorRef
   ) {}
 
   ngOnInit() {
@@ -39,5 +43,14 @@ export class HeaderComponent implements OnInit {
         state: { searchResult: searchResult },
       });
     });
+  }
+
+  useLanguage(){
+    const state=history.state;
+    const currentRoute=this.router.url;
+    this.router.navigateByUrl('/not', { skipLocationChange: true }).then(() => {
+      this.router.navigateByUrl(`/${currentRoute}`,{state:state})
+    });
+    this.localizationService.ChangeLanguage();
   }
 }

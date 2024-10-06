@@ -17,6 +17,8 @@ import { CardPlaceholderComponent } from '../../Shared/card-placeholder/card-pla
 import { CommonModule } from '@angular/common';
 import { PaginatorModule } from 'primeng/paginator';
 import { FilterService } from '../../../Services/FilterServices/filter.service';
+import { TranslateModule } from '@ngx-translate/core';
+import { LocalizationService } from '../../../Services/localiztionService/localization.service';
 
 @Component({
   selector: 'app-products-page',
@@ -33,14 +35,18 @@ import { FilterService } from '../../../Services/FilterServices/filter.service';
     CardPlaceholderComponent,
     CommonModule,
     PaginatorModule,
+    TranslateModule
   ],
 })
 export class ProductsPageComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('paginationRef') paginationRef!: ElementRef;
+  isArabic: boolean = false;
+
   constructor(
     public productService: ProductService,
     private filterService: FilterService,
-    private router: Router
+    private router: Router,
+    private localizationService: LocalizationService
   ) {
     if (this.router.url.includes('search')) {
       productService.searchResult = history.state?.searchResult ?? '';
@@ -69,6 +75,7 @@ export class ProductsPageComponent implements OnInit, AfterViewInit, OnDestroy {
     this.filterService.reset();
   }
   ngOnInit(): void {
+    this.localizationService.IsArabic.subscribe(isAr=>this.isArabic=isAr);
     this.productService.loadProducts(1);
   }
 

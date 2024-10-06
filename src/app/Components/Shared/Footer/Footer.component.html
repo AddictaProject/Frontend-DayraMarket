@@ -2,7 +2,7 @@
   <div class="row justify-content-between gap-5">
     <ul class=" row list d-flex justify-content-between col-lg-8 col-12 list-unstyled ">
       <li class="col-md-3 col-6 mt-lg-0 mt-3">
-        <h5 class="mb-4">Brand Lineup</h5>
+        <h5 class="mb-4">{{'footer.brandLineup' | translate}}</h5>
         <ul class="list-unstyled">
           @for (brand of brands; track $index) {
           <li>
@@ -12,45 +12,46 @@
         </ul>
       </li>
       <li class="col-md-3 col-6 mt-lg-0 mt-3">
-        <h5 class="mb-4">Get to Know Us</h5>
+        <h5 class="mb-4">{{'footer.getToKnowUs' | translate}}</h5>
         <ul class="list-unstyled">
-          <li><a routerLink="/aboutUs">About Us</a></li>
-          <li><a routerLink="/how-it-works">How it Works</a></li>
-          <li><a routerLink="/contactUs">Trade-In</a></li>
-          <li><a routerLink="/help-center">Help Center</a></li>
-          <li><a routerLink="/contactUs">Contact Us</a></li>
+          <li><a routerLink="/aboutUs">{{'footer.aboutUs' | translate}}</a></li>
+          <li><a routerLink="/how-it-works">{{'footer.howItWorks' | translate}}</a></li>
+          <li><a routerLink="/contactUs">{{'footer.tradeIn' | translate}}</a></li>
+          <li><a routerLink="/help-center">{{'footer.helpCenter' | translate}}</a></li>
+          <li><a routerLink="/contactUs">{{'footer.contactUs' | translate}}</a></li>
         </ul>
       </li>
       <li class="col-md-3 col-6 mt-lg-0 mt-3">
-        <h5 class="mb-4">Info Hub</h5>
+        <h5 class="mb-4">{{'footer.infoHub' | translate}}</h5>
         <ul class="list-unstyled">
-          <li><a routerLink="shipping">Shipping</a></li>
-          <li><a routerLink="returns-and-refunds">Returns And Refunds</a></li>
-          <li><a routerLink="">Sellers: Register to Sell</a></li>
-          <li><a routerLink="">Seller Panel</a></li>
+          <li><a routerLink="shipping">{{'footer.shipping' | translate}}</a></li>
+          <li><a routerLink="returns-and-refunds">{{'footer.returnsAndRefunds' | translate}}</a></li>
+          <li><a routerLink="">{{'footer.sellersRegisterToSell' | translate}}</a></li>
+          <li><a routerLink="">{{'footer.sellerPanel' | translate}}</a></li>
         </ul>
       </li>
       <li class="col-md-3 col-6 mt-lg-0 mt-3">
-        <h5 class="mb-4">Our Policies</h5>
+        <h5 class="mb-4">{{'footer.ourPolicies' | translate}}</h5>
         <ul class="list-unstyled">
-          <li><a routerLink="terms-of-service">Terms of Service</a></li>
-          <li><a routerLink="limited-warranty-agreement">Limited Warranty</a></li>
-          <li><a routerLink="privacy">Privacy</a></li>
-          <li><a routerLink="cookies">Cookies</a></li>
+          <li><a routerLink="terms-of-service">{{'footer.termsOfService' | translate}}</a></li>
+          <li><a routerLink="limited-warranty-agreement">{{'footer.limitedWarranty' | translate}}</a></li>
+          <li><a routerLink="privacy">{{'footer.privacy' | translate}}</a></li>
+          <li><a routerLink="cookies">{{'footer.cookies' | translate}}</a></li>
         </ul>
       </li>
     </ul>
     <div class="col-lg-3 col-12 flex-grow-1 flex-xl-grow-0">
       <div class="subscribe">
-        <h5 class="mb-3">Subscribe</h5>
+        <h5 class="mb-3">{{'footer.subscribe' | translate}}</h5>
         <form>
           <div class="position-relative mb-3">
-            <input class="  w-100 rounded-3" type="email" placeholder="Email address">
-            <span><i class="fa-solid fa-arrow-right"></i></span>
+            <input class="  w-100 rounded-3" type="email" [placeholder]="'footer.emailAddress' |translate">
+            <span [ngClass]="{'rtl':isArabic}" >
+              <i [ngClass]="isArabic? 'fa-arrow-left': 'fa-arrow-right'" class="fa-solid"></i>
+            </span>
           </div>
         </form>
-        <p>Join our mailing list to be the first to know about the latest products and exclusive discounts. Don't miss
-          out on special offers tailored just for you!
+        <p>{{'footer.subscribeText' | translate}}
         </p>
       </div>
     </div>

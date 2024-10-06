@@ -1,13 +1,4 @@
-import {
-  Attribute,
-  Component,
-  ElementRef,
-  Input,
-  OnChanges,
-  OnInit,
-  SimpleChanges,
-  ViewChild,
-} from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { IgroupedVariants } from '../../../../../Models/Product/Prod-Details/IProductDetails';
 import { VariantType } from '../../../../../Models/Product/Prod-Details/enum/variant-type';
 import { IVariantValues } from '../../../../../Models/Product/Prod-Details/IVariantValues';
@@ -15,19 +6,26 @@ import { ProductDetailsService } from '../../../../../Services/ProductService/pr
 import { ConditionComponent } from './condition/condition.component';
 import { OffCanvasService } from '../../../../../Services/ProductService/offCanvas.service';
 import { CarouselModule } from 'primeng/carousel';
-import { BehaviorSubject } from 'rxjs';
 import { IProductCondition } from '../../../../../Models/IProductCondition';
 import { RouterModule } from '@angular/router';
 import { ColorComponent } from './Color/Color.component';
 import { OtherVariantComponent } from './OtherVariant/OtherVariant.component';
 import { Environment } from '../../../../../../enviroment/environment';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-product-variants',
   standalone: true,
   templateUrl: './product-variants.component.html',
   styleUrl: './product-variants.component.css',
-  imports: [ConditionComponent, OtherVariantComponent, ColorComponent,CarouselModule,RouterModule],
+  imports: [
+    ConditionComponent,
+    OtherVariantComponent,
+    ColorComponent,
+    CarouselModule,
+    RouterModule,
+    TranslateModule,
+  ],
 })
 export class ProductVariantsComponent implements OnInit {
   @ViewChild('LearnMore') LearnMore!: ElementRef;
@@ -36,7 +34,11 @@ export class ProductVariantsComponent implements OnInit {
 
   values: IVariantValues[] = [];
   isOffCanvasVisible = false;
-  responsiveOptions!: { breakpoint: string; numVisible: number; numScroll: number; }[];
+  responsiveOptions!: {
+    breakpoint: string;
+    numVisible: number;
+    numScroll: number;
+  }[];
 
   conditions: IProductCondition[] = [
     {
@@ -70,9 +72,9 @@ export class ProductVariantsComponent implements OnInit {
   ];
   img!: never[];
 
-  url: string= Environment.serverURL;
+  url: string = Environment.serverURL;
 
-  VariantType=VariantType
+  VariantType = VariantType;
   constructor(
     public productDetailsService: ProductDetailsService,
     private offCanvasOb: OffCanvasService
@@ -89,7 +91,7 @@ export class ProductVariantsComponent implements OnInit {
         isAvailable: this.productDetailsService.availableAttributes.includes(
           v.uuid
         ),
-        isLoading:false,
+        isLoading: false,
         hexCode: v?.hexCode,
       });
     });
@@ -97,7 +99,7 @@ export class ProductVariantsComponent implements OnInit {
       this.values;
     // carousal
 
-    this.img=[]
+    this.img = [];
 
     this.responsiveOptions = [
       {
@@ -116,7 +118,6 @@ export class ProductVariantsComponent implements OnInit {
         numScroll: 1,
       },
     ];
-
   }
 
   ClickingAction(val: IVariantValues) {
@@ -125,11 +126,11 @@ export class ProductVariantsComponent implements OnInit {
   }
 
   animateLearnMore() {
-    setTimeout(()=>{                           // <<<---using ()=> syntax
+    setTimeout(() => {
+      // <<<---using ()=> syntax
       const element = this.LearnMore.nativeElement;
-    element.classList.add('dissolveclass');
-  }, 1000);
-
+      element.classList.add('dissolveclass');
+    }, 1000);
   }
 
   toggleOffCanvas(state: string | null) {
@@ -152,6 +153,5 @@ export class ProductVariantsComponent implements OnInit {
 
     conditionInfo[0].innerHTML = selectedCondition?.screen ?? ' ';
     conditionInfo[1].innerHTML = selectedCondition?.body ?? ' ';
-
   }
 }

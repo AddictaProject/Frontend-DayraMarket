@@ -4,19 +4,19 @@
       <div class="close" (click)="isShowFilter=false">
         <i class="fa-solid fa-x fw-lighter fa-xl"></i>
       </div>
-      <span class="main-title">Filters</span>
-      <span class="reset" (click)="filterService.formReset(formRef)">reset</span>
+      <span class="main-title">{{'products.filters' | translate}}</span>
+      <span class="reset" (click)="filterService.formReset(formRef)">{{'products.reset' | translate}}</span>
     </div>
     <div class="filter-menu" (click)="filterService.openMobileFilterMenu($event)">
       <div class="d-flex justify-content-between align-items-center py-3 ">
-        <h5>Categories</h5>
+        <h5>{{'products.categories' | translate}}</h5>
         <i class="fa-solid fa-angle-right" (click)="filterService.closeMobileFilterMenu($event)"></i>
       </div>
 
       <div class="menu d-none" (click)="filterService.openMobileFilterMenu($event)">
         <div>
           <i class="fa-solid fa-arrow-left" (click)="filterService.closeMobileFilterMenu($event)"></i>
-          <h5 class="mb-4">Categories</h5>
+          <h5 class="mb-4">{{'products.categories' | translate}}</h5>
           <app-filter [isMobile]="true" [filters]="filterService.categoriesFiltered"
             (filterChange)="filterService.getChecked($event)"></app-filter>
         </div>
@@ -24,14 +24,14 @@
     </div>
     <div class="filter-menu" (click)="filterService.openMobileFilterMenu($event)">
       <div class="d-flex justify-content-between align-items-center py-3 ">
-        <h5>Brands</h5>
+        <h5>{{'products.brands' | translate}}</h5>
         <i class="fa-solid fa-angle-right"></i>
       </div>
       <div class="menu d-none">
-        <input type="text" placeholder="Search for brand" (keyup)="filterService.brandSearchHandler($event)">
+        <input type="text" [placeholder]="'products.brandSearch' | translate" (keyup)="filterService.brandSearchHandler($event)">
         <div>
           <i class="fa-solid fa-arrow-left" (click)="filterService.closeMobileFilterMenu($event)"></i>
-          <h5 class="mb-4">Brands</h5>
+          <h5>{{'products.brands' | translate}}</h5>
           <app-filter [isMobile]="true" [isMobile]="true" [filters]="filterService.brandsFiltered"
             (filterChange)="filterService.getChecked($event)"></app-filter>
         </div>
@@ -39,13 +39,13 @@
     </div>
     <div class="filter-menu" (click)="filterService.openMobileFilterMenu($event)">
       <div class="d-flex justify-content-between align-items-center py-3 ">
-        <h5>Price</h5>
+        <h5>{{'products.price' | translate}}</h5>
         <i class="fa-solid fa-angle-right"></i>
       </div>
       <div class="menu d-none">
         <div>
           <i class="fa-solid fa-arrow-left" (click)="filterService.closeMobileFilterMenu($event)"></i>
-          <h5 class="mb-4">Price</h5>
+          <h5>{{'products.price' | translate}}</h5>
           <input #rangeRef class="w-100" type="range" [min]="filterService.productService.lowestPrice" [max]="filterService.productService.highestPrice" [value]="rangeRef.max" (change)="filterService.onPriceChange(rangeRef.value)">
           <div class="d-flex justify-content-between">
             <span>{{rangeRef.min}} L.E</span>

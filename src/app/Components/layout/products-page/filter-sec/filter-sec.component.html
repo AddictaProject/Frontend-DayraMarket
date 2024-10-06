@@ -1,12 +1,12 @@
 <div class="filter">
   <form #formRef>
   <div class="filter-header py-3 d-flex justify-content-between align-items-center">
-    <h5 class="m-0">Filters</h5>
-    <h6 class="m-0" (click)="filterService.formReset(formRef)">reset</h6>
+    <h5 class="m-0">{{'products.filters' | translate}}</h5>
+    <h6 class="m-0" (click)="filterService.formReset(formRef)">{{'products.reset' | translate}}</h6>
   </div>
   <div class="filter-menu">
     <div class="d-flex justify-content-between align-items-center py-3 ">
-      <h5>Categories</h5>
+      <h5>{{'products.categories' | translate}}</h5>
       <i class="fa-solid fa-plus" #catIconRef (click)="filterService.openFilterMenu(catIconRef)"></i>
     </div>
 
@@ -18,11 +18,11 @@
   </div>
   <div class="filter-menu">
     <div class="d-flex justify-content-between align-items-center py-3 ">
-      <h5>Brands</h5>
+      <h5>{{'products.brands' | translate}}</h5>
       <i class="fa-solid fa-plus" #brandIconRef  (click)="filterService.openFilterMenu(brandIconRef)"></i>
     </div>
     <div class="menu d-none">
-      <input type="text" placeholder="Search for brand" (keyup)="filterService.brandSearchHandler($event)">
+      <input type="text" [placeholder]="'products.brandSearch' | translate" (keyup)="filterService.brandSearchHandler($event)">
       <div>
         <app-filter [filters]="filterService.brandsFiltered" (filterChange)="filterService.getChecked($event)"></app-filter>
       </div>
@@ -30,7 +30,7 @@
   </div>
   <div class="filter-menu">
     <div class="d-flex justify-content-between align-items-center py-3 ">
-      <h5>Price</h5>
+      <h5>{{'products.price' | translate}}</h5>
       <i class="fa-solid fa-plus" #priceIconRef (click)="filterService.openFilterMenu(priceIconRef)"></i>
     </div>
     <div class="menu d-none">

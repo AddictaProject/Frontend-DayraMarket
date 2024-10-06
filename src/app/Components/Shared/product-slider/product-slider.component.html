@@ -3,11 +3,13 @@
 {
   <div class="product-header d-flex justify-content-between align-items-center mb-4">
     <h4>{{Title}}</h4>
-    <a routerLink="/products" [state]="{categoryId:categoryId}">more <i class="fa-solid fa-angle-right"></i> </a>
+    <a routerLink="/products" [state]="{categoryId:categoryId}">{{'home.more' | translate}}
+      <i [ngClass]="isArabic? 'fa-angle-left': 'fa-angle-right'" class="fa-solid fa-angle-right mx-1"></i>
+    </a>
   </div>
 }
 
-  <drag-scroll [scrollbar-hidden]="true">
+  <drag-scroll [scrollbar-hidden]="true" >
     @if (isLoaded) {
       @for (prd of products; track $index) {
         <app-card [product]="prd" [isSlider]="true" class="me-4" drag-scroll-item></app-card>
@@ -15,7 +17,7 @@
     }
     @else {
       @for (prd of [1,2,3,4,5,6,7,8]; track $index) {
-        <app-card-placeholder class="me-4" drag-scroll-item></app-card-placeholder>
+        <app-card-placeholder [dir]=" isArabic? 'rtl':'ltr'" class="me-4" drag-scroll-item></app-card-placeholder>
       }
     }
   </drag-scroll>

@@ -10,7 +10,7 @@
       <a class="btn border-0 d-flex justify-content-between " data-bs-toggle="offcanvas" href="#offcanvasLearnMoreCon"
         role="button" data-bs-target="#offcanvasLearnMoreCon" aria-controls="offcanvasLearnMoreCon"
         (click)="animateLearnMore()">
-        Learn more
+        {{'productDetails.learnMore' | translate}}
       </a>
 
     </div>
@@ -102,9 +102,9 @@
         </div>
 
         <div class="tech-condition mt-2">
-          <p><i class="fa-solid fa-shield my-4"></i> Technical conditions</p>
-          <p>Your device is 100% functional regardless of its condition</p>
-          <a routerLink="/how-it-works" class="tech-link mt-5" data-bs-dismiss="offcanvas">Read more</a>
+          <p><i class="fa-solid fa-shield my-4"></i>{{'productDetails.technicalConditions' | translate}}</p>
+          <p>{{'productDetails.technicalConditionsTxt' | translate}}</p>
+          <a routerLink="/how-it-works" class="tech-link mt-5" data-bs-dismiss="offcanvas">{{'productDetails.readMore' | translate}}</a>
         </div>
 
       </div>

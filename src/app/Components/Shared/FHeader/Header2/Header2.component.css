@@ -69,7 +69,7 @@
   width: 265px;
   min-width: 300px;
   border-top: 1px solid  rgba(212, 212, 212, 1);
-  border-right: 1px solid  rgba(212, 212, 212, 1);
+  border-inline: 1px solid  rgba(212, 212, 212, 1);
   top: 135px;
 }
 

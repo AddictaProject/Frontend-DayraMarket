@@ -8,13 +8,14 @@ import {
 import { FilterComponent } from '../filter/filter.component';
 import { FilterService } from '../../../../Services/FilterServices/filter.service';
 import { Subscription } from 'rxjs';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-filter-sec',
   standalone: true,
   templateUrl: './filter-sec.component.html',
   styleUrl: './filter-sec.component.css',
-  imports: [FilterComponent],
+  imports: [FilterComponent,TranslateModule],
 })
 export class FilterSecComponent implements AfterViewInit, OnDestroy {
   @ViewChild('catIconRef') catIconRef!: ElementRef;

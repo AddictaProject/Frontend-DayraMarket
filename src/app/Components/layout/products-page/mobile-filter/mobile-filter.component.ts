@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FilterService } from '../../../../Services/FilterServices/filter.service';
 import { FilterComponent } from "../filter/filter.component";
 import { CommonModule } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 @Component({
@@ -9,7 +10,7 @@ import { CommonModule } from '@angular/common';
     standalone: true,
     templateUrl: './mobile-filter.component.html',
     styleUrl: './mobile-filter.component.css',
-    imports: [FilterComponent,CommonModule]
+    imports: [FilterComponent,CommonModule,TranslateModule]
 })
 export class MobileFilterComponent {
   constructor(public filterService:FilterService) { }

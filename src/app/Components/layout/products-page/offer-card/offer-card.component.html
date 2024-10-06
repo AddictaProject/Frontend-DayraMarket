@@ -1,5 +1,5 @@
 <div class="offer-card" draggable="false" [routerLink]="['/product/'+product.displayName]" [state]="{id:product.uuid}">
-  <span class="offer">offer</span>
+  <span class="offer">{{'products.offer' | translate}}</span>
   <div class="d-flex  flex-column align-items-center ">
     <div class="image">
       <img  draggable="false" class="w-100 h-100" [src]="product.photos[0]" alt="">
@@ -11,9 +11,9 @@
     </div>
   </div>
   <div class="info text-center d-flex flex-column  align-items-center gap-3">
-    <h5 class="m-0" >OUR LATEST OFFER BEST PICKS</h5>
+    <h5 class="m-0" >{{'products.offerDesc' | translate}}</h5>
     <h6 class="m-0 prd-title" >{{product.displayName}} - {{product.description}}</h6>
-    <p class="prd-price">Starts {{product.lowestPrice | number:'3.0-0'}} L.E</p>
+    <p class="prd-price">{{'products.starts' | translate}} {{product.lowestPrice | number:'3.0-0'}} {{'products.le' | translate}}</p>
     <div class="stars d-flex ">
       <i class="fa-solid fa-star"></i>
       <i class="fa-solid fa-star"></i>

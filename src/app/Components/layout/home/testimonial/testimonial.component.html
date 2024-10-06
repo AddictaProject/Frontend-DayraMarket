@@ -1,9 +1,14 @@
-<div class="testimonial">
+<div class="testimonial" [ngClass]="{'rtl':isArabic}">
   <div class="title d-flex justify-content-between mb-4">
-    <h4>Testimonial</h4>
-    <div class="icons d-md-flex gap-4 me-5 text-white d-none">
-      <div (click)="goLeft()" class="left"><i class="fa-solid fa-arrow-left"></i></div>
-      <div  (click)="goRight()" class="right"><i class="fa-solid fa-arrow-right"></i></div>
+    <h4>{{'home.testimonial' | translate}}</h4>
+    <div class="icons d-md-flex gap-4 mx-5 text-white d-none">
+      <div (click)="goLeft()" class="left">
+        <i [ngClass]="isArabic? 'fa-arrow-right': 'fa-arrow-left'" class="fa-solid"></i>
+      </div>
+      <div  (click)="goRight()" class="right">
+        <i [ngClass]="isArabic? 'fa-arrow-left': 'fa-arrow-right'" class="fa-solid"></i>
+
+      </div>
     </div>
   </div>
   <drag-scroll [scrollbar-hidden]="true" #scrollerRef >

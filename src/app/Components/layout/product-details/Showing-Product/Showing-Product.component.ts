@@ -1,5 +1,4 @@
 import {
-  AfterViewChecked,
   AfterViewInit,
   ChangeDetectorRef,
   Component,
@@ -12,7 +11,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { DragScrollComponent, DragScrollItemDirective } from 'ngx-drag-scroll';
 import { GalleriaModule } from 'primeng/galleria';
 import { ProductApiService } from '../../../../Services/ProductService/product-api.service';
@@ -27,6 +26,8 @@ import { ProductPlaceholderComponent } from '../product-placeholder/product-plac
 import { SkeletonModule } from 'primeng/skeleton';
 import { VariantType } from '../../../../Models/Product/Prod-Details/enum/variant-type';
 import { Environment } from '../../../../../enviroment/environment';
+import { TranslateModule } from '@ngx-translate/core';
+import { LocalizationService } from '../../../../Services/localiztionService/localization.service';
 
 @Component({
   selector: 'app-Showing-Product',
@@ -42,12 +43,14 @@ import { Environment } from '../../../../../enviroment/environment';
     ProductVariantsComponent,
     ProductPlaceholderComponent,
     SkeletonModule,
+    TranslateModule
   ],
 })
 export class ShowingProductComponent implements OnInit, AfterViewInit {
   isDragScrollDisabled: boolean = false;
   private imgUrl!: string;
   Url!: string;
+  isArabic: boolean = false;
 
 
   @ViewChild('stickyHeaderShowingPointRef')
@@ -92,10 +95,11 @@ export class ShowingProductComponent implements OnInit, AfterViewInit {
 
   constructor(
     public _ProductDetailsService: ProductDetailsService,
-    private route: ActivatedRoute,
     public offCanvasOb: OffCanvasService,
     private cartService: CartService,
-    private router: Router
+    private router: Router,
+    private localizationService: LocalizationService
+
   ) {
     this.imgUrl =
       Environment.serverURL + this._ProductDetailsService.product.photos[0];
@@ -128,6 +132,8 @@ export class ShowingProductComponent implements OnInit, AfterViewInit {
     // For getting the size of the screen
     this.checkScreenWidth(window.innerWidth);
     this.updateDragScrollStatus();
+
+    this.localizationService.IsArabic.subscribe(isAr=>this.isArabic=isAr);
   }
 
   // Animation For Learn more

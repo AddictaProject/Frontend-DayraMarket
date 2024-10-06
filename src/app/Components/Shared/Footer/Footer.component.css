@@ -64,6 +64,11 @@ footer >div:first-of-type{
   cursor: pointer;
   border-radius:0 8px 8px 0 ;
 }
+.subscribe span.rtl{
+  right: inherit;
+  left: 0;
+  border-radius:8px 0 0 8px ;
+}
 .subscribe span i{
   position: absolute;
   left: 50%;

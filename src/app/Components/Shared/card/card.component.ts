@@ -4,11 +4,12 @@ import { SkeletonModule } from 'primeng/skeleton';
 import { IProduct } from '../../../Models/Product/All-Products/IProduct';
 import { Router, RouterModule } from '@angular/router';
 import { state } from '@angular/animations';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-card',
   standalone: true,
-  imports: [CommonModule,SkeletonModule,RouterModule],
+  imports: [CommonModule,SkeletonModule,RouterModule,TranslateModule],
   templateUrl: './card.component.html',
   styleUrl: './card.component.css'
 })
