@@ -3,11 +3,12 @@ import { Route, Router, RouterModule } from '@angular/router';
 import { CartService } from '../../../../../Services/CartService/cart.service';
 import { UserService } from '../../../../../Services/UserService/user.service';
 import { CommonModule } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-DefaultCheckOut',
   standalone: true,
-  imports: [RouterModule,CommonModule],
+  imports: [RouterModule,CommonModule,TranslateModule],
   templateUrl: './DefaultCheckOut.component.html',
   styleUrls: ['./DefaultCheckOut.component.css']
 })

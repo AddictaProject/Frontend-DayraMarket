@@ -6,11 +6,12 @@ import { SettingService } from '../../../../../Services/SettingService/setting.s
 import { IShipping } from '../../../../../Models/User/IShipping';
 import { CartService } from '../../../../../Services/CartService/cart.service';
 import { CommonModule } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-Review-Order',
   standalone: true,
-  imports: [RouterModule ,CommonModule],
+  imports: [RouterModule ,CommonModule,TranslateModule],
   templateUrl: './Review-Order.component.html',
   styleUrls: ['./Review-Order.component.css'],
 })

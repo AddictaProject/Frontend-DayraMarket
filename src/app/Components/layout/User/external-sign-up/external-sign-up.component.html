@@ -2,7 +2,7 @@
   <div class="d-flex justify-content-center">
     <div class="sign-up">
       <div class="title">
-        <h4>Create an account</h4>
+        <h4>{{'user.createAccount' | translate}}</h4>
       </div>
       <form class="d-flex flex-column gap-3 w-100" [formGroup]="signUpForm" (submit)="onSubmit()">
         <div>
@@ -43,7 +43,7 @@
             <span>{{serverError}}</span>
           </div>
         }
-        <button type="submit" class="sign-up-btn">sign up</button>
+        <button type="submit" class="sign-up-btn">{{'user.signUp' | translate}}</button>
       </form>
 
     </div>

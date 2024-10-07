@@ -12,11 +12,12 @@ import { CartService } from '../../../../../../Services/CartService/cart.service
 import { OrderService } from '../../../../../../Services/OrderService/order.service';
 import { AddressSteps } from '../../../../../../Models/Cart/AddressStep';
 import { SkeletonModule } from 'primeng/skeleton';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-default-address',
   standalone: true,
-  imports: [SkeletonModule],
+  imports: [SkeletonModule,TranslateModule],
   templateUrl: './default-address.component.html',
   styleUrl: './default-address.component.css',
 })

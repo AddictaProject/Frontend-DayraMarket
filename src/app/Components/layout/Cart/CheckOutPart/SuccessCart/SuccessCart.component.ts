@@ -10,11 +10,12 @@ import { UserService } from '../../../../../Services/UserService/user.service';
 import { IOrder } from '../../../../../Models/Order/IOrder';
 import Swal from 'sweetalert2';
 import { Environment } from '../../../../../../enviroment/environment';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-SuccessCart',
   standalone: true,
-  imports: [RouterModule, CommonModule],
+  imports: [RouterModule, CommonModule,TranslateModule],
   templateUrl: './SuccessCart.component.html',
   styleUrls: ['./SuccessCart.component.css'],
 })

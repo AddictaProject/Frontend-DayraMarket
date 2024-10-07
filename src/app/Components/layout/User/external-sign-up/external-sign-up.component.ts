@@ -5,11 +5,12 @@ import { UserService } from '../../../../Services/UserService/user.service';
 import { Router } from '@angular/router';
 import { IExternalSignUp } from '../../../../Models/User/IExternalSignUp';
 import { VerifyComponent } from "../verify/verify.component";
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-external-sign-up',
   standalone: true,
-  imports: [ReactiveFormsModule, VerifyComponent],
+  imports: [ReactiveFormsModule, VerifyComponent,TranslateModule],
   templateUrl: './external-sign-up.component.html',
   styleUrl: './external-sign-up.component.css'
 })

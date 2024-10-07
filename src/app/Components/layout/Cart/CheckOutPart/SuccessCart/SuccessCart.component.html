@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="mt-5 mb-3">
-      <p class="thankAfterConfirm">Thank you for your order! </p>
+      <p class="thankAfterConfirm">{{'cart.thankYou' | translate}} </p>
     </div>
     @if (order) {
     <div class="col-lg-8 mb-5">
@@ -27,7 +27,7 @@
                 }
               </div>
               <div class="leftPartOfDetails">
-                <p class="priceOfProd">{{item.price | number: '3.0-0'}} L.E</p>
+                <p class="priceOfProd">{{item.price | number: '3.0-0'}} {{'products.le' | translate}}</p>
               </div>
             </div>
           </div>
@@ -41,21 +41,21 @@
         <div class="row g-0">
           <div class="card-body ">
             <div class="justify-content-between d-flex mt-3 pb-3 borderDiv">
-              <p class="txtOfCountFinal mb-0">Order Summary</p>
-              <p class="numOfOrders mb-0">{{order.items.length}} orders</p>
+              <p class="txtOfCountFinal mb-0">{{'cart.OrderSummary' | translate}}</p>
+              <p class="numOfOrders mb-0">{{order.items.length}} {{'cart.orders' | translate}}</p>
             </div>
             <div class="justify-content-between d-flex mt-3 pb-3 borderDiv">
-              <p class="orderId mb-0">Order ID</p>
+              <p class="orderId mb-0">{{'cart.orderId' | translate}}</p>
               <p class="orderId mb-0">{{order.serialNumber}}</p>
             </div>
 
             <div class="justify-content-between d-flex mt-3 pb-3 borderDiv">
-              <p class="txtpaymentMethod mb-0">Payment Method</p>
+              <p class="txtpaymentMethod mb-0">{{'cart.paymentMethod' | translate}}</p>
               <p class="paymentMethod mb-0">{{order.paymentMethod ==='COD' ?'Cash':'Credit Card' }}</p>
             </div>
             <div class="justify-content-between d-flex mt-4">
-              <p class="txtOfCount">Subtotal</p>
-              <p class="txtOfCount">{{subTotalPrice | number: '3.0-0'}} L.E</p>
+              <p class="txtOfCount">{{'cart.subtotal' | translate}}</p>
+              <p class="txtOfCount">{{subTotalPrice | number: '3.0-0'}} {{'products.le' | translate}}</p>
             </div>
             <!-- @if(cartService.subTotalPrice>= settingService.shippingInfo.freeShippingAfter){
       <div class="justify-content-between d-flex ">
@@ -64,15 +64,15 @@
       </div>
       } -->
             <div class="justify-content-between d-flex pb-3 borderDiv">
-              <p class="txtOfCount" [ngClass]="{'text-decoration-line-through': !order.shippingFees}">Shipping
+              <p class="txtOfCount" [ngClass]="{'text-decoration-line-through': !order.shippingFees}">{{'cart.shipping' | translate}}
               </p>
               <p class="txtOfCount" [ngClass]="{'text-decoration-line-through':!order.shippingFees}">
-                {{shippingCost}} L.E</p>
+                {{shippingCost}} {{'products.le' | translate}}</p>
             </div>
 
             <div class="justify-content-between d-flex totalPrice py-4 ">
-              <p class="txtOfCountFinal mb-0">Total </p>
-              <p class="txtOfCountFinal mb-0">{{subTotalPrice- shippingCost | number: '3.0-0'}} L.E</p>
+              <p class="txtOfCountFinal mb-0">{{'cart.total' | translate}} </p>
+              <p class="txtOfCountFinal mb-0">{{subTotalPrice- shippingCost | number: '3.0-0'}} {{'products.le' | translate}}</p>
             </div>
           </div>
         </div>

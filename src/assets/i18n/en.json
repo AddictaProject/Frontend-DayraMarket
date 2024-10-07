@@ -81,8 +81,43 @@
     "readMore":"Read More"
   },
   "cart":{
+    "title":"cart",
     "empty":"Your Cart is empty",
     "continue":"Please continue shopping",
-    "shop":"Shop Now"
+    "shop":"Shop Now",
+    "thankYou":"Thank you for your order!",
+    "condition":"Condition :",
+    "color":"Color :",
+    "total":"Total",
+    "next":"Next",
+    "changeAddress":"Change the address",
+    "selectPaymentMethod":"Select Payment Method",
+    "creditCard":"Credit Card",
+    "valu":"Valu",
+    "mobileWallet":"Mobile Wallet",
+    "aman":"Aman",
+    "forsa":"Forsa",
+    "confirm":"Confirm",
+    "apply":"Apply",
+    "subtotal":"Subtotal",
+    "discount":"Discount",
+    "checkout":"Checkout",
+    "shipping":"Shipping",
+    "OrderSummary":"Order Summary",
+    "orders":"orders",
+    "orderId":"Order ID",
+    "paymentMethod":"Payment Method"
+  },
+  "profile":{
+    "title":"Profile",
+    "myProfile":"My Profile",
+    "myData":"My Data",
+    "ordersHistory":"Orders History",
+    "myAddresses":"My Addresses",
+    "logout":"Logout"
+  },
+  "user":{
+    "createAccount":"Create an Account",
+    "signUp":"Sign Up"
   }
 }

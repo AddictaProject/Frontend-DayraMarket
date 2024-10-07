@@ -6,8 +6,8 @@
 
 
       <div class="justify-content-between d-flex totalPrice py-2 px-2  " style="border-top: none;">
-        <p class="txtOfCountFinal mb-0">Total </p>
-        <p class="txtOfCountFinal mb-0">{{cartService.finalTotalPrice | number: '3.0-0'}} L.E</p>
+        <p class="txtOfCountFinal mb-0">{{'cart.total' | translate}} </p>
+        <p class="txtOfCountFinal mb-0">{{cartService.finalTotalPrice | number: '3.0-0'}} {{'products.le' | translate}}</p>
       </div>
 
     </div>
@@ -23,7 +23,7 @@
     <div class="card-body ">
 
       <div class="py-2 px-2 payment-method">
-        <p class="headerOfSelectPayment mb-4">Select Payment Method</p>
+        <p class="headerOfSelectPayment mb-4">{{'cart.selectPaymentMethod' | translate}}</p>
 
         <div class="form-check pb-2 ">
 
@@ -35,7 +35,7 @@
               <img src="assets/images/payment/MasterCard.png" alt="MasterCard">
               <img src="assets/images/payment/visa.png" alt="Visa">
              <label class="form-check-label lblOfPayment" for="flexRadioDefault3">
-            Credit Card
+              {{'cart.creditCard' | translate}}
           </label>
         </div>
 
@@ -47,7 +47,7 @@
             <div class="d-inline-flex gap-2 me-2">
               <img src="assets/images/payment/valu.jpg" alt="Valu">
               <label class="form-check-label lblOfPayment" for="Valu">
-                Valu
+                {{'cart.valu' | translate}}
               </label>
             </div>
         </div>
@@ -60,7 +60,7 @@
               <img src="assets/images/payment/wallet.png" alt="wallet">
 
               <label class="form-check-label lblOfPayment" for="MeezaQR">
-                Mobile Wallet
+                {{'cart.mobileWallet' | translate}}
               </label>
             </div>
         </div>
@@ -72,7 +72,7 @@
             <div class="d-inline-flex gap-2 me-2 aman">
               <img src="assets/images/payment/aman.jpg" alt="Aman">
               <label class="form-check-label lblOfPayment" for="Aman">
-                Aman
+                {{'cart.aman' | translate}}
               </label>
             </div>
         </div>
@@ -85,7 +85,7 @@
             <div class="d-inline-flex gap-2 me-2 forsa">
               <img src="assets/images/payment/forsa.png" alt="Forsa">
               <label class="form-check-label lblOfPayment" for="Forsa">
-                Forsa
+                {{'cart.forsa' | translate}}
               </label>
             </div>
         </div>
@@ -104,7 +104,7 @@
         <button class="btn btnAddToCart py-3" role="button" [disabled]="!isOrdered" (click)="next()">
           @if(isOrdered)
           {
-          Confirm
+            {{'cart.confirm' | translate}}
           }
           @else {
             <div class="loader"></div>

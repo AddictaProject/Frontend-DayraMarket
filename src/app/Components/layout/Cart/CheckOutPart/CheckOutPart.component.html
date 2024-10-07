@@ -8,15 +8,15 @@
       <nav class="breadcrumb mt-4">
         <ol class="list-unstyled d-flex">
           <li>
-            <a [routerLink]="['']">Home</a>
-            <i class="fa-solid fa-angle-right mx-3"></i>
+            <a [routerLink]="['']">{{'products.home' | translate}}</a>
+          <i [ngClass]="isArabic? 'fa-angle-left': 'fa-angle-right'" class="fa-solid fa-angle-right mx-3"></i>
           </li>
           <li>
             <!-- {{_ProductDetailsService.product.categoryDisplayName}} -->
-            <a [routerLink]="['/products']"> Products </a>
-            <i class="fa-solid fa-angle-right mx-3"></i>
+            <a [routerLink]="['']">{{'products.products' | translate}}</a>
+          <i [ngClass]="isArabic? 'fa-angle-left': 'fa-angle-right'" class="fa-solid fa-angle-right mx-3"></i>
           </li>
-          <li>cart </li>
+          <li>{{'cart.title' | translate}} </li>
         </ol>
       </nav>
     </div>
@@ -24,7 +24,7 @@
     <!-- Success Statement -->
     @if (CurrentCase == CartCasesEnum.Success) {
     <div class="mt-5 mb-3">
-      <p class="thankAfterConfirm">Thank you for your order! </p>
+      <p class="thankAfterConfirm">{{'cart.thankYou' | translate}} </p>
     </div>
     }
 
@@ -48,13 +48,13 @@
 
                 <div>
                   <p class="txtNameOfProd">{{item.name}}</p>
-                  <p class="txtInfoOfProd">Condition : {{item.condition}}</p>
-                  <p class="txtInfoOfProd">Color : {{item.color}}</p>
+                  <p class="txtInfoOfProd">{{'cart.condition' | translate}} {{item.condition}}</p>
+                  <p class="txtInfoOfProd">{{'cart.color' | translate}} {{item.color}}</p>
 
                 </div>
 
                 <div class="leftPartOfDetails">
-                  <p class="priceOfProd">{{item.price | number: '3.0-0'}} L.E</p>
+                  <p class="priceOfProd">{{item.price | number: '3.0-0'}} {{'products.le' | translate}}</p>
 
 
                   @if((CurrentCase != CartCasesEnum.Confirm)){

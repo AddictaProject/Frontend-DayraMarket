@@ -21,6 +21,7 @@ import { DefaultAddressComponent } from './default-address/default-address.compo
 import { ShowAddressesComponent } from '../../../profile/my-addresses/show-addresses/show-addresses.component';
 import { AddressSteps } from '../../../../../Models/Cart/AddressStep';
 import { CommonModule } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-address',
@@ -32,7 +33,8 @@ import { CommonModule } from '@angular/common';
     ReactiveFormsModule,
     DefaultAddressComponent,
     ShowAddressesComponent,
-    CommonModule
+    CommonModule,
+    TranslateModule
   ],
 })
 export class AddressComponent implements OnInit, OnDestroy {

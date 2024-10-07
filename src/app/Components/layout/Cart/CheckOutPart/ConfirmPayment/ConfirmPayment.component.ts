@@ -6,11 +6,12 @@ import { ICreateOrder, productStockUuid } from '../../../../../Models/Order/ICre
 import { PaymentMethod } from '../../../../../Models/Cart/PaymentMethod';
 import { IOrder } from '../../../../../Models/Order/IOrder';
 import { CommonModule } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-ConfirmPayment',
   standalone: true,
-  imports: [RouterModule,CommonModule],
+  imports: [RouterModule,CommonModule,TranslateModule],
   templateUrl: './ConfirmPayment.component.html',
   styleUrls: ['./ConfirmPayment.component.css']
 })
