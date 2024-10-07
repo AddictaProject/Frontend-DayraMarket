@@ -14,7 +14,6 @@ import { NavigationService } from '../../../../Services/NavigationService/naviga
 import { IExternalLogin } from '../../../../Models/User/IExternalLogin';
 import { IExternalSignUp } from '../../../../Models/User/IExternalSignUp';
 import { ExternalSignUpComponent } from '../external-sign-up/external-sign-up.component';
-import { FacebookLoginService } from '../../../../Services/UserService/facebook-login.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -35,8 +34,7 @@ export class SignInComponent implements OnInit {
   constructor(
     private userService: UserService,
     private router: Router,
-    private navigation: NavigationService,
-    private facebookLoginService : FacebookLoginService
+    private navigation: NavigationService
   ) {
     if (userService.userState) {
       this.router.navigate([this.navigation.returnPerviousUrl()]);
@@ -48,7 +46,7 @@ export class SignInComponent implements OnInit {
     google.accounts.id.initialize({
       client_id:
         '120278163179-f0fi1lolq5lifpqp39njf0pjss29f4ka.apps.googleusercontent.com',
-      callback: this.handleCredentialResponse.bind(this),
+      callback: this.handleCredentialResponse.bind(this, 'Google'),
       auto_select: false,
       cancel_on_tap_outside: true,
     });
@@ -59,16 +57,25 @@ export class SignInComponent implements OnInit {
     });
     // @ts-ignore
     google.accounts.id.prompt();
+    this.wfbAsyncInit();
   }
   public triggerGoogleLogin() {
     (document.querySelector('div[role=button]') as HTMLElement).click();
   }
-  async handleCredentialResponse(response: any) {
+  async handleCredentialResponse(provider: any, response: any) {
+    const externalLogin: IExternalLogin={
+      provider: provider,
+      externalToken: '',
+    }
+
     // Here will be your response from Google.
-    const externalLogin: IExternalLogin = {
-      provider: 'google',
-      externalToken: response.credential,
-    };
+    if (provider=='Google') {
+      externalLogin.externalToken= response.credential;
+    }
+    else if(provider=='Facebook') {
+      externalLogin.externalToken= response;
+    }
+
     this.userService.externalLogin(externalLogin).subscribe((res: any) => {
       if (res.accessToken) {
         this.serverError = false;
@@ -105,15 +112,29 @@ export class SignInComponent implements OnInit {
     });
   }
 
-  login() {
-    this.facebookLoginService.loginWithFacebook()
-      .then(response => {
-        console.log('User info:', response.userInfo);
-        console.log('Auth response:', response.authResponse);
-      })
-      .catch(error => {
-        console.error('Error during login:', error);
-      });
+  loginWithFaceBook() {
+    // @ts-ignore
+    FB.login(
+      (response:any) => {
+        console.log(response);
+        this.handleCredentialResponse('Facebook',response.authResponse.accessToken);
+      },
+      { scope: 'public_profile,email'}
+    );
   }
 
+  wfbAsyncInit() {
+    // @ts-ignore
+    FB.fbAsyncInit = () => {
+      // @ts-ignore
+      FB.init({
+        appId: '548307494399719',
+        cookie: true,
+        xfbml: true,
+        version: 'v5.0',
+      });
+      // @ts-ignore
+      FB.AppEvents.logPageView();
+    };
+  }
 }

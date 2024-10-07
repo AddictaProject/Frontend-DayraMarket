@@ -74,7 +74,7 @@ export class SignUpComponent {
     google.accounts.id.initialize({
       client_id:
         '120278163179-f0fi1lolq5lifpqp39njf0pjss29f4ka.apps.googleusercontent.com',
-      callback: this.handleCredentialResponse.bind(this),
+      callback: this.handleCredentialResponse.bind(this,'Google'),
       auto_select: false,
       cancel_on_tap_outside: true,
     });
@@ -89,27 +89,42 @@ export class SignUpComponent {
   public triggerGoogleLogin() {
     (document.querySelector('div[role=button]') as HTMLElement).click();
   }
-  async handleCredentialResponse(response: any) {
+  async handleCredentialResponse(provider: any, response: any) {
+    const externalLogin: IExternalLogin={
+      provider: provider,
+      externalToken: '',
+    }
+
     // Here will be your response from Google.
-    const externalLogin: IExternalLogin = {
-      provider: 'google',
-      externalToken: response.credential,
-    };
-    this.userService.externalLogin(externalLogin).subscribe(
-      (res: any) => {
-        if (res.accessToken) {
-          localStorage.setItem('accessToken', res.accessToken);
-          localStorage.setItem('refreshToken', res.refreshToken);
-          this.router.navigate([this.navigation.returnPerviousUrl()]);
-        }
-        this.externalData = res;
-      },
-      (err) => {
-        this.serverError = err?.error?.detail;
+    if (provider=='Google') {
+      externalLogin.externalToken= response.credential;
+    }
+    else if(provider=='Facebook') {
+      externalLogin.externalToken= response;
+    }
+
+    this.userService.externalLogin(externalLogin).subscribe((res: any) => {
+      if (res.accessToken) {
+        localStorage.setItem('accessToken', res.accessToken);
+        localStorage.setItem('refreshToken', res.refreshToken);
+        this.router.navigate([this.navigation.returnPerviousUrl()]);
       }
+      this.externalData = res;
+    },
+    (err) => {
+      this.serverError = err?.error?.detail;
+    });
+  }
+  loginWithFaceBook() {
+    // @ts-ignore
+    FB.login(
+      (response:any) => {
+        console.log(response);
+        this.handleCredentialResponse('Facebook',response.authResponse.accessToken);
+      },
+      { scope: 'public_profile,email'}
     );
   }
-
   onSubmit() {
     if (this.signUpForm.invalid) {
       for (const key in this.signUpForm.controls) {

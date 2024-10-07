@@ -8,11 +8,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.png">
   <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v21.0&appId=548307494399719"></script>
 </head>
 
 <body>
   <app-root></app-root>
-    <!-- Meta Pixel Code -->
+  <!-- Meta Pixel Code -->
   <script>
     !function (f, b, e, v, n, t, s) {
       if (f.fbq) return; n = f.fbq = function () {
@@ -31,26 +32,6 @@
   <noscript><img height="1" width="1" style="display:none"
       src="https://www.facebook.com/tr?id=1448280512726568&ev=PageView&noscript=1" /></noscript>
   <!-- End Meta Pixel Code -->
-
-  <script>
-    window.fbAsyncInit = function() {
-      FB.init({
-        appId     : '548307494399719', // Replace 'your-app-id' with your Facebook App ID
-        cookie    : true,
-        xfbml     : true,
-        version   : 'v15.0' // Use the latest Facebook Graph API version
-      });
-      FB.AppEvents.logPageView();
-    };
-
-    (function(d, s, id){
-       var js, fjs = d.getElementsByTagName(s)[0];
-       if (d.getElementById(id)) {return;}
-       js = d.createElement(s); js.id = id;
-       js.src = "https://connect.facebook.net/en_US/sdk.js";
-       fjs.parentNode.insertBefore(js, fjs);
-     }(document, 'script', 'facebook-jssdk'));
-  </script>
 </body>
 
 </html>
