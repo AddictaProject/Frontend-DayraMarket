@@ -7,12 +7,13 @@ import { AddressSteps } from '../../../../../Models/Cart/AddressStep';
 import { SkeletonModule } from 'primeng/skeleton';
 import Swal from 'sweetalert2';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 @Component({
   selector: 'app-show-addresses',
   standalone: true,
-  imports: [RouterModule, CommonModule, SkeletonModule,SweetAlert2Module],
+  imports: [RouterModule, CommonModule, SkeletonModule,SweetAlert2Module,TranslateModule],
   templateUrl: './show-addresses.component.html',
   styleUrl: './show-addresses.component.css',
 })

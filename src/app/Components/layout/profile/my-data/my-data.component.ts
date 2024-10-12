@@ -12,11 +12,12 @@ import { UserService } from '../../../../Services/UserService/user.service';
 import { IResetPassword } from '../../../../Models/User/IResetPassword';
 import { Subscription } from 'rxjs';
 import Swal from 'sweetalert2';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-my-data',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule,TranslateModule],
   templateUrl: './my-data.component.html',
   styleUrl: './my-data.component.css',
 })

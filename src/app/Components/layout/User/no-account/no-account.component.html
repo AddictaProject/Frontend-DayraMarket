@@ -1,9 +1,9 @@
 <div class="container no-account d-flex flex-column justify-content-center align-items-center ">
     <div class="imgOfNotSign " alt=""></div>
     <div class=" pleaseSignIn  text-center">
-      <p class="txtNotAccount pt-2">You don’t have an account yet !</p>
-      <p class="txtToRegister pt-2">Please sign in or register </p>
-      <a class="btn mt-4 btnOfSignIn" [routerLink]="['/login']"  >SIGN IN</a>
+      <p class="txtNotAccount pt-2">{{'user.noAccount' | translate}}</p>
+      <p class="txtToRegister pt-2">{{'user.pleaseSignInOrRegister' | translate}} </p>
+      <a class="btn mt-4 btnOfSignIn" [routerLink]="['/login']"  >{{'user.signIn' | translate}}</a>
     </div>
 </div>
 

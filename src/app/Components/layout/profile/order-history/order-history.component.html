@@ -12,7 +12,7 @@
         <h5>{{item.productDisplayName}}</h5>
         <div class="d-flex flex-column flex-md-row justify-content-between">
           <p class="mb-2"># {{order.serialNumber}}</p>
-          <p class="mb-2">Date : {{item.dateCreated | date:"dd / MM / yyyy"}}</p>
+          <p class="mb-2">{{'profile.date' | translate}} : {{item.dateCreated | date:"dd / MM / yyyy"}}</p>
         </div>
         <div class="d-flex flex-column flex-md-row justify-content-between column-gap-4 row-gap-2 spec">
           <!-- Not sure if it is correct ! Look => IProductOrderItem -->
@@ -28,16 +28,16 @@
     <div class="d-flex flex-column justify-content-between text-center column-gap-4 row-gap-2 mt-4 mt-md-0">
       <p class="mb-0 status ">{{item.status}}</p>
       @if (item.status=='Delivered' ) {
-      <button class="change-state mb-0  border-0 bg-transparent" (click)="openReview(item)">Review</button>
+      <button class="change-state mb-0  border-0 bg-transparent" (click)="openReview(item)">{{'profile.review' | translate}}</button>
       }@else if (item.status=='PendingPayment') {
-      <button class="change-state mb-0  border-0 bg-transparent" (click)="openPaymentRequest(item)">Request payment</button>
+      <button class="change-state mb-0  border-0 bg-transparent" (click)="openPaymentRequest(item)">{{'profile.requestPayment' | translate}}</button>
       }
       @if (item.status=='New' || item.status=='PendingPickup' || item.status=='PendingPayment') {
-      <button class="change-state mb-0 border-0 bg-transparent" (click)="cancelOrderItem($event,item.uuid)">Cancel
-        Order</button>
+      <button class="change-state mb-0 border-0 bg-transparent" (click)="cancelOrderItem($event,item.uuid)">{{'profile.cancelOrder' | translate}}
+        </button>
       }@else if (item.status=='Delivered') {
       <button class="change-state mb-0  border-0 bg-transparent"
-        (click)="returnOrderItem($event,item.uuid)">Refund</button>
+        (click)="returnOrderItem($event,item.uuid)">{{'profile.refund' | translate}}</button>
       }
     </div>
   </div>
@@ -53,11 +53,11 @@
         </div>
         <div>
           <h5>{{reviewItem.productDisplayName}}</h5>
-          <p class="my-3 fa-sm ">Date : {{reviewItem.dateCreated | date:"dd / MM / yyyy"}}</p>
+          <p class="my-3 fa-sm ">{{'profile.date' | translate}} : {{reviewItem.dateCreated | date:"dd / MM / yyyy"}}</p>
         </div>
       </div>
       <div class="rate d-flex gap-3 mt-4">
-        <h6 class="mb-0">How do you rate this product?</h6>
+        <h6 class="mb-0">{{'profile.rateThisProduct' | translate}}</h6>
         <div class="stars d-flex gap-1">
           @if(reviewItem.review && reviewItem.review.rate){
           @for (val of [1,2,3,4,5]; track $index) {
@@ -77,14 +77,14 @@
       </div>
       <form [formGroup]="form" (submit)="onSubmit()">
         <div class="comment mt-4">
-          <h6>Write a product review</h6>
+          <h6>{{'profile.productReview' | translate}}</h6>
           <textarea [readOnly]="reviewItem.review" formControlName="comment"
-            [placeholder]="reviewItem.review ?reviewItem.review.comment:'What did you like or dislike? How did you use the product? What should others know before buying?'"
+            [placeholder]="reviewItem.review ?reviewItem.review.comment:'profile.productReviewPlaceHolder' | translate"
             maxlength="1000"></textarea>
         </div>
         <div class="btns d-flex justify-content-end gap-3 mt-4 ">
-          <button type="reset" class="btn btn-secondary" (click)="isReviewVisible=false">Cancel</button>
-          <button class="btn btn-submit" type="submit" [disabled]="reviewItem.review" [disabled]="!rate || form.invalid">Submit</button>
+          <button type="reset" class="btn btn-secondary" (click)="isReviewVisible=false">{{'profile.cancel' | translate}}</button>
+          <button class="btn btn-submit" type="submit" [disabled]="reviewItem.review" [disabled]="!rate || form.invalid">{{'profile.submit' | translate}}</button>
         </div>
       </form>
     </div>
@@ -98,7 +98,7 @@
       <div class="modal-content">
 
       <div class="py-2 px-2 payment-method">
-        <h3 class="headerOfSelectPayment mb-4">Select Payment Method</h3>
+        <h3 class="headerOfSelectPayment mb-4">{{'cart.selectPaymentMethod' | translate}}</h3>
 
         <div class="form-check pb-2 ">
 
@@ -108,7 +108,7 @@
             <img src="assets/images/payment/MasterCard.png" alt="MasterCard">
             <img src="assets/images/payment/visa.png" alt="Visa">
             <label class="form-check-label lblOfPayment" for="flexRadioDefault3">
-              Credit Card
+              {{'cart.creditCard' | translate}}
             </label>
           </div>
 
@@ -119,7 +119,7 @@
           <div class="d-inline-flex gap-2 me-2 align-items-center">
             <img src="assets/images/payment/valu.jpg" alt="Valu">
             <label class="form-check-label lblOfPayment" for="Valu">
-              Valu
+              {{'cart.valu' | translate}}
             </label>
           </div>
         </div>
@@ -131,7 +131,7 @@
             <img src="assets/images/payment/wallet.png" alt="wallet">
 
             <label class="form-check-label lblOfPayment" for="MeezaQR">
-              Mobile Wallet
+              {{'cart.mobileWallet' | translate}}
             </label>
           </div>
         </div>
@@ -142,7 +142,7 @@
           <div class="d-inline-flex gap-2 me-2 aman align-items-center">
             <img src="assets/images/payment/aman.jpg" alt="Aman">
             <label class="form-check-label lblOfPayment" for="Aman">
-              Aman
+              {{'cart.aman' | translate}}
             </label>
           </div>
         </div>
@@ -154,7 +154,7 @@
           <div class="d-inline-flex gap-2 me-2 forsa align-items-center">
             <img src="assets/images/payment/forsa.png" alt="Forsa">
             <label class="form-check-label lblOfPayment" for="Forsa">
-              Forsa
+              {{'cart.forsa' | translate}}
             </label>
           </div>
         </div>
@@ -165,8 +165,8 @@
       </div>
 
           <div class="btns d-flex justify-content-end gap-3 mt-4 ">
-            <button type="reset" class="btn btn-secondary" (click)="isPaymentMethodVisible=false">Cancel</button>
-            <button class="btn btn-submit" type="submit"  (click)="paymentRequest()" >Submit</button>
+            <button type="reset" class="btn btn-secondary" (click)="isPaymentMethodVisible=false">{{'profile.cancel' | translate}}</button>
+            <button class="btn btn-submit" type="submit"  (click)="paymentRequest()" >{{'profile.submit' | translate}}</button>
           </div>
 
       </div>

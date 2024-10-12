@@ -8,11 +8,12 @@ import {
 import { SettingService } from '../../../../../Services/SettingService/setting.service';
 import { UserService } from '../../../../../Services/UserService/user.service';
 import { IUserAddress } from '../../../../../Models/Cart/IUserAddress';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-add-address',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule,TranslateModule],
   templateUrl: './add-address.component.html',
   styleUrl: './add-address.component.css',
 })
@@ -33,7 +34,7 @@ export class AddAddressComponent {
     buildingNumber: new FormControl('', [Validators.required]),
     apartmentNumber: new FormControl('', [Validators.required]),
     floorNumber: new FormControl('', [Validators.required]),
-    street: new FormControl('', [Validators.required]),
+    street: new FormControl('', [Validators.required,Validators.minLength(5)]),
     details: new FormControl('', [
       Validators.required,
     ]),

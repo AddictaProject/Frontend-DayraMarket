@@ -14,11 +14,12 @@ import { NavigationService } from '../../../../Services/NavigationService/naviga
 import { IExternalLogin } from '../../../../Models/User/IExternalLogin';
 import { IExternalSignUp } from '../../../../Models/User/IExternalSignUp';
 import { ExternalSignUpComponent } from '../external-sign-up/external-sign-up.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-sign-in',
   standalone: true,
-  imports: [ReactiveFormsModule, RouterModule, ExternalSignUpComponent],
+  imports: [ReactiveFormsModule, RouterModule, ExternalSignUpComponent,TranslateModule],
   templateUrl: './sign-in.component.html',
   styleUrl: './sign-in.component.css',
 })

@@ -18,6 +18,7 @@ import { IExternalSignUp } from '../../../../Models/User/IExternalSignUp';
 import { IExternalLogin } from '../../../../Models/User/IExternalLogin';
 import { NavigationService } from '../../../../Services/NavigationService/navigation.service';
 import { ExternalSignUpComponent } from "../external-sign-up/external-sign-up.component";
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-sign-up',
@@ -30,7 +31,8 @@ import { ExternalSignUpComponent } from "../external-sign-up/external-sign-up.co
     CommonModule,
     VerifyComponent,
     RouterModule,
-    ExternalSignUpComponent
+    ExternalSignUpComponent,
+    TranslateModule
 ],
 })
 export class SignUpComponent {
@@ -144,8 +146,13 @@ export class SignUpComponent {
 
     this.userService.registerUser(user).subscribe({
       next: (res: any) => {
-        console.log(res?.tempOTP);
-        this.isShowingVerify = true;
+        // console.log(res?.tempOTP);
+        // this.isShowingVerify = true;
+        this.router
+          .navigateByUrl('/', { skipLocationChange: true })
+          .then(() => {
+            this.router.navigate(['/login']);
+          });
       },
       error: (err: any) => {
         this.serverError = err?.error?.detail;

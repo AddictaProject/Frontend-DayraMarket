@@ -4,7 +4,7 @@
     <div class="mb-3 mt-3">
 
       <div class="input-group ">
-        <input formControlName="username" type="text" class=" userInput form-control" placeholder="User Name"
+        <input formControlName="username" type="text" class=" userInput form-control" [placeholder]="'profile.userName' | translate"
           aria-label="Username" aria-describedby="basic-addon1">
         <span class="input-group-text iconOfInput" id="basic-addon1">
           <svg width="13" height="16" viewBox="0 0 13 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -16,7 +16,7 @@
       </div>
       @if(AddressForm.get('username')?.hasError('required') && AddressForm.get('username')?.dirty &&
       AddressForm.get('username')?.touched ){
-      <div class="error mt-2">username is Required</div>
+      <div class="error mt-2">{{'formValidation.usernameRequired' | translate}}</div>
       }
     </div>
 
@@ -36,7 +36,7 @@
     <!-- Phone Number -->
     <div class="mb-3">
       <div class="input-group ">
-        <input type="tel" formControlName="phoneNumber" class="form-control userInput" placeholder="Phone Number"
+        <input type="tel" formControlName="phoneNumber" class="form-control userInput" [placeholder]="'profile.phoneNumber' | translate"
           aria-label="PhoneNumber" aria-describedby="basic-addon1">
         <span class="input-group-text iconOfInput" id="basic-addon1"><svg width="15" height="13" viewBox="0 0 15 13"
             fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -48,7 +48,7 @@
       </div>
       @if(AddressForm.get('phoneNumber')?.hasError('required') && AddressForm.get('phoneNumber')?.dirty &&
       AddressForm.get('phoneNumber')?.touched ){
-      <div class="error mt-2">phone number is Required</div>
+      <div class="error mt-2">{{'formValidation.phoneNumberRequired' | translate}}</div>
       }
     </div>
 
@@ -58,7 +58,7 @@
       <div class="col-6 pe-3 ">
         <select class="form-select userInput textOfSelectList" aria-label="Default select example"
           formControlName="cityId" (change)="onCityChange()">
-          <option value="0">City</option>
+          <option value="0">{{'profile.city' | translate}}</option>
           @for (item of city; track $index) {
           <option [value]="item._id">{{item.name}}</option>
           }
@@ -66,13 +66,13 @@
         @if(
         AddressForm.get('cityId')?.dirty && AddressForm.get('cityId')?.touched && AddressForm.get('cityId')?.value
         =='0' ){
-        <div class="error mt-1">city is Required</div>
+        <div class="error mt-1">{{'formValidation.cityRequired' | translate}}</div>
         }
       </div>
       <div class="col-6">
         <select class="form-select userInput textOfSelectList" aria-label="Default select example"
           formControlName="districtId">
-          <option value="0">District</option>
+          <option value="0">{{'profile.district' | translate}}</option>
           @for (item of districts; track $index) {
           <option [value]="item.districtId">{{item.districtName}}</option>
           }
@@ -80,7 +80,7 @@
         @if(
         AddressForm.get('districtId')?.dirty && AddressForm.get('districtId')?.touched &&
         AddressForm.get('districtId')?.value =='0' ){
-        <div class="error mt-1">District is Required</div>
+        <div class="error mt-1">{{'formValidation.districtRequired' | translate}}</div>
         }
       </div>
     </div>
@@ -88,19 +88,19 @@
     <!-- Building Number &  apartment number -->
     <div class="d-flex input-group mb-3">
       <div class="col-6 pe-3">
-        <input type="text" class="form-control  userApartmentNumber" placeholder="Building Number"
+        <input type="text" class="form-control  userApartmentNumber" [placeholder]="'profile.buildingNumber' | translate"
           aria-label="buildingNumber" formControlName="buildingNumber">
         @if(AddressForm.get('buildingNumber')?.hasError('required') &&
         AddressForm.get('buildingNumber')?.dirty && AddressForm.get('buildingNumber')?.touched ){
-        <div class="error mt-1">Building Number is Required</div>
+        <div class="error mt-1">{{'formValidation.buildingNumberRequired' | translate}}</div>
         }
       </div>
       <div class="col-6 ">
-        <input type="text" class="form-control userApartmentNumber " placeholder="apartment number"
+        <input type="text" class="form-control userApartmentNumber " [placeholder]="'profile.apartmentNumber' | translate"
           aria-label="apartment number" formControlName="apartmentNumber">
         @if(AddressForm.get('apartmentNumber')?.hasError('required') &&
         AddressForm.get('apartmentNumber')?.dirty && AddressForm.get('apartmentNumber')?.touched ){
-        <div class="error mt-1">Apartment Number is Required</div>
+        <div class="error mt-1">{{'formValidation.apartmentNumberRequired' | translate}}</div>
         }
       </div>
     </div>
@@ -113,18 +113,18 @@
           placeholder="floor number" aria-label="floorNumber">
         @if(AddressForm.get('floorNumber')?.hasError('required') &&
         AddressForm.get('floorNumber')?.dirty && AddressForm.get('floorNumber')?.touched ){
-        <div class="error mt-1">Floor Number is Required</div>
+        <div class="error mt-1">{{'formValidation.floorNumberRequired' | translate}}</div>
         }
       </div>
       <div class="col-6">
-        <input type="text" class="form-control userApartmentNumber" formControlName="street" placeholder="Street"
+        <input type="text" class="form-control userApartmentNumber" formControlName="street" [placeholder]="'profile.street' | translate"
           aria-label="street">
         @if(AddressForm.get('street')?.hasError('required') &&
         AddressForm.get('street')?.dirty && AddressForm.get('street')?.touched ){
-        <div class="error mt-1">Street is Required</div>
+        <div class="error mt-1">{{'formValidation.streetRequired' | translate}}</div>
         }@else if (AddressForm.get('street')?.invalid && AddressForm.get('street')?.dirty &&
         AddressForm.get('street')?.touched) {
-        <div class="error mt-1">Street must be at least 5 letter</div>
+        <div class="error mt-1">{{'formValidation.StreetMustBeAtLeastLetter' | translate}}</div>
         }
       </div>
     </div>
@@ -132,23 +132,23 @@
     <!-- Details -->
     <div class="col input-group " style="height: 88px;">
       <textarea id="txtid" class="form-control userDetails" name="textname" rows="4" formControlName="details"
-        maxlength="200" placeholder="Please enter your address here in details"></textarea>
+        maxlength="200" [placeholder]="'profile.addressInDetails' | translate"></textarea>
     </div>
     @if(AddressForm.get('details')?.hasError('required') &&
     AddressForm.get('details')?.dirty && AddressForm.get('details')?.touched ){
-    <div class="error mt-1">Details is Required</div>
+    <div class="error mt-1">{{'formValidation.detailsRequired' | translate}}</div>
     }
     <div class="col input-group my-3">
       <div class="form-check">
         <input formControlName="defaultAddress" class="form-check-input" type="checkbox" id="flexCheckDefault" [checked]="address && address.defaultAddress">
         <label class="form-check-label labelOfSaveCheckbox" for="flexCheckDefault">
-          Make this address as default
+          {{'profile.makeAddressAsDefault' | translate}}
         </label>
       </div>
     </div>
     @if (!isCart) {
     <div class="d-flex justify-content-md-end justify-content-center pb-3">
-      <button type="submit" class="data-btn mt-4 mb-5 ">Save Address</button>
+      <button type="submit" class="data-btn mt-4 mb-5 ">{{'profile.saveAddress' | translate}}</button>
     </div>
   }
 

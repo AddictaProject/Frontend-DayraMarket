@@ -10,11 +10,12 @@ import { UserService } from '../../../../../Services/UserService/user.service';
 import { IUserAddress } from '../../../../../Models/Cart/IUserAddress';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-add-update-address',
   standalone: true,
-  imports: [ReactiveFormsModule,CommonModule],
+  imports: [ReactiveFormsModule,CommonModule,TranslateModule],
   templateUrl: './add-update-address.component.html',
   styleUrl: './add-update-address.component.css',
 })

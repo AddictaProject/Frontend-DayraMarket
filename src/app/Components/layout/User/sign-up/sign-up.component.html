@@ -5,75 +5,75 @@
   <div class="d-flex justify-content-center">
     <div class="sign-up">
       <div class="title">
-        <h4>Create an account</h4>
+        <h4>{{'user.createAccount' | translate}}</h4>
       </div>
       <form class="d-flex flex-column gap-3 w-100" [formGroup]="signUpForm" (submit)="onSubmit()">
         <div>
-          <input formControlName="fullName" type="text" placeholder="fullName" class="w-100">
+          <input formControlName="fullName" type="text" [placeholder]="'profile.fullName' | translate" class="w-100">
           @if(signUpForm.controls.fullName.hasError('required') && signUpForm.controls.fullName.dirty && signUpForm.controls.fullName.touched ){
-          <div class="error mt-1">fullName is Required</div>
+          <div class="error mt-1">{{'formValidation.fullNameRequired' | translate}}</div>
           }
         </div>
         <div>
-          <input formControlName="email" type="email" placeholder="Email" class="w-100">
+          <input formControlName="email" type="email" [placeholder]="'profile.email' | translate" class="w-100">
           @if(signUpForm.controls.email.hasError('required') && signUpForm.controls.email.dirty && signUpForm.controls.email.touched ){
-          <div class="error mt-1">Email is Required</div>
+          <div class="error mt-1">{{'formValidation.emailRequired' | translate}}</div>
           }
           @else if (signUpForm.controls.email.invalid && signUpForm.controls.email.dirty && signUpForm.controls.email.touched) {
-          <div class="error mt-1">Email is Invalid</div>
+          <div class="error mt-1">{{'formValidation.emailInvalid' | translate}}</div>
           }
         </div>
         <div>
-          <input class="w-100" formControlName="phoneNumber" type="text" placeholder="Phone number" appNumberOnly>
+          <input class="w-100" formControlName="phoneNumber" type="text" [placeholder]="'profile.phoneNumber' | translate" appNumberOnly>
           @if(signUpForm.controls.phoneNumber.hasError('required') && signUpForm.controls.phoneNumber.dirty && signUpForm.controls.phoneNumber.touched ){
-          <div class="error mt-1">Phone Number is Required</div>
+          <div class="error mt-1">{{'formValidation.phoneNumberRequired' | translate}}</div>
           }
           @else if (signUpForm.controls.phoneNumber.invalid && signUpForm.controls.phoneNumber.dirty && signUpForm.controls.phoneNumber.touched) {
-          <div class="error mt-1">Phone Number is Invalid</div>
+          <div class="error mt-1">{{'formValidation.phoneNumberInvalid' | translate}}</div>
           }
         </div>
         <div>
-          <input class="w-100" formControlName="password" type="password" placeholder="Password">
+          <input class="w-100" formControlName="password" type="password" [placeholder]="'profile.password' | translate">
           @if(signUpForm.controls.password.hasError('required') && signUpForm.controls.password.dirty && !signUpForm.controls.password.untouched ){
-          <div class="error mt-1">Password is Required</div>
+          <div class="error mt-1">{{'formValidation.passwordRequired' | translate}}</div>
           }
           @else if (signUpForm.controls.password.hasError('minlength') && signUpForm.controls.password.dirty && !signUpForm.controls.password.untouched) {
-          <div class="error mt-1">be at least be 8 characters long</div>
+          <div class="error mt-1">{{'formValidation.eightPasswordLength' | translate}}</div>
           }
           @else if (!signUpForm.controls.password.value?.match('^(?=.*[a-z])') && signUpForm.controls.password.dirty && !signUpForm.controls.password.untouched)
           {
-          <div class="error mt-1">include at least be 1 lowercase characters long</div>
+          <div class="error mt-1">{{'formValidation.oneLowercaseLetter' | translate}}</div>
           }
           @else if (!signUpForm.controls.password.value?.match('^(?=.*[A-Z])') && signUpForm.controls.password.dirty && !signUpForm.controls.password.untouched)
           {
-          <div class="error mt-1">include at least be 1 uppercase characters long</div>
+          <div class="error mt-1">{{'formValidation.oneUppercaseLetter' | translate}}</div>
           }
           @else if (!signUpForm.controls.password.value?.match('^(?=.*[0-9])') && signUpForm.controls.password.dirty && !signUpForm.controls.password.untouched)
           {
-          <div class="error mt-1">include at least be 1 number characters long</div>
+          <div class="error mt-1">{{'formValidation.oneNumberLetter' | translate}}</div>
           }
           @else if (!signUpForm.controls.password.value?.match('^(?=.*[!@#$%^&*.?])') && signUpForm.controls.password.dirty &&
           !signUpForm.controls.password.untouched)
           {
-          <div class="error mt-1">include at least be 1 symbol characters long</div>
+          <div class="error mt-1">{{'formValidation.oneSymbolLetter' | translate}}</div>
           }
         </div>
         <div>
-          <input class="w-100" formControlName="confirmPassword" type="password" placeholder="Confirm Password">
+          <input class="w-100" formControlName="confirmPassword" type="password" [placeholder]="'profile.confirmPassword' | translate">
           @if(signUpForm.controls.confirmPassword.hasError('required') && signUpForm.controls.confirmPassword.dirty && signUpForm.controls.confirmPassword.touched ){
-          <div class="error mt-1">Confirm Password is Required</div>
+          <div class="error mt-1">{{'formValidation.confirmPasswordRequired' | translate}}</div>
           }
           @if(signUpForm.controls.confirmPassword.hasError('passwordsDoNotMatch') && signUpForm.controls.confirmPassword.dirty && signUpForm.controls.confirmPassword.touched ){
-          <div class="error mt-1">Password don't match</div>
+          <div class="error mt-1">{{'formValidation.passwordNotMatch' | translate}}</div>
         }
         </div>
         <div>
           <div class="d-flex align-items-center gap-3 ">
             <input type="checkbox" id="policy" formControlName="policy">
-            <label for="policy">Accept Privacy & Policy</label>
+            <label for="policy">{{'user.acceptPrivacyPolicy' | translate}}</label>
           </div>
           @if(signUpForm.controls.policy.hasError('required') && signUpForm.controls.policy.dirty && signUpForm.controls.policy.touched ){
-            <div class="error mt-1">Privacy & Policy is Required</div>
+            <div class="error mt-1">{{'formValidation.privacyPolicyRequired' | translate}}</div>
             }
         </div>
         @if(serverError){
@@ -81,11 +81,11 @@
             <span>{{serverError}}</span>
           </div>
         }
-        <button type="submit" class="sign-up-btn">sign up</button>
+        <button type="submit" class="sign-up-btn">{{'user.signUp' | translate}}</button>
       </form>
       <div class="or d-flex align-items-center">
         <span></span>
-        <span>Or</span>
+        <span>{{'user.or' | translate}}</span>
         <span></span>
       </div>
       <div class="icons d-flex gap-4 my-4 pb-3">
@@ -93,13 +93,13 @@
         <i class="fa-brands fa-instagram"></i>
         <i class="fa-brands fa-google" (click)="triggerGoogleLogin()" ></i>
       </div>
-      <div>Already have an account ? <a routerLink="/login"  (click)="click.click()"  class="sign-in">SIGN IN</a> </div>
+      <div>{{'user.alreadyHaveAccount' | translate}} <a routerLink="/login"  (click)="click.click()"  class="sign-in">{{'user.signIn' | translate}}</a> </div>
     </div>
   </div>
 }
 
 @else {
-  <app-verify [phoneNumber]="this.signUpForm.get('phoneNumber')?.value ??''"></app-verify>
+  <!-- <app-verify [phoneNumber]="this.signUpForm.get('phoneNumber')?.value ??''"></app-verify> -->
 }
 
 <div id="google-button"></div>

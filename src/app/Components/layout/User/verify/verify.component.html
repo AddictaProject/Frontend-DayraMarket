@@ -4,7 +4,7 @@
 <div class="d-flex justify-content-center">
   <div class="verify">
     <div class="title">
-      <h4>Verification Code</h4>
+      <h4>{{'user.verificationCode' | translate}}</h4>
     </div>
     <form class="w-100" [formGroup]="verifyForm" (submit)="onSubmit()">
       <div class="d-flex gap-3 justify-content-center">
@@ -24,9 +24,9 @@
         <input type="text" maxLength="1" size="1" formControlName="num5"   appInputNavigation />
       </div>
     </div>
-    <p>Resend code after  00:{{num <10 ?'0'+num:num }}</p>
-    <button class="verify-btn mb-3 w-100">Verify</button>
-    <button class="resend-btn mt-0 w-100" (click)="onResend()" [disabled]="num!=0" >Resend</button>
+    <p>{{'user.resendCodeAfter' | translate}}  00:{{num <10 ?'0'+num:num }}</p>
+    <button class="verify-btn mb-3 w-100">{{'user.verify' | translate}}</button>
+    <button class="resend-btn mt-0 w-100" (click)="onResend()" [disabled]="num!=0" >{{'user.resend' | translate}}</button>
     </form>
   </div>
 </div>

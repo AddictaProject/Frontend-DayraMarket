@@ -4,11 +4,12 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { UserService } from '../../../../Services/UserService/user.service';
 import { IVerifyPhoneNumber } from '../../../../Models/User/IVerifyPhoneNumber';
 import { Router } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-verify',
   standalone: true,
-  imports: [InputNavigationDirective,ReactiveFormsModule],
+  imports: [InputNavigationDirective,ReactiveFormsModule,TranslateModule],
   templateUrl: './verify.component.html',
   styleUrl: './verify.component.css'
 })

@@ -59,7 +59,7 @@
 
                   @if((CurrentCase != CartCasesEnum.Confirm)){
                   <div (click)="removeItem(item.id)" [ngClass]="{'d-none':CurrentCase == CartCasesEnum.Success}">
-                    <svg class="svgOfDelete" width="17" height="17" viewBox="0 0 17 17" fill="none"
+                    <svg [ngClass]="{'rtl':isArabic}" class="svgOfDelete" width="17" height="17" viewBox="0 0 17 17" fill="none"
                       xmlns="http://www.w3.org/2000/svg">
                       <path
                         d="M8.5 0C13.2005 0 17 3.7995 17 8.5C17 13.2005 13.2005 17 8.5 17C3.7995 17 0 13.2005 0 8.5C0 3.7995 3.7995 0 8.5 0ZM12.75 4.25H10.625L9.775 3.4H7.225L6.375 4.25H4.25V5.95H12.75V4.25ZM5.95 13.6H11.05C11.2754 13.6 11.4916 13.5104 11.651 13.351C11.8104 13.1916 11.9 12.9754 11.9 12.75V6.8H5.1V12.75C5.1 12.9754 5.18955 13.1916 5.34896 13.351C5.50837 13.5104 5.72457 13.6 5.95 13.6Z"

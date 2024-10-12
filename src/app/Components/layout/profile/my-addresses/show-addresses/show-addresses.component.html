@@ -1,37 +1,37 @@
 <div class=" col-12  ps-sm-0" [ngClass]="{'col-lg-9': !isCart}">
   <div class="show-address">
     @if (isCart) {
-    <button class="btn w-100 mb-4 mt-2 add-btn" (click)="addressStep.emit(addressSteps.add)">Add New Address</button>
+    <button class="btn w-100 mb-4 mt-2 add-btn" (click)="addressStep.emit(addressSteps.add)">{{'profile.addNewAddress' | translate}}</button>
     }
     @if (!isLoading) {
       @for (item of addresses; track $index) {
       <div class="address py-sm-3 " [ngClass]="{'cart': isCart}" (click)="onAddressClick($event,item)">
         <div class="d-flex flex-column flex-md-row mt-md-3 mt-2">
           <div class="col-12 col-md-6 pe-md-3 p-0 mt-md-3 mt-2 mt-md-0">
-            <label for="city">City</label>
-            <input type="text" placeholder="cairo " class="w-100 mt-2" [value]="item?.cityName" readonly>
+            <label for="city">{{'profile.city' | translate}}</label>
+            <input type="text"  class="w-100 mt-2" [value]="item?.cityName" readonly>
           </div>
           <div class="col-12 col-md-6 ps-md-3 p-0 mt-md-3 mt-2 mt-md-0">
-            <label for="district">District</label>
-            <input type="text" placeholder="Group" [value]="item?.districtName ?? ' '" class="w-100 mt-2" readonly>
+            <label for="district">{{'profile.district' | translate}}</label>
+            <input type="text"  [value]="item?.districtName ?? ' '" class="w-100 mt-2" readonly>
           </div>
         </div>
         <div class="mt-md-4 mt-2">
-          <label for="address">Address</label>
-          <input type="text" placeholder="cairo , New Cairo"
+          <label for="address">{{'profile.address' | translate}}</label>
+          <input type="text"
             [value]="item?.cityName+ ' , '+ item?.districtName+' , '+item?.street+' , '+item?.floorNumber +' , '+item?.apartmentNumber"
             class="w-100" readonly>
         </div>
         <div class="d-flex justify-content-end mt-md-4  mt-3  gap-3">
           <button class="btn py-2 edit-btn px-3" (click)="onEditClick($event,item)"><i class="fa-solid fa-pen fa-xs"></i>
-            Edit </button>
+            {{'profile.edit' | translate}} </button>
           @if (!item.defaultAddress && !isCart) {
           <button class="btn del-btn py-2 px-3" (click)="deleteAddress(item.uuid ?? '')"><i
-              class="fa-solid fa-trash fa-xs"></i> Delete</button>
+              class="fa-solid fa-trash fa-xs"></i> {{'profile.delete' | translate}}</button>
           }
         </div>
 
-        <span [hidden]="!item.defaultAddress" class="default">default</span>
+        <span [hidden]="!item.defaultAddress" class="default">{{'profile.default' | translate}}</span>
       </div>
       }
     }
@@ -39,16 +39,16 @@
       <div class="address py-sm-3 " [ngClass]="{'cart': isCart}">
         <div class="d-flex flex-column flex-md-row mt-3">
           <div class="col-12 col-md-6 pe-md-3 p-0 mt-3 mt-md-0">
-            <label for="city">City</label>
+            <label for="city">{{'profile.city' | translate}}</label>
             <p-skeleton class="w-100" height="40px"  />
           </div>
           <div class="col-12 col-md-6 ps-md-3 p-0 mt-3 mt-md-0">
-            <label for="district">District</label>
+            <label for="district">{{'profile.district' | translate}}</label>
             <p-skeleton class="w-100" height="40px" />
           </div>
         </div>
         <div class="mt-4">
-          <label for="address">Address</label>
+          <label for="address">{{'profile.address' | translate}}</label>
           <p-skeleton class="w-100" height="40px"  />
         </div>
         <div class="d-flex justify-content-end mt-4 mb-3 gap-3">
@@ -57,16 +57,16 @@
       <div class="address py-sm-3 " [ngClass]="{'cart': isCart}">
         <div class="d-flex flex-column flex-md-row mt-3">
           <div class="col-12 col-md-6 pe-md-3 p-0 mt-3 mt-md-0">
-            <label for="city">City</label>
+            <label for="city">{{'profile.city' | translate}}</label>
             <p-skeleton class="w-100" height="40px"  />
           </div>
           <div class="col-12 col-md-6 ps-md-3 p-0 mt-3 mt-md-0">
-            <label for="district">District</label>
+            <label for="district">{{'profile.district' | translate}}</label>
             <p-skeleton class="w-100" height="40px" />
           </div>
         </div>
         <div class="mt-4">
-          <label for="address">Address</label>
+          <label for="address">{{'profile.address' | translate}}</label>
           <p-skeleton class="w-100" height="40px"  />
         </div>
         <div class="d-flex justify-content-end mt-4 mb-3 gap-3">
@@ -77,7 +77,7 @@
   @if (!isCart) {
   <div class="d-flex justify-content-md-end justify-content-center">
     <button type="submit" class=" btn data-btn mt-4" [routerLink]="['add-address']"
-      routerLinkActive="router-link-active">Add new Address</button>
+      routerLinkActive="router-link-active">{{'profile.addNewAddress' | translate}}</button>
   </div>
   }
 

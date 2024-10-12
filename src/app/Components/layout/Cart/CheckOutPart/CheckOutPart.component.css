@@ -53,7 +53,6 @@
   font-weight: 500;
   line-height: 18.29px;
   letter-spacing: 0.08em;
-  text-align: left;
   padding: 10px 0;
 }
 
@@ -63,7 +62,6 @@
   font-weight: 400;
   line-height: 14.63px;
   letter-spacing: 0.08em;
-  text-align: left;
 }
 
 /* Left part  */
@@ -89,6 +87,10 @@
   bottom: 35px;
   right: 36px;
   cursor: pointer;
+}
+.svgOfDelete.rtl{
+  right: inherit;
+  left: 36px;
 }
 @media (max-width: 768px) {
 .svgOfDelete {

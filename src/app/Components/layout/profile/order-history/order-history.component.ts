@@ -19,6 +19,7 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import Swal from 'sweetalert2';
 import { Environment } from '../../../../../enviroment/environment';
 import { PaymentMethod } from '../../../../Models/Cart/PaymentMethod';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-order-history',
@@ -28,6 +29,7 @@ import { PaymentMethod } from '../../../../Models/Cart/PaymentMethod';
     StarHoverDirective,
     ReactiveFormsModule,
     SweetAlert2Module,
+    TranslateModule
   ],
   templateUrl: './order-history.component.html',
   styleUrl: './order-history.component.css',

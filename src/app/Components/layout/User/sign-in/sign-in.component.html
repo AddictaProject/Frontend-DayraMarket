@@ -5,36 +5,36 @@
 <div class="d-flex justify-content-center">
   <div class="sign-in">
     <div class="title">
-      <h4>Welcome Back</h4>
+      <h4>{{'user.welcomeBack' | translate}}</h4>
     </div>
     <form class="d-flex flex-column gap-3 w-100" [formGroup]="signInForm" (submit)="onSubmit()">
       <div>
-        <input formControlName="email" type="email" placeholder="Email" class="w-100">
+        <input formControlName="email" type="email" [placeholder]="'profile.email' | translate" class="w-100">
         @if(signInForm.controls.email.hasError('required') && signInForm.controls.email.dirty &&
         signInForm.controls.email.touched ){
-        <div class="error mt-1">Email is Required</div>
+        <div class="error mt-1">{{'formValidation.emailRequired' | translate}}</div>
         }
         @else if (signInForm.controls.email.invalid && signInForm.controls.email.dirty &&
         signInForm.controls.email.touched) {
-        <div class="error mt-1">Email is Invalid</div>
+        <div class="error mt-1">{{'formValidation.emailInvalid' | translate}}</div>
         }
       </div>
       <div>
-        <input class="w-100" formControlName="password" type="password" placeholder="Password">
+        <input class="w-100" formControlName="password" type="password" [placeholder]="'profile.password' | translate">
         @if(signInForm.controls.password.hasError('required') && signInForm.controls.password.dirty &&
         !signInForm.controls.password.untouched ){
-        <div class="error mt-1">Password is Required</div>
+        <div class="error mt-1">{{'formValidation.passwordRequired' | translate}}</div>
         }
       </div>
       @if(serverError){
-      <div class="error">Invalid email or password</div>
+      <div class="error">{{'formValidation.invalidEmailOrPassword' | translate}}</div>
       }
-      <div><a routerLink="/forget-password" class="sign-up">Forget your Password</a> </div>
-      <button class="sign-in-btn" type="submit">sign in</button>
+      <div><a routerLink="/forget-password" class="sign-up">{{'user.forgotPassword' | translate}}</a> </div>
+      <button class="sign-in-btn" type="submit">{{'user.signIn' | translate}}</button>
     </form>
     <div class="or d-flex align-items-center">
       <span></span>
-      <span>Or</span>
+      <span>{{'user.or' | translate}}</span>
       <span></span>
     </div>
     <div class="icons d-flex gap-4 my-4 pb-3">
@@ -42,7 +42,7 @@
       <i class="fa-brands fa-instagram"></i>
       <i class="fa-brands fa-google" (click)="triggerGoogleLogin()" ></i>
     </div>
-    <div>Don’t have an account ? <a routerLink="/signup" (click)="click.click()" class="sign-up">SIGN UP</a> </div>
+    <div>{{'user.doNotHaveAnAccount' | translate}} <a routerLink="/signup" (click)="click.click()" class="sign-up">{{'user.signUp' | translate}}</a> </div>
   </div>
 </div>
 }

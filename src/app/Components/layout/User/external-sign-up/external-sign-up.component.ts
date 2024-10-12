@@ -58,8 +58,11 @@ export class ExternalSignUpComponent implements OnInit {
 
     this.userService.externalRegister(user).subscribe({
       next: (res:any) => {
-        console.log(res?.tempOTP);
-        this.isShowingVerify=true;
+        // console.log(res?.tempOTP);
+        // this.isShowingVerify=true;
+        this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+          this.router.navigate(['/login']);
+        })
       },
       error: (err:any) => {
         this.serverError= err?.error?.detail

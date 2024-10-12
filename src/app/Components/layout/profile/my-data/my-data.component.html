@@ -1,62 +1,62 @@
 <div class="col-lg-9 col-12 px-3">
   <form class="d-flex mb-5 flex-column gap-sm-4  w-100" [formGroup]="myDataForm" (submit)="onSubmit()">
     <div >
-      <label for="fullName">Full Name</label>
-      <input formControlName="fullName" type="text" placeholder="Full Name" class="w-100" readonly>
+      <label for="fullName">{{'profile.fullName' | translate}}</label>
+      <input formControlName="fullName" type="text" [placeholder]="'profile.fullName' | translate" class="w-100" readonly>
     </div>
       <div >
-        <label for="email">Email</label>
-        <input formControlName="email" type="email" placeholder="Email" class="w-100" readonly>
+        <label for="email">{{'profile.email' | translate}}</label>
+        <input formControlName="email" type="email" [placeholder]="'profile.email' | translate" class="w-100" readonly>
       </div>
       <div >
-        <label for="phoneNumber">Phone Number</label>
-        <input class="w-100" formControlName="phoneNumber" type="text" placeholder="Phone number" readonly>
+        <label for="phoneNumber">{{'profile.phoneNumber' | translate}}</label>
+        <input class="w-100" formControlName="phoneNumber" type="text" [placeholder]="'profile.phoneNumber' | translate" readonly>
       </div>
 
       <div >
-        <label for="Password">Change Password</label>
-        <input class="w-100" formControlName="password" type="password" placeholder="Password" autocomplete="on">
+        <label for="Password">{{'profile.changePassword' | translate}}</label>
+        <input class="w-100" formControlName="password" type="password" [placeholder]="'profile.password' | translate" autocomplete="on">
         @if(myDataForm.controls.password.hasError('required') && myDataForm.controls.password.dirty &&
         !myDataForm.controls.password.untouched ){
-        <div class="error mt-1">Password is Required</div>
+        <div class="error mt-1">{{'formValidation.passwordRequired' | translate}}</div>
         }
         @else if (myDataForm.controls.password.hasError('minlength') && myDataForm.controls.password.dirty &&
         !myDataForm.controls.password.untouched) {
-        <div class="error mt-1">be at least be 8 characters long</div>
+        <div class="error mt-1">{{'formValidation.eightPasswordLength' | translate}}</div>
         }
         @else if (!myDataForm.controls.password.value?.match('^(?=.*[a-z])') && myDataForm.controls.password.dirty &&
         !myDataForm.controls.password.untouched)
         {
-        <div class="error mt-1">include at least be 1 lowercase characters long</div>
+        <div class="error mt-1">{{'formValidation.oneLowercaseLetter' | translate}}</div>
         }
         @else if (!myDataForm.controls.password.value?.match('^(?=.*[A-Z])') && myDataForm.controls.password.dirty &&
         !myDataForm.controls.password.untouched)
         {
-        <div class="error mt-1">include at least be 1 uppercase characters long</div>
+        <div class="error mt-1">{{'formValidation.oneUppercaseLetter' | translate}}</div>
         }
         @else if (!myDataForm.controls.password.value?.match('^(?=.*[0-9])') && myDataForm.controls.password.dirty &&
         !myDataForm.controls.password.untouched)
         {
-        <div class="error mt-1">include at least be 1 number characters long</div>
+        <div class="error mt-1">{{'formValidation.oneNumberLetter' | translate}}</div>
         }
         @else if (!myDataForm.controls.password.value?.match('^(?=.*[!@#$%^&*.?])') &&
         myDataForm.controls.password.dirty
         &&
         !myDataForm.controls.password.untouched)
         {
-        <div class="error mt-1">include at least be 1 symbol characters long</div>
+        <div class="error mt-1">{{'formValidation.oneSymbolLetter' | translate}}</div>
         }
       </div>
       <div >
         <label for="confirmPassword">Confirm Password</label>
-        <input class="w-100" formControlName="confirmPassword" type="password" placeholder="Confirm Password" autocomplete="on">
+        <input class="w-100" formControlName="confirmPassword" type="password" [placeholder]="'profile.confirmPassword' | translate" autocomplete="on">
         @if(myDataForm.controls.confirmPassword.hasError('required') && myDataForm.controls.confirmPassword.dirty &&
         myDataForm.controls.confirmPassword.touched ){
-        <div class="error mt-1">Confirm Password is Required</div>
+        <div class="error mt-1">{{'formValidation.confirmPasswordRequired' | translate}}</div>
         }
         @if(myDataForm.controls.confirmPassword.hasError('passwordsDoNotMatch') &&
         myDataForm.controls.confirmPassword.dirty && myDataForm.controls.confirmPassword.touched ){
-        <div class="error mt-1">Password don't match</div>
+        <div class="error mt-1">{{'formValidation.passwordNotMatch' | translate}}</div>
         }
       </div>
       @if(serverError){
@@ -65,7 +65,7 @@
         </div>
       }
     <div class="d-flex justify-content-md-end justify-content-center mt-4">
-      <button type="submit" class="data-btn">Save Password</button>
+      <button type="submit" class="data-btn">{{'profile.savePassword' | translate}}</button>
     </div>
   </form>
 </div>

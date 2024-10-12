@@ -26,4 +26,7 @@ export class LocalizationService {
 
     this.translate.use(language);
   }
+  get getLanguage(){
+    return this.isArabic? 'ar-EG' : 'en-US';
+  }
 }
