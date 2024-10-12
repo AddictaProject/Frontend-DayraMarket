@@ -29,7 +29,7 @@ export class FooterComponent implements OnInit, OnDestroy {
     this.localizationService.IsArabic.subscribe(isAr=>this.isArabic=isAr);
 
     this.sub = this.filterService.getAllBrand().subscribe((data) => {
-      this.brands = data.slice(0,8);
+      this.brands = data.slice(0,6);
     });
   }
 

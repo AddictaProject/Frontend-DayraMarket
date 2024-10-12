@@ -11,7 +11,7 @@
     <div class="product-section">
       <div class="header">
         <h2 class="title">{{level2.displayName}}</h2>
-        <a data-bs-toggle="offcanvas" (click)="goToCategory(selectedCategory.uuid)" class="view-all">{{'header.viewAll' | translate}}
+        <a data-bs-toggle="offcanvas" (click)="goToCategory(level2.uuid)" class="view-all">{{'header.viewAll' | translate}}
           <i [ngClass]="isArabic? 'fa-angle-left': 'fa-angle-right'" class="fa-solid fa-angle-right mx-1"></i>
         </a>
       </div>

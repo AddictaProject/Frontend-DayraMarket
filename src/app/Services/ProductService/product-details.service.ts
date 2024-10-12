@@ -30,6 +30,7 @@ export class ProductDetailsService {
   product: IProductInDetails = {
     uuid: '',
     brandDisplayName: '',
+    categoryUuid:'',
     categoryDisplayName: '',
     description: '',
     displayName: '',
@@ -121,7 +122,7 @@ export class ProductDetailsService {
         this.vendorId = data.selectedStock.vendorUuid;
         this.vendorDisplayName = data.selectedStock.vendorDisplayName ?? '';
 
-        this.loadConditionPhoto(this.product.uuid);
+        this.loadConditionPhoto(this.product.categoryUuid);
 
         if (this.product.reviewCount > 0) {
           this.loadReviews();

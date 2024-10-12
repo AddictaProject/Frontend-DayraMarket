@@ -23,6 +23,7 @@ export interface IAttributesInSelectedStock {
 
 export interface IProductInDetails {
   uuid: string;
+  categoryUuid: string;
   brandDisplayName: string;
   categoryDisplayName: string;
   description: string;

@@ -29,6 +29,9 @@ import { TranslateModule } from '@ngx-translate/core';
 })
 export class ProductVariantsComponent implements OnInit {
   @ViewChild('LearnMore') LearnMore!: ElementRef;
+  @ViewChild('sliderIndicators') sliderIndicators!: ElementRef;
+  @ViewChild('sliderContainer') sliderContainer!: ElementRef;
+  @ViewChild('btnsContainer') btnsContainer!: ElementRef;
 
   @Input() productVariants!: IgroupedVariants;
 
@@ -127,9 +130,8 @@ export class ProductVariantsComponent implements OnInit {
 
   animateLearnMore() {
     setTimeout(() => {
-      // <<<---using ()=> syntax
-      const element = this.LearnMore.nativeElement;
-      element.classList.add('dissolveclass');
+      const element = this.LearnMore?.nativeElement;
+      element?.classList.add('dissolveclass');
     }, 1000);
   }
 
@@ -137,14 +139,18 @@ export class ProductVariantsComponent implements OnInit {
     this.offCanvasOb.toggleOffcanvas(state);
   }
 
-  changeCondition(e: Event, condition: string) {
-    const btns = (e.target as HTMLElement).parentElement?.parentElement
+  changeCondition(condition: string) {
+    const btns = this.btnsContainer.nativeElement
       ?.querySelectorAll('button')
-      .forEach((b) => b.classList.remove('active'));
-    (e.target as HTMLElement).classList.add('active');
+      .forEach((b: any) => b.classList.remove('active'));
+    const currentBtn = this.btnsContainer.nativeElement.querySelector(
+      `.${condition}`
+    );
+
+    currentBtn.classList.add('active');
 
     const conditionInfo =
-      (e.target as HTMLElement)
+      currentBtn
         .closest('.product-header')
         ?.querySelectorAll('.txtOfPropSubOff') ?? [];
     const selectedCondition = this.conditions.find(
@@ -153,5 +159,40 @@ export class ProductVariantsComponent implements OnInit {
 
     conditionInfo[0].innerHTML = selectedCondition?.screen ?? ' ';
     conditionInfo[1].innerHTML = selectedCondition?.body ?? ' ';
+  }
+
+  changeConditionInImage(isNext:boolean) {
+    let currentElem =
+      this.sliderContainer.nativeElement.querySelector(
+        '.active'
+      ).nextElementSibling;
+
+    if (!currentElem && isNext){
+      if(isNext)
+        currentElem = this.sliderContainer.nativeElement.firstElementChild;
+      else
+        currentElem = this.sliderContainer.nativeElement.lastElementChild;
+
+    }
+
+    this.changeCondition(currentElem.dataset['condition']);
+  }
+  changeConditionInBtn(condition: string){
+    let clickedImg =
+      this.sliderContainer?.nativeElement.querySelector(
+        `.${condition}`
+      );
+
+    let clickedIndicator =
+      this.sliderIndicators?.nativeElement.querySelector(
+        `.${condition}`
+      );
+
+      if (!clickedImg || !clickedIndicator)
+        this.sliderContainer?.nativeElement.classList.add('d-none');
+      else
+        clickedIndicator.click();
+
+      this.changeCondition(condition);
   }
 }

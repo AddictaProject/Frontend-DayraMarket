@@ -33,7 +33,7 @@ export class ProductApiService {
   getConditionPhotos(categoryUuid : string): Observable<IConditionPhoto[]> {
 
     return this.httpClient.get<IConditionPhoto[]>(
-      `${this.URL}/categories/${'4101fe61-d402-4709-ad86-aa7074fbf590' }/condition-photos`
+      `${this.URL}/categories/${categoryUuid }/condition-photos`
     );
   }
 
