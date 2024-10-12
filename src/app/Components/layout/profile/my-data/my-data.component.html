@@ -48,7 +48,7 @@
         }
       </div>
       <div >
-        <label for="confirmPassword">Confirm Password</label>
+        <label for="confirmPassword">{{'profile.confirmPassword' | translate}}</label>
         <input class="w-100" formControlName="confirmPassword" type="password" [placeholder]="'profile.confirmPassword' | translate" autocomplete="on">
         @if(myDataForm.controls.confirmPassword.hasError('required') && myDataForm.controls.confirmPassword.dirty &&
         myDataForm.controls.confirmPassword.touched ){

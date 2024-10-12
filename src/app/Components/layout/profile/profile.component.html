@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" [ngClass]="{'rtl' : isArabic}">
   <header>
     <div class="overlay"></div>
     <h4 class="fw-semibold">{{'profile.title' | translate}}</h4>
@@ -15,7 +15,7 @@
   <div class="row mb-5 pb-5">
     <div class=" col-sm-4 col-12 col-lg-3 profile-side">
       <div class="d-flex mb-4 gap-3 align-items-center">
-        <h5 class="m-0">{{'myProfile.title' | translate}}</h5>
+        <h5 class="m-0">{{'profile.title' | translate}}</h5>
         <i #iconRef class="fa-solid fa-angle-down d-sm-none" (click)="iconRef.classList.toggle('fa-angle-up')"></i>
       </div>
       <nav class="list-unstyled">

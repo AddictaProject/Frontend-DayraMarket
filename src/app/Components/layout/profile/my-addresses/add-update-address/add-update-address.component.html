@@ -110,7 +110,7 @@
 
       <div class="col-6 pe-3">
         <input type="text" class="form-control userApartmentNumber" formControlName="floorNumber"
-          placeholder="floor number" aria-label="floorNumber">
+          [placeholder]="'profile.floorNumber' | translate" aria-label="floorNumber">
         @if(AddressForm.get('floorNumber')?.hasError('required') &&
         AddressForm.get('floorNumber')?.dirty && AddressForm.get('floorNumber')?.touched ){
         <div class="error mt-1">{{'formValidation.floorNumberRequired' | translate}}</div>
